@@ -13,6 +13,9 @@
             android:name=".ChooseActivity"
             android:exported="false" />
         <activity
+            android:name=".RegistrationActivityForHospital"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity

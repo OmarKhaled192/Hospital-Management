@@ -49,10 +49,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
         startActivity( new Intent(this,RegistrationActivity.class)  );
     }
 
-
-    public void Login1(View view) {
-    }
-
     public void registration(View view) {
+        startActivity( new Intent(this,ChooseActivity.class));
     }
 }

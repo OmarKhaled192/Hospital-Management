@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Hospital Management YOM</string>
     <string name="userName">أدخل آسم المستخدم</string>
+    <string name="name">أدخل آسمك</string>
     <string name="Password">أدخل كلمة السر</string>
     <string name="login">تسجيل الدخول</string>
     <string name="forgetPassword">هل نسيت كلمة السر؟</string>
@@ -14,4 +15,5 @@
     <string name="admin">مشرف</string>
     <string name="question">هل تريد انشاء حساب في التطبيق ك مستشفى أم مريض؟</string>
     <string name="Password2">تاكيد كلمه السر</string>
+    <string name="phone">أدخل رقم الهاتف</string>
 </resources>
