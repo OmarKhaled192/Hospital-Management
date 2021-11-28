@@ -15,11 +15,15 @@
     <string name="admin">Admin</string>
     <string name="Password2">Confirm Password</string>
     <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
-    <string name="phone">Enter your phone</string>
-    <string name="dophone">Do You want Change Youer Phone</string>
-    <string name="vr">Enter Verfication Code</string>
-    <string name="ok">OK</string>
-
-    <string name="email">Enter youer Email</string>
-    <string name="earphone"> Enter Earth Phone</string>
+    <string name="phone">Enter your phone number</string>
+    <string name="changePhone">Phone number</string>
+    <string name="questionChangePhone">Phone number is</string>
+    <string name="questionTag">"?"</string>
+    <string name="verifyCode">Enter verification code</string>
+    <string name="verify">Verify</string>
+    <string name="ok">Ok</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="email">Enter your email</string>
+    <string name="earphone"> Enter earth phone</string>
 </resources>

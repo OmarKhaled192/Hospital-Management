@@ -6,12 +6,15 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Verfication extends AppCompatActivity {
+public class VerificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.verifi);
+        setContentView(R.layout.activity_verification );
 
     }
-    public void ok(View view) {
+
+    public void verify(View view) {
+        startActivity(new Intent( VerificationActivity.this, RegistrationActivity2.class));
+
     }
 }

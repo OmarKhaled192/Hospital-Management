@@ -14,11 +14,16 @@
     <string name="doctor">دكتور</string>
     <string name="admin">مشرف</string>
     <string name="question">هل تريد انشاء حساب في التطبيق ك مستشفى أم مريض؟</string>
-    <string name="Password2">تاكيد كلمه السر</string>
-    <string name="phone">أدخل رقم الهاتف</string>
-    <string name="dophone">هل تريد تغير رقمك</string>
-    <string name="vr">ادخل كود التحقق</string>
+    <string name="Password2">تأكيد كلمه السر</string>
+    <string name="phone">أدخل رقم هاتفك</string>
+    <string name="changePhone">رقم هاتف</string>
+    <string name="questionChangePhone">رقم الهاتف هو </string>
+    <string name="questionTag">؟</string>
+    <string name="verifyCode">أدخل كود التحقق</string>
+    <string name="verify">تحقق</string>
     <string name="ok">موافق</string>
-    <string name="email">ادخل الايميل</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="email">أدخل بريدك الإلكتروني</string>
     <string name="earphone">ادخل الرقم الارضى</string>
 </resources>

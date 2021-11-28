@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,18 +23,18 @@ Button b1;
 
 
     public void next(View view) {
-        final Intent intent =new Intent(this,Verfication.class);
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Do you want change phone ");builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.changePhone).setMessage( getString(R.string.questionChangePhone)+" 01142747343"+getString(R.string.questionTag) )
+        .setNegativeButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                startActivity(new Intent(RegistrationActivity.this, VerificationActivity.class));
             }
         });
-        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(intent);
+                dialog.dismiss();
             }
         });
         builder.show();

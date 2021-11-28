@@ -1,14 +1,18 @@
 package com.yom.hospitalmanagementyom;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Registration2Activity extends AppCompatActivity {
+public class RegistrationActivity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
+        setContentView(R.layout.activity_registration2 );
+    }
+
+    public void signIn(View view) {
     }
 }

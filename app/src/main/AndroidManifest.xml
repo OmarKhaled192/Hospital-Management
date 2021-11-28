@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".RegistrationActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".VerificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChooseActivity"
             android:exported="false" />
         <activity
