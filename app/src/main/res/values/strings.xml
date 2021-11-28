@@ -10,6 +10,7 @@
     <string name="next">Next</string>
     <string name="hospital">Hospital</string>
     <string name="patient">Patient</string>
+
     <string name="doctor">Doctor</string>
     <string name="admin">Admin</string>
     <string name="Password2">password sure</string>

@@ -52,4 +52,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     public void Login1(View view) {
     }
+
+    public void registration(View view) {
+    }
 }
