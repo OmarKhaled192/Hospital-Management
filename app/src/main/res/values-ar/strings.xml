@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hospital Management YOM</string>
+    <string name="userName">أدخل آسم المستخدم</string>
+    <string name="Password">أدخل كلمة السر</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forgetPassword">هل نسيت كلمة السر؟</string>
+    <string name="signUp">إنشاء حساب</string>
+    <string name="choose">أختار وظيفتك</string>
+    <string name="skip">تخطي</string>
+    <string name="next">التالي</string>
+</resources>

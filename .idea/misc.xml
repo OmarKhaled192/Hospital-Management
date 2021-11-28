@@ -3,25 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/android.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/bg.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/drop_down.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/hospital.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/shape_button.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/shape_button_cornor.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/font/fonts.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_choose.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_login.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_registration.xml" value="0.15598290598290598" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.15598290598290598" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_slide.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_slide_2.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/menu/popup_menu.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/android.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/bg.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/drawable_hdpi.xml" value="0.2703125" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13645833333333332" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/icons.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/shape_button_corners.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_choose.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_login.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_slide.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_slide_2.xml" value="0.25" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/slide_layout_2.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_main.xml" value="0.10400000000000001" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
