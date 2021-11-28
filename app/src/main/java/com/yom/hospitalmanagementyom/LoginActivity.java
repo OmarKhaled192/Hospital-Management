@@ -2,6 +2,7 @@ package com.yom.hospitalmanagementyom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,11 +42,14 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
     public void login(View view) {
+        startActivity( new Intent(this,RegistrationActivity.class)  );
     }
 
     public void forgetPassword(View view) {
+        startActivity( new Intent(this,RegistrationActivity.class)  );
     }
 
     public void registration(View view) {
+        startActivity( new Intent(this,RegistrationActivity.class)  );
     }
 }
