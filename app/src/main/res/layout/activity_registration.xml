@@ -136,18 +136,19 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.11"
-      app:cardBackgroundColor="@color/red"
-      android:layout_margin="20dp">
+      app:cardBackgroundColor="@color/red">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="40dp"
-        android:layout_margin="2dp">
-      <ImageView
+        android:layout_margin="3dp">
+      <com.google.android.material.imageview.ShapeableImageView
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          app:shapeAppearanceOverlay="@style/Circular"
           android:src="@drawable/add_photo"
           android:scaleType="centerCrop"/>
+
     </androidx.cardview.widget.CardView>
   </androidx.cardview.widget.CardView>
 
