@@ -31,6 +31,6 @@
         android:paddingEnd="30dp"
         android:text="You can book a doctor and know his appointments at any time"
         android:textAlignment="center"
-        android:textColor="@color/description_color"
+        android:textColor="#757575"
         android:textSize="16dp" />
 </LinearLayout>
