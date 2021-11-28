@@ -16,4 +16,9 @@
     <string name="Password2">Confirm Password</string>
     <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
     <string name="phone">Enter your phone</string>
+    <string name="dophone">Do You want Change Youer Phone</string>
+    <string name="vr">Enter Verfication Code</string>
+    <string name="ok">OK</string>
+    <string name="email">Enter youer Email</string>
+    <string name="earphone"> Enter Earth Phone</string>
 </resources>

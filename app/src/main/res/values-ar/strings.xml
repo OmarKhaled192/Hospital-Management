@@ -16,4 +16,9 @@
     <string name="question">هل تريد انشاء حساب في التطبيق ك مستشفى أم مريض؟</string>
     <string name="Password2">تاكيد كلمه السر</string>
     <string name="phone">أدخل رقم الهاتف</string>
+    <string name="dophone">هل تريد تغير رقمك</string>
+    <string name="vr">ادخل كود التحقق</string>
+    <string name="ok">موافق</string>
+    <string name="email">ادخل الايميل</string>
+    <string name="earphone">ادخل الرقم الارضى</string>
 </resources>
