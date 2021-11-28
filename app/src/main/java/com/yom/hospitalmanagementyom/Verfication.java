@@ -12,7 +12,6 @@ public class Verfication extends AppCompatActivity {
         setContentView(R.layout.verifi);
 
     }
-
     public void ok(View view) {
     }
 }

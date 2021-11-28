@@ -19,6 +19,7 @@
     <string name="dophone">Do You want Change Youer Phone</string>
     <string name="vr">Enter Verfication Code</string>
     <string name="ok">OK</string>
+
     <string name="email">Enter youer Email</string>
     <string name="earphone"> Enter Earth Phone</string>
 </resources>
