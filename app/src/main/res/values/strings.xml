@@ -8,4 +8,9 @@
     <string name="choose">Choose your job</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
+    <string name="hospital">Hospital</string>
+    <string name="patient">Patient</string>
+    <string name="doctor">Doctor</string>
+    <string name="admin">Admin</string>
+    <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
 </resources>

@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/hospital"
-        android:title="Hospital" />
+        android:title="@string/hospital" />
 
     <item
         android:id="@+id/doctor"
-        android:title="Doctor" />
+        android:title="@string/doctor" />
 
     <item
         android:id="@+id/admin"
-        android:title="Admin" />
+        android:title="@string/admin" />
 
     <item
         android:id="@+id/patient"
-        android:title="Patient" />
+        android:title="@string/patient" />
 
 </menu>

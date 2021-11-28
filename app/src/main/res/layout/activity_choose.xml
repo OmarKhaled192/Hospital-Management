@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".ChooseActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/forgetPassword"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:onClick="forgetPassword"
+        android:text="@string/question"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="45dp"
+        android:onClick="registrationForHospital"
+        android:text="@string/hospital"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@drawable/shape_button"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="45dp"
+        android:layout_marginTop="20dp"
+        android:onClick="registrationForPatient"
+        android:text="@string/patient"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@drawable/shape_button"/>
+
+</LinearLayout>
