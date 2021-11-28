@@ -1,7 +1,10 @@
 package com.yom.hospitalmanagementyom;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -10,4 +13,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
     }
+    public void registration(View view) {
+        startActivity( new Intent(this,ChooseActivity.class)  );
+    }
+
+
 }
