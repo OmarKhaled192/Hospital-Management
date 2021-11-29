@@ -12,6 +12,7 @@ import com.yom.hospitalmanagementyom.R;
 
 public class HomeActivityForPatient extends AppCompatActivity {
 
+    int i;
     DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
