@@ -12,7 +12,8 @@ import android.widget.Button;
 import com.yom.hospitalmanagementyom.R;
 
 public class RegistrationActivity extends AppCompatActivity {
-Button b1;
+
+    Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
