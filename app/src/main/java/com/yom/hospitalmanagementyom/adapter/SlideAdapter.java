@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom;
+package com.yom.hospitalmanagementyom.adapter;
 
 
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.yom.hospitalmanagementyom.R;
 
 
 public class SlideAdapter extends PagerAdapter {
@@ -57,7 +58,7 @@ public class SlideAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.activity_slide_2,container,false);
+        View view = layoutInflater.inflate(R.layout.slide_item,container,false);
         ImageView SlideImageView = (ImageView) view.findViewById(R.id.imageView_id);
         TextView SlideHeading =(TextView) view.findViewById(R.id.Head_id);
         TextView SlideDecs =(TextView) view.findViewById(R.id.Description_id) ;
