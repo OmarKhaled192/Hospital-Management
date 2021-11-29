@@ -1,10 +1,12 @@
-package com.yom.hospitalmanagementyom;
+package com.yom.hospitalmanagementyom.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.yom.hospitalmanagementyom.R;
 
 public class ChooseActivity extends AppCompatActivity {
 

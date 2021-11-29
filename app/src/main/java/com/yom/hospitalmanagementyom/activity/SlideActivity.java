@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom;
+package com.yom.hospitalmanagementyom.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.adapter.SlideAdapter;
 
 public class SlideActivity extends AppCompatActivity {
 

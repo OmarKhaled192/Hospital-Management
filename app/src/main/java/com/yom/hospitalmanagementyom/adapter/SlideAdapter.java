@@ -12,7 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;public class SlideAdapter extends PagerAdapter {
+import androidx.viewpager.widget.PagerAdapter;
+
+
+
+public class SlideAdapter extends PagerAdapter {
 
     Context context;
     LayoutInflater layoutInflater;

@@ -7,7 +7,7 @@
     android:background="@drawable/bg"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ChooseActivity">
+    tools:context=".activity.ChooseActivity">
 
     <TextView
         android:id="@+id/forgetPassword"

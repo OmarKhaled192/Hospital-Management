@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SlideActivity">
+    tools:context=".activity.SlideActivity">
 
     <TextView
         android:id="@+id/skip"

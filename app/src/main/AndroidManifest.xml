@@ -10,28 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
-            android:name=".RegistrationActivity2"
+            android:name=".activity.HomeActivityForPatient"
             android:exported="false" />
         <activity
-            android:name=".VerificationActivity"
+            android:name=".activity.RegistrationActivity2"
             android:exported="false" />
         <activity
-            android:name=".ChooseActivity"
+            android:name=".activity.VerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivityForHospital"
+            android:name=".activity.ChooseActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activity.RegistrationActivityForHospital"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".SlideActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.SlideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom;
+package com.yom.hospitalmanagementyom.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.yom.hospitalmanagementyom.R;
+
 public class VerificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verification );
+        setContentView( R.layout.activity_verification );
 
     }
 
