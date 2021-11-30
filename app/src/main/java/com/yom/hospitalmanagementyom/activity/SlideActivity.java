@@ -15,8 +15,13 @@ public class SlideActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
-    private SlideAdapter slideAdapter;
+    public SlideAdapter slideAdapter;
     private TextView[] mDots;
+
+    //---------------------------------------------------
+    // this is the new : declaration of two empty arrays.
+    public String[] slide_headings ;
+    public String[] slide_decs ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -35,7 +40,29 @@ public class SlideActivity extends AppCompatActivity {
         addDotsIndicators(0);
         mSlideViewPager.addOnPageChangeListener(viewListener);
 
+        //------------------------------------------------
+        // this is the new : creation of two empty arrays.
+        slide_headings = new String[]{
+                getString(R.string.doctor_head),
+                getString(R.string.community_head),
+                getString(R.string.drugs_head),
+                getString(R.string.healthcare_head)
+        };
+
+        slide_decs = new String[] {
+
+                getString(R.string.doctor_description),
+                getString(R.string.community_description),
+                getString(R.string.drugs_description),
+                getString(R.string.healthcare_description)
+        };
+
+        //-------------------------------------------
+        //this is new : calling Two functions setters:
+        slideAdapter.setSlide_headings(slide_headings );
+        slideAdapter.setSlide_decs(slide_decs);
     }
+
     // showing indicators :
     public void addDotsIndicators(int position) {
         mDots = new TextView[4];
@@ -49,6 +76,7 @@ public class SlideActivity extends AppCompatActivity {
             mDotLayout.addView(mDots[i]);
 
         }
+
         if(mDots.length >  0){
             mDots[position].setTextColor(getResources().getColor(R.color.red));
         }

@@ -26,4 +26,17 @@
     <string name="no">No</string>
     <string name="email">Enter your email</string>
     <string name="earphone"> Enter earth phone</string>
+
+    <!--all title of slide view-->
+    <string name="doctor_head">Doctors</string>
+    <string name="drugs_head">Drugs</string>
+    <string name="healthcare_head">HealthCare</string>
+    <string name="community_head">Community</string>
+
+    <!--all description of titles in slide view-->
+    <string name="doctor_description">You can book a doctor and know his appointments at any time</string>
+    <string name="drugs_description">You can order a drug or show availability of drug in hospital pharmacy</string>
+    <string name="healthcare_description">Elderly people and people with chronic diseases can participate in a private medical care service</string>
+    <string name="community_description">You can benefit from many tips here</string>
+
 </resources>

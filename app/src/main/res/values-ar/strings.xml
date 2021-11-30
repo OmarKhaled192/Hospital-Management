@@ -26,4 +26,17 @@
     <string name="no">لا</string>
     <string name="email">أدخل بريدك الإلكتروني</string>
     <string name="earphone">ادخل الرقم الارضى</string>
+
+    <!--all title of slide view-->
+    <string name="doctor_head">الاطباء </string>
+    <string name="drugs_head">الدواء</string>
+    <string name="healthcare_head">الرعاية الصحية</string>
+    <string name="community_head">المجتمع</string>
+
+    <!--all description of titles in slide view-->
+    <string name="doctor_description">يمكنك حجز دكتور ومعرفة مواعيده في أي وقت</string>
+    <string name="drugs_description">يمكنك طلب دواء أو إظهار مدى توفره في صيدلية المستشفى</string>
+    <string name="healthcare_description">يمكن لكبار السن والأشخاص المصابين بأمراض مزمنة المشاركة في خدمة رعاية طبية خاصة</string>
+    <string name="community_description">يمكنك الاستفادة من العديد من النصائح هنا</string>
+
 </resources>

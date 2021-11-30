@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Doctors"
+        android:text="@string/doctor"
         android:textAlignment="center"
         android:textColor="@color/red"
         android:textSize="25dp" />
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="You can book a doctor and know his appointments at any time"
+        android:text="@string/doctor_description"
         android:textAlignment="center"
         android:textColor="#757575"
         android:textSize="16dp" />
