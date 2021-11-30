@@ -36,6 +36,7 @@ public class SlideAdapter extends PagerAdapter {
             R.drawable.drugs_icon,
             R.drawable.health_care_icon
     };
+
     //this is new: declaration two arrays for slide heading & description
     public String[] slide_headings = new String[4];
     public String[] slide_decs = new String[4];
