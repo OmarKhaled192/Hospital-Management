@@ -3,30 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/android.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/bg.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/drop_down.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/hospital.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/shape_button.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/drawable/shape_button_cornor.xml" value="0.17848101265822786" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/font/fonts.xml" value="0.19722222222222222" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_choose.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_login.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_registration.xml" value="0.15598290598290598" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.15598290598290598" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_slide.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/layout/activity_slide_2.xml" value="0.1675213675213675" />
+        <entry key="..\:/HospitalManagement/app/src/main/res/menu/popup_menu.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/add_photo.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/android.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/bg.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/drawable_hdpi.xml" value="0.2703125" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13645833333333332" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/icons.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/shape_button.xml" value="0.21145833333333333" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/shape_button_corners.xml" value="0.2703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_choose.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_home_for_patient.xml" value="0.1703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_login.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration2.xml" value="0.24456521739130435" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_slide.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_slide_2.xml" value="0.1" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_verification.xml" value="0.24456521739130435" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/slide_item.xml" value="0.24094202898550723" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/slide_layout_2.xml" value="0.25226449275362317" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/activity_main_drawer.xml" value="0.1703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/popup_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/setting_menu_of_patient.xml" value="0.1703125" />
+        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_main.xml" value="0.10400000000000001" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/shape_boutton.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/shape_button.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/shape_button_corners.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_choose.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_login.xml" value="0.18425925925925926" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_register2.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_slide.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_slide_2.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_verification.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/dialog.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/verifi.xml" value="0.18181818181818182" />
       </map>
     </option>
   </component>
@@ -35,5 +44,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

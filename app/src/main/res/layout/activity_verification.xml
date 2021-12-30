@@ -1,52 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    tools:context=".activity.VerificationActivity">
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/box3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:orientation="vertical"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolver"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="432dp"
-        android:textColorHint="@color/hint"
-        app:boxStrokeColor="@color/red"
-        app:hintTextColor="@color/red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/v"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="@string/verifyCode"
-            android:textSize="20dp"
-            android:inputType="number"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/red"
+        app:title="@string/ver"
+        app:titleTextColor="@color/white" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        >
+
+        <TextView
+            android:layout_width="304dp"
+            android:layout_height="39dp"
+            android:text="@string/entcode"
             android:textAlignment="center"
-            android:textColor="@color/red" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="30dp"
+            android:textStyle="bold"
 
-    <Button
-        android:id="@+id/b1"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="45dp"
-        android:background="@drawable/shape_button"
-        android:onClick="verify"
-        android:text="@string/verify"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="95dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="163dp">
+
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="150dp"
+            android:layout_height="350dp"
+            android:layout_marginBottom="55dp"
+            android:elevation="200dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/shape_button_corners"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="304dp"
+                    android:layout_height="50dp"
+                    android:text="@string/enternumdcode"
+                    android:textSize="20dp"
+                    android:textStyle="italic"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/ve1"
+                    android:background="@drawable/shape_boutton"
+                    android:layout_width="40dp"
+                    android:layout_height="46dp"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:layout_gravity="center"
+                    android:textSize="24dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></EditText>
+                    <EditText
+                        android:id="@+id/ve2"
+                        android:background="@drawable/shape_boutton"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginStart="9dp"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_gravity="center"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></EditText>
+                    <EditText
+                        android:id="@+id/ve3"
+                        android:background="@drawable/shape_boutton"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginStart="9dp"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_gravity="center"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></EditText>
+                    <EditText
+                        android:id="@+id/ve4"
+                        android:background="@drawable/shape_boutton"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginStart="9dp"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_gravity="center"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></EditText>
+                    <EditText
+                        android:id="@+id/ve5"
+                        android:background="@drawable/shape_boutton"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginStart="9dp"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_gravity="center"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></EditText>
+                    <EditText
+                        android:id="@+id/ve6"
+                        android:background="@drawable/shape_boutton"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginStart="9dp"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_gravity="center"
+                        android:textSize="24dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></EditText>
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="45dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_button"
+                    android:backgroundTint="#FBFAFA"
+                    android:onClick="next"
+                    android:text="@string/verify"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

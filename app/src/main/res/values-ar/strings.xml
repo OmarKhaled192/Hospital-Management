@@ -38,5 +38,9 @@
     <string name="drugs_description">يمكنك طلب دواء أو إظهار مدى توفره في صيدلية المستشفى</string>
     <string name="healthcare_description">يمكن لكبار السن والأشخاص المصابين بأمراض مزمنة المشاركة في خدمة رعاية طبية خاصة</string>
     <string name="community_description">يمكنك الاستفادة من العديد من النصائح هنا</string>
+    <string name="verfay">تحقق</string>
+    <string name="entcode">أدخل رمز التحقق</string>
+    <string name="enternumdcode">أدخل 6 أرقام الذى أرسلت على تليفونك</string>
+    <string name="ver">التحقق</string>
 
 </resources>

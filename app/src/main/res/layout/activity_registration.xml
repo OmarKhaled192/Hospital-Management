@@ -84,7 +84,6 @@
               android:textAlignment="center"
               android:textColor="@color/red" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/box3"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -99,7 +98,7 @@
             app:hintTextColor="@color/red">
 
           <com.google.android.material.textfield.TextInputEditText
-              android:id="@+id/Password"
+              android:id="@+id/phon1"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center"

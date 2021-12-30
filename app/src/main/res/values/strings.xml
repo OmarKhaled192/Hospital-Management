@@ -38,5 +38,10 @@
     <string name="drugs_description">You can order a drug or show availability of drug in hospital pharmacy</string>
     <string name="healthcare_description">Elderly people and people with chronic diseases can participate in a private medical care service</string>
     <string name="community_description">You can benefit from many tips here</string>
+    <string name="verfay">Virfy</string>
+    <string name="entcode">Enter Verfication code</string>
+    <string name="enternumdcode">Enter 6 digit number that was sent your phone</string>
+    <string name="ver">Verfication</string>
+
 
 </resources>
