@@ -6,5 +6,9 @@
         <item name="android:statusBarColor">@color/red</item>
         <item name="android:windowBackground">@color/red</item>
         <item name="android:navigationBarColor">@color/red</item>
+        <item name="colorSecondary">@color/red</item>
+    </style>
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
     </style>
 </resources>
