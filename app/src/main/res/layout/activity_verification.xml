@@ -17,8 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        >
+        android:background="@drawable/bg">
 
         <TextView
             android:layout_width="304dp"
@@ -74,7 +73,7 @@
 
                 <EditText
                     android:id="@+id/ve1"
-                    android:background="@drawable/shape_boutton"
+                    android:background="@drawable/shape_button2"
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:imeOptions="actionNext"
@@ -87,7 +86,7 @@
                     android:textStyle="bold"></EditText>
                     <EditText
                         android:id="@+id/ve2"
-                        android:background="@drawable/shape_boutton"
+                        android:background="@drawable/shape_button2"
                         android:layout_width="40dp"
                         android:layout_height="46dp"
                         android:layout_marginLeft="9dp"
@@ -102,7 +101,7 @@
                         android:textStyle="bold"></EditText>
                     <EditText
                         android:id="@+id/ve3"
-                        android:background="@drawable/shape_boutton"
+                        android:background="@drawable/shape_button2"
                         android:layout_width="40dp"
                         android:layout_height="46dp"
                         android:layout_marginLeft="9dp"
@@ -117,7 +116,7 @@
                         android:textStyle="bold"></EditText>
                     <EditText
                         android:id="@+id/ve4"
-                        android:background="@drawable/shape_boutton"
+                        android:background="@drawable/shape_button2"
                         android:layout_width="40dp"
                         android:layout_height="46dp"
                         android:layout_marginLeft="9dp"
@@ -132,7 +131,7 @@
                         android:textStyle="bold"></EditText>
                     <EditText
                         android:id="@+id/ve5"
-                        android:background="@drawable/shape_boutton"
+                        android:background="@drawable/shape_button2"
                         android:layout_width="40dp"
                         android:layout_height="46dp"
                         android:layout_marginLeft="9dp"
@@ -147,7 +146,7 @@
                         android:textStyle="bold"></EditText>
                     <EditText
                         android:id="@+id/ve6"
-                        android:background="@drawable/shape_boutton"
+                        android:background="@drawable/shape_button2"
                         android:layout_width="40dp"
                         android:layout_height="46dp"
                         android:layout_marginLeft="9dp"

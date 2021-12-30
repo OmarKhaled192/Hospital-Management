@@ -3,8 +3,10 @@ package com.yom.hospitalmanagementyom.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class SlideActivity extends AppCompatActivity {
 
     //---------------------------------------------------
     // this is the new : declaration of two empty arrays.
+    public int[] slide_images;
     public String[] slide_headings ;
     public String[] slide_decs ;
     @Override
@@ -33,15 +36,14 @@ public class SlideActivity extends AppCompatActivity {
         //initialize dot layout component:
         mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout_id);
 
-        //initialize slide Activity :
-        slideAdapter = new SlideAdapter(this);
-
-        mSlideViewPager.setAdapter(slideAdapter);
-        addDotsIndicators(0);
-        mSlideViewPager.addOnPageChangeListener(viewListener);
-
         //------------------------------------------------
         // this is the new : creation of two empty arrays.
+        slide_images = new int[]{
+                R.drawable.doctors_icon,
+                R.drawable.community_icon,
+                R.drawable.drugs_icon,
+                R.drawable.health_care_icon
+        };
         slide_headings = new String[]{
                 getString(R.string.doctor_head),
                 getString(R.string.community_head),
@@ -56,11 +58,19 @@ public class SlideActivity extends AppCompatActivity {
                 getString(R.string.drugs_description),
                 getString(R.string.healthcare_description)
         };
+        //initialize slide Activity :
+        slideAdapter = new SlideAdapter(this, slide_images, slide_headings, slide_decs);
+
+        mSlideViewPager.setAdapter(slideAdapter);
+        addDotsIndicators(0);
+        mSlideViewPager.addOnPageChangeListener(viewListener);
+
+
 
         //-------------------------------------------
         //this is new : calling Two functions setters:
-        slideAdapter.setSlide_headings(slide_headings );
-        slideAdapter.setSlide_decs(slide_decs);
+       // slideAdapter.setSlide_headings(slide_headings );
+       // slideAdapter.setSlide_decs(slide_decs);
     }
 
     // showing indicators :
@@ -99,4 +109,8 @@ public class SlideActivity extends AppCompatActivity {
 
         }
     };
+
+    public void skip(View view) {
+        startActivity( new Intent(this,LoginActivity.class) );
+    }
 }

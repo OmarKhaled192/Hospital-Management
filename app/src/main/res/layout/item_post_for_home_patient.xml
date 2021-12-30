@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:clickable="true"
+            android:onClick="goToFriendProfile">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePostForHomePatient"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/add_photo"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="2dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="10dp">
+                <TextView
+                    android:id="@+id/namePostForHomePatient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="200dp"
+                    android:text="Yousef Shaaban"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:maxLines="1" />
+                <TextView
+                    android:id="@+id/timePostForHomePatient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="200dp"
+                    android:layout_marginStart="5dp"
+                    android:text="today at 10:00 AM"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/postForHomePatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef,My Name Doctor of Yousef"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/likePostForHomePatient"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/like_off"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/disLikePostForHomePatient"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/dis_like_off"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/commentPostForHomePatient"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/comment"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/starPostForHomePatient"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/star_off"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -16,7 +16,7 @@
     <string name="Password2">Confirm Password</string>
     <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
     <string name="phone">Enter your phone number</string>
-    <string name="changePhone">Phone number</string>
+    <string name="changePhone">"Phone number"</string>
     <string name="questionChangePhone">Phone number is</string>
     <string name="questionTag">"?"</string>
     <string name="verifyCode">Enter verification code</string>

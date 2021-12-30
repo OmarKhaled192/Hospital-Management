@@ -13,12 +13,10 @@ import com.yom.hospitalmanagementyom.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_registration);
-        b1=findViewById(R.id.b1);
     }
     public void registration(View view) {
         startActivity( new Intent(this,ChooseActivity.class)  );

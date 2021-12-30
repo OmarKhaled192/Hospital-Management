@@ -9,17 +9,17 @@
     android:gravity="center"
     tools:context=".activity.SlideActivity">
 
-    <TextView
+    <Button
         android:id="@+id/skip"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
         android:text="@string/skip"
         android:textAlignment="center"
         android:textColor="@color/red"
         android:layout_marginStart="140dp"
         android:textSize="25dp"
-        android:textStyle="bold" />
+        android:onClick="skip"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/slide_view_id"
