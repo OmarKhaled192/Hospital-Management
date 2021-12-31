@@ -43,4 +43,49 @@
     <string name="enternumdcode">أدخل 6 أرقام الذى أرسلت على تليفونك</string>
     <string name="ver">التحقق</string>
 
+    <!--strings for hospital registers-->
+    <string name ="create_account">انشاء حساب</string>
+    <string name ="create_new_account">انشا حساب جديد</string>
+    <string name="You_gmail_com">you@gmail.com</string>
+    <string name="Email">الحساب</string>
+    <string name="hospital_name">ادخل اسم المستشفى هنا</string>
+    <string name="register">تسجيل</string>
+    <string name="already_have_account">هل تمتلك بالفعل حساب؟</string>
+    <string name="signIn">تسجيل الدخول</string>
+    <string name="Manager_Name">اسم المسئول</string>
+    <string name="phoneHint">ادخل رقم هاتف المسئول</string>
+    <string name="phoneString">رقم الهاتف</string>
+    <string name="Location">الموقع</string>
+    <string name="choose_hospital_location">اختار موقع المستشفى</string>
+
+    <!--countries-->
+    <string name="Alexandria">الاسكندرية</string>
+    <string name="Aswan">اسوان</string>
+    <string name="Asyut">اسيوط</string>
+    <string name="Beheira">البحيرة</string>
+    <string name="Beni_Suef">بنى سويف</string>
+    <string name="Cairo">القاهرة</string>
+    <string name="Dakahlia"> الدقهلية</string>
+    <string name="Damietta">دمياط</string>
+    <string name="Faiyum">الفيوم</string>
+    <string name="Gharbia">الغربية</string>
+    <string name="Giza">الجيزة</string>
+    <string name="Ismailia">الاسماعلية</string>
+    <string name="Kafr_El_Sheikh">كفر الشيخ</string>
+    <string name="Luxor">الاقصر</string>
+    <string name="Matruh">مطروح</string>
+    <string name="Minya">المنيا</string>
+    <string name="Monufia">المنوفية</string>
+    <string name="New_Valley">الوادي الجديد</string>
+    <string name="North_Sinai">شمال سيناء</string>
+    <string name="Port_Said">بور سعيد</string>
+    <string name="Qalyubia">القليوبية</string>
+    <string name="Qena">قينا</string>
+    <string name="Red_Sea">البحر الاحمر</string>
+    <string name="Sharqia">الشرقية</string>
+    <string name="Sohag">سوهاج</string>
+    <string name="South_Sinai">جنوب سيناء</string>
+    <string name="Suez">السويس</string>
+
+
 </resources>

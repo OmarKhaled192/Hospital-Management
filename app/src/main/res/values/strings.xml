@@ -43,5 +43,49 @@
     <string name="enternumdcode">Enter 6 digit number that was sent your phone</string>
     <string name="ver">Verfication</string>
 
+    <!--strings for hospital registers-->
+    <string name ="create_account">Create Account</string>
+    <string name ="create_new_account">Create new Account</string>
+    <string name="You_gmail_com">you@gmail.com</string>
+    <string name="Email">Email</string>
+    <string name="hospital_name">enter hospital name here</string>
+    <string name="register">Register</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="signIn">Sign In</string>
+    <string name="Manager_Name">Manager Name</string>
+    <string name="phoneHint">enter manager phone</string>
+    <string name="phoneString">Phone</string>
+    <string name="Location">Location</string>
+    <string name="choose_hospital_location">chooce hospital location</string>
+
+
+    <!--countries-->
+    <string name="Alexandria">Alexandria</string>
+    <string name="Aswan">Aswan</string>
+    <string name="Asyut">Asyut</string>
+    <string name="Beheira">Beheira</string>
+    <string name="Beni_Suef">Beni Suef</string>
+    <string name="Cairo">Cairo</string>
+    <string name="Dakahlia"> Dakahlia</string>
+    <string name="Damietta">Damietta</string>
+    <string name="Faiyum">Faiyum</string>
+    <string name="Gharbia">Gharbia</string>
+    <string name="Giza">Giza</string>
+    <string name="Ismailia">Ismailia</string>
+    <string name="Kafr_El_Sheikh">Kafr El Sheikh</string>
+    <string name="Luxor">Luxor</string>
+    <string name="Matruh">Matruh</string>
+    <string name="Minya">Minya</string>
+    <string name="Monufia">Monufia</string>
+    <string name="New_Valley">New Valley</string>
+    <string name="North_Sinai">North Sinai</string>
+    <string name="Port_Said">Port Said</string>
+    <string name="Qalyubia">Qalyubia</string>
+    <string name="Qena">Qena</string>
+    <string name="Red_Sea">Red Sea</string>
+    <string name="Sharqia">Sharqia</string>
+    <string name="Sohag">Sohag</string>
+    <string name="South_Sinai">South Sinai</string>
+    <string name="Suez">Suez</string>
 
 </resources>
