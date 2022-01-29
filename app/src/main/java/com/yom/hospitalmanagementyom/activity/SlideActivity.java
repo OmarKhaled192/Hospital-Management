@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.SlideAdapter;
 
+//Omar Khaled
 public class SlideActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;

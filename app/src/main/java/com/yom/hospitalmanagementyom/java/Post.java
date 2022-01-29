@@ -1,5 +1,6 @@
-package com.yom.hospitalmanagementyom.activity;
+package com.yom.hospitalmanagementyom.java;
 
+//Yousef Shaaban
 public class Post {
     String Profile,Name,Time,Post,Like,DisLike,Comment,Star;
 

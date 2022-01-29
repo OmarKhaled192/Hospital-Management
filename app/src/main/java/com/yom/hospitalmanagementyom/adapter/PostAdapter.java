@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity;
+package com.yom.hospitalmanagementyom.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,10 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.java.Post;
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+//Yousef Shaaban
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     private List<Post> posts;
     private Context context;

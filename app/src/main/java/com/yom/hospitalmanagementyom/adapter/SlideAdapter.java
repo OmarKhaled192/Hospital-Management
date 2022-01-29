@@ -17,6 +17,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.yom.hospitalmanagementyom.R;
 
 
+//Omar Khaled
 public class SlideAdapter extends PagerAdapter {
 
     Context context;

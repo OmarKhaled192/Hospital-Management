@@ -11,10 +11,13 @@ import android.view.Menu;
 import android.view.View;
 
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.adapter.PostAdapter;
+import com.yom.hospitalmanagementyom.java.Post;
 
 import java.util.ArrayList;
 import java.util.List;
 
+//Yousef Shaaban
 public class HomeActivityForPatient extends AppCompatActivity {
 
     DrawerLayout drawer;
