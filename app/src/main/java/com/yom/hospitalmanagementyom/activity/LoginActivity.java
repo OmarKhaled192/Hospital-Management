@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.yom.hospitalmanagementyom.R;
 
-//Yousef Shaaban
+
 public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     TextView choose;

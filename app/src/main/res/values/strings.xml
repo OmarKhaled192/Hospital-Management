@@ -44,8 +44,8 @@
     <string name="ver">Verfication</string>
 
     <!--strings for hospital registers-->
-    <string name ="create_account">Create Account</string>
-    <string name ="create_new_account">Create new Account</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_new_account">Create new Account</string>
     <string name="You_gmail_com">you@gmail.com</string>
     <string name="Email">Email</string>
     <string name="hospital_name">enter hospital name here</string>
@@ -87,5 +87,6 @@
     <string name="Sohag">Sohag</string>
     <string name="South_Sinai">South Sinai</string>
     <string name="Suez">Suez</string>
+    <string name="resend">Resend</string>
 
 </resources>

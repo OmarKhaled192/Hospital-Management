@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-//Yousef Shaaban
+
 public class MyDatabase {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference patientsDatabaseReference = firebaseDatabase.getReference("Patients");

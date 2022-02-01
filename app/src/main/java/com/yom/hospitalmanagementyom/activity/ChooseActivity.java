@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.yom.hospitalmanagementyom.R;
 
-//YousefShaaban
+
 public class ChooseActivity extends AppCompatActivity {
 
     @Override

@@ -1,6 +1,6 @@
 package com.yom.hospitalmanagementyom.java;
 
-//Yousef Shaaban
+
 public class Patient {
     private String Profile, Name ,UserName, Phone, EarthPhone, Email, Password, State;
 

@@ -70,12 +70,17 @@ public class RegistrationActivityForHospital extends AppCompatActivity implement
     }
     public void returnToChooce(View v)
     {
-        startActivity( new Intent(this,ChooseActivity.class)  );
+        //startActivity( new Intent(this,ChooseActivity.class)  );
+        super.onBackPressed();
+    }
+
+    public void gotoSignIn(View view) {
+        startActivity( new Intent(this,LoginActivity.class)  );
 
     }
-    public void gotoSignIn(View v)
-    {
-        startActivity( new Intent(this,LoginActivity.class)  );
+
+    public void goToRegHos2(View view) {
+        startActivity( new Intent(this,RegistrationActivityForHospital2.class)  );
 
     }
 }

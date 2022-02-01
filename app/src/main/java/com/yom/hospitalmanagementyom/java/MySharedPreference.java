@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-//Yousef Shaaban
+
 public class MySharedPreference {
     private static MySharedPreference mySharedPreference;
     private SharedPreferences sharedPreferences;

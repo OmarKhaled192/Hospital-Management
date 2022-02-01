@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.yom.hospitalmanagementyom.R;
 
-//Mohamed Abdelhakem
+
 public class RegistrationActivity2 extends AppCompatActivity {
 
     @Override

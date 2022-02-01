@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import com.yom.hospitalmanagementyom.R;
 
-//Mohamed Abdelhakem
+
 public class RegistrationActivity extends AppCompatActivity {
 
     @Override

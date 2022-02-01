@@ -10,7 +10,7 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.java.MyDatabase;
 import com.yom.hospitalmanagementyom.java.MySharedPreference;
 
-//Yousef Shaaban
+
 public class MainActivity extends AppCompatActivity {
 
     MyDatabase myDatabase;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mySharedPreference=new MySharedPreference(this);
 
 
-        myDatabase.savePatient();
+    //    myDatabase.savePatient();
         new Thread() {
             @Override
             public void run() {
