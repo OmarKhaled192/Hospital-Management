@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "707673525610",
+    "firebase_url": "https://hospital-management-yom-default-rtdb.firebaseio.com",
+    "project_id": "hospital-management-yom",
+    "storage_bucket": "hospital-management-yom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707673525610:android:368c50b2dd08094ef7e913",
+        "android_client_info": {
+          "package_name": "com.yom.hospitalmanagementyom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707673525610-al5j0c3klpeucqpu66rolhn2ej7bklvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yom.hospitalmanagementyom",
+            "certificate_hash": "7b47f3207e2ef12f790e0bde87eaa33e801598bc"
+          }
+        },
+        {
+          "client_id": "707673525610-ik5qdmc9ju9pdvudaspa6qf6aljcjg7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiVakIZAuxxR-rouWI3tcZ9lR4UpZFBqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707673525610-ik5qdmc9ju9pdvudaspa6qf6aljcjg7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
