@@ -1,4 +1,1 @@
-# Hospital-Management
-* Yousef Shaaban
-* Omar Khaled
-* Mohamed Abdelhakeem
+# Hospital-Managemen
