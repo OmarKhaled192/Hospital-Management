@@ -2,69 +2,85 @@ package com.yom.hospitalmanagementyom.java;
 
 
 public class Post {
-    String Profile,Name,Time,Post,Like,DisLike,Comment,Star;
+  private String id, Profile,Name,Time,Post,Image,Video;
+  private long Like,DisLike,Star;
+  public String getId() {
+    return id;
+  }
 
-    public String getProfile() {
-        return Profile;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public void setProfile(String profile) {
-        Profile = profile;
-    }
+  public String getProfile() {
+    return Profile;
+  }
 
-    public String getName() {
-        return Name;
-    }
+  public void setProfile(String profile) {
+    Profile = profile;
+  }
 
-    public void setName(String name) {
-        Name = name;
-    }
+  public String getName() {
+    return Name;
+  }
 
-    public String getTime() {
-        return Time;
-    }
+  public void setName(String name) {
+    Name = name;
+  }
 
-    public void setTime(String time) {
-        Time = time;
-    }
+  public String getTime() {
+    return Time;
+  }
 
-    public String getPost() {
-        return Post;
-    }
+  public void setTime(String time) {
+    Time = time;
+  }
 
-    public void setPost(String post) {
-        Post = post;
-    }
+  public String getPost() {
+    return Post;
+  }
 
-    public String getLike() {
-        return Like;
-    }
+  public void setPost(String post) {
+    Post = post;
+  }
 
-    public void setLike(String like) {
-        Like = like;
-    }
+  public String getImage() {
+    return Image;
+  }
 
-    public String getDisLike() {
-        return DisLike;
-    }
+  public void setImage(String image) {
+    Image = image;
+  }
 
-    public void setDisLike(String disLike) {
-        DisLike = disLike;
-    }
+  public String getVideo() {
+    return Video;
+  }
 
-    public String getComment() {
-        return Comment;
-    }
+  public void setVideo(String video) {
+    Video = video;
+  }
 
-    public void setComment(String comment) {
-        Comment = comment;
-    }
+  public long getLike() {
+    return Like;
+  }
 
-    public String getStar() {
-        return Star;
-    }
+  public void setLike(long like) {
+    Like = like;
+  }
 
-    public void setStar(String star) {
-        Star = star;
-    }
+  public long getDisLike() {
+    return DisLike;
+  }
+
+  public void setDisLike(long disLike) {
+    DisLike = disLike;
+  }
+
+  public long getStar() {
+    return Star;
+  }
+
+  public void setStar(long star) {
+    Star = star;
+  }
 }
