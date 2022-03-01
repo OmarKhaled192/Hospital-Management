@@ -31,8 +31,9 @@ public class RegistrationActivityForHospital extends AppCompatActivity{
 		super.onCreate( savedInstanceState );
 		binding= ActivityRegistrationForHospitalBinding.inflate(getLayoutInflater());
 		setContentView( binding.getRoot() );
-		binding.toolbarRegistrationHospital.setNavigationIcon(R.drawable.back);
-		binding.toolbarRegistrationHospital.setNavigationOnClickListener(new View.OnClickListener() {
+		setSupportActionBar(binding.toolbar);
+		binding.toolbar.setNavigationIcon(R.drawable.back);
+		binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				onBackPressed();

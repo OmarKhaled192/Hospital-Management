@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/teal_700"
-            app:title="@string/login"
+            app:title="@string/signUp"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 

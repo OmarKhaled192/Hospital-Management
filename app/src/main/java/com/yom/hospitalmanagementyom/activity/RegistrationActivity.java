@@ -29,9 +29,9 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= ActivityRegistrationBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbarRegistration);
-        binding.toolbarRegistration.setNavigationIcon(R.drawable.back);
-        binding.toolbarRegistration.setNavigationOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setNavigationIcon(R.drawable.back);
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

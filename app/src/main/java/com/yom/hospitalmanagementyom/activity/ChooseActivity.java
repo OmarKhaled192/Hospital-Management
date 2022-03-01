@@ -18,9 +18,9 @@ public class ChooseActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         binding= ActivityChooseBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbarChoose);
-        binding.toolbarChoose.setNavigationIcon(R.drawable.back);
-        binding.toolbarChoose.setNavigationOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setNavigationIcon(R.drawable.back);
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

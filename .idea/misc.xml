@@ -6,6 +6,10 @@
         <entry key="..\:/HospitalManagement2/app/src/main/res/drawable/design6.xml" value="0.2203125" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_choose.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_registration.xml" value="0.20416666666666666" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_registration_common.xml" value="0.20416666666666666" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.20416666666666666" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_verification.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/content_home_patient.xml" value="0.1" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/fragment_home_patient.xml" value="0.1" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/menu/setting_menu_of_patient.xml" value="0.1" />

@@ -38,9 +38,9 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     super.onCreate(savedInstanceState);
     binding= ActivityRegistrationCommonBinding.inflate(getLayoutInflater());
     setContentView( binding.getRoot() );
-    setSupportActionBar(binding.toolbarCommonRegistrationActivity);
-    binding.toolbarCommonRegistrationActivity.setNavigationIcon(R.drawable.back);
-    binding.toolbarCommonRegistrationActivity.setNavigationOnClickListener(new View.OnClickListener() {
+    setSupportActionBar(binding.toolbar);
+    binding.toolbar.setNavigationIcon(R.drawable.back);
+    binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         onBackPressed();

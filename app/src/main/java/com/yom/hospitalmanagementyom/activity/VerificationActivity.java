@@ -35,9 +35,9 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         super.onCreate(savedInstanceState);
         binding= ActivityVerificationBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbarVerification);
-        binding.toolbarVerification.setNavigationIcon(R.drawable.back);
-        binding.toolbarVerification.setNavigationOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setNavigationIcon(R.drawable.back);
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
