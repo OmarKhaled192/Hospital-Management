@@ -62,7 +62,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="@dimen/_40sdp"
         android:layout_below="@+id/background"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_20sdp">
@@ -100,7 +100,7 @@
         android:id="@+id/box1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/constraintLayout"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_15sdp"
@@ -123,10 +123,10 @@
         android:id="@+id/box2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/box1"
         android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:hint="@string/Password"
         app:boxStrokeWidth="2dp"
         app:endIconMode="password_toggle"
@@ -144,10 +144,9 @@
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="@dimen/_50sdp"
         android:layout_below="@id/box2"
         android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_20sdp"
         android:onClick="login"
         android:text="@string/login"
         android:textSize="@dimen/_20ssp" />
@@ -155,7 +154,7 @@
     <Button
         android:id="@+id/signUp"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="@dimen/_50sdp"
         android:layout_below="@id/login"
         android:backgroundTint="#737575"
         android:layout_marginHorizontal="@dimen/_25sdp"
