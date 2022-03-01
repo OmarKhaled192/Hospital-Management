@@ -3,36 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:background="@color/red"
+    android:layout_height="@dimen/_140sdp"
+    android:background="@drawable/side_nav_bar"
     android:orientation="vertical"
-    android:paddingStart="30dp"
-    android:paddingTop="20dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:paddingBottom="@dimen/_14sdp"
+    android:paddingLeft="@dimen/_14sdp"
+    android:paddingRight="@dimen/_14sdp"
+    android:paddingTop="@dimen/_14sdp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:gravity="center">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:shapeAppearanceOverlay="@style/Circular"
-        android:src="@drawable/profile"
-        android:scaleType="centerCrop" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/doctor"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="@dimen/_1sdp" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yousef Shaaban"
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="@dimen/_15ssp"
         android:maxLines="1"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="@dimen/_8sdp"/>
 
     <TextView
         android:id="@+id/job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patient"
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="15dp"
-        android:layout_marginStart="10dp"/>
+        android:textSize="@dimen/_15ssp"
+        android:layout_marginStart="@dimen/_8sdp"/>
 </LinearLayout>

@@ -1,188 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.VerificationActivity"
-    >
+    android:background="@color/white"
+    tools:context=".activity.VerificationActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarVerificationActivity"
+        android:id="@+id/toolbarVerification"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/red"
-        app:title="@string/ver"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/teal_700"
+        app:title="@string/verification"
         app:titleTextColor="@color/white" />
+
+    <!-- Start Background for Page -->
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@id/toolbarVerification"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design6" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_115sdp"
+        android:layout_below="@id/toolbarVerification"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design5" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:src="@drawable/home"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="@font/arabic" />
+    <!-- End Background for Page-->
+
+    <TextView
+        android:id="@+id/verifyCodeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/background"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:text="@string/enterCode"
+        android:textAlignment="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/teal_700" />
+
+    <EditText
+        android:id="@+id/Num1"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:maxLength="1"
+        android:gravity="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/Num2"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:layout_toEndOf="@id/Num1"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:maxLength="1"
+        android:gravity="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/Num3"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:layout_toEndOf="@id/Num2"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:maxLength="1"
+        android:gravity="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/Num4"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:layout_toEndOf="@id/Num3"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:maxLength="1"
+        android:gravity="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/Num5"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:layout_toEndOf="@id/Num4"
+        android:background="@drawable/circle"
+        android:inputType="number"
+        android:maxLength="1"
+        android:gravity="center"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/Num6"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@id/verifyCodeText"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_toEndOf="@id/Num5"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@id/Num6"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:onClick="verify"
+        android:text="@string/verify"
+        android:textSize="@dimen/_20ssp" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/bg"
-        android:gravity="center_horizontal"
-        android:paddingTop="100dp">
-
-        <TextView
-            android:layout_width="304dp"
-            android:layout_height="wrap_content"
-            android:text="@string/entcode"
-            android:textAlignment="center"
-            android:textSize="30dp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="20dp"
-            app:cardElevation="20dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@drawable/shape_button_corners"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="304dp"
-                    android:layout_height="50dp"
-                    android:text="@string/enternumdcode"
-                    android:textSize="20dp"
-                    android:textStyle="italic"></TextView>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-
-                <EditText
-                    android:id="@+id/ve1"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/ve2"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/ve3"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/ve4"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/ve5"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/ve6"
-                    android:background="@drawable/shape_button2"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:gravity="center"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                </LinearLayout>
-
-                <Button
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="45dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/shape_button"
-                    android:backgroundTint="#FBFAFA"
-                    android:onClick="verify"
-                    android:text="@string/verify"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-                <Button
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="45dp"
-                    android:layout_marginTop="20dp"
-                     android:background="@drawable/shape_button"
-                    android:backgroundTint="#FBFAFA"
-                    android:onClick="resend"
-
-                    android:text="@string/resend"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:background="?selectableItemBackground"
+            android:onClick="resend"
+            android:text="@string/resend"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"/>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

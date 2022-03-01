@@ -1,143 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".activity.LoginActivity">
-
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolLogin"
+        android:id="@+id/toolbarLogin"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/red"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/teal_700"
         app:title="@string/login"
         app:titleTextColor="@color/white" />
 
+    <!-- Start Background for Page -->
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@id/toolbarLogin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design6" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_115sdp"
+        android:layout_below="@id/toolbarLogin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design5" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:src="@drawable/home"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="@font/arabic" />
+    <!-- End Background for Page-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/background"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_20sdp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/list"
+            android:paddingStart="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <Spinner
+            android:id="@+id/job"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/_25sdp"
+            android:entries="@array/Jobs"
+            android:clipToPadding="true"
+            android:background="@drawable/background_input"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/drop_down"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/box1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/constraintLayout"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/Email"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:suffixText="@string/gmail"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/email">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/box2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/box1"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/Password"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/lock">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/box2"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/rememberMe"
+        android:textColor="?attr/colorControlNormal" />
+
+    <TextView
+        android:id="@+id/forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/box2"
+        android:layout_alignTop="@+id/rememberMe"
+        android:layout_alignEnd="@+id/box2"
+        android:layout_alignBottom="@+id/rememberMe"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/forgetPassword"
+        android:onClick="forgetPassword"
+        android:textColor="@color/teal_700"
+        android:textSize="@dimen/_15ssp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@id/rememberMe"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:onClick="login"
+        android:text="@string/login"
+        android:textSize="@dimen/_20ssp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        android:gravity="center"
-        android:orientation="vertical">
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="200dp"
-        app:cardCornerRadius="20dp">
-        <LinearLayout
+        android:layout_below="@+id/login"
+        android:layout_alignStart="@+id/login"
+        android:layout_alignEnd="@id/login"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/shape_button_corners"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:text="@string/noAccount"
+            android:textColor="?attr/colorControlNormal"
+            android:textSize="@dimen/_18ssp" />
 
-            <TextView
-                android:id="@+id/choose"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:onClick="showPopupMenu"
-                android:text="@string/choose"
-                android:textColor="@color/red"
-                android:textSize="15dp"
-                android:gravity="center"
-                android:drawableEnd="@drawable/drop_down"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/box2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:textColorHint="@color/hint"
-                app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="@string/userName"
-                    android:inputType="textAutoComplete"
-                    android:textAlignment="center"
-                    android:textColor="@color/red" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/box3"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:textColorHint="@color/hint"
-                app:boxStrokeColor="@color/red"
-                app:hintTextColor="@color/red">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="@string/Password"
-                    android:inputType="textPassword"
-                    android:textAlignment="center"
-                    android:textColor="@color/red" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:onClick="login"
-                android:text="@string/login"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:background="@drawable/shape_button"/>
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="10dp">
-
-    <TextView
-        android:id="@+id/forgetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="forgetPassword"
-        android:text="@string/forgetPassword"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:onClick="registration"
-        android:text="@string/signUp"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:text="@string/signUp"
+            android:onClick="signUp"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/_18ssp" />
     </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

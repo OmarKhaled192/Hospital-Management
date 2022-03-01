@@ -4,269 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".activity.RegistrationActivityForHospital">
-
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarRegistrationHospital"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/red">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolLogin"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="?selectableItemBackground"
-                app:title=""
-                app:logo="@drawable/ic_keyboard_backspace"
-                android:onClick="returnToChooce"
-                android:clickable="true">
-            </androidx.appcompat.widget.Toolbar>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/signUp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:gravity="center"/>
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/teal_700"
+        app:title="@string/signUp"
+        app:titleTextColor="@color/white" />
 
-    <LinearLayout
+    <!-- Start Background for Page -->
+    <View
+        android:id="@+id/background"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@id/toolbarRegistrationHospital"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design6" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_115sdp"
+        android:layout_below="@id/toolbarRegistrationHospital"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/design5" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:src="@drawable/home"/>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="@font/arabic" />
+    <!-- End Background for Page-->
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/Profile"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_below="@+id/background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:clickable="true"
+        android:onClick="pick"
+        android:src="@drawable/person"
+        app:civ_border_color="@color/teal_700"
+        app:civ_border_width="@dimen/_1sdp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/Profile"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp">
         <ImageView
-            android:id="@+id/imageBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="start"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_keyboard_backspace"
-            app:tint="@color/red" />
-        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/create_account"
-            android:textColor="@color/red"
-            android:textSize="30sp"
-            android:textStyle="bold">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_new_account"
-            android:textColor="@color/hint"
-            android:textSize="18sp">
-        </TextView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/hospitalNameLayout"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/background_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginStart="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_local_hospital"
-                    app:tint="@color/red" />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:background="@null"
-                    android:hint="@string/hospital_name"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="textEmailAddress"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
-                android:background="@color/white"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:text="@string/hospital"
-                android:textAllCaps="true"
-                android:textColor="@color/red"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/hospitalNameLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/hospitalNameLayout"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ManagerNameLayout"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/background_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_person"
-                    app:tint="@color/red" />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:background="@null"
-                    android:hint="@string/Manager_Name"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="textEmailAddress"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
-                android:background="@color/white"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:text="@string/Manager_Name"
-                android:textAllCaps="true"
-                android:textColor="@color/red"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ManagerNameLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ManagerNameLayout"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:src="@drawable/location"
+            android:paddingStart="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <Spinner
+            android:id="@+id/Location"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
-
-            <LinearLayout
-                android:id="@+id/LocationLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/background_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginStart="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/drop_down"
-                    app:tint="@color/red" />
-
-                <TextView
-                    android:id="@+id/ch_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="1dp"
-                    android:gravity="center"
-                    android:onClick="showCitiesMenu"
-                    android:text="@string/choose_hospital_location"
-                    android:textColor="@color/red"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="41dp"
-                android:background="@color/white"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:text="@string/Location"
-                android:textAllCaps="true"
-                android:textColor="@color/red"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/LocationLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/LocationLayout"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="70dp"
-            android:background="@drawable/shape_button"
-            android:text="@string/next"
-            android:textColor="@color/white"
-            android:onClick="goToRegHos2"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            >
-        <TextView
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:entries="@array/Locations"
+            android:clipToPadding="true"
+            android:background="@drawable/background_input"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/already_have_account"
-            android:textColor="@color/hint"
-            android:textSize="17sp" />
-            <TextView
-                android:id="@+id/signIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/signIn"
-                android:textColor="@color/red"
-                android:onClick="gotoSignIn"
-                android:textSize="17sp"
-                android:textStyle="bold"/>
+            android:layout_height="match_parent"
+            android:src="@drawable/drop_down"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/box1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/constraintLayout"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/hospital_name"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/home">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/HospitalName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/box2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@+id/box1"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:hint="@string/Manager_Name"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/person">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ManagerName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@id/box2"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/next"
+        android:onClick="next"
+        android:textSize="@dimen/_20ssp" />
 </RelativeLayout>

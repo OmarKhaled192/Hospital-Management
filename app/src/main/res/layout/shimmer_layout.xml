@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_margin="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePostForHomePatient"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@color/hint"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+            <View
+                android:id="@+id/namePostForHomePatient"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:layout_alignTop="@+id/profilePostForHomePatient"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/profilePostForHomePatient"
+                android:background="@color/hint" />
+            <View
+                android:id="@+id/timePostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/namePostForHomePatient"
+                android:layout_alignStart="@+id/namePostForHomePatient"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/postForHomePatient"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/profilePostForHomePatient"
+                android:layout_marginTop="10dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/numLikePostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/postForHomePatient"
+                android:layout_alignParentStart="true"
+                android:background="@color/hint"
+                android:layout_marginTop="5dp"/>
+
+            <View
+                android:id="@+id/numDisLikePostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/numLikePostForHomePatient"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/numStarPostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/numDisLikePostForHomePatient"
+                android:layout_alignParentEnd="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/numLikePostForHomePatient"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="5dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/LikePostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/view"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/DisLikePostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/LikePostForHomePatient"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/StarPostForHomePatient"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/DisLikePostForHomePatient"
+                android:layout_alignParentEnd="true"
+                android:background="@color/hint" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="100dp"
+        android:layout_below="@id/cardView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_margin="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePostForHomePatient1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@color/hint"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+            <View
+                android:id="@+id/namePostForHomePatient1"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:layout_alignTop="@+id/profilePostForHomePatient1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/profilePostForHomePatient1"
+                android:background="@color/hint" />
+            <View
+                android:id="@+id/timePostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/namePostForHomePatient1"
+                android:layout_alignStart="@+id/namePostForHomePatient1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/postForHomePatient1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/profilePostForHomePatient1"
+                android:layout_marginTop="10dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/numLikePostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/postForHomePatient1"
+                android:layout_alignParentStart="true"
+                android:background="@color/hint"
+                android:layout_marginTop="5dp"/>
+
+            <View
+                android:id="@+id/numDisLikePostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/numLikePostForHomePatient1"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/numStarPostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/numDisLikePostForHomePatient1"
+                android:layout_alignParentEnd="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/numLikePostForHomePatient1"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="5dp"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/LikePostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/view1"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/DisLikePostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/LikePostForHomePatient1"
+                android:layout_centerInParent="true"
+                android:background="@color/hint" />
+
+            <View
+                android:id="@+id/StarPostForHomePatient1"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_alignTop="@+id/DisLikePostForHomePatient1"
+                android:layout_alignParentEnd="true"
+                android:background="@color/hint" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
