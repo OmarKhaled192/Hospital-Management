@@ -40,12 +40,7 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     setContentView( binding.getRoot() );
     setSupportActionBar(binding.toolbar);
     binding.toolbar.setNavigationIcon(R.drawable.back);
-    binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        onBackPressed();
-      }
-    });
+    binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
     patient=new Patient();
     hospital=new Hospital();
@@ -58,13 +53,9 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
               @Override
               public void onActivityResult(ActivityResult result) {
                 if(result.getResultCode()==RESULT_OK) {
-                  //handling(true,false,true,false,true,true,true,true,true,false);
-                  //binding.VerifyEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                   handling21(View.VISIBLE,false,View.VISIBLE,false,R.drawable.done,View.VISIBLE,true,View.VISIBLE,true,0,View.GONE,false);
                 }
                 else if(result.getResultCode()==RESULT_CANCELED ) {
-                  //handling(true,true,true,true,false,false,false,false,false,false);
-                  //binding.VerifyEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                   handling21(View.VISIBLE,true,View.VISIBLE,true,R.drawable.close,View.GONE,false,View.GONE,false,0,View.GONE,false);
                 }
               }
@@ -77,16 +68,10 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
               @Override
               public void onActivityResult(ActivityResult result) {
                 if(result.getResultCode()==RESULT_OK) {
-                 // handling(true,false,true,false,true,true,false,true,false,true);
-                  //binding.VerifyEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_done_24,0);
                   handling21(View.VISIBLE,false,View.VISIBLE,false,R.drawable.done,View.VISIBLE,false,View.VISIBLE,false,R.drawable.done,View.VISIBLE,true);
-
                 }
                 else if(result.getResultCode()==RESULT_CANCELED ) {
-                  //handling(true,false,true,false,true,true,true,true,true,false);
-                  //binding.VerifyEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_close_24,0);
                   handling21(View.VISIBLE,false,View.VISIBLE,false,R.drawable.done,View.VISIBLE,true,View.VISIBLE,true,R.drawable.close,View.GONE,false);
-
                 }
               }
             }
@@ -118,69 +103,6 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     binding.VerifyEmail.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,VEI,0);
     binding.signUp.setVisibility(SV);
     binding.signUp.setEnabled(SE);
-  }
-
-  private void handling(boolean... check){
-    //Phone text visibility
-    if(check[0]==true)
-      binding.Phone.setVisibility(View.VISIBLE);
-    else
-      binding.Phone.setVisibility(View.GONE);
-
-    //Phone text enable
-    if(check[1]==true)
-      binding.Phone.setEnabled(true);
-    else
-      binding.Phone.setEnabled(false);
-
-    //Phone Btn visibility
-    if(check[2]==true)
-      binding.VerifyPhone.setVisibility(View.VISIBLE);
-    else
-      binding.VerifyPhone.setVisibility(View.GONE);
-
-    // Phone Btn enable
-    if(check[3]==true)
-      binding.VerifyPhone.setEnabled(true);
-    else
-      binding.VerifyPhone.setEnabled(false);
-
-    //Phone Btn photo
-    if(check[4]==true)
-      binding.VerifyPhone.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.done,0);
-    else
-      binding.VerifyPhone.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.close,0);
-
-    //Email text visibility
-    if(check[5]==true)
-      binding.Email.setVisibility(View.VISIBLE);
-    else
-      binding.Email.setVisibility(View.GONE);
-
-    //Email text enable
-    if(check[6]==true)
-      binding.Email.setEnabled(true);
-    else
-      binding.Email.setEnabled(false);
-
-    //Email Btn visibility
-    if(check[7]==true)
-      binding.VerifyEmail.setVisibility(View.VISIBLE);
-    else
-      binding.VerifyEmail.setVisibility(View.GONE);
-
-    // Email Btn enable
-    if(check[8]==true)
-      binding.VerifyEmail.setEnabled(true);
-    else
-      binding.VerifyEmail.setEnabled(false);
-
-    //Register Btn
-    if(check[9]==true)
-      binding.signUp.setVisibility(View.VISIBLE);
-    else
-      binding.signUp.setVisibility(View.GONE);
-
   }
 
   public void verifyPhone(View view) {

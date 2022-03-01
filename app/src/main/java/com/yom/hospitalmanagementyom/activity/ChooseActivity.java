@@ -12,20 +12,14 @@ import com.yom.hospitalmanagementyom.databinding.ActivityChooseBinding;
 
 public class ChooseActivity extends AppCompatActivity {
 
-    private ActivityChooseBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        binding= ActivityChooseBinding.inflate(getLayoutInflater());
+        ActivityChooseBinding binding= ActivityChooseBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
         setSupportActionBar(binding.toolbar);
         binding.toolbar.setNavigationIcon(R.drawable.back);
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 
     public void registrationForHospital(View view) {
