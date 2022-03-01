@@ -1,93 +1,123 @@
 <resources>
-    <string name="app_name">Hospital Management YOM</string>
-    <string name="userName">أدخل آسم المستخدم</string>
-    <string name="name">أدخل آسمك</string>
-    <string name="Password">أدخل كلمة السر</string>
-    <string name="login">تسجيل الدخول</string>
-    <string name="forgetPassword">هل نسيت كلمة السر؟</string>
-    <string name="signUp">إنشاء حساب</string>
-    <string name="choose">أختار وظيفتك</string>
+    <string name="app_name">Hospital Management</string>
+
+    <!--Slide Activity-->
     <string name="skip">تخطي</string>
     <string name="next">التالي</string>
-    <string name="hospital">مستشفى</string>
-    <string name="patient">مريض</string>
-    <string name="doctor">دكتور</string>
-    <string name="admin">مشرف</string>
-    <string name="question">هل تريد انشاء حساب في التطبيق ك مستشفى أم مريض؟</string>
-    <string name="Password2">تأكيد كلمه السر</string>
-    <string name="phone">أدخل رقم هاتفك</string>
-    <string name="changePhone">رقم هاتف</string>
-    <string name="questionChangePhone">رقم الهاتف هو </string>
-    <string name="questionTag">؟</string>
-    <string name="verifyCode">أدخل كود التحقق</string>
-    <string name="verify">تحقق</string>
-    <string name="ok">موافق</string>
-    <string name="yes">نعم</string>
-    <string name="no">لا</string>
-    <string name="email">أدخل بريدك الإلكتروني</string>
-    <string name="earphone">ادخل الرقم الارضى</string>
+    <string name="back">السابق</string>
+    <string name="start">البدء</string>
 
     <!--all title of slide view-->
-    <string name="doctor_head">الاطباء </string>
-    <string name="drugs_head">الدواء</string>
-    <string name="healthcare_head">الرعاية الصحية</string>
-    <string name="community_head">المجتمع</string>
+    <string-array name="Heads">
+        <item>الاطباء</item>
+        <item>الدواء</item>
+        <item>الرعاية الصحية</item>
+        <item>المجتمع</item>
+    </string-array>
 
     <!--all description of titles in slide view-->
-    <string name="doctor_description">يمكنك حجز دكتور ومعرفة مواعيده في أي وقت</string>
-    <string name="drugs_description">يمكنك طلب دواء أو إظهار مدى توفره في صيدلية المستشفى</string>
-    <string name="healthcare_description">يمكن لكبار السن والأشخاص المصابين بأمراض مزمنة المشاركة في خدمة رعاية طبية خاصة</string>
-    <string name="community_description">يمكنك الاستفادة من العديد من النصائح هنا</string>
-    <string name="verfay">تحقق</string>
-    <string name="entcode">أدخل رمز التحقق</string>
-    <string name="enternumdcode">أدخل 6 أرقام الذى أرسلت على تليفونك</string>
-    <string name="ver">التحقق</string>
+    <string-array name="Descriptions">
+        <item>يمكنك حجز دكتور ومعرفة مواعيده في أي وقت</item>
+        <item>يمكنك طلب دواء أو إظهار مدى توفره في صيدلية المستشفى</item>
+        <item>يمكن لكبار السن والأشخاص المصابين بأمراض مزمنة المشاركة في خدمة رعاية طبية خاصة</item>
+        <item>يمكنك الاستفادة من العديد من النصائح هنا</item>
+    </string-array>
 
-    <!--strings for hospital registers-->
-    <string name ="create_account">انشاء حساب</string>
-    <string name ="create_new_account">انشا حساب جديد</string>
-    <string name="You_gmail_com">you@gmail.com</string>
+    <!--Login Activity-->
+    <string name="welcome">مرحبا بك</string>
+    <string-array name="Jobs">
+        <item>مريض</item>
+        <item>مستشفى</item>
+        <item>دكتور</item>
+        <item>مشرف</item>
+    </string-array>
+    <string name="jobError">من فضلك أدخل الوظيفة</string>
     <string name="Email">الحساب</string>
-    <string name="hospital_name">ادخل اسم المستشفى هنا</string>
-    <string name="register">تسجيل</string>
-    <string name="already_have_account">هل تمتلك بالفعل حساب؟</string>
-    <string name="signIn">تسجيل الدخول</string>
-    <string name="Manager_Name">اسم المسئول</string>
-    <string name="phoneHint">ادخل رقم هاتف المسئول</string>
-    <string name="phoneString">رقم الهاتف</string>
+    <string name="gmail">@gmail.com</string>
+    <string name="emailError">من فضلك أدخل بريدك الإلكتروني</string>
+    <string name="Password">كلمة السر</string>
+    <string name="passwordError">من فضلك أدخل كلمة السر</string>
+    <string name="rememberMe">تذكرني</string>
+    <string name="forgetPassword">نسيت كلمة السر</string>
+    <string name="failReset">فشل تغيير كلمة السر</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="noAccount">هل لا تمتلك حساب؟ </string>
+    <string name="signUp">إنشاء حساب</string>
+
+
+    <!--Choose Activity-->
+    <string name="question">هل تريد انشاء حساب في التطبيق ك مستشفى أم مريض؟</string>
+    <string name="hospital">مستشفى</string>
+    <string name="patient">مريض</string>
+
+    <!--Registration Activity-->
+    <string name="profile">أختار صورة</string>
+    <string name="name">آسمك</string>
+    <string name="nameError">من فضلك أدخل آسمك</string>
+    <string name="telephone">الرقم الأرضي</string>
+    <string name="telephoneError">من فضلك أدخل الرقم الأرضي</string>
+    <string name="confirmPassword">تأكيد كلمه السر</string>
+    <string name="confirmPasswordError">من فضلك أدخل تأكيد كلة السر</string>
+    <string name="notEqualPassword">كلمتي السر مختلفتان</string>
+
+
+
+    <!--Registration Hospital Activity-->
     <string name="Location">الموقع</string>
-    <string name="choose_hospital_location">اختار موقع المستشفى</string>
+    <string-array name="Locations">
+        <item>القاهرة</item>
+        <item>الاسكندرية</item>
+        <item>الجيزة</item>
+        <item>أسوان</item>
+        <item>أسيوط</item>
+        <item>البحيرة</item>
+        <item>بني سويف</item>
+        <item>الدقهلية</item>
+        <item>دمياط</item>
+        <item>الفيوم</item>
+        <item>الغربية</item>
+        <item>الاسماعلية</item>
+        <item>كفر الشيخ</item>
+        <item>الاقصر</item>
+        <item>مطروح</item>
+        <item>المنيا</item>
+        <item>المنوفية</item>
+        <item>القرية الجديدة</item>
+        <item>شمال سيناء</item>
+        <item>بورسعيد</item>
+        <item>القليوبية</item>
+        <item>قنا</item>
+        <item>البحر الأحمر</item>
+        <item>الشرقية</item>
+        <item>سوهاج</item>
+        <item>جنوب سيناء</item>
+        <item>السويس</item>
+    </string-array>
+    <string name="hospital_name">آسم المستفى</string>
+    <string name="Manager_Name">اسم المسئول</string>
 
-    <!--countries-->
-    <string name="Alexandria">الاسكندرية</string>
-    <string name="Aswan">اسوان</string>
-    <string name="Asyut">اسيوط</string>
-    <string name="Beheira">البحيرة</string>
-    <string name="Beni_Suef">بنى سويف</string>
-    <string name="Cairo">القاهرة</string>
-    <string name="Dakahlia"> الدقهلية</string>
-    <string name="Damietta">دمياط</string>
-    <string name="Faiyum">الفيوم</string>
-    <string name="Gharbia">الغربية</string>
-    <string name="Giza">الجيزة</string>
-    <string name="Ismailia">الاسماعلية</string>
-    <string name="Kafr_El_Sheikh">كفر الشيخ</string>
-    <string name="Luxor">الاقصر</string>
-    <string name="Matruh">مطروح</string>
-    <string name="Minya">المنيا</string>
-    <string name="Monufia">المنوفية</string>
-    <string name="New_Valley">الوادي الجديد</string>
-    <string name="North_Sinai">شمال سيناء</string>
-    <string name="Port_Said">بور سعيد</string>
-    <string name="Qalyubia">القليوبية</string>
-    <string name="Qena">قينا</string>
-    <string name="Red_Sea">البحر الاحمر</string>
-    <string name="Sharqia">الشرقية</string>
-    <string name="Sohag">سوهاج</string>
-    <string name="South_Sinai">جنوب سيناء</string>
-    <string name="Suez">السويس</string>
+    <!--Common Registration-->
+    <string name="phone">رقم الهاتف</string>
+    <string name="code">+2</string>
+    <string name="verify">تحقق</string>
+    <string name="questionChangePhone">رقم الهاتف هو</string>
+    <string name="questionTag">؟</string>
+    <string name="questionChangeEmail">الحساب هو</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="emailErrorVerification">أضغط على زر تحقق مرة آخرى</string>
+    <string name="checkEmail">افحص بريدك الالكتروني الآن</string>
+    <string name="failSignIn">فشل تسجيل الدخول</string>
 
 
+
+
+    <!--Common Verification-->
+    <string name="verification">كود التحقق</string>
+    <string name="enterCode">أدخل رمز التحقق</string>
+    <string name="enterCode1">افتح الايميل وتحقق من الرسالة ثم عد إلي هنا واضغط تحقق</string>
     <string name="resend">اعادة الارسال</string>
 
+
+    <string name="signOut">تسجيل الخروج</string>
 </resources>
