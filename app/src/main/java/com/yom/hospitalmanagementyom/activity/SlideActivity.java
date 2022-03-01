@@ -7,89 +7,62 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.SlideAdapter;
+import com.yom.hospitalmanagementyom.databinding.ActivityLoginBinding;
+import com.yom.hospitalmanagementyom.databinding.ActivitySlideBinding;
 
 
 public class SlideActivity extends AppCompatActivity {
 
-    private ViewPager mSlideViewPager;
-    private LinearLayout mDotLayout;
+    private ActivitySlideBinding binding;
     public SlideAdapter slideAdapter;
     private TextView[] mDots;
+    private int[] slide_images;
+    private String[] slide_headings ;
+    private String[] slide_decs ;
+    private int nCurrentPage=0;
 
-    //---------------------------------------------------
-    // this is the new : declaration of two empty arrays.
-    public int[] slide_images;
-    public String[] slide_headings ;
-    public String[] slide_decs ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_slide );
-
-        // initialize slide view component:
-        mSlideViewPager = (ViewPager) findViewById(R.id.slide_view_id);
-
-        //initialize dot layout component:
-        mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout_id);
-
-        //------------------------------------------------
+        binding=ActivitySlideBinding.inflate(getLayoutInflater());
+        setContentView( binding.getRoot() );
         // this is the new : creation of two empty arrays.
         slide_images = new int[]{
-                R.drawable.doctors_icon,
-                R.drawable.community_icon,
-                R.drawable.drugs_icon,
-                R.drawable.health_care_icon
+                R.drawable.doctor,
+                R.drawable.drugs,
+                R.drawable.health_care,
+                R.drawable.community
         };
-        slide_headings = new String[]{
-                getString(R.string.doctor_head),
-                getString(R.string.community_head),
-                getString(R.string.drugs_head),
-                getString(R.string.healthcare_head)
-        };
-
-        slide_decs = new String[] {
-
-                getString(R.string.doctor_description),
-                getString(R.string.community_description),
-                getString(R.string.drugs_description),
-                getString(R.string.healthcare_description)
-        };
-        //initialize slide Activity :
-        slideAdapter = new SlideAdapter(this, slide_images, slide_headings, slide_decs);
-
-        mSlideViewPager.setAdapter(slideAdapter);
+        slide_headings = getResources().getStringArray(R.array.Heads);
+        slide_decs = getResources().getStringArray(R.array.Descriptions);
+        slideAdapter = new SlideAdapter(slide_images, slide_headings, slide_decs);
+        binding.slideViewId.setAdapter(slideAdapter);
         addDotsIndicators(0);
-        mSlideViewPager.addOnPageChangeListener(viewListener);
-
-
-
-        //-------------------------------------------
-        //this is new : calling Two functions setters:
-       // slideAdapter.setSlide_headings(slide_headings );
-       // slideAdapter.setSlide_decs(slide_decs);
+        binding.slideViewId.addOnPageChangeListener(viewListener);
     }
 
     // showing indicators :
     public void addDotsIndicators(int position) {
         mDots = new TextView[4];
-        mDotLayout.removeAllViews();
+        binding.dotsLayoutId.removeAllViews();
         for (int i = 0;i < 4; i++) {
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextSize(35);
             mDots[i].setTextColor(getResources().getColor(R.color.hint));
-
-            mDotLayout.addView(mDots[i]);
-
+            binding.dotsLayoutId.addView(mDots[i]);
         }
-
         if(mDots.length >  0){
-            mDots[position].setTextColor(getResources().getColor(R.color.red));
+            mDots[position].setTextColor(getResources().getColor(R.color.teal_700));
         }
 
     }
@@ -97,12 +70,45 @@ public class SlideActivity extends AppCompatActivity {
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
-
         @Override
         public void onPageSelected(int position) {
             addDotsIndicators(position);
+            nCurrentPage=position;
+            if(position==0){
+                binding.next.setVisibility(View.VISIBLE);
+                binding.back.setVisibility(View.GONE);
+                binding.back.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.hide));
+                binding.getStarted.setVisibility(View.GONE);
+            }
+            else if( position < mDots.length-1 ){
+                if(binding.back.getVisibility()==View.GONE && binding.next.getVisibility()==View.VISIBLE){
+                    binding.next.setVisibility(View.VISIBLE);
+                    binding.back.setVisibility(View.VISIBLE);
+                    binding.back.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.show));
+                    binding.getStarted.setVisibility(View.GONE);
+                }
+                else if(binding.getStarted.getVisibility()==View.VISIBLE && binding.next.getVisibility()==View.GONE){
+                    binding.next.setVisibility(View.VISIBLE);
+                    binding.next.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.show));
+                    binding.back.setVisibility(View.VISIBLE);
+                    binding.back.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.show));
+                    binding.getStarted.setVisibility(View.GONE);
+                    binding.getStarted.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.hide));
+                }
+                else{
+                    binding.next.setVisibility(View.VISIBLE);
+                    binding.back.setVisibility(View.VISIBLE);
+                    binding.getStarted.setVisibility(View.GONE);
+                }
+            } else if( position == mDots.length-1 ){
+                binding.next.setVisibility(View.GONE);
+                binding.next.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.hide));
+                binding.back.setVisibility(View.GONE);
+                binding.back.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.hide));
+                binding.getStarted.setVisibility(View.VISIBLE);
+                binding.getStarted.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.show));
+            }
         }
 
         @Override
@@ -112,6 +118,16 @@ public class SlideActivity extends AppCompatActivity {
     };
 
     public void skip(View view) {
-        startActivity( new Intent(this,LoginActivity.class) );
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity( intent );
+    }
+    public void back(View view) {
+        binding.slideViewId.setCurrentItem(nCurrentPage-1);
+    }
+    public void next(View view) {
+        binding.slideViewId.setCurrentItem(nCurrentPage+1);
+    }
+    public void start(View view) {
+        skip(view);
     }
 }

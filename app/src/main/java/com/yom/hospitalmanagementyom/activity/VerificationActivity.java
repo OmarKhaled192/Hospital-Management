@@ -2,190 +2,211 @@ package com.yom.hospitalmanagementyom.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.core.Tag;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.databinding.ActivityVerificationBinding;
+import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 
-import java.util.concurrent.TimeUnit;
+
+public class VerificationActivity extends AppCompatActivity implements PhoneVerificationListener {
+
+    private ActivityVerificationBinding binding;
+    private String phoneNumber, email, password;
+    private String total;
+    private Intent intent;
+    private final String PHONE_KEY="Phone";
+    private final String EMAIL_KEY="Email";
+    private final String VERIFY_KEY="Verify";
+    private final String PASSWORD_KEY="Password";
+    private MyRegistrationFirebase myRegistrationFirebase;
+    private String getVERIFY_KEY;
 
 
-public class VerificationActivity extends AppCompatActivity {
-
-    // [START declare_auth]
-    private FirebaseAuth mAuth;
-    private String activityName,phoneNumber;
-    // [END declare_auth]
-
-    String total;
-    private String mVerificationId;
-    Intent intent;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    EditText ee1,ee2,ee3,ee4,ee5,ee6;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_verification );
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
-
-        ee1 = findViewById(R.id.ve1);
-        ee2 = findViewById(R.id.ve2);
-        ee3 = findViewById(R.id.ve3);
-        ee4 = findViewById(R.id.ve4);
-        ee5 = findViewById(R.id.ve5);
-        ee6 = findViewById(R.id.ve6);
-
-        activityName = getIntent().getExtras().getString("Activity");
-       phoneNumber = getIntent().getExtras().getString("phone");
-         intent = new Intent();
-        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
+        binding= ActivityVerificationBinding.inflate(getLayoutInflater());
+        setContentView( binding.getRoot() );
+        setSupportActionBar(binding.toolbarVerification);
+        binding.toolbarVerification.setNavigationIcon(R.drawable.back);
+        binding.toolbarVerification.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onVerificationCompleted(PhoneAuthCredential credential) {
-                // This callback will be invoked in two situations:
-                // 1 - Instant verification. In some cases the phone number can be instantly
-                //     verified without needing to send or enter a verification code.
-                // 2 - Auto-retrieval. On some devices Google Play services can automatically
-                //     detect the incoming verification SMS and perform verification without
-                //     user action.
-
-                //--omar-- save phone in firebase
-                //signInWithPhoneAuthCredential(credential);
+            public void onClick(View view) {
+                onBackPressed();
             }
-
-            @Override
-            public void onVerificationFailed(FirebaseException e) {
-                // This callback is invoked in an invalid request for verification is made,
-                // for instance if the the phone number format is not valid.
-
-                //  Log.w(Tag, "onVerificationFailed", e);
-
-                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-
-                    Toast.makeText(getApplicationContext(),"error verification1"+ e.toString(),Toast.LENGTH_LONG).show();
-
-                } else if (e instanceof FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
-
-                    Toast.makeText(getApplicationContext(),"error verification2"+ e.toString(),Toast.LENGTH_LONG).show();
-
-                }
-
-                // Show a message and update the UI
-            }
-
-            @Override
-            public void onCodeSent(@NonNull String  verificationId,
-                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                // The SMS verification code has been sent to the provided phone number, we
-                // now need to ask the user to enter the code and then construct a credential
-                // by combining the code with a verification ID.
-
-                //Log.d(TAG, "onCodeSent:" + verificationId);
-
-                // Save verification ID and resending token so we can use them later
-
-              //  Toast.makeText(getApplicationContext(),"yes"+ verificationId,Toast.LENGTH_LONG).show();
-
-                mVerificationId = verificationId;
-                mResendToken = token;
-
-            }
-        };
-        // [END phone_auth_callbacks]
-
-        if(activityName.equals("RegisterForHos"))
-        {
-
-            startPhoneNumberVerification(phoneNumber);
-            Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG).show();
+        });
+        getVERIFY_KEY=getIntent().getExtras().getString(VERIFY_KEY);
+        myRegistrationFirebase= MyRegistrationFirebase.getInstance(this);
+        intent = new Intent();
+        checkPhoneOrEmail();
+        handlingEditText();
+    }
+    private void checkPhoneOrEmail(){
+        if(getVERIFY_KEY.equals(PHONE_KEY)) {
+            binding.verifyCodeText.setText(getString(R.string.enterCode));
+            binding.Num1.setVisibility(View.VISIBLE);
+            binding.Num2.setVisibility(View.VISIBLE);
+            binding.Num3.setVisibility(View.VISIBLE);
+            binding.Num4.setVisibility(View.VISIBLE);
+            binding.Num5.setVisibility(View.VISIBLE);
+            binding.Num6.setVisibility(View.VISIBLE);
+            phoneNumber = getIntent().getExtras().getString(PHONE_KEY);
+            myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,this);
+            TastyToast.makeText(getBaseContext(), "Send Message", TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
         }
-
+        else if(getVERIFY_KEY.equals(EMAIL_KEY)) {
+            binding.verifyCodeText.setText(getString(R.string.enterCode1));
+            binding.Num1.setVisibility(View.GONE);
+            binding.Num2.setVisibility(View.GONE);
+            binding.Num3.setVisibility(View.GONE);
+            binding.Num4.setVisibility(View.GONE);
+            binding.Num5.setVisibility(View.GONE);
+            binding.Num6.setVisibility(View.GONE);
+            email = getIntent().getExtras().getString(EMAIL_KEY);
+            password = getIntent().getExtras().getString(PASSWORD_KEY);
+            myRegistrationFirebase.createEmail(email,password);
+        }
     }
 
-    private void startPhoneNumberVerification(String phoneNumber) {
-        // [START start_phone_auth]
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber("+2"+phoneNumber)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
-                        .build();
-
-            PhoneAuthProvider.verifyPhoneNumber(options);
-
-           // Toast.makeText(getApplicationContext(), "yes2 " + e, Toast.LENGTH_LONG).show();
-
-    }
-
-    public void verify(View view) {
-
-
-        total = ee1.getText().toString() + ee2.getText().toString() +
-                ee3.getText().toString() + ee4.getText().toString() +
-                ee5.getText().toString() + ee6.getText().toString() ;
-
-        Toast.makeText(getApplicationContext(), "total : "+total, Toast.LENGTH_LONG).show();
-
-        if (total.length() != 6 )
-            Toast.makeText(this,"you must enter code",Toast.LENGTH_LONG).show();
-
-        else
-            {
-
-                Toast.makeText(this,"MainElse",Toast.LENGTH_LONG).show();
-                if(mVerificationId.isEmpty())
-                    return;
-                //create a credential
-                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(mVerificationId,total);
-              signInUser(credential);
+    private void handlingEditText(){
+        binding.Num1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-    }
-    private void signInUser(PhoneAuthCredential credential) {
-        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    intent.putExtra("verify","yes");
-                    setResult(RESULT_OK,intent);
-                    finish();
-                    Toast.makeText(getApplicationContext(),"yesIntent",Toast.LENGTH_LONG).show();
-                }else {
-                    intent.putExtra("verify","no");
-                    setResult(RESULT_CANCELED,intent);
-                    finish();
-                    Toast.makeText(getApplicationContext(),"noIntent",Toast.LENGTH_LONG).show();
-                }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.Num2.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.Num2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.Num3.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.Num3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.Num4.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.Num4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.Num5.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.Num5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.Num6.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
-    public void resend(View view) {
-        startPhoneNumberVerification(phoneNumber);
-        Toast.makeText(this,getString(R.string.resend),Toast.LENGTH_LONG).show();
 
+    public void verify(View view) {
+        if(getVERIFY_KEY.equals(PHONE_KEY)) {
+            verifyPhone();
+        }
+        else if(getVERIFY_KEY.equals(EMAIL_KEY)) {
+            verifyEmail();
+        }
+    }
+
+    private void verifyPhone(){
+        total = binding.Num1.getText().toString() + binding.Num2.getText().toString() +
+                binding.Num3.getText().toString() + binding.Num4.getText().toString() +
+                binding.Num5.getText().toString() + binding.Num6.getText().toString();
+        if (total.length() != 6)
+            TastyToast.makeText(this, getString(R.string.enterCode), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
+        else {
+            myRegistrationFirebase.signInUser(total,this);
+        }
+    }
+
+    private void verifyEmail(){
+        if(myRegistrationFirebase.isVerify()){
+            setResult(RESULT_OK,intent);
+        } else {
+            setResult(RESULT_CANCELED,intent);
+        }
+        VerificationActivity.super.onBackPressed();
+    }
+
+
+    public void resend(View view) {
+        myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,this);
+        Toast.makeText(this,getString(R.string.resend),Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void successVerify() {
+        setResult(RESULT_OK,intent);
+        super.onBackPressed();
+    }
+
+    @Override
+    public void failVerify() {
+        setResult(RESULT_CANCELED,intent);
+        super.onBackPressed();
     }
 }

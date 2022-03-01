@@ -1,86 +1,95 @@
 package com.yom.hospitalmanagementyom.activity;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
 
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationForHospitalBinding;
+import com.yom.hospitalmanagementyom.java.Hospital;
 
 //Omar Khaled
-public class RegistrationActivityForHospital extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class RegistrationActivityForHospital extends AppCompatActivity{
 
-    TextView ch;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_registration_for_hospital );
-        ch = findViewById(R.id.ch_location);
+	private ActivityRegistrationForHospitalBinding binding;
+	private String profile,choose;
+	private final String HOSPITAL_KEY="Hospital";
+	private final String ACTIVITY_KEY="Activity";
+	private ActivityResultLauncher<String> activityResultLauncher;
+	private boolean check=false;
 
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate( savedInstanceState );
+		binding= ActivityRegistrationForHospitalBinding.inflate(getLayoutInflater());
+		setContentView( binding.getRoot() );
+		binding.toolbarRegistrationHospital.setNavigationIcon(R.drawable.back);
+		binding.toolbarRegistrationHospital.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				onBackPressed();
+			}
+		});
 
-    public void showCitiesMenu(View v) {
-        PopupMenu popup = new PopupMenu(this,v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.cities_menu);
-        popup.show();
-    }
+		binding.Location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				choose= (String) parent.getItemAtPosition(position);
+			}
 
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				choose= (String) parent.getItemAtPosition(0);
+			}
+		});
 
+		activityResultLauncher=registerForActivityResult(
+				new ActivityResultContracts.GetContent(),
+				new ActivityResultCallback<Uri>() {
+					@Override
+					public void onActivityResult(Uri result) {
+						if(result!=null) {
+							profile = result.getPath();
+							binding.Profile.setImageURI(result);
+							check = true;
+						}
+					}
+				}
+		);
+	}
 
-            switch (item.getItemId()) {
-                case R.id.Alex:
-                case R.id.Aswan:
-                case R.id.Asyut:
-                case R.id.Beheira:
-                case R.id.Beni_Suef:
-                case R.id.Cairo:
-                case R.id.Dakahlia:
-                case R.id.Damietta:
-                case R.id.Faiyum:
-                case R.id.Gharbia:
-                case R.id.Giza:
-                case R.id.Ismailia:
-                case R.id.Kafr_El_Sheikh:
-                case R.id.Luxor:
-                case R.id.Matruh:
-                case R.id.Minya:
-                case R.id.Monufia:
-                case R.id.New_Valley:
-                case R.id.North_Sinai:
-                case R.id.Port_Said:
-                case R.id.Qalyubia:
-                case R.id.Qena:
-                case R.id.Red_Sea:
-                case R.id.Sharqia:
-                case R.id.Sohag:
-                case R.id.South_Sinai:
-                case R.id.Suez:
-                    ch.setText( item.getTitle() );
-                    return true;
-                default:
-                    return false;
-            }
-    }
-    public void returnToChooce(View v)
-    {
-        //startActivity( new Intent(this,ChooseActivity.class)  );
-        super.onBackPressed();
-    }
+	public void next(View view) {
+		String HospitalName=binding.HospitalName.getText().toString();
+		String ManagerName=binding.ManagerName.getText().toString();
+		if(!check)
+			TastyToast.makeText(getBaseContext(), getString(R.string.profile), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
+		else if (HospitalName.length() == 0)
+			binding.box1.setError( getString(R.string.hospital_name) );
+		else if (ManagerName.length() == 0)
+			binding.box1.setError( getString(R.string.Manager_Name) );
+		else {
+			Hospital hospital=new Hospital();
+			hospital.setProfile(profile);
+			hospital.setLocation(choose);
+			hospital.setName(HospitalName);
+			hospital.setManagerName(ManagerName);
+			hospital.setState(HOSPITAL_KEY);
+			Intent intent = new Intent(RegistrationActivityForHospital.this, CommonRegistrationActivity.class);
+			intent.putExtra(HOSPITAL_KEY, hospital);
+			intent.putExtra(ACTIVITY_KEY,HOSPITAL_KEY);
+			startActivity(intent);
+		}
+	}
 
-    public void gotoSignIn(View view) {
-        startActivity( new Intent(this,LoginActivity.class)  );
-
-    }
-
-    public void goToRegHos2(View view) {
-        startActivity( new Intent(this,RegistrationActivityForHospital2.class)  );
-
-    }
+	public void pick(View view) {
+		activityResultLauncher.launch("image/*");
+	}
 }
