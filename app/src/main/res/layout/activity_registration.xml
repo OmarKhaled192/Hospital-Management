@@ -60,28 +60,41 @@
       android:fontFamily="@font/arabic" />
   <!-- End Background for Page-->
 
-  <de.hdodenhof.circleimageview.CircleImageView
-      android:id="@+id/Profile"
-      android:layout_width="@dimen/_50sdp"
-      android:layout_height="@dimen/_50sdp"
-      android:layout_below="@+id/background"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentEnd="true"
+  <androidx.cardview.widget.CardView
+      android:id="@+id/card"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_90sdp"
+      android:layout_marginHorizontal="@dimen/_25sdp"
       android:layout_marginTop="@dimen/_15sdp"
-      android:clickable="true"
-      android:onClick="pick"
-      android:src="@drawable/person"
-      app:civ_border_color="@color/teal_700"
-      app:civ_border_width="@dimen/_1sdp" />
+      android:layout_below="@+id/background"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:cardCornerRadius="@dimen/_2sdp"
+      app:civ_border_color="?attr/colorControlNormal"
+      app:cardElevation="@dimen/_10sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+      <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/Profile"
+          android:layout_width="@dimen/_50sdp"
+          android:layout_height="@dimen/_50sdp"
+          android:clickable="true"
+          android:onClick="pick"
+          android:src="@drawable/person"
+          app:civ_border_width="@dimen/_1sdp" />
+    </LinearLayout>
+  </androidx.cardview.widget.CardView>
 
   <com.google.android.material.textfield.TextInputLayout
       android:id="@+id/box1"
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
       android:layout_width="match_parent"
       android:layout_height="?actionBarSize"
-      android:layout_below="@+id/Profile"
+      android:layout_below="@+id/card"
       android:layout_marginHorizontal="@dimen/_25sdp"
-      android:layout_marginTop="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_10sdp"
       android:hint="@string/name"
       app:boxStrokeWidth="@dimen/_1sdp"
       app:endIconMode="clear_text"
@@ -103,7 +116,7 @@
       android:layout_height="?actionBarSize"
       android:layout_below="@+id/box1"
       android:layout_marginHorizontal="@dimen/_25sdp"
-      android:layout_marginTop="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_10sdp"
       android:hint="@string/telephone"
       app:boxStrokeWidth="@dimen/_1sdp"
       app:endIconMode="clear_text"
@@ -125,7 +138,7 @@
       android:layout_height="?actionBarSize"
       android:layout_below="@+id/box2"
       android:layout_marginHorizontal="@dimen/_25sdp"
-      android:layout_marginTop="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_10sdp"
       android:hint="@string/Password"
       app:boxStrokeWidth="@dimen/_1sdp"
       app:endIconMode="password_toggle"
@@ -147,7 +160,7 @@
       android:layout_height="?actionBarSize"
       android:layout_below="@+id/box3"
       android:layout_marginHorizontal="@dimen/_25sdp"
-      android:layout_marginTop="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_10sdp"
       android:hint="@string/confirmPassword"
       app:boxStrokeWidth="@dimen/_1sdp"
       app:endIconMode="password_toggle"
