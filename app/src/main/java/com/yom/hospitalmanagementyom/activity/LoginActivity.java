@@ -24,9 +24,9 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
         super.onCreate( savedInstanceState );
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbarLogin);
-        binding.toolbarLogin.setNavigationIcon(R.drawable.back);
-        binding.toolbarLogin.setNavigationOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setNavigationIcon(R.drawable.back);
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

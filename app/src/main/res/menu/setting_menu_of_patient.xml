@@ -17,11 +17,11 @@
 
             <item
                 android:id="@+id/doctor"
-                android:title="@string/doctor" />
+                android:title="@string/start" />
 
             <item
                 android:id="@+id/admin"
-                android:title="@string/admin" />
+                android:title="@string/signUp" />
 
             <item
                 android:id="@+id/patient"

@@ -83,6 +83,7 @@ public class HomeActivityForPatient extends AppCompatActivity {
     return true;
   }
 
+  /*
   @Override
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     Toast.makeText(this, ""+item.getItemId(), Toast.LENGTH_SHORT).show();
@@ -103,6 +104,8 @@ public class HomeActivityForPatient extends AppCompatActivity {
     }
     return super.onOptionsItemSelected(item);
   }
+
+   */
 
   void getPosts(){
     posts.clear();
