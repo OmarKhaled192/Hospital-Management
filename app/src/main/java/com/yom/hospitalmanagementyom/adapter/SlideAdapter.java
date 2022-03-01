@@ -20,13 +20,10 @@ import com.yom.hospitalmanagementyom.R;
 //Omar Khaled
 public class SlideAdapter extends PagerAdapter {
 
-    Context context;
-    LayoutInflater layoutInflater;
-    int[] slide_images;
-    String[] slide_headings;
-    String[] slide_decs;
-    public SlideAdapter(Context context, int[] slide_images, String[] slide_headings, String[] slide_decs) {
-        this.context = context;
+    private int[] slide_images;
+    private String[] slide_headings;
+    private String[] slide_decs;
+    public SlideAdapter( int[] slide_images, String[] slide_headings, String[] slide_decs) {
         this.slide_images=slide_images;
         this.slide_headings=slide_headings;
         this.slide_decs=slide_decs;
@@ -39,17 +36,17 @@ public class SlideAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (LinearLayout) object;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.slide_item,container,false);
-        ImageView SlideImageView = (ImageView) view.findViewById(R.id.imageView_id);
-        TextView SlideHeading =(TextView) view.findViewById(R.id.Head_id);
-        TextView SlideDecs =(TextView) view.findViewById(R.id.Description_id) ;
+        View view = LayoutInflater.from( container.getContext() ).inflate(R.layout.slide_item,container,false);
+
+        ImageView SlideImageView = view.findViewById(R.id.imageView_id);
+        TextView SlideHeading = view.findViewById(R.id.Head_id);
+        TextView SlideDecs = view.findViewById(R.id.Description_id) ;
 
 
         SlideImageView.setImageResource(slide_images[position]);
