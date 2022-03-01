@@ -49,8 +49,9 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     public void login(View view) {
         String email=binding.Email.getText().toString();
         String password=binding.Password.getText().toString();
-        if(email.length()==0)
+        if(email.length()==0) {
             binding.Email.setError(getString(R.string.emailError));
+        }
         else if(password.length()==0) {
             binding.Password.setError(getString(R.string.passwordError));
         }

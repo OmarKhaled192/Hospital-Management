@@ -38,7 +38,7 @@
     <string name="Password">Password</string>
     <string name="passwordError">Please enter your password</string>
     <string name="rememberMe">Remember Me</string>
-    <string name="forgetPassword">Forget password</string>
+    <string name="forgetPassword">Do you forget your password?</string>
     <string name="failReset">Reset password is failed</string>
     <string name="login">Login</string>
     <string name="noAccount">Do not have an account?</string>

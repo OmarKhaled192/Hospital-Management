@@ -38,7 +38,7 @@
     <string name="Password">كلمة السر</string>
     <string name="passwordError">من فضلك أدخل كلمة السر</string>
     <string name="rememberMe">تذكرني</string>
-    <string name="forgetPassword">نسيت كلمة السر</string>
+    <string name="forgetPassword">هل نسيت كلمة المرور؟</string>
     <string name="failReset">فشل تغيير كلمة السر</string>
     <string name="login">تسجيل الدخول</string>
     <string name="noAccount">هل لا تمتلك حساب؟ </string>

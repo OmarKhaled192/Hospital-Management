@@ -108,7 +108,7 @@
         app:boxStrokeWidth="@dimen/_1sdp"
         app:suffixText="@string/gmail"
         app:endIconMode="clear_text"
-        app:errorEnabled="true"
+        app:errorEnabled="false"
         app:errorIconDrawable="@drawable/error"
         app:startIconDrawable="@drawable/email">
         <com.google.android.material.textfield.TextInputEditText
@@ -141,69 +141,53 @@
             android:textColor="?attr/colorControlNormal" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/rememberMe"
+    <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@id/box2"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:onClick="login"
+        android:text="@string/login"
+        android:textSize="@dimen/_20ssp" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_below="@id/login"
+        android:backgroundTint="#737575"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:onClick="signUp"
+        android:text="@string/signUp"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/box2"
-        android:layout_marginHorizontal="30dp"
-        android:text="@string/rememberMe"
-        android:textColor="?attr/colorControlNormal" />
+        android:layout_below="@+id/signUp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_alignParentStart="true"
+        android:text="@string/forgetPassword"
+        android:textColor="?attr/colorControlNormal"
+        android:textSize="@dimen/_16ssp" />
 
     <TextView
         android:id="@+id/forget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/box2"
-        android:layout_alignTop="@+id/rememberMe"
-        android:layout_alignEnd="@+id/box2"
-        android:layout_alignBottom="@+id/rememberMe"
-        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_below="@+id/signUp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_alignParentEnd="true"
         android:background="?selectableItemBackground"
         android:clickable="true"
-        android:gravity="center"
-        android:text="@string/forgetPassword"
+        android:text="@string/yes"
         android:onClick="forgetPassword"
         android:textColor="@color/teal_700"
-        android:textSize="@dimen/_15ssp" />
+        android:textSize="@dimen/_16ssp" />
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_below="@id/rememberMe"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:onClick="login"
-        android:text="@string/login"
-        android:textSize="@dimen/_20ssp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_alignStart="@+id/login"
-        android:layout_alignEnd="@id/login"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/noAccount"
-            android:textColor="?attr/colorControlNormal"
-            android:textSize="@dimen/_18ssp" />
-
-        <TextView
-            android:id="@+id/signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?selectableItemBackground"
-            android:clickable="true"
-            android:text="@string/signUp"
-            android:onClick="signUp"
-            android:textColor="@color/teal_700"
-            android:textSize="@dimen/_18ssp" />
-    </LinearLayout>
 </RelativeLayout>
