@@ -1,92 +1,128 @@
 <resources>
-    <string name="app_name">Hospital Management YOM</string>
-    <string name="userName">Enter your username</string>
-    <string name="name">Enter your name</string>
-    <string name="Password">Enter your password</string>
-    <string name="login">Sign in</string>
-    <string name="forgetPassword">Did you forget your password?</string>
-    <string name="signUp">Sign Up</string>
-    <string name="choose">Choose your job</string>
+    <string name="app_name">Hospital Management</string>
+
+    <!--Slide Activity-->
     <string name="skip">Skip</string>
     <string name="next">Next</string>
-    <string name="hospital">Hospital</string>
-    <string name="patient">Patient</string>
-    <string name="doctor">Doctor</string>
-    <string name="admin">Admin</string>
-    <string name="Password2">Confirm Password</string>
-    <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
-    <string name="phone">Enter your phone number</string>
-    <string name="changePhone">"Phone number"</string>
-    <string name="questionChangePhone">Phone number is</string>
-    <string name="questionTag">"?"</string>
-    <string name="verifyCode">Enter verification code</string>
-    <string name="verify">Verify</string>
-    <string name="ok">Ok</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="email">Enter your email</string>
-    <string name="earphone"> Enter earth phone</string>
+    <string name="back">Back</string>
+    <string name="start">Get Started</string>
 
     <!--all title of slide view-->
-    <string name="doctor_head">Doctors</string>
-    <string name="drugs_head">Drugs</string>
-    <string name="healthcare_head">HealthCare</string>
-    <string name="community_head">Community</string>
+    <string-array name="Heads">
+        <item>Doctors</item>
+        <item>Drugs</item>
+        <item>HealthCare</item>
+        <item>Community</item>
+    </string-array>
 
     <!--all description of titles in slide view-->
-    <string name="doctor_description">You can book a doctor and know his appointments at any time</string>
-    <string name="drugs_description">You can order a drug or show availability of drug in hospital pharmacy</string>
-    <string name="healthcare_description">Elderly people and people with chronic diseases can participate in a private medical care service</string>
-    <string name="community_description">You can benefit from many tips here</string>
-    <string name="verfay">Virfy</string>
-    <string name="entcode">Enter Verfication code</string>
-    <string name="enternumdcode">Enter 6 digit number that was sent your phone</string>
-    <string name="ver">Verfication</string>
+    <string-array name="Descriptions">
+        <item>You can book a doctor and know his appointments at any time</item>
+        <item>You can order a drug or show availability of drug in hospital pharmacy</item>
+        <item>Elderly people and people with chronic diseases can participate in a private medical care service</item>
+        <item>You can benefit from many tips here</item>
+    </string-array>
 
-    <!--strings for hospital registers-->
-    <string name="create_account">Create Account</string>
-    <string name="create_new_account">Create new Account</string>
-    <string name="You_gmail_com">you@gmail.com</string>
+    <!--Login Activity-->
+    <string name="welcome">Welcome To Ekshifly</string>
+    <string-array name="Jobs">
+        <item>Patient</item>
+        <item>Hospital</item>
+        <item>Doctor</item>
+        <item>Admin</item>
+    </string-array>
+    <string name="jobError">Please enter your job</string>
     <string name="Email">Email</string>
-    <string name="hospital_name">enter hospital name here</string>
-    <string name="register">Register</string>
-    <string name="already_have_account">Already have an account?</string>
-    <string name="signIn">Sign In</string>
-    <string name="Manager_Name">Manager Name</string>
-    <string name="phoneHint">enter manager phone</string>
-    <string name="phoneString">Phone</string>
+    <string name="gmail">@gmail.com</string>
+    <string name="emailError">Please enter your email</string>
+    <string name="Password">Password</string>
+    <string name="passwordError">Please enter your password</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="forgetPassword">Forget password</string>
+    <string name="failReset">Reset password is failed</string>
+    <string name="login">Login</string>
+    <string name="noAccount">Do not have an account?</string>
+    <string name="signUp">Sign Up</string>
+
+
+    <!--Choose Activity-->
+    <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
+    <string name="hospital">Hospital</string>
+    <string name="patient">Patient</string>
+
+    <!--Registration Activity-->
+    <string name="profile">Choose photo</string>
+    <string name="name">Name</string>
+    <string name="nameError">Please enter your name</string>
+    <string name="telephone">Telephone</string>
+    <string name="telephoneError">Please enter your telephone</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="confirmPasswordError">Please Confirm Password</string>
+    <string name="notEqualPassword">Two password not equal</string>
+
+
+    <!--Registration Hospital Activity-->
     <string name="Location">Location</string>
-    <string name="choose_hospital_location">chooce hospital location</string>
+    <string-array name="Locations">
+        <item>Cairo</item>
+        <item>Alexandria</item>
+        <item>Giza</item>
+        <item>Aswan</item>
+        <item>Asyut</item>
+        <item>Beheira</item>
+        <item>Beni Suef</item>
+        <item>Dakahlia</item>
+        <item>Damietta</item>
+        <item>Faiyum</item>
+        <item>Gharbia</item>
+        <item>Ismailia</item>
+        <item>Kafr El Sheikh</item>
+        <item>Luxor</item>
+        <item>Matruh</item>
+        <item>Minya</item>
+        <item>Monufia</item>
+        <item>New Valley</item>
+        <item>North Sinai</item>
+        <item>Port Said</item>
+        <item>Qalyubia</item>
+        <item>Qena</item>
+        <item>Red Sea</item>
+        <item>Sharqia</item>
+        <item>Sohag</item>
+        <item>South Sinai</item>
+        <item>Suez</item>
+    </string-array>
+    <string name="hospital_name">Hospital name</string>
+    <string name="Manager_Name">Manager name</string>
+
+    <!--Common Registration-->
+    <string name="phone">Phone</string>
+    <string name="code">+2</string>
+    <string name="verify">Verify</string>
+    <string name="questionChangePhone">Phone number is</string>
+    <string name="questionTag">"?"</string>
+    <string name="questionChangeEmail">Email is</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="emailErrorVerification">Click Verify button again</string>
+    <string name="checkEmail">Check your email now</string>
+    <string name="failSignIn">SignIn is failed</string>
 
 
-    <!--countries-->
-    <string name="Alexandria">Alexandria</string>
-    <string name="Aswan">Aswan</string>
-    <string name="Asyut">Asyut</string>
-    <string name="Beheira">Beheira</string>
-    <string name="Beni_Suef">Beni Suef</string>
-    <string name="Cairo">Cairo</string>
-    <string name="Dakahlia"> Dakahlia</string>
-    <string name="Damietta">Damietta</string>
-    <string name="Faiyum">Faiyum</string>
-    <string name="Gharbia">Gharbia</string>
-    <string name="Giza">Giza</string>
-    <string name="Ismailia">Ismailia</string>
-    <string name="Kafr_El_Sheikh">Kafr El Sheikh</string>
-    <string name="Luxor">Luxor</string>
-    <string name="Matruh">Matruh</string>
-    <string name="Minya">Minya</string>
-    <string name="Monufia">Monufia</string>
-    <string name="New_Valley">New Valley</string>
-    <string name="North_Sinai">North Sinai</string>
-    <string name="Port_Said">Port Said</string>
-    <string name="Qalyubia">Qalyubia</string>
-    <string name="Qena">Qena</string>
-    <string name="Red_Sea">Red Sea</string>
-    <string name="Sharqia">Sharqia</string>
-    <string name="Sohag">Sohag</string>
-    <string name="South_Sinai">South Sinai</string>
-    <string name="Suez">Suez</string>
+    <!--Common Verification-->
+    <string name="verification">Verification Code</string>
+    <string name="enterCode">Enter Verification code</string>
+    <string name="enterCode1">Open the email and check the message, then come back here and click Verify</string>
     <string name="resend">Resend</string>
+
+    <string name="signOut">Sign out</string>
+    <string name="title_activity_home_patient">HomePatientActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 
 </resources>
