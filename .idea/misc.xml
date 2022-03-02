@@ -8,6 +8,7 @@
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_choose.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_home_for_patient.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_home_patient.xml" value="0.12894736842105264" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_hospital_viewing_for_patient.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_main.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_registration.xml" value="0.14" />
@@ -15,9 +16,17 @@
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_slide.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/activity_verification.xml" value="0.20416666666666666" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/app_bar_home_patient.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/content_home_patient.xml" value="0.1" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/fragment_gallery.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/fragment_home_patient.xml" value="0.1" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/fragment_slideshow.xml" value="0.12894736842105264" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.12894736842105264" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/nav_header_main.xml" value="0.12894736842105264" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/layout/shimmer_layout.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout/slide_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/menu/activity_main_drawer.xml" value="0.12894736842105264" />
+        <entry key="..\:/HospitalManagement2/app/src/main/res/menu/home_patient.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/menu/setting_menu_of_patient.xml" value="0.1" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/add_photo.xml" value="0.22083333333333333" />

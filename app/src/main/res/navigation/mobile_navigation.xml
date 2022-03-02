@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.yom.hospitalmanagementyom.ui.home.HomePatientFragment"
+        android:name="com.yom.hospitalmanagementyom.activity.home.patient.home.HomePatientFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home_patient" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.yom.hospitalmanagementyom.ui.gallery.GalleryFragment"
+        android:name="com.yom.hospitalmanagementyom.activity.home.patient.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.yom.hospitalmanagementyom.ui.slideshow.SlideshowFragment"
+        android:name="com.yom.hospitalmanagementyom.activity.home.patient.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
