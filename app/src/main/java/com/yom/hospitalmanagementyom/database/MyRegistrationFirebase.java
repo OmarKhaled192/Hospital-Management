@@ -90,6 +90,8 @@ public class MyRegistrationFirebase {
         return myDatabase;
     }
 
+
+
     public void savePatient(Patient patient, SaveDataListener emailVerificationListener) {
         storageReferencePatient.child(patient.getName()).child(commonFunction.getTimeNow() + ".png")
                 .putFile(Uri.parse(patient.getProfile())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

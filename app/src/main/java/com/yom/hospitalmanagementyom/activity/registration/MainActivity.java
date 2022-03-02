@@ -8,26 +8,32 @@ import com.google.firebase.auth.FirebaseUser;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.database.Repository;
+import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityMainBinding binding;
+    private Repository repository;
     MyRegistrationFirebase myRegistrationFirebase;
-    MySharedPreference mySharedPreference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    Intent intent;
-    String TypeUser;
+    private Intent intent;
+    private String TypeUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_main);
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView( binding.getRoot() );
+
+        repository=Repository.newInstance(this);
+
         myRegistrationFirebase= MyRegistrationFirebase.getInstance(this);
-        mySharedPreference=MySharedPreference.newInstance(this);
         firebaseAuth= FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
         firebaseAuth.signOut();
-        TypeUser=mySharedPreference.returnString("TypeUser","Patient");
+        TypeUser=repository.returnStringSharedPreference("TypeUser","");
 
         new Thread() {
             @Override
@@ -43,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                         else if(TypeUser.equals("Doctor"))
                             intent = new Intent(MainActivity.this, SlideActivity.class);
                         else if(TypeUser.equals("Admin"))
+                            intent = new Intent(MainActivity.this, SlideActivity.class);
+                        else
                             intent = new Intent(MainActivity.this, SlideActivity.class);
                     }
                     else
