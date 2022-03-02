@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.SlideActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.java.MySharedPreference;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(MainActivity.this, SlideActivity.class);
                     }
                     else
-                        intent = new Intent(MainActivity.this, HomePatientActivity.class);
+                        intent = new Intent(MainActivity.this, SlideActivity.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {

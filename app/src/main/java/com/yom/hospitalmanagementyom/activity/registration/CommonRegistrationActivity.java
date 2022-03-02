@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.VerificationActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationCommonBinding;
 import com.yom.hospitalmanagementyom.java.Hospital;

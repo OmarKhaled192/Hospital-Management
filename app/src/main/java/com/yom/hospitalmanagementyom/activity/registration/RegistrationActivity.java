@@ -67,7 +67,7 @@ public class RegistrationActivity extends AppCompatActivity {
             binding.box3.setError(getString(R.string.passwordError));
         else if (confirmPassword.length() == 0)
             binding.box4.setError(getString(R.string.confirmPasswordError));
-        else if (password.equals(confirmPassword)){
+        else if (!password.equals(confirmPassword)){
             binding.box3.setError(getString(R.string.notEqualPassword));
             binding.box4.setError(getString(R.string.notEqualPassword));
         }

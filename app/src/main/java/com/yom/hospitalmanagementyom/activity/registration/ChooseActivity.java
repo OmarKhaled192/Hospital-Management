@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.RegistrationActivity;
-import com.yom.hospitalmanagementyom.activity.RegistrationActivityForHospital;
 import com.yom.hospitalmanagementyom.databinding.ActivityChooseBinding;
 
 
