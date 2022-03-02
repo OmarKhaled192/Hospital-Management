@@ -13,9 +13,9 @@ import android.view.View;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationCommonBinding;
-import com.yom.hospitalmanagementyom.java.Hospital;
-import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
-import com.yom.hospitalmanagementyom.java.Patient;
+import com.yom.hospitalmanagementyom.model.Hospital;
+import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 
 public class CommonRegistrationActivity extends AppCompatActivity implements SaveDataListener {

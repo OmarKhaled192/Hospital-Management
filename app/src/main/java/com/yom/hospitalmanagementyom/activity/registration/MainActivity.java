@@ -7,8 +7,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
-import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
-import com.yom.hospitalmanagementyom.java.MySharedPreference;
+import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_main);
         myRegistrationFirebase= MyRegistrationFirebase.getInstance(this);
-        mySharedPreference=new MySharedPreference(this);
+        mySharedPreference=MySharedPreference.newInstance(this);
         firebaseAuth= FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
         firebaseAuth.signOut();

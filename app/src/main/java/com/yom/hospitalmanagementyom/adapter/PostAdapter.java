@@ -19,7 +19,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.java.Post;
+import com.yom.hospitalmanagementyom.model.Post;
 
 import java.util.List;
 

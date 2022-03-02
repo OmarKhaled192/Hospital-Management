@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationForHospitalBinding;
-import com.yom.hospitalmanagementyom.java.Hospital;
+import com.yom.hospitalmanagementyom.model.Hospital;
 
 //Omar Khaled
 public class RegistrationActivityForHospital extends AppCompatActivity{

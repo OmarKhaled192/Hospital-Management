@@ -8,8 +8,8 @@ import android.widget.AdapterView;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.databinding.ActivityLoginBinding;
-import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
-import com.yom.hospitalmanagementyom.java.MySharedPreference;
+import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 
 
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
                 onBackPressed();
             }
         });
-        mySharedPreference=new MySharedPreference(this);
+        mySharedPreference=MySharedPreference.newInstance(this);
         binding.job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

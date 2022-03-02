@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityVerificationBinding;
-import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
+import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 
 

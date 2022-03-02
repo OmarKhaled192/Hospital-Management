@@ -13,7 +13,7 @@ import android.view.View;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationBinding;
-import com.yom.hospitalmanagementyom.java.Patient;
+import com.yom.hospitalmanagementyom.model.Patient;
 
 
 public class RegistrationActivity extends AppCompatActivity {
