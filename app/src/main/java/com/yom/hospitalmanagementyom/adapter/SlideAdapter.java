@@ -7,19 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-
 import com.yom.hospitalmanagementyom.R;
 
-
-//Omar Khaled
 public class SlideAdapter extends PagerAdapter {
 
-    private int[] slide_images;
-    private String[] slide_headings;
-    private String[] slide_decs;
+    private final int[] slide_images;
+    private final String[] slide_headings;
+    private final String[] slide_decs;
     public SlideAdapter( int[] slide_images, String[] slide_headings, String[] slide_decs) {
         this.slide_images=slide_images;
         this.slide_headings=slide_headings;
@@ -57,6 +53,5 @@ public class SlideAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((LinearLayout)object);
-
     }
 }
