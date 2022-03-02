@@ -13,7 +13,7 @@ public class CommonFunction {
         this.context=context;
     }
 
-    public static CommonFunction getInstance(Context context){
+    public static CommonFunction newInstance(Context context){
         if(commonFunction==null)
             commonFunction=new CommonFunction(context);
         return commonFunction;

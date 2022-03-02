@@ -3,37 +3,21 @@ package com.yom.hospitalmanagementyom.activity.registration;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
-import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
-import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     private Repository repository;
-    MyRegistrationFirebase myRegistrationFirebase;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
-    private Intent intent;
-    private String TypeUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
         repository=Repository.newInstance(this);
-
-        myRegistrationFirebase= MyRegistrationFirebase.getInstance(this);
-        firebaseAuth= FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
-        firebaseAuth.signOut();
-        TypeUser=repository.returnStringSharedPreference("TypeUser","");
 
         new Thread() {
             @Override
@@ -41,26 +25,41 @@ public class MainActivity extends AppCompatActivity {
                 super.run();
                 try {
                     sleep( 1000 );
-                    if(firebaseUser!=null){
-                        if(TypeUser.equals("Patient"))
-                            intent = new Intent(MainActivity.this, HomePatientActivity.class);
-                        else if(TypeUser.equals("Hospital"))
-                            intent = new Intent(MainActivity.this, SlideActivity.class);
-                        else if(TypeUser.equals("Doctor"))
-                            intent = new Intent(MainActivity.this, SlideActivity.class);
-                        else if(TypeUser.equals("Admin"))
-                            intent = new Intent(MainActivity.this, SlideActivity.class);
-                        else
-                            intent = new Intent(MainActivity.this, SlideActivity.class);
-                    }
-                    else
-                        intent = new Intent(MainActivity.this, SlideActivity.class);
-                    startActivity(intent);
-                    finish();
+                    checkUser();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }.start();
     }
+
+    void checkUser(){
+        Intent intent=new Intent();
+        String typeUser=repository.returnStringSharedPreference("TypeUser","");
+        if(repository.getUser()!=null){
+            switch (typeUser) {
+                case "Patient":
+                    intent.setClass(this, HomePatientActivity.class);
+                    break;
+                case "Hospital":
+                    intent.setClass(this, VerificationActivity.class);
+                    break;
+                case "Doctor":
+                    intent.setClass(this, RegistrationActivity.class);
+                    break;
+                case "Admin":
+                    intent.setClass(this, RegistrationActivityForHospital.class);                    break;
+                default:
+                    intent.setClass(this, SlideActivity.class);
+                    break;
+            }
+        }
+        else
+            intent.setClass(this, SlideActivity.class);
+
+        startActivity(intent);
+        finish();
+    }
+
+
 }

@@ -56,13 +56,16 @@ public class MyRegistrationFirebase {
 
     private MyRegistrationFirebase(Context context) {
         this.context = context;
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseStorage = FirebaseStorage.getInstance();
-        collectionReferencePatient = firebaseFirestore.collection(PATIENTS_KEY);
-        storageReferencePatient = firebaseStorage.getReference(PATIENTS_KEY);
-        collectionReferenceHospital = firebaseFirestore.collection(HOSPITAL_KEY);
-        storageReferenceHospital = firebaseStorage.getReference(HOSPITAL_KEY);
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        collectionReferencePatient = firebaseFirestore.collection(PATIENTS_KEY);
+        collectionReferenceHospital = firebaseFirestore.collection(HOSPITAL_KEY);
+
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReferencePatient = firebaseStorage.getReference(PATIENTS_KEY);
+        storageReferenceHospital = firebaseStorage.getReference(HOSPITAL_KEY);
+
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
@@ -80,7 +83,7 @@ public class MyRegistrationFirebase {
                 mResendToken = token;
             }
         };
-        commonFunction=CommonFunction.getInstance(context);
+        commonFunction=CommonFunction.newInstance(context);
     }
 
     public static MyRegistrationFirebase getInstance(Context context) {
@@ -88,6 +91,11 @@ public class MyRegistrationFirebase {
             myDatabase = new MyRegistrationFirebase(context);
         }
         return myDatabase;
+    }
+
+
+    public FirebaseUser getUser(){
+        return firebaseUser;
     }
 
 
