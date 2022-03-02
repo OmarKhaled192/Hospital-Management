@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(this, RegistrationActivity.class);
                     break;
                 case "Admin":
-                    intent.setClass(this, RegistrationActivityForHospital.class);                    break;
+                    intent.setClass(this, RegistrationActivityForHospital.class);
+                    break;
                 default:
                     intent.setClass(this, SlideActivity.class);
                     break;
