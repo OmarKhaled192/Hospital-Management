@@ -1,36 +1,26 @@
 package com.yom.hospitalmanagementyom.functions;
 
-import android.content.Context;
-
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class CommonFunction {
-    private Context context;
     private static CommonFunction commonFunction;
+    private final Calendar calendar;
+    private final SimpleDateFormat simpleDateFormat;
 
-    private CommonFunction(Context context){
-        this.context=context;
+    private CommonFunction(){
+        calendar=Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy & KK:mm:ss aaa", Locale.ENGLISH);
     }
 
-    public static CommonFunction newInstance(Context context){
+    public static CommonFunction newInstance(){
         if(commonFunction==null)
-            commonFunction=new CommonFunction(context);
+            commonFunction=new CommonFunction();
         return commonFunction;
     }
 
     public String getTimeNow() {
-        String Date = DateFormat.getDateInstance(DateFormat.LONG).format(Calendar.getInstance().getTime());
-        Calendar calendar = Calendar.getInstance();
-        String currentTime = "";
-        if (calendar.getTime().getHours() > 12 && calendar.getTime().getHours() < 24)
-            currentTime = (calendar.getTime().getHours() - 12) + ":" + calendar.getTime().getMinutes() + ":" + calendar.getTime().getSeconds() + " PM";
-        else if (calendar.getTime().getHours() == 12)
-            currentTime = "12:" + calendar.getTime().getMinutes() + ":" + calendar.getTime().getSeconds() + " PM";
-        else if (calendar.getTime().getHours() == 0)
-            currentTime = "12:" + calendar.getTime().getMinutes() + ":" + calendar.getTime().getSeconds() + " AM";
-        else
-            currentTime = calendar.getTime().getHours() + ":" + calendar.getTime().getMinutes() + ":" + calendar.getTime().getSeconds() + " AM";
-        return Date + " at " + currentTime;
+        return simpleDateFormat.format(calendar.getTime());
     }
 }

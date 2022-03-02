@@ -83,7 +83,7 @@ public class MyRegistrationFirebase {
                 mResendToken = token;
             }
         };
-        commonFunction=CommonFunction.newInstance(context);
+        commonFunction=CommonFunction.newInstance();
     }
 
     public static MyRegistrationFirebase getInstance(Context context) {
