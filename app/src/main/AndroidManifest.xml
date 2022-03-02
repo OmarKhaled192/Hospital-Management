@@ -21,9 +21,6 @@
             android:name=".activity.CommonRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivityForPatient"
-            android:exported="false" />
-        <activity
             android:name=".activity.VerificationActivity"
             android:exported="false" />
         <activity

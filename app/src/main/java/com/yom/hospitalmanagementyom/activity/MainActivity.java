@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.yom.hospitalmanagementyom.HomePatientActivity;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.java.MySharedPreference;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     sleep( 1000 );
                     if(firebaseUser!=null){
                         if(TypeUser.equals("Patient"))
-                            intent = new Intent(MainActivity.this, HomeActivityForPatient.class);
+                            intent = new Intent(MainActivity.this, HomePatientActivity.class);
                         else if(TypeUser.equals("Hospital"))
                             intent = new Intent(MainActivity.this, SlideActivity.class);
                         else if(TypeUser.equals("Doctor"))
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                             intent = new Intent(MainActivity.this, SlideActivity.class);
                     }
                     else
-                        intent = new Intent(MainActivity.this, SlideActivity.class);
+                        intent = new Intent(MainActivity.this, HomePatientActivity.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {

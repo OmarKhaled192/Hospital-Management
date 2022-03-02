@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.yom.hospitalmanagementyom.HomePatientActivity;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationCommonBinding;
 import com.yom.hospitalmanagementyom.java.Hospital;
@@ -173,14 +175,14 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
 
   @Override
   public void successSavePatient() {
-    Intent intent=new Intent(this,HomeActivityForPatient.class);
+    Intent intent=new Intent(this, HomePatientActivity.class);
     startActivity(intent);
     finishAffinity();
   }
 
   @Override
   public void successSaveHospital() {
-    Intent intent=new Intent(this,HomeActivityForPatient.class);
+    Intent intent=new Intent(this,HomePatientActivity.class);
     startActivity(intent);
     finishAffinity();
   }

@@ -2,7 +2,6 @@ package com.yom.hospitalmanagementyom.java;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.HomeActivityForPatient;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;

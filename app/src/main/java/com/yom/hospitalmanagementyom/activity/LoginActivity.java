@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+
+import com.yom.hospitalmanagementyom.HomePatientActivity;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityLoginBinding;
 import com.yom.hospitalmanagementyom.java.MyRegistrationFirebase;
@@ -73,25 +75,25 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     public void nextToHome() {
         if(choose.equals( getResources().getStringArray(R.array.Jobs)[0] ) ) {
             mySharedPreference.saveString("TypeUser", "Patient");
-            Intent intent=new Intent(getBaseContext(), HomeActivityForPatient.class);
+            Intent intent=new Intent(getBaseContext(), HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
         else if(choose.equals( getResources().getStringArray(R.array.Jobs)[1] )) {
             mySharedPreference.saveString("TypeUser", "Hospital");
-            Intent intent=new Intent(getBaseContext(),HomeActivityForPatient.class);
+            Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
         else if(choose.equals( getResources().getStringArray(R.array.Jobs)[2] )) {
             mySharedPreference.saveString("TypeUser", "Doctor");
-            Intent intent=new Intent(getBaseContext(),HomeActivityForPatient.class);
+            Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
         else if(choose.equals( getResources().getStringArray(R.array.Jobs)[3] )) {
             mySharedPreference.saveString("TypeUser", "Admin");
-            Intent intent=new Intent(getBaseContext(),HomeActivityForPatient.class);
+            Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
