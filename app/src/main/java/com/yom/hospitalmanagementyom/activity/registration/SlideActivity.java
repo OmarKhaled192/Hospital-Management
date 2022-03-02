@@ -2,32 +2,21 @@ package com.yom.hospitalmanagementyom.activity.registration;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.SlideAdapter;
-import com.yom.hospitalmanagementyom.databinding.ActivityLoginBinding;
 import com.yom.hospitalmanagementyom.databinding.ActivitySlideBinding;
 
 
 public class SlideActivity extends AppCompatActivity {
 
     private ActivitySlideBinding binding;
-    public SlideAdapter slideAdapter;
     private TextView[] mDots;
-    private int[] slide_images;
-    private String[] slide_headings ;
-    private String[] slide_decs ;
     private int nCurrentPage=0;
 
     @Override
@@ -35,23 +24,18 @@ public class SlideActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         binding=ActivitySlideBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        // this is the new : creation of two empty arrays.
-        slide_images = new int[]{
-                R.drawable.doctor,
-                R.drawable.drugs,
-                R.drawable.health_care,
-                R.drawable.community
-        };
-        slide_headings = getResources().getStringArray(R.array.Heads);
-        slide_decs = getResources().getStringArray(R.array.Descriptions);
-        slideAdapter = new SlideAdapter(slide_images, slide_headings, slide_decs);
+
+        int[] slide_images = new int[]{R.drawable.doctor, R.drawable.drugs, R.drawable.health_care, R.drawable.community};
+        String[] slide_headings = getResources().getStringArray(R.array.Heads);
+        String[] slide_decs = getResources().getStringArray(R.array.Descriptions);
+        SlideAdapter slideAdapter = new SlideAdapter(slide_images, slide_headings, slide_decs);
         binding.slideViewId.setAdapter(slideAdapter);
         addDotsIndicators(0);
         binding.slideViewId.addOnPageChangeListener(viewListener);
     }
 
     // showing indicators :
-    public void addDotsIndicators(int position) {
+    private void addDotsIndicators(int position) {
         mDots = new TextView[4];
         binding.dotsLayoutId.removeAllViews();
         for (int i = 0;i < 4; i++) {
@@ -64,8 +48,8 @@ public class SlideActivity extends AppCompatActivity {
         if(mDots.length >  0){
             mDots[position].setTextColor(getResources().getColor(R.color.teal_700));
         }
-
     }
+
     // showing effect on indicator:
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -120,6 +104,7 @@ public class SlideActivity extends AppCompatActivity {
     public void skip(View view) {
         Intent intent=new Intent(this,LoginActivity.class);
         startActivity( intent );
+        finish();
     }
     public void back(View view) {
         binding.slideViewId.setCurrentItem(nCurrentPage-1);
