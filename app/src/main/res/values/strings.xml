@@ -115,14 +115,12 @@
     <string name="enterCode1">Open the email and check the message, then come back here and click Verify</string>
     <string name="resend">Resend</string>
 
+    <!--Home patient-->
+    <string name="home">Home</string>
+    <string name="chats">Chats</string>
+    <string name="favorite">Favorite Tips</string>
+    <string name="settings">Settings</string>
     <string name="signOut">Sign out</string>
-    <string name="title_activity_home_patient">HomePatientActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
 </resources>

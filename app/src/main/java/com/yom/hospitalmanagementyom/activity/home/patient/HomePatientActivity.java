@@ -15,12 +15,11 @@ import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 public class HomePatientActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityHomePatientBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityHomePatientBinding.inflate(getLayoutInflater());
+        ActivityHomePatientBinding binding = ActivityHomePatientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarHomePatient.toolbar);
 

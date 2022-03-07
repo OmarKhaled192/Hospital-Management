@@ -11,9 +11,7 @@
         android:theme="@style/Theme.HospitalManagementYOM" >
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home_patient"
-            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".activity.home.patient.HospitalViewingActivityForPatient"
             android:exported="false" />

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, SlideActivity.class);
+            intent.setClass(this, HomePatientActivity.class);
 
         startActivity(intent);
         finish();

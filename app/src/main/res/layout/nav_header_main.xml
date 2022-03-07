@@ -6,16 +6,13 @@
     android:layout_height="@dimen/_140sdp"
     android:background="@drawable/side_nav_bar"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/_14sdp"
-    android:paddingLeft="@dimen/_14sdp"
-    android:paddingRight="@dimen/_14sdp"
-    android:paddingTop="@dimen/_14sdp"
+    android:paddingHorizontal="@dimen/_14sdp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:gravity="center">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
         android:src="@drawable/doctor"
         app:civ_border_color="@color/white"
         app:civ_border_width="@dimen/_1sdp" />
@@ -24,7 +21,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
         android:maxLines="1"
@@ -34,8 +31,8 @@
         android:id="@+id/job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="@string/patient"
         android:textColor="@color/white"
-        android:textSize="@dimen/_15ssp"
-        android:layout_marginStart="@dimen/_8sdp"/>
+        android:textSize="@dimen/_12ssp"
+        android:maxLines="1" />
 </LinearLayout>

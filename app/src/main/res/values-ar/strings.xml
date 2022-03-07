@@ -110,8 +110,6 @@
     <string name="failSignIn">فشل تسجيل الدخول</string>
 
 
-
-
     <!--Common Verification-->
     <string name="verification">كود التحقق</string>
     <string name="enterCode">أدخل رمز التحقق</string>
@@ -119,5 +117,16 @@
     <string name="resend">اعادة الارسال</string>
 
 
+    <!--Home patient-->
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="chats">الدردشات</string>
+    <string name="favorite">النصائح المفضلة</string>
+    <string name="settings">الإعدادات</string>
     <string name="signOut">تسجيل الخروج</string>
+
+
+
+
+
+
 </resources>
