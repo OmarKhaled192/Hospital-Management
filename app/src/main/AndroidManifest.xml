@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yom.hospitalmanagementyom" >
+    package="com.yom.hospitalmanagementyom">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,10 @@
         android:label="Hospital Management"
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HospitalManagementYOM" >
+        android:theme="@style/Theme.HospitalManagementYOM">
+        <activity
+            android:name=".activity.home.patient.ProfilePatientActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
             android:exported="false" />
@@ -38,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.registration.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

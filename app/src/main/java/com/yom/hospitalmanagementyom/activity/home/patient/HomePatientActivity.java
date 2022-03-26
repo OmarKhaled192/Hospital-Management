@@ -43,7 +43,7 @@ public class HomePatientActivity extends AppCompatActivity {
 
         View v = binding.navView.getHeaderView(0);
         CircleImageView circleImageView=v.findViewById(R.id.myProfile);
-        circleImageView.setOnClickListener(v1 -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
+        circleImageView.setOnClickListener(v1 -> startActivity(new Intent(getApplicationContext(), ProfilePatientActivity.class)));
     }
 
     @Override
