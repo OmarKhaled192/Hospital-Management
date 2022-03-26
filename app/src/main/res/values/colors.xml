@@ -12,4 +12,5 @@
     <color name="red2">#550000</color>
     <color name="hint">#80171717</color>
     <color name="green">#00FF00</color>
+    <color name="bgHomePatient">#80B3B1B1</color>
 </resources>
