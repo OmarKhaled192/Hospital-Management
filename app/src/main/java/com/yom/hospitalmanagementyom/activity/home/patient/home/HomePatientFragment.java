@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ import com.yom.hospitalmanagementyom.model.Post;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomePatientFragment extends Fragment {
 
@@ -35,8 +37,8 @@ public class HomePatientFragment extends Fragment {
     private FragmentHomePatientBinding binding;
     private Post post;
     private List<Post> posts;
-    private PostAdapter postAdapter;
-    private RecyclerView recyclerViewHomePatient;
+    private PostAdapter postAdapter,postAdapter1;
+    private RecyclerView recyclerViewHomePatient, recyclerViewHospitalView;
     private FirebaseFirestore firebaseFirestore;
     private String POSTS="Posts";
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -55,8 +57,15 @@ public class HomePatientFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         firebaseFirestore=FirebaseFirestore.getInstance();
+
         post=new Post();
         posts=new ArrayList<>();
+        postAdapter1=new PostAdapter(Objects.requireNonNull(getContext()), posts );
+        LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewHospitalView=binding.recyclerViewHospitalView ;
+        recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
+        recyclerViewHospitalView.setAdapter(postAdapter1);
+
         postAdapter=new PostAdapter( getContext(), posts );
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( getContext() );
         recyclerViewHomePatient=binding.recyclerViewHomePatient ;
@@ -93,6 +102,7 @@ public class HomePatientFragment extends Fragment {
                 shimmerFrameLayout.hideShimmer();
                 shimmerFrameLayout.setVisibility(View.GONE);
                 recyclerViewHomePatient.setVisibility(View.VISIBLE);
+                recyclerViewHospitalView.setVisibility(View.VISIBLE);
                 postAdapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing( false );
                 swipeRefreshLayout.setColorSchemeColors( getResources().getColor(R.color.red) );

@@ -13,7 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.registration.MainActivity;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import de.hdodenhof.circleimageview.CircleImageView;
 
