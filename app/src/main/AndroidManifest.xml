@@ -15,7 +15,6 @@
         <activity
             android:name=".activity.home.patient.HospitalViewingActivityForPatient"
             android:exported="false" />
-
         <activity
             android:name=".activity.registration.VerificationActivity"
             android:exported="false" />

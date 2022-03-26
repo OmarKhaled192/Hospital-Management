@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_140sdp"
     android:background="@drawable/side_nav_bar"
@@ -11,11 +9,13 @@
     android:gravity="center">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:src="@drawable/doctor"
-        app:civ_border_color="@color/white"
-        app:civ_border_width="@dimen/_1sdp" />
+        android:id="@+id/myProfile"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@color/white"
+        android:background="?actionBarItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
         android:id="@+id/name"
@@ -25,7 +25,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
         android:maxLines="1"
-        android:layout_marginTop="@dimen/_8sdp"/>
+        android:layout_marginTop="@dimen/_8sdp" />
 
     <TextView
         android:id="@+id/job"
