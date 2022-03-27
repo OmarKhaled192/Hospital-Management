@@ -4,6 +4,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.home.patient.ProfilePatientActivity">
+    android:background="@color/teal_700"
+    tools:context=".activity.home.patient.ProfilePatientActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarChatActivity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/teal_700"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_100sdp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        android:layout_marginHorizontal="@dimen/_30sdp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/myImageProfileActivity"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center"
+            android:src="@color/teal_700"
+            android:background="?selectableItemBackground" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_360sdp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/myNameProfileActivity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20ssp"
+                android:background="?selectableItemBackground"
+                app:drawableStartCompat="@drawable/person"
+                app:drawableTint="?attr/colorControlNormal"
+                android:drawablePadding="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@color/teal_700"/>
+
+            <TextView
+                android:id="@+id/myPhoneProfileActivity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20ssp"
+                android:background="?selectableItemBackground"
+                app:drawableStartCompat="@drawable/phone"
+                app:drawableTint="?attr/colorControlNormal"
+                android:drawablePadding="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@color/teal_700"/>
+
+            <TextView
+                android:id="@+id/myTelephoneProfileActivity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20ssp"
+                android:background="?selectableItemBackground"
+                app:drawableStartCompat="@drawable/telephone"
+                android:drawablePadding="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@color/teal_700"/>
+
+            <TextView
+                android:id="@+id/myEmailProfileActivity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20ssp"
+                android:background="?selectableItemBackground"
+                app:drawableStartCompat="@drawable/email"
+                app:drawableTint="?attr/colorControlNormal"
+                android:drawablePadding="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@color/teal_700"/>
+
+            <TextView
+                android:id="@+id/myPasswordProfileActivity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20ssp"
+                android:background="?selectableItemBackground"
+                app:drawableStartCompat="@drawable/lock"
+                app:drawableTint="?attr/colorControlNormal"
+                android:drawablePadding="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:background="@color/teal_700"/>
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="@string/signOut" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

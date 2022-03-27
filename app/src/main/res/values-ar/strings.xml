@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hospital Management</string>
+    <string name="appName">Hospital Management</string>
 
     <!--Slide Activity-->
     <string name="skip">تخطي</string>
