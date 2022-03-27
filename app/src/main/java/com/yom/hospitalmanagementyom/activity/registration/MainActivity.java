@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         if(repository.getUser()!=null){
             switch (typeUser) {
                 case "Patient":
-                    intent.setClass(this, HomePatientActivity.class);
+                    intent.setClass(this, SlideActivity.class);
                     break;
                 case "Hospital":
                     intent.setClass(this, VerificationActivity.class);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, HomePatientActivity.class);
+            intent.setClass(this, SlideActivity.class);
 
         startActivity(intent);
         finish();

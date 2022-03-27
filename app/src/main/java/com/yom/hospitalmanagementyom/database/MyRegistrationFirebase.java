@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,31 +26,32 @@ import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
+import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
-
 import java.util.concurrent.TimeUnit;
 
 
 public class MyRegistrationFirebase {
     private static MyRegistrationFirebase myDatabase;
-    private Context context;
+    private final Context context;
     private final String PATIENTS_KEY = "Patients";
     private final String HOSPITAL_KEY="Hospital";
-    private FirebaseFirestore firebaseFirestore;
-    private FirebaseStorage firebaseStorage;
-    private CollectionReference collectionReferencePatient;
-    private StorageReference storageReferencePatient;
-    private CollectionReference collectionReferenceHospital;
-    private StorageReference storageReferenceHospital;
-    private FirebaseAuth firebaseAuth;
+    private final FirebaseFirestore firebaseFirestore;
+    private final FirebaseStorage firebaseStorage;
+    private final CollectionReference collectionReferencePatient;
+    private final StorageReference storageReferencePatient;
+    private final CollectionReference collectionReferenceHospital;
+    private final StorageReference storageReferenceHospital;
+    private final FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
-    private CommonFunction commonFunction;
+    private final CommonFunction commonFunction;
+    private ReadMessage readMessage;
 
     private MyRegistrationFirebase(Context context) {
         this.context = context;
@@ -81,6 +80,7 @@ public class MyRegistrationFirebase {
                                    @NonNull PhoneAuthProvider.ForceResendingToken token) {
                 mVerificationId = verificationId;
                 mResendToken = token;
+                readMessage.setNumbers();
             }
         };
         commonFunction=CommonFunction.newInstance();
@@ -178,7 +178,7 @@ public class MyRegistrationFirebase {
         return firebaseUser.isEmailVerified();
     }
 
-    public void startPhoneNumberVerification(String phoneNumber, Activity activity) {
+    public void startPhoneNumberVerification(String phoneNumber, Activity activity, ReadMessage readMessage) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(firebaseAuth)
                         .setPhoneNumber("+2"+phoneNumber)       // Phone number to verify
@@ -187,6 +187,7 @@ public class MyRegistrationFirebase {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
+        this.readMessage=readMessage;
     }
 
     public void signInUser(String total, PhoneVerificationListener phoneVerificationListener) {
