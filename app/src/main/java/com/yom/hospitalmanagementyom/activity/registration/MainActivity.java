@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        repository=Repository.newInstance(this);
+        repository=Repository.newInstance(getApplication());
 
         new Thread() {
             @Override

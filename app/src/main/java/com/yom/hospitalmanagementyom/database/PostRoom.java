@@ -40,6 +40,7 @@ public abstract class PostRoom extends RoomDatabase {
             super.onCreate(db);
             databaseWriteExecutor.execute(() -> {
                 PostDao postDao = INSTANCE.postDao();
+
                 Post post = new Post();
                 post.setPost("JO");
                 post.setId("0");
