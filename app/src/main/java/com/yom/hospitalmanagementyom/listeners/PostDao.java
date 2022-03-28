@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.database;
+package com.yom.hospitalmanagementyom.listeners;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

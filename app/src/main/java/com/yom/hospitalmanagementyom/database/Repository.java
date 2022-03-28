@@ -2,14 +2,13 @@ package com.yom.hospitalmanagementyom.database;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import androidx.lifecycle.LiveData;
 
 import com.google.firebase.auth.FirebaseUser;
-import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.model.Post;
+import com.yom.hospitalmanagementyom.listeners.PostDao;
 
 import java.util.List;
 
