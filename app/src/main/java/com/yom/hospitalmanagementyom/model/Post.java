@@ -2,10 +2,10 @@ package com.yom.hospitalmanagementyom.model;
 
 import androidx.room.Entity;
 
-@Entity (tableName = "Posts")
+@Entity
 public class Post {
   private String id;
-  String Profile,Name,Time,Post,Image,Video;
+  private String Profile,Name,Time,Post,Image,Video;
   private long Like,DisLike,Star;
   public String getId() {
     return id;

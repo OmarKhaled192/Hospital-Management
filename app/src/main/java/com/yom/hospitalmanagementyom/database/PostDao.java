@@ -22,9 +22,9 @@ public interface PostDao {
     @Delete
     void delete(Post post);
 
-    @Query("DELETE FROM Posts")
+    @Query("DELETE FROM Post")
     void deletePostFromRoom();
 
-    @Query("SELECT * FROM Posts")
+    @Query("SELECT * FROM Post")
     LiveData<List<Post>> getAllPostFromRoom();
 }
