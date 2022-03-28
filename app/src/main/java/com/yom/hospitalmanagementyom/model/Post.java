@@ -1,12 +1,16 @@
 package com.yom.hospitalmanagementyom.model;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "post_table")
 public class Post {
+
+  @PrimaryKey
   private String id;
   private String Profile,Name,Time,Post,Image,Video;
   private long Like,DisLike,Star;
+
   public String getId() {
     return id;
   }

@@ -28,49 +28,49 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "com.google.android.material:material:$material_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-    implementation "com.google.firebase:firebase-database:$database_version"
-    implementation "com.google.firebase:firebase-auth:$auth_version"
-    implementation "com.google.firebase:firebase-storage:$storage_version"
-    implementation "com.google.android.gms:play-services-auth:$services_auth_version"
-    implementation "com.google.firebase:firebase-firestore:$firestore_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version"
-    implementation "androidx.navigation:navigation-fragment:$fragment_version"
-    implementation "androidx.navigation:navigation-ui:$ui_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
+    implementation "com.google.android.material:material:$rootProject.material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_layout_version"
+    implementation "com.google.firebase:firebase-database:$rootProject.database_version"
+    implementation "com.google.firebase:firebase-auth:$rootProject.auth_version"
+    implementation "com.google.firebase:firebase-storage:$rootProject.storage_version"
+    implementation "com.google.android.gms:play-services-auth:$rootProject.services_auth_version"
+    implementation "com.google.firebase:firebase-firestore:$rootProject.firestore_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.livedata_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.viewmodel_version"
+    implementation "androidx.navigation:navigation-fragment:$rootProject.fragment_version"
+    implementation "androidx.navigation:navigation-ui:$rootProject.ui_version"
+    testImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
     // إضافة عشان أعمل كود الدول
-    implementation "com.hbb20:ccp:$ccp_version"
+    implementation "com.hbb20:ccp:$rootProject.ccp_version"
     // إضافة عشان أعمل الصورة الدائريه
-    implementation "de.hdodenhof:circleimageview:$circleImageview_version"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageview_version"
 
     //for captcha
-    implementation "com.google.android.gms:play-services-safetynet:$safetynet_version"
+    implementation "com.google.android.gms:play-services-safetynet:$rootProject.safetynet_version"
 
     //view of photo
-    implementation "com.squareup.picasso:picasso:$picasso_version"
+    implementation "com.squareup.picasso:picasso:$rootProject.picasso_version"
 
     //Shimmer Effect
-    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+    implementation "com.facebook.shimmer:shimmer:$rootProject.shimmer_version"
 
     //New Toast
-    implementation "com.sdsmdg.tastytoast:tastytoast:$tastyToast_version"
+    implementation "com.sdsmdg.tastytoast:tastytoast:$rootProject.tastyToast_version"
 
     //دعم الشاشات المختلفة
-    implementation "com.intuit.sdp:sdp-android:$sdp_version"
-    implementation "com.intuit.ssp:ssp-android:$ssp_version"
+    implementation "com.intuit.sdp:sdp-android:$rootProject.sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$rootProject.ssp_version"
 
     //Room Database
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.room_version"
 }
