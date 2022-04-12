@@ -76,4 +76,6 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
 
+    //Visa
+    implementation "com.braintreepayments:card-form:$rootProject.cardVersion"
 }

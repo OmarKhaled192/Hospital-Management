@@ -40,5 +40,6 @@ ext{
     sdp_version ="1.0.6"
     ssp_version ="1.0.6"
     room_version = "2.4.2"
-    lifecycleVersion = '2.3.1'
+    lifecycleVersion = "2.3.1"
+    cardVersion="5.3.0"
 }

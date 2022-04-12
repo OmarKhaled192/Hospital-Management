@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yom.hospitalmanagementyom">
 
-    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
+        <activity
+            android:name=".activity.home.patient.PaymentActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.home.patient.ProfilePatientActivity"
             android:exported="false" />
