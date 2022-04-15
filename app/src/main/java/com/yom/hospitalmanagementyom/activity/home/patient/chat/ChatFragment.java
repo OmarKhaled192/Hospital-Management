@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.patient.gallery;
+package com.yom.hospitalmanagementyom.activity.home.patient.chat;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.yom.hospitalmanagementyom.databinding.FragmentGalleryBinding;
 
-public class GalleryFragment extends Fragment {
+public class ChatFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private ChatViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
+        galleryViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
 
     binding = FragmentGalleryBinding.inflate(inflater, container, false);
     View root = binding.getRoot();

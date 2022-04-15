@@ -31,8 +31,19 @@
         <entry key="..\:/HospitalManagement2/app/src/main/res/menu/activity_main_drawer.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/menu/home_patient.xml" value="0.12894736842105264" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/menu/setting_menu_of_patient.xml" value="0.1" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/circle2.xml" value="0.1945" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/no_seen.xml" value="0.1945" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_patient.xml" value="0.17074275362318841" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_payment.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_chat.xml" value="0.33" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_home_patient.xml" value="0.22658959537572254" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat_patient.xml" value="0.33" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_hospital_view.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/nav_header_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/slide_item.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/add_photo.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/android.xml" value="0.2703125" />
