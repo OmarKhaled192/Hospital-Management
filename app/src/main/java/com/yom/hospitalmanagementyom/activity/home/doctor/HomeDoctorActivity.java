@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.patient.favorite_tips.FavoriteTipsFragment;
+import com.yom.hospitalmanagementyom.activity.home.patient.chat.ChatFragment;
 import com.yom.hospitalmanagementyom.activity.home.patient.home.HomePatientFragment;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomeDoctorBinding;
 
@@ -17,8 +17,10 @@ public class HomeDoctorActivity extends AppCompatActivity {
         ActivityHomeDoctorBinding binding = ActivityHomeDoctorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.profile));
-        binding.bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.home));
-        binding.bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.notification));
+        binding.bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.edit));
+        binding.bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.home));
+        binding.bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.time));
+        binding.bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.chat));
 
 
         binding.bottomNavigation.setOnShowListener(item -> {
@@ -28,12 +30,16 @@ public class HomeDoctorActivity extends AppCompatActivity {
                     fragment=new ProfileDoctorFragment();
                     break;
                 case 2:
-                    fragment=new ProfileDoctorFragment();
+                    fragment=new CreatePostFragment();
                     break;
                 case 3:
-                    fragment=new ProfileDoctorFragment();
+                    fragment=new HomeDoctorFragment();
                     break;
-                default:
+                case 4:
+                    fragment=new TimesDoctorFragment();
+                    break;
+                case 5:
+                    fragment=new ChatFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction()
@@ -42,13 +48,9 @@ public class HomeDoctorActivity extends AppCompatActivity {
         });
 
         binding.bottomNavigation.show(2,true);
-        binding.bottomNavigation.setCount(3,"100");
+        //binding.bottomNavigation.setCount(3,"100");
 
-        binding.bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
-            @Override
-            public void onClickItem(MeowBottomNavigation.Model item) {
-                binding.bottomNavigation.show(item.getId(),true);
-            }
-        });
+        binding.bottomNavigation.setOnClickMenuListener(item ->
+                binding.bottomNavigation.show(item.getId(),true));
     }
 }
