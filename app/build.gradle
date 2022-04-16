@@ -19,6 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -46,6 +47,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.viewmodel_version"
     implementation "androidx.navigation:navigation-fragment:$rootProject.fragment_version"
     implementation "androidx.navigation:navigation-ui:$rootProject.ui_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
@@ -78,4 +80,7 @@ dependencies {
 
     //Visa
     implementation "com.braintreepayments:card-form:$rootProject.cardVersion"
+
+    //Bottom navigation
+    implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
 }
