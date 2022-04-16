@@ -47,7 +47,7 @@ public class HomeDoctorActivity extends AppCompatActivity {
                     .commit();
         });
 
-        binding.bottomNavigation.show(2,true);
+        binding.bottomNavigation.show(3,false);
         //binding.bottomNavigation.setCount(3,"100");
 
         binding.bottomNavigation.setOnClickMenuListener(item ->
