@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/boxProfile"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:endIconMode="clear_text"
+        app:errorEnabled="false"
+        app:errorIconDrawable="@drawable/error">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

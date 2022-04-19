@@ -14,13 +14,7 @@
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
             android:name=".activity.home.doctor.HomeDoctorActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.home.patient.chat.MessageActivity"
             android:exported="false" />
@@ -28,8 +22,14 @@
             android:name=".activity.home.patient.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.home.patient.ProfilePatientActivity"
-            android:exported="false" />
+            android:name=".activity.home.patient.ProfileActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
             android:exported="false" />

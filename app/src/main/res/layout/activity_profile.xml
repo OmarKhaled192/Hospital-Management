@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_700"
-    tools:context=".activity.home.patient.ProfilePatientActivity"
+    tools:context=".activity.home.patient.ProfileActivity"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -66,14 +66,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="@dimen/_15ssp"
                 android:background="?selectableItemBackground"
                 app:drawableStartCompat="@drawable/person"
                 app:drawableTint="?attr/colorControlNormal"
-                android:drawablePadding="@dimen/_30sdp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:drawablePadding="@dimen/_20sdp"
+                android:text="@string/appName"
+                android:gravity="center_vertical"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
@@ -85,14 +85,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="@dimen/_15ssp"
                 android:background="?selectableItemBackground"
                 app:drawableStartCompat="@drawable/phone"
                 app:drawableTint="?attr/colorControlNormal"
-                android:drawablePadding="@dimen/_30sdp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:text="@string/appName"
+                android:drawablePadding="@dimen/_20sdp"
+                android:gravity="center_vertical"/>
 
             <View
                 android:layout_width="match_parent"
@@ -105,13 +105,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="@dimen/_15ssp"
                 android:background="?selectableItemBackground"
                 app:drawableStartCompat="@drawable/telephone"
-                android:drawablePadding="@dimen/_30sdp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:text="@string/appName"
+                android:drawablePadding="@dimen/_20sdp"
+                android:gravity="center_vertical"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
@@ -123,14 +123,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="@dimen/_15ssp"
                 android:background="?selectableItemBackground"
                 app:drawableStartCompat="@drawable/email"
                 app:drawableTint="?attr/colorControlNormal"
-                android:drawablePadding="@dimen/_30sdp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:text="@string/appName"
+                android:drawablePadding="@dimen/_20sdp"
+                android:gravity="center_vertical"/>
 
             <View
                 android:layout_width="match_parent"
@@ -143,14 +143,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_20sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20ssp"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="@dimen/_15ssp"
                 android:background="?selectableItemBackground"
                 app:drawableStartCompat="@drawable/lock"
                 app:drawableTint="?attr/colorControlNormal"
-                android:drawablePadding="@dimen/_30sdp"
-                android:clickable="true"
-                android:focusable="true" />
+                android:text="@string/appName"
+                android:drawablePadding="@dimen/_20sdp"
+                android:gravity="center_vertical"/>
 
             <View
                 android:layout_width="match_parent"
