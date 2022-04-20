@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".activity.home.hospital.Covid19Fragment">
+
+    <ImageView
+        android:id="@+id/covidImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/covid"
+        android:minHeight="@dimen/_200sdp"
+        android:minWidth="@dimen/_200sdp"
+        android:src="@drawable/ic_menu_camera"
+        android:layout_marginHorizontal="@dimen/_10sdp" />
+
+    <Button
+        android:id="@+id/detect"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:text="@string/detect"
+        android:textSize="@dimen/_20ssp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <TextView
+        android:id="@+id/covidResult"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/teal_700"
+        android:background="@drawable/background_input"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+</LinearLayout>

@@ -9,6 +9,7 @@ android {
     //لعمل ربط للعناصر بسهولة
     buildFeatures{
         viewBinding true
+        mlModelBinding true
     }
 
     defaultConfig {
@@ -48,6 +49,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$rootProject.fragment_version"
     implementation "androidx.navigation:navigation-ui:$rootProject.ui_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     testImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
