@@ -6,22 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import java.util.List;
 
 public class HospitalViewAdapter extends RecyclerView.Adapter<HospitalViewAdapter.HospitalHolder> {
     private final Context context;
     private final List<Hospital> hospitals;
+    private final PostsListener postsListener;
 
-    public HospitalViewAdapter(Context context, List<Hospital> hospitals){
+    public HospitalViewAdapter(Context context, List<Hospital> hospitals,PostsListener postsListener){
         this.context=context;
         this.hospitals=hospitals;
+        this.postsListener=postsListener;
     }
 
     @NonNull
@@ -36,6 +37,7 @@ public class HospitalViewAdapter extends RecyclerView.Adapter<HospitalViewAdapte
         Hospital hospital=hospitals.get(position);
         holder.nameHospital.setText(hospital.getName());
         Picasso.with(context).load(hospital.getProfile()).error(R.color.teal_700).into(holder.profileHospital);
+        holder.itemView.setOnClickListener(view -> postsListener.onClickHospitalItem(position));
     }
 
     @Override

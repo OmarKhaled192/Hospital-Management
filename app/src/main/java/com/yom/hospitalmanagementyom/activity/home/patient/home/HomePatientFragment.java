@@ -29,7 +29,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         super.onViewCreated(view, savedInstanceState);
         repository=Repository.newInstance(requireActivity().getApplication());
 
-        HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), repository.getHospitals());
+        HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), repository.getHospitals(), this);
         LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
         binding.recyclerViewHospitalView.setAdapter(hospitalViewAdapter);
@@ -40,13 +40,13 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.recyclerViewHomePosts.setAdapter(postAdapter);
 
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
-            showDesign(View.VISIBLE, View.GONE, View.GONE , View.GONE, true);
+            showDesign(View.VISIBLE, View.GONE, View.GONE, true);
             repository.getPosts(this);
         });
     }
 
 
-    private void showDesign(int shimmer, int hospital, int home, int post, boolean isShow ){
+    private void showDesign(int shimmer, int hospital, int post, boolean isShow ){
         if(isShow){
             binding.shimmerFrameLayout.showShimmer(true);
             binding.shimmerFrameLayout.startShimmer();
@@ -62,14 +62,25 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.recyclerViewHomePosts.setVisibility(post);
     }
 
-@Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 
     @Override
     public void finishGetPosts() {
-        showDesign(View.GONE, View.VISIBLE, View.VISIBLE, View.VISIBLE, false);
+        showDesign(View.GONE, View.VISIBLE, View.VISIBLE, false);
+    }
+
+    @Override
+    public void onClickHospitalItem(int Position) {
+
+    }
+
+    @Override
+    public void onClickLikePost(int Position) {
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
