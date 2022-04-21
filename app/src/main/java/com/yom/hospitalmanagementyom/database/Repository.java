@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
+import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Post;
 import com.yom.hospitalmanagementyom.listeners.PostDao;
 
@@ -15,18 +17,20 @@ import java.util.List;
 public class Repository {
     private Context context;
     private static Repository repository;
-    private MySharedPreference mySharedPreference;
-    private MyRegistrationFirebase myRegistrationFirebase;
-    private PostDao postDao;
-    private LiveData<List<Post>> posts;
+    private final MySharedPreference mySharedPreference;
+    private final MyRegistrationFirebase myRegistrationFirebase;
+    private final PostDao postDao;
+    private final LiveData<List<Post>> posts;
+    private final MyHomeFirebase myHomeFirebase;
 
     private Repository(Application application){
-        this.context=context;
+        this.context=application.getBaseContext();
         mySharedPreference=MySharedPreference.newInstance(context);
         myRegistrationFirebase=MyRegistrationFirebase.getInstance(context);
         PostRoom postRoom = PostRoom.getInstance(application);
         postDao = postRoom.postDao();
         posts = postDao.getAllPostFromRoom();
+        myHomeFirebase = MyHomeFirebase.newInstance(context);
     }
 
     public static Repository newInstance(Application application){
@@ -53,9 +57,17 @@ public class Repository {
     }
 
     public void insert(Post post) {
-        PostRoom.databaseWriteExecutor.execute(() -> {
-            postDao.insert(post);
-        });
+        PostRoom.databaseWriteExecutor.execute(() -> postDao.insert(post));
     }
+
+
+    //Home Patient
+    public List<Post> getPosts(PostsListener postsListener){
+        return myHomeFirebase.getPosts(postsListener);
+    }
+    public List<Hospital> getHospitals() {
+        return myHomeFirebase.getHospitals();
+    }
+
 
 }

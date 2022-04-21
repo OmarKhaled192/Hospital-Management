@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_chat" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_favorite_tips"
         android:name="com.yom.hospitalmanagementyom.activity.home.patient.favorite_tips.FavoriteTipsFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite_tips" />

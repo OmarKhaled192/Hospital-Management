@@ -35,7 +35,7 @@ public class HospitalViewAdapter extends RecyclerView.Adapter<HospitalViewAdapte
     public void onBindViewHolder(@NonNull HospitalHolder holder, int position) {
         Hospital hospital=hospitals.get(position);
         holder.nameHospital.setText(hospital.getName());
-        Picasso.with(context).load(hospital.getProfile()).error(R.color.white).into(holder.profileHospital);
+        Picasso.with(context).load(hospital.getProfile()).error(R.color.teal_700).into(holder.profileHospital);
     }
 
     @Override
