@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.patient.chat;
+package com.yom.hospitalmanagementyom.fragments.patient;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

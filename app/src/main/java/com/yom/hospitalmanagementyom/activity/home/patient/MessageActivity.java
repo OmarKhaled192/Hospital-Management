@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.patient.chat;
+package com.yom.hospitalmanagementyom.activity.home.patient;
 
 import androidx.appcompat.app.AppCompatActivity;
 

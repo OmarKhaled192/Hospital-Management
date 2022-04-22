@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgHomePatient"
-    tools:context=".activity.home.doctor.TimesDoctorFragment">
+    tools:context=".fragments.doctor.TimesDoctorFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

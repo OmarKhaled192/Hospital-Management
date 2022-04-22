@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.doctor;
+package com.yom.hospitalmanagementyom.fragments.doctor;
 
 import android.os.Bundle;
 

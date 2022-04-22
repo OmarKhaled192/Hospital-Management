@@ -20,7 +20,7 @@
             android:name=".activity.home.doctor.HomeDoctorActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.home.patient.chat.MessageActivity"
+            android:name=".activity.home.patient.MessageActivity"
             android:exported="false" />
         <activity
             android:name=".activity.home.patient.PaymentActivity"

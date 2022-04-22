@@ -1,29 +1,16 @@
 package com.yom.hospitalmanagementyom.model;
 
-
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "post_table")
 public class Post {
-
-  @PrimaryKey
-  @NonNull
   private String id;
   private String Profile,Name,Time,Post,Image,Video;
   private long Like,DisLike,Star;
 
-  public Post() {
-    id = "0";
-  }
 
-  @NonNull
   public String getId() {
     return id;
   }
 
-  public void setId(@NonNull String id) {
+  public void setId(String id) {
     this.id = id;
   }
 

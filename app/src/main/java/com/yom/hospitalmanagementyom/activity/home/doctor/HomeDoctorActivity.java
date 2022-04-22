@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.hospital.Covid19Fragment;
-import com.yom.hospitalmanagementyom.activity.home.patient.chat.ChatFragment;
-import com.yom.hospitalmanagementyom.activity.home.patient.home.HomePatientFragment;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomeDoctorBinding;
+import com.yom.hospitalmanagementyom.fragments.doctor.CreatePostFragment;
+import com.yom.hospitalmanagementyom.fragments.doctor.HomeDoctorFragment;
+import com.yom.hospitalmanagementyom.fragments.doctor.ProfileDoctorFragment;
+import com.yom.hospitalmanagementyom.fragments.doctor.TimesDoctorFragment;
+import com.yom.hospitalmanagementyom.fragments.patient.ChatFragment;
 
 public class HomeDoctorActivity extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class HomeDoctorActivity extends AppCompatActivity {
 
 
         binding.bottomNavigation.setOnShowListener(item -> {
-            Fragment fragment=new HomePatientFragment();
+            Fragment fragment=new HomeDoctorFragment();
             switch (item.getId()){
                 case 1:
                     fragment=new ProfileDoctorFragment();
