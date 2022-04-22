@@ -3,7 +3,7 @@
     package="com.yom.hospitalmanagementyom">
 
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
+        <activity
+            android:name=".activity.home.patient.SearchPatientActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.home.doctor.HomeDoctorActivity"
             android:exported="false" />
@@ -24,7 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.home.patient.ProfileActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
             android:exported="false" />

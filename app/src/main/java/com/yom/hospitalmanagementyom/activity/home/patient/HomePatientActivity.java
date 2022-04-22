@@ -1,9 +1,13 @@
 package com.yom.hospitalmanagementyom.activity.home.patient;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.registration.MainActivity;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,6 +54,20 @@ public class HomePatientActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_patient, menu);
         return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.searchPatient:
+                startActivity(new Intent(this, SearchPatientActivity.class));
+                break;
+            case R.id.signOutPatient:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

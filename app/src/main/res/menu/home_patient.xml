@@ -3,18 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/searchPatient"
         android:icon="@drawable/search"
         android:title="@string/hospital"
-        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/settings"
-        app:showAsAction="never" />
-
     <item
-        android:id="@+id/signOut"
+        android:id="@+id/signOutPatient"
         android:title="@string/signOut"
         app:showAsAction="never"/>
 </menu>

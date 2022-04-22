@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -82,9 +83,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
       holder.postForHomePatient.setVisibility(View.GONE);
     }
     if (!post.getImage().equals("")) {
+      holder.progressBar.setVisibility(View.VISIBLE);
       storage.getReference(post.getImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
         @Override
         public void onSuccess(Uri uri) {
+          holder.progressBar.setVisibility(View.GONE);
           Picasso.with(context).load(uri).into(holder.imagePostForHomePatient);
           holder.imagePostForHomePatient.setVisibility(View.VISIBLE);
         }
@@ -192,6 +195,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     ImageView imagePostForHomePatient;
     VideoView videoPostForHomePatient;
     Button likePostForHomePatient,disLikePostForHomePatient,starPostForHomePatient;
+    private ProgressBar progressBar;
 
     PostHolder(View itemView) {
       super( itemView );
@@ -200,6 +204,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
       timePostForHomePatient = itemView.findViewById( R.id.timePostForHomePatient );
       postForHomePatient = itemView.findViewById( R.id.postForHomePatient );
       imagePostForHomePatient = itemView.findViewById( R.id.imagePostForHomePatient );
+      progressBar = itemView.findViewById(R.id.progressBar);
       videoPostForHomePatient = itemView.findViewById( R.id.videoPostForHomePatient );
       numLikePostDoctor = itemView.findViewById( R.id.numLikePostForHomePatient );
       numDisLikePostDoctor=itemView.findViewById( R.id.numDisLikePostForHomePatient );

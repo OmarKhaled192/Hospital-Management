@@ -40,7 +40,8 @@ public class Repository {
         return repository;
     }
 
-    public void saveStringSharedPreference(String key,String value) {
+    public void
+    saveStringSharedPreference(String key,String value) {
         mySharedPreference.saveString(key,value);
     }
 

@@ -1,7 +1,11 @@
 package com.yom.hospitalmanagementyom.activity.home.patient.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -9,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
+import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
+import com.yom.hospitalmanagementyom.activity.registration.MainActivity;
 import com.yom.hospitalmanagementyom.adapter.HospitalViewAdapter;
 import com.yom.hospitalmanagementyom.adapter.PostAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
@@ -18,6 +25,15 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
     private FragmentHomePatientBinding binding;
     private Repository repository;
+
+    public HomePatientFragment(){
+
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setHasOptionsMenu(true);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomePatientBinding.inflate(inflater, container, false);
@@ -44,7 +60,6 @@ public class HomePatientFragment extends Fragment implements PostsListener {
             repository.getPosts(this);
         });
     }
-
 
     private void showDesign(int shimmer, int hospital, int post, boolean isShow ){
         if(isShow){

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
@@ -24,13 +25,11 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePostForHomePatient"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/person"
-                app:civ_border_color="@color/black"
-                app:civ_border_width="2dp" />
+                android:src="@color/teal_700" />
 
             <TextView
                 android:id="@+id/namePostForHomePatient"
@@ -41,9 +40,9 @@
                 android:layout_toEndOf="@+id/profilePostForHomePatient"
                 android:maxWidth="200dp"
                 android:maxLines="1"
-                android:text="Yousef Shaaban"
+                tools:text="Yousef Shaaban"
                 android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textSize="@dimen/_14ssp" />
 
             <TextView
                 android:id="@+id/timePostForHomePatient"
@@ -52,9 +51,9 @@
                 android:layout_below="@+id/namePostForHomePatient"
                 android:layout_alignStart="@+id/namePostForHomePatient"
                 android:maxWidth="200dp"
-                android:text="today at 10:00 AM"
+                tools:text="today at 10:00 AM"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:textSize="@dimen/_7ssp" />
         </RelativeLayout>
 
         <TextView
@@ -64,38 +63,63 @@
             android:layout_below="@+id/goToFriendProfile"
             android:paddingHorizontal="10dp"
             android:paddingBottom="10dp"
-            android:text="My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef,My Name Doctor of Yousef"
+            tools:text="My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef, My Name Doctor of Yousef,My Name Doctor of Yousef"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:visibility="gone"/>
 
-        <ImageView
-            android:id="@+id/imagePostForHomePatient"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/postForHomePatient"
-            android:layout_centerInParent="true"
-            android:paddingBottom="10dp"
-            android:visibility="gone" />
+            android:layout_centerInParent="true">
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:visibility="visible"
+                android:progressBackgroundTint="@color/teal_700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <VideoView
-            android:id="@+id/videoPostForHomePatient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imagePostForHomePatient"
-            android:layout_centerInParent="true"
-            android:paddingBottom="10dp"
-            android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/imagePostForHomePatient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <VideoView
+                android:id="@+id/videoPostForHomePatient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/imagePostForHomePatient"
+                android:layout_centerInParent="true"
+                android:paddingBottom="10dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/numLikePostForHomePatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/videoPostForHomePatient"
+            android:layout_below="@+id/constraintLayoutImage"
             android:layout_alignParentStart="true"
             android:paddingStart="15dp"
             android:layout_marginBottom="5dp"
-            android:text="0 Like"
+            tools:text="0 Like"
             android:textColor="@color/hint"
             android:textSize="12sp"
             android:maxLines="1"/>
@@ -106,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/numLikePostForHomePatient"
             android:layout_centerInParent="true"
-            android:text="0 Dislike"
+            tools:text="0 Dislike"
             android:textColor="@color/hint"
             android:textSize="12sp"
             android:maxLines="1"/>
@@ -118,7 +142,7 @@
             android:layout_alignTop="@+id/numLikePostForHomePatient"
             android:layout_alignParentEnd="true"
             android:paddingEnd="15dp"
-            android:text="0 Star"
+            tools:text="0 Star"
             android:textColor="@color/hint"
             android:textSize="12sp"
             android:maxLines="1"/>
@@ -139,7 +163,7 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/like_off"
-            android:text="Like"
+            tools:text="Like"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textAllCaps="false"/>
@@ -153,7 +177,7 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/dis_like_off"
-            android:text="Dislike"
+            tools:text="Dislike"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textAllCaps="false"/>
@@ -167,7 +191,7 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/star_off"
-            android:text="Star"
+            tools:text="Star"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textAllCaps="false"/>
