@@ -139,6 +139,10 @@
     <string name="gallery">Gallery</string>
     <string name="video">Video</string>
     <string name="choose">Choose photo or video</string>
+    <string name="publishSuccess">Post published successfully</string>
+    <string name="publishFailure">Post failed to publish</string>
+    <string name="photo">Photo</string>
+    <string name="loadingNow">Loading...</string>
 
 
 </resources>

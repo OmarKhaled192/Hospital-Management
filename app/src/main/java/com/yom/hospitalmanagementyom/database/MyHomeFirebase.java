@@ -1,12 +1,24 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.UploadTask;
+import com.sdsmdg.tastytoast.TastyToast;
+import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Hospital;
@@ -19,6 +31,7 @@ public class MyHomeFirebase {
     private static MyHomeFirebase myDatabase;
     private final Context context;
     private final FirebaseFirestore firebaseFirestore;
+    private final FirebaseStorage firebaseStorage;
     private Post post;
     private List<Post>posts;
     private Hospital hospital;
@@ -27,6 +40,7 @@ public class MyHomeFirebase {
     private MyHomeFirebase(Context context) {
         this.context = context;
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
     }
 
     public static MyHomeFirebase newInstance(Context context) {
@@ -76,4 +90,57 @@ public class MyHomeFirebase {
         });
         return hospitals;
     }
+
+//    public void publishPost(Activity activity,Post post, Uri uri){
+//        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post).
+//                .addOnSuccessListener(documentReference ->{
+//                        post.setId(documentReference.getId());
+//                        publishPostUri(activity, post, uri)
+//                        TastyToast.makeText(context, context.getString(R.string.publishSuccess),
+//                                TastyToast.LENGTH_LONG,TastyToast.SUCCESS ).show())
+//                }
+//                .addOnFailureListener(e ->
+//                        TastyToast.makeText(context, context.getString(R.string.publishFailure),
+//                                TastyToast.LENGTH_LONG,TastyToast.ERROR ).show());
+//    }
+
+    public void publishPostUri(Uri uri, String userId, String postId){
+        firebaseStorage.getReference(Constants.POSTS).child(userId).child(postId)
+                .putFile(uri).addOnProgressListener(snapshot -> {
+                   long count = snapshot.getTotalByteCount();
+                   long stop = snapshot.getBytesTransferred();
+                });
+    }
+
+
+    public void publishPostUri(Activity activity,Post post, Uri uri){
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        View view=activity.getLayoutInflater().inflate(R.layout.loading,null);
+        TextView nowLoading = view.findViewById(R.id.nowLoading);
+        ProgressBar progressBarLoading = view.findViewById(R.id.progressBarLoading);
+        builder.setView(view);
+        builder.show();
+
+        firebaseStorage.getReference(Constants.POSTS).child(post.getName()).child(post.getId())
+                .putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(activity,"Yes",Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(activity,"No"+e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                String progress1 = progress+"%";
+                nowLoading.setText( progress1 );
+                progressBarLoading.setProgress((int)progress);
+            }
+        });
+    }
+
 }

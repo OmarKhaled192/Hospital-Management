@@ -4,9 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgHomePatient"
-    tools:context=".activity.home.doctor.CreatePostFragment"
-    android:orientation="vertical">
+    tools:context=".activity.home.doctor.CreatePostFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -25,6 +23,7 @@
             app:title="@string/createPost"
             app:titleTextColor="@color/teal_700" >
             <Button
+                android:id="@+id/publish"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/publish"
@@ -36,7 +35,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePostForHomePatient"
+        android:id="@+id/profilePostForDoctor"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_alignParentStart="true"
@@ -47,42 +46,56 @@
         android:layout_below="@+id/appBar"/>
 
     <TextView
-        android:id="@+id/namePostForHomePatient"
+        android:id="@+id/namePostForDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/profilePostForHomePatient"
+        android:layout_alignTop="@+id/profilePostForDoctor"
         android:layout_marginStart="@dimen/_5sdp"
-        android:layout_toEndOf="@+id/profilePostForHomePatient"
+        android:layout_toEndOf="@+id/profilePostForDoctor"
         android:maxLines="1"
         tools:text="Yousef Shaaban"
         android:textColor="@color/black"
         android:textSize="@dimen/_14ssp" />
 
     <TextView
-        android:id="@+id/timePostForHomePatient"
+        android:id="@+id/timePostForDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/namePostForHomePatient"
-        android:layout_alignStart="@+id/namePostForHomePatient"
+        android:layout_below="@+id/namePostForDoctor"
+        android:layout_alignStart="@+id/namePostForDoctor"
         android:layout_marginStart="@dimen/_5sdp"
-        tools:text="5:57 AM"
+        android:text="5:57 AM"
         android:textColor="@color/black"
         android:textSize="@dimen/_10ssp" />
 
     <EditText
         android:id="@+id/caption"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/advice"
         android:gravity="top"
         android:textSize="@dimen/_15ssp"
-        android:inputType="textMultiLine"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/profilePostForHomePatient"
-        android:autofillHints="" />
+        android:minHeight="@dimen/_40sdp"
+        android:layout_below="@id/profilePostForDoctor" />
+
+    <ImageView
+        android:id="@+id/photoPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/photo"
+        android:layout_below="@id/caption"/>
+
+    <VideoView
+        android:id="@+id/videoPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/photo"
+        android:layout_below="@id/caption"
+        android:visibility="gone"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
