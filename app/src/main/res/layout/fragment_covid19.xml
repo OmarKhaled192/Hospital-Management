@@ -15,7 +15,7 @@
         android:contentDescription="@string/covid"
         android:minHeight="@dimen/_200sdp"
         android:minWidth="@dimen/_200sdp"
-        android:src="@drawable/ic_menu_camera"
+        android:src="@drawable/camera"
         android:layout_marginHorizontal="@dimen/_10sdp" />
 
     <Button

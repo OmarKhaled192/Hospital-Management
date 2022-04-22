@@ -3,6 +3,8 @@ package com.yom.hospitalmanagementyom.activity.registration;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, HomePatientActivity.class);
+            intent.setClass(this, HomeDoctorActivity.class);
 
         startActivity(intent);
         finish();

@@ -132,6 +132,13 @@
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="viralPhenomena">Viral Phenomena</string>
+    <string name="createPost">Create post</string>
+    <string name="publish">Publish</string>
+    <string name="advice">What advice do you want to give?</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="video">Video</string>
+    <string name="choose">Choose photo or video</string>
 
 
 </resources>
