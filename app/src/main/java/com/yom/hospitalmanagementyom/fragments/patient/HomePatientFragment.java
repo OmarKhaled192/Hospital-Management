@@ -63,7 +63,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
             binding.shimmerFrameLayout.stopShimmer();
             binding.shimmerFrameLayout.hideShimmer();
             binding.swipeRefreshLayout.setRefreshing( false );
-            binding.swipeRefreshLayout.setColorSchemeColors( getResources().getColor(R.color.red) );
+            binding.swipeRefreshLayout.setColorSchemeColors( getResources().getColor(R.color.teal_700) );
         }
         binding.shimmerFrameLayout.setVisibility(shimmer);
         binding.recyclerViewHospitalView.setVisibility(hospital);

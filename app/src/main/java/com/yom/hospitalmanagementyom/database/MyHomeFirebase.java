@@ -121,7 +121,7 @@ public class MyHomeFirebase {
         builder.setView(view);
         builder.show();
 
-        firebaseStorage.getReference(Constants.POSTS).child(post.getName()).child(post.getId())
+        firebaseStorage.getReference(Constants.POSTS).child(post.getId()).child(post.getId())
                 .putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

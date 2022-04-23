@@ -11,14 +11,14 @@ import com.yom.hospitalmanagementyom.model.Post;
 import java.util.List;
 
 public class Repository {
-    private Context context;
+    private final Context context;
     private final MySharedPreference mySharedPreference;
     private final MyRegistrationFirebase myRegistrationFirebase;
     private final MyHomeFirebase myHomeFirebase;
 
     public Repository(Context context){
         this.context=context;
-        mySharedPreference=MySharedPreference.newInstance(context);
+        mySharedPreference=new MySharedPreference(context);
         myRegistrationFirebase=MyRegistrationFirebase.getInstance(context);
         myHomeFirebase = MyHomeFirebase.newInstance(context);
     }

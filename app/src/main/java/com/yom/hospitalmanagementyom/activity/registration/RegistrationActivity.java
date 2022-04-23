@@ -15,6 +15,8 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationBinding;
 import com.yom.hospitalmanagementyom.model.Patient;
 
+import java.io.Serializable;
+
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -75,11 +77,11 @@ public class RegistrationActivity extends AppCompatActivity {
             Patient patient=new Patient();
             patient.setProfile(profile);
             patient.setName(name);
-            patient.setEarthPhone(telephone);
+            //patient.setEarthPhone(telephone);
             patient.setPassword(password);
-            patient.setState(PATIENT_KEY);
+            patient.setType(PATIENT_KEY);
             Intent intent = new Intent(RegistrationActivity.this, CommonRegistrationActivity.class);
-            intent.putExtra(PATIENT_KEY,patient);
+            intent.putExtra(PATIENT_KEY, (Serializable) patient);
             intent.putExtra(ACTIVITY_KEY,PATIENT_KEY);
             startActivity(intent);
             finish();

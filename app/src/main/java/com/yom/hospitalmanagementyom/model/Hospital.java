@@ -3,7 +3,15 @@ package com.yom.hospitalmanagementyom.model;
 import java.io.Serializable;
 
 public class Hospital implements Serializable {
-    private String Profile, Location, Name, ManagerName, Email, Phone, State;
+    private String Id, Profile, Name, ManagerName, Location, Email, Phone, Type, Status;
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
 
     public String getProfile() {
         return Profile;
@@ -11,14 +19,6 @@ public class Hospital implements Serializable {
 
     public void setProfile(String profile) {
         Profile = profile;
-    }
-
-    public String getLocation() {
-        return Location;
-    }
-
-    public void setLocation(String location) {
-        Location = location;
     }
 
     public String getName() {
@@ -37,6 +37,14 @@ public class Hospital implements Serializable {
         ManagerName = managerName;
     }
 
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
+
     public String getEmail() {
         return Email;
     }
@@ -53,11 +61,19 @@ public class Hospital implements Serializable {
         Phone = phone;
     }
 
-    public String getState() {
-        return State;
+    public String getType() {
+        return Type;
     }
 
-    public void setState(String state) {
-        State = state;
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 }

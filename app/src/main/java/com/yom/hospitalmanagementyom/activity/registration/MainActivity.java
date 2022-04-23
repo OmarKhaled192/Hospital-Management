@@ -3,11 +3,11 @@ package com.yom.hospitalmanagementyom.activity.registration;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
+import com.yom.hospitalmanagementyom.model.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        repository=Repository.newInstance(getApplication());
+        repository=new Repository(getApplicationContext());
 
         new Thread() {
             @Override
@@ -37,19 +37,19 @@ public class MainActivity extends AppCompatActivity {
 
     void checkUser(){
         Intent intent=new Intent();
-        String typeUser=repository.returnStringSharedPreference("TypeUser","");
+        String typeUser=repository.returnStringSharedPreference(Constants.TYPE_USER,"");
         if(repository.getUser()!=null){
             switch (typeUser) {
-                case "Patient":
+                case Constants.PATIENT:
                     intent.setClass(this, HomePatientActivity.class);
                     break;
-                case "Hospital":
+                case Constants.HOSPITAL:
                     intent.setClass(this, VerificationActivity.class);
                     break;
-                case "Doctor":
-                    intent.setClass(this, RegistrationActivity.class);
+                case Constants.DOCTOR:
+                    intent.setClass(this, HomeDoctorActivity.class);
                     break;
-                case "Admin":
+                case Constants.ADMIN:
                     intent.setClass(this, RegistrationActivityForHospital.class);
                     break;
                 default:
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, HomeDoctorActivity.class);
+            intent.setClass(this, SlideActivity.class);
 
         startActivity(intent);
         finish();

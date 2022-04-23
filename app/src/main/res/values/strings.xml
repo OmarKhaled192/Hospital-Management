@@ -143,6 +143,7 @@
     <string name="publishFailure">Post failed to publish</string>
     <string name="photo">Photo</string>
     <string name="loadingNow">Loading...</string>
+    <string name="services">Services</string>
 
 
 </resources>

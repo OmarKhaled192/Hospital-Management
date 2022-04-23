@@ -128,12 +128,12 @@ public class CreatePostFragment extends Fragment {
            //if(TextUtils.isEmpty(binding.caption.getText().toString()) && uri == null)
             Post post=new Post();
             post.setId("o");
-            post.setProfile(Constants.POSTS+"/"+post.getName()+"/"+post.getId()+"");
-            post.setName(binding.namePostForDoctor.getText().toString());
-            post.setTime(binding.timePostForDoctor.getText().toString());
-            post.setDisLike(0);
-            post.setLike(0);
-            post.setStar(0);
+//            post.setProfile(Constants.POSTS+"/"+post.getName()+"/"+post.getId()+"");
+//            post.setName(binding.namePostForDoctor.getText().toString());
+//            post.setTime(binding.timePostForDoctor.getText().toString());
+//            post.setDisLike(0);
+//            post.setLike(0);
+//            post.setStar(0);
             if(TextUtils.isEmpty(binding.caption.getText().toString()))
                 post.setPost("");
             else

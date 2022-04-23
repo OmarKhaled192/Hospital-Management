@@ -32,7 +32,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   private final Context context;
   private final FirebaseStorage storage;
   private final StorageReference storageRef;
-  private long like,dislike,star;
+  private long like;
+  private long dislike;
+  private long star;
   private final int red,black,likeOn,likeOff,dislikeOn,dislikeOff,starOn,starOff;
 
   public PostAdapter( Context context, List<Post> posts) {
@@ -43,7 +45,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     like=0;
     dislike=0;
     star=0;
-    red=context.getResources().getColor(R.color.red);
+    red=context.getResources().getColor(R.color.teal_700);
     black=context.getResources().getColor(R.color.black);
     likeOn=R.drawable.like;
     likeOff=R.drawable.like_off;
@@ -69,12 +71,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   @Override
   public void onBindViewHolder(@NonNull PostHolder holder, int position) {
     Post post = posts.get(position);
-    like = post.getLike();
-    dislike = post.getDisLike();
-    star = post.getStar();
+    like = Long.parseLong(post.getPost());
+    dislike = Long.parseLong(post.getPost());
+    star = Long.parseLong(post.getPost());;
 
     holder.profilePostForHomePatient.setImageResource(R.drawable.doctor);
-    holder.namePostForHomePatient.setText(post.getName());
+    //holder.namePostForHomePatient.setText(post.getName());
     holder.timePostForHomePatient.setText(post.getTime());
     if (!post.getPost().equals("")) {
       holder.postForHomePatient.setText(post.getPost());
@@ -96,7 +98,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
       holder.imagePostForHomePatient.setVisibility(View.GONE);
     }
     if (!post.getVideo().equals("")) {
-      storageRef.child(post.getName() + "/" + post.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+      storageRef.child(post.getId() + "/" + post.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
         @Override
         public void onSuccess(Uri uri) {
           holder.videoPostForHomePatient.setVideoURI(uri);

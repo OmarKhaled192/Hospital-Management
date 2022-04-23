@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
                 onBackPressed();
             }
         });
-        mySharedPreference=MySharedPreference.newInstance(this);
+        mySharedPreference=new MySharedPreference(this);
         binding.job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

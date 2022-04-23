@@ -1,33 +1,25 @@
 package com.yom.hospitalmanagementyom.model;
 
-public class Post {
-  private String id;
-  private String Profile,Name,Time,Post,Image,Video;
-  private long Like,DisLike,Star;
+import java.util.List;
 
+public class Post {
+  private String Id, IdDoctor,Time,Post,Image,Video;
+  private List<String> Likes,DisLikes,Stars;
 
   public String getId() {
-    return id;
+    return Id;
   }
 
   public void setId(String id) {
-    this.id = id;
+    Id = id;
   }
 
-  public String getProfile() {
-    return Profile;
+  public String getIdDoctor() {
+    return IdDoctor;
   }
 
-  public void setProfile(String profile) {
-    Profile = profile;
-  }
-
-  public String getName() {
-    return Name;
-  }
-
-  public void setName(String name) {
-    Name = name;
+  public void setIdDoctor(String idDoctor) {
+    IdDoctor = idDoctor;
   }
 
   public String getTime() {
@@ -62,27 +54,27 @@ public class Post {
     Video = video;
   }
 
-  public long getLike() {
-    return Like;
+  public List<String> getLikes() {
+    return Likes;
   }
 
-  public void setLike(long like) {
-    Like = like;
+  public void setLikes(List<String> likes) {
+    Likes = likes;
   }
 
-  public long getDisLike() {
-    return DisLike;
+  public List<String> getDisLikes() {
+    return DisLikes;
   }
 
-  public void setDisLike(long disLike) {
-    DisLike = disLike;
+  public void setDisLikes(List<String> disLikes) {
+    DisLikes = disLikes;
   }
 
-  public long getStar() {
-    return Star;
+  public List<String> getStars() {
+    return Stars;
   }
 
-  public void setStar(long star) {
-    Star = star;
+  public void setStars(List<String> stars) {
+    Stars = stars;
   }
 }

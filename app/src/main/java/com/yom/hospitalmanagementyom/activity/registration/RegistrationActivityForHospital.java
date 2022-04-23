@@ -82,7 +82,7 @@ public class RegistrationActivityForHospital extends AppCompatActivity{
 			hospital.setLocation(choose);
 			hospital.setName(HospitalName);
 			hospital.setManagerName(ManagerName);
-			hospital.setState(HOSPITAL_KEY);
+			//hospital.setState(HOSPITAL_KEY);
 			Intent intent = new Intent(RegistrationActivityForHospital.this, CommonRegistrationActivity.class);
 			intent.putExtra(HOSPITAL_KEY, hospital);
 			intent.putExtra(ACTIVITY_KEY,HOSPITAL_KEY);

@@ -5,19 +5,12 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class CommonFunction {
-    private static CommonFunction commonFunction;
     private final Calendar calendar;
     private final SimpleDateFormat simpleDateFormat;
 
-    private CommonFunction(){
+    public CommonFunction(){
         calendar=Calendar.getInstance();
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy & KK:mm:ss aaa", Locale.ENGLISH);
-    }
-
-    public static CommonFunction newInstance(){
-        if(commonFunction==null)
-            commonFunction=new CommonFunction();
-        return commonFunction;
     }
 
     public String getTimeNow() {

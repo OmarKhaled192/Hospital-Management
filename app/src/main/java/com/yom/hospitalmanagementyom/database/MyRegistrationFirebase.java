@@ -83,7 +83,7 @@ public class MyRegistrationFirebase {
                 readMessage.setNumbers();
             }
         };
-        commonFunction=CommonFunction.newInstance();
+        commonFunction=new CommonFunction();
     }
 
     public static MyRegistrationFirebase getInstance(Context context) {

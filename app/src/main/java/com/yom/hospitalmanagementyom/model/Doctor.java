@@ -1,7 +1,8 @@
 package com.yom.hospitalmanagementyom.model;
 
-public class Patient {
-  private String Id, Profile, Name, Phone, Email, Password, DOB, Gender, Type, Status;
+
+public class Doctor {
+  private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender, Type, Status, Specialization;
 
   public String getId() {
     return Id;
@@ -9,6 +10,14 @@ public class Patient {
 
   public void setId(String id) {
     Id = id;
+  }
+
+  public String getHospitalId() {
+    return HospitalId;
+  }
+
+  public void setHospitalId(String hospitalId) {
+    HospitalId = hospitalId;
   }
 
   public String getProfile() {
@@ -81,5 +90,13 @@ public class Patient {
 
   public void setStatus(String status) {
     Status = status;
+  }
+
+  public String getSpecialization() {
+    return Specialization;
+  }
+
+  public void setSpecialization(String specialization) {
+    Specialization = specialization;
   }
 }
