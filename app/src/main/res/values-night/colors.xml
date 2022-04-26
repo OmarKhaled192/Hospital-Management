@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="teal_700">#018786</color>
+    <color name="teal_700">#005959</color>
     <color name="teal_7002">#4F018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="whiteChange">#80171717</color>
-    <color name="blackChange">#FFFFFFFF</color>
-    <color name="hint">#3C3B3B</color>
+    <color name="white">#cccccc</color>
+    <color name="black">#000000</color>
+    <color name="hint">#545454</color>
+    <color name="hint2">#8d8d8d</color>
     <color name="green">#00FF00</color>
     <color name="bgHomePatient">#80171717</color>
 </resources>

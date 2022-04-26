@@ -32,6 +32,15 @@ public class SlideActivity extends AppCompatActivity {
         binding.slideViewId.setAdapter(slideAdapter);
         addDotsIndicators(0);
         binding.slideViewId.addOnPageChangeListener(viewListener);
+
+
+        binding.skip.setOnClickListener(view -> skip());
+
+        binding.back.setOnClickListener(view -> binding.slideViewId.setCurrentItem(nCurrentPage-1));
+
+        binding.next.setOnClickListener(view -> binding.slideViewId.setCurrentItem(nCurrentPage+1));
+
+        binding.getStarted.setOnClickListener(view -> skip());
     }
 
     // showing indicators :
@@ -101,18 +110,9 @@ public class SlideActivity extends AppCompatActivity {
         }
     };
 
-    public void skip(View view) {
-        Intent intent=new Intent(this,LoginActivity.class);
+    void skip(){
+        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
         startActivity( intent );
         finish();
-    }
-    public void back(View view) {
-        binding.slideViewId.setCurrentItem(nCurrentPage-1);
-    }
-    public void next(View view) {
-        binding.slideViewId.setCurrentItem(nCurrentPage+1);
-    }
-    public void start(View view) {
-        skip(view);
     }
 }

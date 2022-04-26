@@ -2,11 +2,10 @@
 <resources>
     <color name="teal_700">#018786</color>
     <color name="teal_7002">#4F018786</color>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="whiteChange">#FFFFFFFF</color>
-    <color name="blackChange">#FF000000</color>
-    <color name="hint">#80171717</color>
+    <color name="black">#2c2c2c</color>
+    <color name="hint">#afafaf</color>
+    <color name="hint2">#bdbdbd</color>
     <color name="green">#00FF00</color>
     <color name="bgHomePatient">#80B3B1B1</color>
 </resources>

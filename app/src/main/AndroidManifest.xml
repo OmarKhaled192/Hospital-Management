@@ -53,8 +53,7 @@
         <activity
             android:name=".activity.registration.SlideActivity"
             android:exported="false"
-            android:label="@string/services"
-            android:parentActivityName=".activity.registration.MainActivity"/>
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
         <activity
             android:name=".activity.registration.MainActivity"
             android:exported="true"
