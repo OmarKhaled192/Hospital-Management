@@ -49,7 +49,9 @@
             android:exported="false" />
         <activity
             android:name=".activity.registration.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/login"
+            android:parentActivityName=".activity.registration.SlideActivity"/>
         <activity
             android:name=".activity.registration.SlideActivity"
             android:exported="false"

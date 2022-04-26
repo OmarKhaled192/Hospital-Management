@@ -3,95 +3,96 @@ package com.yom.hospitalmanagementyom.activity.registration;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
+import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityLoginBinding;
-import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
-import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
+import com.yom.hospitalmanagementyom.model.Constants;
+
+import java.util.Objects;
 
 
 public class LoginActivity extends AppCompatActivity implements LoginListener {
 
     private ActivityLoginBinding binding;
-    private String choose;
-    private MyRegistrationFirebase myRegistrationFirebase;
-    private MySharedPreference mySharedPreference;
+    private int position;
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbar);
-        binding.toolbar.setNavigationIcon(R.drawable.back);
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
+
+        position = -1;
+
+        ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Jobs));
+        binding.job.setAdapter(adapterItems);
+
+        binding.job.setOnItemClickListener((adapterView, view, i, l) -> position = i);
+        repository= new Repository(this);
+
+        binding.forgetPassword.setOnClickListener(view -> {
+            if(Objects.requireNonNull(binding.Email.getText()).length()==0)
+                repository.resetPassword(binding.Email.getText().toString());
+            else
+                TastyToast.makeText(getApplicationContext(),getString(R.string.emailError),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
         });
-        mySharedPreference=new MySharedPreference(this);
-        binding.job.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                choose= (String) parent.getItemAtPosition(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                choose= (String) parent.getItemAtPosition(0);
-            }
+
+        binding.login.setOnClickListener(view -> login());
+
+        binding.signUp.setOnClickListener(view -> {
+            Intent intent=new Intent(getBaseContext(),ChooseActivity.class);
+            startActivity( intent );
         });
-        myRegistrationFirebase=MyRegistrationFirebase.getInstance(this);
+
+
     }
 
-    public void login(View view) {
-        String email=binding.Email.getText().toString();
-        String password=binding.Password.getText().toString();
-        if(email.length()==0) {
+    void login() {
+        String email= Objects.requireNonNull(binding.Email.getText()).toString();
+        String password= Objects.requireNonNull(binding.Password.getText()).toString();
+        if(position == -1){
+            binding.job.setError(getString(R.string.jobError));
+        }
+        else if(email.length()==0) {
             binding.Email.setError(getString(R.string.emailError));
         }
         else if(password.length()==0) {
             binding.Password.setError(getString(R.string.passwordError));
         }
         else{
-            myRegistrationFirebase.SignInUser(email,password,this);
+            repository.signInUser(email,password,this);
         }
     }
 
-    public void forgetPassword(View view) {
-        myRegistrationFirebase.resetPassword(binding.Email.getText().toString());
-    }
-
-    public void signUp(View view) {
-        Intent intent=new Intent(getBaseContext(),ChooseActivity.class);
-        startActivity( intent );
-    }
 
     @Override
     public void nextToHome() {
-        if(choose.equals( getResources().getStringArray(R.array.Jobs)[0] ) ) {
-            mySharedPreference.saveString("TypeUser", "Patient");
+        if(position == 0) {
+            repository.saveString(Constants.TYPE_USER, Constants.PATIENT);
             Intent intent=new Intent(getBaseContext(), HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
-        else if(choose.equals( getResources().getStringArray(R.array.Jobs)[1] )) {
-            mySharedPreference.saveString("TypeUser", "Hospital");
+        else if(position == 1) {
+            repository.saveString(Constants.TYPE_USER, Constants.HOSPITAL);
             Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();
         }
-        else if(choose.equals( getResources().getStringArray(R.array.Jobs)[2] )) {
-            mySharedPreference.saveString("TypeUser", "Doctor");
-            Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
+        else if(position == 2) {
+            repository.saveString(Constants.TYPE_USER, Constants.DOCTOR);
+            Intent intent=new Intent(getBaseContext(), HomeDoctorActivity.class);
             startActivity( intent );
             finishAffinity();
         }
-        else if(choose.equals( getResources().getStringArray(R.array.Jobs)[3] )) {
-            mySharedPreference.saveString("TypeUser", "Admin");
+        else if(position == 3) {
+            repository.saveString(Constants.TYPE_USER, Constants.ADMIN);
             Intent intent=new Intent(getBaseContext(),HomePatientActivity.class);
             startActivity( intent );
             finishAffinity();

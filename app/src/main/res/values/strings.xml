@@ -25,6 +25,7 @@
 
     <!--Login Activity-->
     <string name="welcome">Welcome To Ekshifly</string>
+    <string name="chooseJob">Job</string>
     <string-array name="Jobs">
         <item>Patient</item>
         <item>Hospital</item>
@@ -144,6 +145,7 @@
     <string name="photo">Photo</string>
     <string name="loadingNow">Loading...</string>
     <string name="services">Services</string>
+    <string name="background">Background</string>
 
 
 </resources>

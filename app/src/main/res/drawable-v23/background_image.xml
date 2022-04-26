@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="@dimen/_320sdp"
+        android:height="@dimen/_130sdp"
+        android:drawable="@drawable/design5"/>
+
+    <item
+        android:width="@dimen/_320sdp"
+        android:height="@dimen/_155sdp"
+        android:drawable="@drawable/design6"/>
+
+    <item
+        android:width="@dimen/_40sdp"
+        android:height="@dimen/_40sdp"
+        android:gravity="center"
+        android:bottom="@dimen/_20sdp"
+        android:drawable="@drawable/hospital_logo"/>
+
+</layer-list>

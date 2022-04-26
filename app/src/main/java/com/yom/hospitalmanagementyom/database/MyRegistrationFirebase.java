@@ -206,7 +206,7 @@ public class MyRegistrationFirebase {
         });
     }
 
-    public void SignInUser(String email, String password, LoginListener loginListener){
+    public void signInUser(String email, String password, LoginListener loginListener){
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {

@@ -1,13 +1,12 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.content.Context;
-import androidx.lifecycle.LiveData;
 import com.google.firebase.auth.FirebaseUser;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
+import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Post;
-
 import java.util.List;
 
 public class Repository {
@@ -23,7 +22,15 @@ public class Repository {
         myHomeFirebase = MyHomeFirebase.newInstance(context);
     }
 
-    public void saveStringSharedPreference(String key,String value) {
+    public void resetPassword(String email){
+        myRegistrationFirebase.resetPassword(email);
+    }
+
+    public void signInUser(String email, String password, LoginListener loginListener){
+        myRegistrationFirebase.signInUser(email,password,loginListener);
+    }
+
+    public void saveString(String key,String value) {
         mySharedPreference.saveString(key,value);
     }
 
