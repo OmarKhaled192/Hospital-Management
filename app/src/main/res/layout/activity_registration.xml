@@ -1,92 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.registration.RegistrationActivity">
 
-  <com.google.android.material.appbar.AppBarLayout
-      android:id="@+id/appBar"
-      android:layout_width="match_parent"
-      android:layout_height="?actionBarSize">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/teal_700"
-        app:title="@string/signUp"
-        app:titleTextColor="@color/white" />
-  </com.google.android.material.appbar.AppBarLayout>
-
-  <!-- Start Background for Page -->
-  <View
-      android:id="@+id/background"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/_130sdp"
-      android:layout_below="@id/appBar"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentEnd="true"
-      android:background="@drawable/design6" />
-
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/_115sdp"
-      android:layout_below="@id/appBar"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentEnd="true"
-      android:background="@drawable/design5" />
-
   <ImageView
-      android:id="@+id/image"
-      android:layout_width="@dimen/_40sdp"
-      android:layout_height="@dimen/_40sdp"
-      android:layout_below="@id/appBar"
-      android:layout_centerInParent="true"
-      android:layout_marginTop="@dimen/_25sdp"
-      android:src="@drawable/home"/>
-
-  <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/image"
-      android:layout_centerInParent="true"
-      android:text="@string/app_name"
-      android:textColor="@color/white"
-      android:textSize="@dimen/_15ssp"
-      android:fontFamily="@font/arabic" />
-  <!-- End Background for Page-->
+      android:src="@drawable/background_image"
+      android:contentDescription="@string/background"/>
 
   <androidx.cardview.widget.CardView
       android:id="@+id/card"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/_90sdp"
-      android:layout_marginHorizontal="@dimen/_25sdp"
+      android:layout_width="@dimen/_50sdp"
+      android:layout_height="@dimen/_50sdp"
       android:layout_marginTop="@dimen/_10sdp"
-      android:layout_below="@+id/background"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:cardCornerRadius="@dimen/_2sdp"
-      app:civ_border_color="?attr/colorControlNormal"
-      app:cardElevation="@dimen/_10sdp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-
-      <de.hdodenhof.circleimageview.CircleImageView
-          android:id="@+id/Profile"
-          android:layout_width="@dimen/_50sdp"
-          android:layout_height="@dimen/_50sdp"
+      app:cardCornerRadius="@dimen/_30sdp"
+      app:cardElevation="@dimen/_10sdp"
+      android:layout_gravity="center">
+      <ImageView
+          android:id="@+id/pickOfProfile"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
           android:clickable="true"
-          android:onClick="pick"
-          android:src="@drawable/person"
-          app:civ_border_width="@dimen/_1sdp" />
-    </LinearLayout>
+          android:src="@drawable/camera"
+          android:scaleType="center"
+          android:focusable="true"
+          android:contentDescription="@string/profile"/>
   </androidx.cardview.widget.CardView>
 
   <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +37,6 @@
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/card"
       android:layout_marginHorizontal="@dimen/_25sdp"
       android:layout_marginTop="@dimen/_10sdp"
       android:hint="@string/name"
@@ -117,21 +59,19 @@
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/box1"
       android:layout_marginHorizontal="@dimen/_25sdp"
-      android:hint="@string/telephone"
+      android:hint="@string/date"
       app:boxStrokeWidth="@dimen/_1sdp"
       app:counterEnabled="true"
-      app:prefixText="02"
       app:endIconMode="clear_text"
       app:errorEnabled="true"
       app:errorIconDrawable="@drawable/error"
-      app:startIconDrawable="@drawable/telephone">
+      app:startIconDrawable="@drawable/time">
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Telephone"
+        android:id="@+id/Date"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="phone"
+        android:inputType="date"
         android:textColor="?attr/colorControlNormal" />
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +80,6 @@
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/box2"
       android:layout_marginHorizontal="@dimen/_25sdp"
       android:hint="@string/Password"
       app:counterEnabled="true"
@@ -162,7 +101,6 @@
       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/box3"
       android:layout_marginHorizontal="@dimen/_25sdp"
       android:hint="@string/confirmPassword"
       app:counterEnabled="true"
@@ -179,13 +117,31 @@
         android:textColor="?attr/colorControlNormal" />
   </com.google.android.material.textfield.TextInputLayout>
 
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/box5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/_25sdp"
+      android:hint="@string/gender"
+      app:boxStrokeWidth="@dimen/_1sdp"
+      app:errorEnabled="true"
+      app:errorIconDrawable="@drawable/error"
+      app:startIconDrawable="@drawable/person"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+    <AutoCompleteTextView
+        android:id="@+id/Gender"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="none"
+        tools:ignore="LabelFor" />
+  </com.google.android.material.textfield.TextInputLayout>
+
   <Button
       android:id="@+id/next"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/_50sdp"
-      android:layout_below="@id/box4"
+      android:layout_height="?actionBarSize"
       android:layout_marginHorizontal="@dimen/_25sdp"
       android:text="@string/next"
-      android:onClick="next"
       android:textSize="@dimen/_15ssp"/>
-</RelativeLayout>
+
+</LinearLayout>

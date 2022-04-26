@@ -22,6 +22,7 @@
         <item>Elderly people and people with chronic diseases can participate in a private medical care service</item>
         <item>You can benefit from many tips here</item>
     </string-array>
+    <string name="services">Services</string>
 
     <!--Login Activity-->
     <string name="welcome">Welcome To Ekshifly</string>
@@ -44,7 +45,7 @@
     <string name="login">Login</string>
     <string name="noAccount">Do not have an account?</string>
     <string name="signUp">Sign Up</string>
-
+    <string name="background">Background</string>
 
     <!--Choose Activity-->
     <string name="question">Do you want to create an account in the application as a hospital or a patient?</string>
@@ -60,6 +61,14 @@
     <string name="confirmPassword">Confirm Password</string>
     <string name="confirmPasswordError">Please Confirm Password</string>
     <string name="notEqualPassword">Two password not equal</string>
+    <string name="gender">Gender</string>
+    <string name="time">Time</string>
+    <string name="genderError">Please choose your gender</string>
+
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
 
     <!--Registration Hospital Activity-->
@@ -144,8 +153,7 @@
     <string name="publishFailure">Post failed to publish</string>
     <string name="photo">Photo</string>
     <string name="loadingNow">Loading...</string>
-    <string name="services">Services</string>
-    <string name="background">Background</string>
+    <string name="date">Date</string>
 
 
 </resources>
