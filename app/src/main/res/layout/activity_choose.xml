@@ -1,95 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.registration.ChooseActivity">
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/teal_700"
-            app:title="@string/signUp"
-            app:titleTextColor="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Start Background for Page -->
-    <View
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_130sdp"
-        android:layout_below="@id/appBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/design6" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_115sdp"
-        android:layout_below="@id/appBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/design5" />
 
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/appBar"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:src="@drawable/home"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/image"
-        android:layout_centerInParent="true"
-        android:text="@string/app_name"
+        android:contentDescription="@string/background"
+        android:src="@drawable/background_image"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:text="@string/question"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="@dimen/_15ssp" />
+
+    <Button
+        android:id="@+id/registrationForPatient"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:text="@string/patient"
         android:textColor="@color/white"
-        android:textSize="@dimen/_15ssp"
-        android:fontFamily="@font/arabic" />
-    <!-- End Background for Page-->
+        android:textSize="@dimen/_15ssp"/>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/background"
-            android:layout_margin="@dimen/_15sdp"
-            android:text="@string/question"
-            android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="@dimen/_15ssp" />
-
-        <Button
-            android:id="@+id/hospital"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:layout_below="@+id/textView"
-            android:layout_marginHorizontal="@dimen/_30sdp"
-            android:onClick="registrationForHospital"
-            android:text="@string/hospital"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15ssp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:layout_below="@+id/hospital"
-            android:layout_marginHorizontal="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:onClick="registrationForPatient"
-            android:text="@string/patient"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15ssp"/>
-</RelativeLayout>
+    <Button
+        android:id="@+id/registrationForHospital"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/hospital"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp" />
+</LinearLayout>
