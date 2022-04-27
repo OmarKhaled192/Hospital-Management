@@ -2,11 +2,7 @@ package com.yom.hospitalmanagementyom.functions;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import com.yom.hospitalmanagementyom.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;

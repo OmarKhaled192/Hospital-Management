@@ -14,8 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityVerificationBinding;
-import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -24,22 +24,20 @@ import com.yom.hospitalmanagementyom.model.Constants;
 public class VerificationActivity extends AppCompatActivity implements PhoneVerificationListener, ReadMessage {
 
     private ActivityVerificationBinding binding;
-    private String phoneNumber;
     private Intent intent;
-    private MyRegistrationFirebase myRegistrationFirebase;
+    private Repository repository;
     private ActivityResultLauncher<String> launcher;
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= ActivityVerificationBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        myRegistrationFirebase= new MyRegistrationFirebase(this);
-        intent = new Intent();
         checkPhoneOrEmail();
         handlingEditText();
+
+        repository = new Repository(this);
+        intent = new Intent();
 
         binding.verify.setOnClickListener(view -> {
             if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.PHONE))
@@ -49,7 +47,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         });
 
         binding.resend.setOnClickListener(view -> {
-            myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,VerificationActivity.this, VerificationActivity.this);
+            checkPhoneOrEmail();
             Toast.makeText(getApplicationContext(),getString(R.string.resend),Toast.LENGTH_LONG).show();
         });
     }
@@ -58,8 +56,8 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
     private void checkPhoneOrEmail(){
         if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.PHONE)) {
             editTextVisible(View.VISIBLE);
-            phoneNumber = getIntent().getExtras().getString(Constants.PHONE);
-            myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,this, this);
+            String phoneNumber = getIntent().getExtras().getString(Constants.PHONE);
+            repository.startPhoneNumberVerification(phoneNumber,this, this);
 
             launcher=registerForActivityResult(
                     new ActivityResultContracts.RequestPermission(),
@@ -90,7 +88,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
             editTextVisible(View.GONE);
             String email = getIntent().getExtras().getString(Constants.EMAIL);
             String password = getIntent().getExtras().getString(Constants.PASSWORD);
-            myRegistrationFirebase.createEmail(email, password);
+            repository.createEmail(email, password);
         }
     }
 
@@ -203,12 +201,12 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         if (total.length() != 6)
             TastyToast.makeText(this, getString(R.string.enterCode), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
         else {
-            myRegistrationFirebase.signInUser(total,this);
+            repository.signInUserByPhone(total,this);
         }
     }
 
     private void verifyEmail(){
-        if(myRegistrationFirebase.isVerify()){
+        if(repository.isVerify()){
             setResult(RESULT_OK,intent);
         } else {
             setResult(RESULT_CANCELED,intent);
@@ -219,6 +217,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
 
     @Override
     public void successVerify() {
+        repository.deleteUserPhone();
         setResult(RESULT_OK,intent);
         super.onBackPressed();
     }

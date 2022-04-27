@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
             binding.Password.setError(getString(R.string.passwordError));
         }
         else{
-            repository.signInUser(email,password,this);
+            repository.loginIn(email,password,this);
         }
     }
 

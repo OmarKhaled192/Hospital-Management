@@ -34,19 +34,29 @@
             android:exported="false" />
         <activity
             android:name=".activity.registration.VerificationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/verification"
+            android:parentActivityName=".activity.registration.CommonRegistrationActivity"/>
         <activity
             android:name=".activity.registration.CommonRegistrationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/signUp"
+            android:parentActivityName=".activity.registration.RegistrationActivityForHospital"/>
         <activity
             android:name=".activity.registration.RegistrationActivityForHospital"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/signUp"
+            android:parentActivityName=".activity.registration.RegistrationActivity"/>
         <activity
             android:name=".activity.registration.RegistrationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/signUp"
+            android:parentActivityName=".activity.registration.ChooseActivity"/>
         <activity
             android:name=".activity.registration.ChooseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/signUp"
+            android:parentActivityName=".activity.registration.LoginActivity"/>
         <activity
             android:name=".activity.registration.LoginActivity"
             android:exported="false"

@@ -7,12 +7,7 @@ import android.net.Uri;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -39,42 +34,34 @@ public class MyRegistrationFirebase {
     private final FirebaseFirestore firebaseFirestore;
     private final FirebaseStorage firebaseStorage;
     private final FirebaseAuth firebaseAuth;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
-    private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
-    private ReadMessage readMessage;
 
     public MyRegistrationFirebase(Context context) {
         this.context = context;
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+    }
 
-        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    public void loginIn(String email, String password, LoginListener loginListener){
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnSuccessListener(authResult ->
+                        loginListener.nextToHome())
+                .addOnFailureListener(e ->
+                        TastyToast.makeText(context,context.getString(R.string.failSignIn),TastyToast.LENGTH_LONG,TastyToast.ERROR).show());
+    }
 
-            @Override
-            public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
-            }
-
-            @Override
-            public void onVerificationFailed(@NonNull FirebaseException e) {
-            }
-
-            @Override
-            public void onCodeSent(@NonNull String  verificationId,
-                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                mVerificationId = verificationId;
-                mResendToken = token;
-                readMessage.setNumbers();
-            }
-        };
+    public void resetPassword(String email){
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnSuccessListener(unused ->
+                        TastyToast.makeText(context,context.getString(R.string.checkEmail),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show())
+                .addOnFailureListener(e ->
+                        TastyToast.makeText(context,context.getString(R.string.failReset),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show());
     }
 
     public FirebaseUser getUser(){
         return firebaseAuth.getCurrentUser();
     }
-
-
 
     public void savePatient(Patient patient, SaveDataListener saveDataListener) {
         Dialog dialog=new Dialog(context);
@@ -163,40 +150,25 @@ public class MyRegistrationFirebase {
         firebaseStorage.getReference(child).child(child2).delete();
     }
 
-    public void createEmail(String email,String password){
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        sendLink();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                TastyToast.makeText(context,context.getString(R.string.emailErrorVerification),TastyToast.LENGTH_LONG,TastyToast.ERROR);
-            }
-        });
-    }
-
-    private void sendLink(){
-        getUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                TastyToast.makeText(context, context.getString(R.string.checkEmail), TastyToast.LENGTH_LONG,TastyToast.ERROR);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                TastyToast.makeText(context, context.getString(R.string.emailErrorVerification), TastyToast.LENGTH_LONG,TastyToast.ERROR);
-            }
-        });
-    }
-
-    public boolean isVerify(){
-        return getUser().isEmailVerified();
-    }
-
     public void startPhoneNumberVerification(String phoneNumber, Activity activity, ReadMessage readMessage) {
+        PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks =
+                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            @Override
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
+            }
+
+            @Override
+            public void onVerificationFailed(@NonNull FirebaseException e) {
+            }
+
+            @Override
+            public void onCodeSent(@NonNull String verificationId,
+                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                mVerificationId = verificationId;
+                readMessage.setNumbers();
+            }
+        };
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(firebaseAuth)
                         .setPhoneNumber("+2"+phoneNumber)       // Phone number to verify
@@ -205,75 +177,43 @@ public class MyRegistrationFirebase {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
-        this.readMessage=readMessage;
     }
 
-    public void signInUser(String total, PhoneVerificationListener phoneVerificationListener) {
+    public void signInUserByPhone(String total, PhoneVerificationListener phoneVerificationListener) {
         if (mVerificationId.isEmpty())
             return;
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, total);
-        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    phoneVerificationListener.successVerify();
-                } else {
-                    phoneVerificationListener.failVerify();
-                }
+        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                phoneVerificationListener.successVerify();
+            } else {
+                phoneVerificationListener.failVerify();
             }
         });
     }
 
-    public void signInUser(String email, String password, LoginListener loginListener){
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                loginListener.nextToHome();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                TastyToast.makeText(context,context.getString(R.string.failSignIn),TastyToast.LENGTH_LONG,TastyToast.ERROR).show();
-            }
-        });
+    public void deleteUserPhone(){
+        getUser().delete();
     }
 
-    public void resetPassword(String email){
-        firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                TastyToast.makeText(context,context.getString(R.string.checkEmail),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                TastyToast.makeText(context,context.getString(R.string.failReset),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
-            }
-        });
+    public void createEmail(String email,String password){
+        firebaseAuth.createUserWithEmailAndPassword(email,password)
+                .addOnSuccessListener(authResult ->
+                        sendLink())
+                .addOnFailureListener(e ->
+                        TastyToast.makeText(context,context.getString(R.string.emailErrorVerification),TastyToast.LENGTH_LONG,TastyToast.ERROR));
     }
 
-
-
-    //Delete FirebaseStorage
-    private boolean check ;
-    private boolean deleteImageLevel1(String child){
-        check = false;
-        firebaseStorage.getReference(child).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                check = true;
-            }
-        });
-        return check;
+    private void sendLink(){
+        getUser().sendEmailVerification()
+                .addOnSuccessListener(unused ->
+                        TastyToast.makeText(context, context.getString(R.string.checkEmail), TastyToast.LENGTH_LONG,TastyToast.ERROR))
+                .addOnFailureListener(e ->
+                        TastyToast.makeText(context, context.getString(R.string.emailErrorVerification), TastyToast.LENGTH_LONG,TastyToast.ERROR));
     }
-    private boolean deleteImageLevel3(String child, String child2, String child3){
-        check = false;
-        firebaseStorage.getReference(child).child(child2).child(child3).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                check = true;
-            }
-        });
-        return check;
+
+    public boolean isVerify(){
+        return getUser().isEmailVerified();
     }
+
 }
