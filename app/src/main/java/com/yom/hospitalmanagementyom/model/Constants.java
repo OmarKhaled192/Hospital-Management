@@ -16,6 +16,7 @@ public class Constants {
     public static final String DOCTOR = "Doctor";
     public static final String TYPE_USER = "TypeUser";
     public static final String PATIENT_KEY="Patient";
+    public static final String HOSPITAL_KEY="Hospital";
     public static final String ACTIVITY_KEY="Activity";
     public static final String ONLINE="Online";
     public static final String OFFLINE="Offline";

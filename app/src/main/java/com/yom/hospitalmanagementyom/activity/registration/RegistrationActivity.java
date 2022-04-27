@@ -27,7 +27,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private boolean check=false;
     private String profile;
     private DatePickerDialog datePickerDialog;
-    private Repository repository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +56,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
         binding.Date.setOnClickListener(view -> datePickerDialog.show());
 
-
         ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Gender));
         binding.Gender.setAdapter(adapterItems);
+
+
+        binding.pickOfProfile.setOnClickListener(view -> activityResultLauncher2.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE));
+
+        binding.next.setOnClickListener(view -> next());
 
     }
 
@@ -79,7 +82,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    public void next(View view) {
+    private void next() {
         String name = Objects.requireNonNull(binding.Name.getText()).toString();
         String data = Objects.requireNonNull(binding.Date.getText()).toString();
         String password = Objects.requireNonNull(binding.Password.getText()).toString();
@@ -116,9 +119,5 @@ public class RegistrationActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-    }
-
-    public void pick(View view) {
-        activityResultLauncher2.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 }

@@ -1,77 +1,68 @@
 package com.yom.hospitalmanagementyom.activity.registration;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-
+import android.widget.ArrayAdapter;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.databinding.ActivityRegistrationForHospitalBinding;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Hospital;
+import java.util.Objects;
 
 //Omar Khaled
 public class RegistrationActivityForHospital extends AppCompatActivity{
 
 	private ActivityRegistrationForHospitalBinding binding;
-	private String profile,choose;
-	private final String HOSPITAL_KEY="Hospital";
-	private final String ACTIVITY_KEY="Activity";
-	private ActivityResultLauncher<String> activityResultLauncher;
-	private boolean check=false;
+	private String profile = null;
+	private int position = -1;
+	private ActivityResultLauncher<String> activityResultLauncher, activityResultLauncher2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate( savedInstanceState );
 		binding= ActivityRegistrationForHospitalBinding.inflate(getLayoutInflater());
 		setContentView( binding.getRoot() );
-		setSupportActionBar(binding.toolbar);
-		binding.toolbar.setNavigationIcon(R.drawable.back);
-		binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				onBackPressed();
-			}
-		});
-
-		binding.Location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				choose= (String) parent.getItemAtPosition(position);
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				choose= (String) parent.getItemAtPosition(0);
-			}
-		});
 
 		activityResultLauncher=registerForActivityResult(
 				new ActivityResultContracts.GetContent(),
-				new ActivityResultCallback<Uri>() {
-					@Override
-					public void onActivityResult(Uri result) {
-						if(result!=null) {
-							profile = result.getPath();
-							binding.Profile.setImageURI(result);
-							check = true;
-						}
-					}
+				result -> {
+					profile=result.getPath();
+					binding.pickOfProfile.setImageURI(result);
 				}
 		);
+
+		activityResultLauncher2=registerForActivityResult(
+				new ActivityResultContracts.RequestPermission(),
+				result -> {
+					if(result)
+						activityResultLauncher.launch( "image/*");
+					else
+						TastyToast.makeText(getApplicationContext(),"NO", TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
+				}
+		);
+
+		ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Locations));
+		binding.Location.setAdapter(adapterItems);
+		binding.Location.setOnItemClickListener((adapterView, view, i, l) -> position = i);
+
+		binding.pickOfProfile.setOnClickListener(view -> activityResultLauncher2.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE));
+
+		binding.next.setOnClickListener(view -> next());
 	}
 
-	public void next(View view) {
-		String HospitalName=binding.HospitalName.getText().toString();
-		String ManagerName=binding.ManagerName.getText().toString();
-		if(!check)
+	private void next() {
+		String Location= Objects.requireNonNull(binding.Location.getText()).toString();
+		String HospitalName= Objects.requireNonNull(binding.HospitalName.getText()).toString();
+		String ManagerName= Objects.requireNonNull(binding.ManagerName.getText()).toString();
+		if(profile == null)
 			TastyToast.makeText(getBaseContext(), getString(R.string.profile), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
+		else if(Location.length() == 0)
+			TastyToast.makeText(getBaseContext(), getString(R.string.Location), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
 		else if (HospitalName.length() == 0)
 			binding.box1.setError( getString(R.string.hospital_name) );
 		else if (ManagerName.length() == 0)
@@ -79,18 +70,15 @@ public class RegistrationActivityForHospital extends AppCompatActivity{
 		else {
 			Hospital hospital=new Hospital();
 			hospital.setProfile(profile);
-			hospital.setLocation(choose);
+			hospital.setLocation(getResources().getStringArray(R.array.Locations)[position]);
 			hospital.setName(HospitalName);
 			hospital.setManagerName(ManagerName);
-			//hospital.setState(HOSPITAL_KEY);
+			hospital.setType(Constants.HOSPITAL_KEY);
 			Intent intent = new Intent(RegistrationActivityForHospital.this, CommonRegistrationActivity.class);
-			intent.putExtra(HOSPITAL_KEY, hospital);
-			intent.putExtra(ACTIVITY_KEY,HOSPITAL_KEY);
+			intent.putExtra(Constants.HOSPITAL_KEY, hospital);
+			intent.putExtra(Constants.ACTIVITY_KEY,Constants.HOSPITAL_KEY);
 			startActivity(intent);
 		}
 	}
 
-	public void pick(View view) {
-		activityResultLauncher.launch("image/*");
-	}
 }
