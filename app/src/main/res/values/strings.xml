@@ -154,6 +154,10 @@
     <string name="photo">Photo</string>
     <string name="loadingNow">Loading...</string>
     <string name="date">Date</string>
+    <string name="ok">OK</string>
+    <string name="verifyPhone">Enter the phone number, then click the Verify button</string>
+    <string name="phoneError">Please enter your phone</string>
+    <string name="successSignUp">Sign up successfully</string>
 
 
 </resources>

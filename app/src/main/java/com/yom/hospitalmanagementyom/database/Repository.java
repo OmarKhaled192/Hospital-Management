@@ -1,11 +1,22 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.content.Context;
+import android.net.Uri;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.storage.UploadTask;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.model.Hospital;
+import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
 import java.util.List;
 
@@ -18,7 +29,7 @@ public class Repository {
     public Repository(Context context){
         this.context=context;
         mySharedPreference=new MySharedPreference(context);
-        myRegistrationFirebase=MyRegistrationFirebase.getInstance(context);
+        myRegistrationFirebase = new MyRegistrationFirebase(context);
         myHomeFirebase = MyHomeFirebase.newInstance(context);
     }
 
@@ -30,12 +41,21 @@ public class Repository {
         myRegistrationFirebase.signInUser(email,password,loginListener);
     }
 
+
     public void saveString(String key,String value) {
         mySharedPreference.saveString(key,value);
     }
 
     public String returnStringSharedPreference(String key,String defValue) {
         return mySharedPreference.returnString(key, defValue);
+    }
+
+    public void savePatient(Patient patient, SaveDataListener saveDataListener) {
+        myRegistrationFirebase.savePatient(patient, saveDataListener);
+    }
+
+    public void saveHospital(Hospital hospital, SaveDataListener saveDataListener) {
+        myRegistrationFirebase.saveHospital(hospital, saveDataListener);
     }
 
     public FirebaseUser getUser(){

@@ -1,9 +1,11 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
-import android.widget.Toast;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -16,63 +18,46 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 
 public class MyRegistrationFirebase {
-    private static MyRegistrationFirebase myDatabase;
     private final Context context;
-    private final String PATIENTS_KEY = "Patients";
-    private final String HOSPITAL_KEY="Hospital";
     private final FirebaseFirestore firebaseFirestore;
     private final FirebaseStorage firebaseStorage;
-    private final CollectionReference collectionReferencePatient;
-    private final StorageReference storageReferencePatient;
-    private final CollectionReference collectionReferenceHospital;
-    private final StorageReference storageReferenceHospital;
     private final FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private final PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
-    private final CommonFunction commonFunction;
     private ReadMessage readMessage;
 
-    private MyRegistrationFirebase(Context context) {
+    public MyRegistrationFirebase(Context context) {
         this.context = context;
         firebaseAuth=FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        collectionReferencePatient = firebaseFirestore.collection(PATIENTS_KEY);
-        collectionReferenceHospital = firebaseFirestore.collection(HOSPITAL_KEY);
-
         firebaseStorage = FirebaseStorage.getInstance();
-        storageReferencePatient = firebaseStorage.getReference(PATIENTS_KEY);
-        storageReferenceHospital = firebaseStorage.getReference(HOSPITAL_KEY);
 
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
-            public void onVerificationCompleted(PhoneAuthCredential credential) {
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
             }
 
             @Override
-            public void onVerificationFailed(FirebaseException e) {
+            public void onVerificationFailed(@NonNull FirebaseException e) {
             }
 
             @Override
@@ -83,65 +68,99 @@ public class MyRegistrationFirebase {
                 readMessage.setNumbers();
             }
         };
-        commonFunction=new CommonFunction();
     }
-
-    public static MyRegistrationFirebase getInstance(Context context) {
-        if (myDatabase == null) {
-            myDatabase = new MyRegistrationFirebase(context);
-        }
-        return myDatabase;
-    }
-
 
     public FirebaseUser getUser(){
-        return firebaseUser;
+        return firebaseAuth.getCurrentUser();
     }
 
 
 
-    public void savePatient(Patient patient, SaveDataListener emailVerificationListener) {
-        storageReferencePatient.child(patient.getName()).child(commonFunction.getTimeNow() + ".png")
-                .putFile(Uri.parse(patient.getProfile())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                patient.setProfile(PATIENTS_KEY + "/" + patient.getName() + "/" + commonFunction.getTimeNow() + ".png");
-                collectionReferencePatient.add(patient).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(context, "Yes", Toast.LENGTH_LONG).show();
-                        emailVerificationListener.successSavePatient();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "No", Toast.LENGTH_LONG).show();
-                    }
+    public void savePatient(Patient patient, SaveDataListener saveDataListener) {
+        Dialog dialog=new Dialog(context);
+        dialog.setContentView(R.layout.loading);
+        TextView nowLoading = dialog.findViewById(R.id.nowLoading);
+        ProgressBar progressBarLoading = dialog.findViewById(R.id.progressBarLoading);
+        dialog.show();
+        patient.setId(getUser().getUid());
+
+        firebaseStorage.getReference(Constants.PATIENTS).child(patient.getId())
+                .child(patient.getId() + ".png")
+                .putFile(Uri.parse(patient.getProfile()))
+                .addOnSuccessListener(taskSnapshot -> {
+                    patient.setProfile(Objects.requireNonNull(taskSnapshot.getUploadSessionUri()).toString());
+                    savePatientFirestore(dialog, patient, saveDataListener, taskSnapshot.getUploadSessionUri());
+                }).addOnFailureListener(e ->
+                    saveDataListener.failSavePatient()
+                ).addOnProgressListener(snapshot -> {
+                    double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                    String progress1 = progress+"%";
+                    nowLoading.setText( progress1 );
+                    progressBarLoading.setProgress((int)progress);
                 });
-            }
+    }
+
+    private void savePatientFirestore(Dialog dialog, Patient patient, SaveDataListener saveDataListener, Uri uri){
+        firebaseFirestore.collection(Constants.PATIENTS).add(patient)
+                .addOnSuccessListener(
+                        documentReference -> {
+                            saveDataListener.successSavePatient();
+                            updateUser(dialog, patient.getName(), uri);
+                        })
+                .addOnFailureListener(e -> {
+                    deleteImageLevel(Constants.PATIENTS,patient.getId());
+                    saveDataListener.failSavePatient();
+                    dialog.dismiss();
+                });
+    }
+
+    public void saveHospital(Hospital hospital, SaveDataListener saveDataListener) {
+        Dialog dialog=new Dialog(context);
+        dialog.setContentView(R.layout.loading);
+        TextView nowLoading = dialog.findViewById(R.id.nowLoading);
+        ProgressBar progressBarLoading = dialog.findViewById(R.id.progressBarLoading);
+        dialog.show();
+        hospital.setId(getUser().getUid());
+
+        firebaseStorage.getReference(Constants.HOSPITALS).child(hospital.getId()).child(hospital.getId() + ".png")
+                .putFile(Uri.parse(hospital.getProfile()))
+                .addOnSuccessListener(taskSnapshot -> {
+                    hospital.setProfile(Objects.requireNonNull(taskSnapshot.getUploadSessionUri()).toString());
+                    saveHospitalFirestore(dialog, hospital, saveDataListener, taskSnapshot.getUploadSessionUri());
+                }).addOnFailureListener(e -> saveDataListener.failSaveHospital()
+            ).addOnProgressListener(snapshot -> {
+            double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+            String progress1 = progress+"%";
+            nowLoading.setText( progress1 );
+            progressBarLoading.setProgress((int)progress);
         });
     }
 
-    public void saveHospital(Hospital hospital, SaveDataListener emailVerificationListener) {
-        storageReferenceHospital.child(hospital.getName()).child(commonFunction.getTimeNow() + ".png")
-                .putFile(Uri.parse(hospital.getProfile())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                hospital.setProfile(PATIENTS_KEY + "/" + hospital.getName() + "/" + commonFunction.getTimeNow() + ".png");
-                collectionReferenceHospital.add(hospital).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(context, "Yes", Toast.LENGTH_LONG).show();
-                        emailVerificationListener.successSaveHospital();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "No", Toast.LENGTH_LONG).show();
-                    }
+    private void saveHospitalFirestore(Dialog dialog, Hospital hospital, SaveDataListener saveDataListener, Uri uri){
+        firebaseFirestore.collection(Constants.HOSPITALS).add(hospital)
+                .addOnSuccessListener(
+                        documentReference -> {
+                            saveDataListener.successSaveHospital();
+                            updateUser(dialog, hospital.getName(), uri);
+                        })
+                .addOnFailureListener(e -> {
+                    deleteImageLevel(Constants.HOSPITALS,hospital.getId());
+                    saveDataListener.failSaveHospital();
+                    dialog.dismiss();
                 });
-            }
-        });
+    }
+
+    private void updateUser(Dialog dialog, String name, Uri uri){
+        UserProfileChangeRequest userProfileChangeRequest=new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .setPhotoUri(uri).build();
+        getUser().updateProfile(userProfileChangeRequest)
+                .addOnSuccessListener(unused -> dialog.dismiss())
+                .addOnFailureListener(e -> dialog.dismiss());
+    }
+
+    private void deleteImageLevel(String child, String child2){
+        firebaseStorage.getReference(child).child(child2).delete();
     }
 
     public void createEmail(String email,String password){
@@ -160,8 +179,7 @@ public class MyRegistrationFirebase {
     }
 
     private void sendLink(){
-        firebaseUser=firebaseAuth.getCurrentUser();
-        firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+        getUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 TastyToast.makeText(context, context.getString(R.string.checkEmail), TastyToast.LENGTH_LONG,TastyToast.ERROR);
@@ -175,7 +193,7 @@ public class MyRegistrationFirebase {
     }
 
     public boolean isVerify(){
-        return firebaseUser.isEmailVerified();
+        return getUser().isEmailVerified();
     }
 
     public void startPhoneNumberVerification(String phoneNumber, Activity activity, ReadMessage readMessage) {
@@ -232,5 +250,30 @@ public class MyRegistrationFirebase {
                 TastyToast.makeText(context,context.getString(R.string.failReset),TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
             }
         });
+    }
+
+
+
+    //Delete FirebaseStorage
+    private boolean check ;
+    private boolean deleteImageLevel1(String child){
+        check = false;
+        firebaseStorage.getReference(child).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                check = true;
+            }
+        });
+        return check;
+    }
+    private boolean deleteImageLevel3(String child, String child2, String child3){
+        check = false;
+        firebaseStorage.getReference(child).child(child2).child(child3).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                check = true;
+            }
+        });
+        return check;
     }
 }

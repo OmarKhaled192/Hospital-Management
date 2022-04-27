@@ -43,7 +43,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         binding.toolbar.setNavigationIcon(R.drawable.back);
         binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
         getVERIFY_KEY=getIntent().getExtras().getString(VERIFY_KEY);
-        myRegistrationFirebase= MyRegistrationFirebase.getInstance(this);
+        myRegistrationFirebase= new MyRegistrationFirebase(this);
         intent = new Intent();
         checkPhoneOrEmail();
         handlingEditText();

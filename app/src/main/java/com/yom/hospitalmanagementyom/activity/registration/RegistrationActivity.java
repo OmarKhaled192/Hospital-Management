@@ -114,8 +114,8 @@ public class RegistrationActivity extends AppCompatActivity {
             patient.setType(Constants.PATIENT);
             patient.setStatus(Constants.ONLINE);
             Intent intent = new Intent(RegistrationActivity.this, CommonRegistrationActivity.class);
-            intent.putExtra(Constants.PATIENT_KEY, patient);
-            intent.putExtra(Constants.ACTIVITY_KEY,Constants.PATIENT);
+            intent.putExtra(Constants.PATIENT, patient);
+            intent.putExtra(Constants.ACTIVITY,Constants.PATIENT);
             startActivity(intent);
             finish();
         }

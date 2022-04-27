@@ -3,7 +3,7 @@ package com.yom.hospitalmanagementyom.model;
 import java.io.Serializable;
 
 public class Hospital implements Serializable {
-    private String Id, Profile, Name, ManagerName, Location, Email, Phone, Type, Status;
+    private String Id, Profile, Name, ManagerName, Location, Email, Phone, Password, Type, Status;
 
     public String getId() {
         return Id;
@@ -59,6 +59,14 @@ public class Hospital implements Serializable {
 
     public void setPhone(String phone) {
         Phone = phone;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public String getType() {

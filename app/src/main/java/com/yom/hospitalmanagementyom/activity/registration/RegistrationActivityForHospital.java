@@ -73,10 +73,10 @@ public class RegistrationActivityForHospital extends AppCompatActivity{
 			hospital.setLocation(getResources().getStringArray(R.array.Locations)[position]);
 			hospital.setName(HospitalName);
 			hospital.setManagerName(ManagerName);
-			hospital.setType(Constants.HOSPITAL_KEY);
+			hospital.setType(Constants.HOSPITAL);
 			Intent intent = new Intent(RegistrationActivityForHospital.this, CommonRegistrationActivity.class);
-			intent.putExtra(Constants.HOSPITAL_KEY, hospital);
-			intent.putExtra(Constants.ACTIVITY_KEY,Constants.HOSPITAL_KEY);
+			intent.putExtra(Constants.HOSPITAL, hospital);
+			intent.putExtra(Constants.ACTIVITY,Constants.HOSPITAL);
 			startActivity(intent);
 		}
 	}

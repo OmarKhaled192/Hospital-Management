@@ -34,6 +34,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable-v23/background_image.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/background_image.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/background_input.xml" value="0.1945" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/check.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/circle2.xml" value="0.1945" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/close.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/dis_like.xml" value="0.1" />
@@ -57,6 +58,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_profile_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_registration_common.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.2" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_search_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_slide.xml" value="0.22" />
@@ -75,6 +77,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/loading.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/nav_header_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/slide_item.xml" value="0.33" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/success_item.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/home_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
