@@ -18,6 +18,7 @@ import com.yom.hospitalmanagementyom.databinding.ActivityVerificationBinding;
 import com.yom.hospitalmanagementyom.database.MyRegistrationFirebase;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
+import com.yom.hospitalmanagementyom.model.Constants;
 
 
 public class VerificationActivity extends AppCompatActivity implements PhoneVerificationListener, ReadMessage {
@@ -25,12 +26,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
     private ActivityVerificationBinding binding;
     private String phoneNumber;
     private Intent intent;
-    private final String PHONE_KEY="Phone";
-    private final String EMAIL_KEY="Email";
-    private final String VERIFY_KEY="Verify";
-    private final String PASSWORD_KEY="Password";
     private MyRegistrationFirebase myRegistrationFirebase;
-    private String getVERIFY_KEY;
     private ActivityResultLauncher<String> launcher;
 
 
@@ -39,32 +35,38 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         super.onCreate(savedInstanceState);
         binding= ActivityVerificationBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
-        setSupportActionBar(binding.toolbar);
-        binding.toolbar.setNavigationIcon(R.drawable.back);
-        binding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
-        getVERIFY_KEY=getIntent().getExtras().getString(VERIFY_KEY);
+
         myRegistrationFirebase= new MyRegistrationFirebase(this);
         intent = new Intent();
         checkPhoneOrEmail();
         handlingEditText();
+
+        binding.verify.setOnClickListener(view -> {
+            if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.PHONE))
+                verifyPhone();
+            else if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.EMAIL))
+                verifyEmail();
+        });
+
+        binding.resend.setOnClickListener(view -> {
+            myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,VerificationActivity.this, VerificationActivity.this);
+            Toast.makeText(getApplicationContext(),getString(R.string.resend),Toast.LENGTH_LONG).show();
+        });
     }
+
+
     private void checkPhoneOrEmail(){
-        if(getVERIFY_KEY.equals(PHONE_KEY)) {
-            binding.verifyCodeText.setText(getString(R.string.enterCode));
-            binding.Num1.setVisibility(View.VISIBLE);
-            binding.Num2.setVisibility(View.VISIBLE);
-            binding.Num3.setVisibility(View.VISIBLE);
-            binding.Num4.setVisibility(View.VISIBLE);
-            binding.Num5.setVisibility(View.VISIBLE);
-            binding.Num6.setVisibility(View.VISIBLE);
-            phoneNumber = getIntent().getExtras().getString(PHONE_KEY);
+        if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.PHONE)) {
+            editTextVisible(View.VISIBLE);
+            phoneNumber = getIntent().getExtras().getString(Constants.PHONE);
             myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,this, this);
-            TastyToast.makeText(getBaseContext(), "Send Message", TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
+
             launcher=registerForActivityResult(
                     new ActivityResultContracts.RequestPermission(),
                     o -> {
                         if(o) {
-                            Cursor cursor = getContentResolver().query(Telephony.Sms.CONTENT_URI, null, null, null, null);
+                            Cursor cursor = getContentResolver().query(Telephony.Sms.CONTENT_URI,
+                                    null, null, null, null);
                             cursor.moveToFirst();
                             String Numbers = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
                             cursor.close();
@@ -84,18 +86,26 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
                     }
             );
         }
-        else if(getVERIFY_KEY.equals(EMAIL_KEY)) {
-            binding.verifyCodeText.setText(getString(R.string.enterCode1));
-            binding.Num1.setVisibility(View.GONE);
-            binding.Num2.setVisibility(View.GONE);
-            binding.Num3.setVisibility(View.GONE);
-            binding.Num4.setVisibility(View.GONE);
-            binding.Num5.setVisibility(View.GONE);
-            binding.Num6.setVisibility(View.GONE);
-            String email = getIntent().getExtras().getString(EMAIL_KEY);
-            String password = getIntent().getExtras().getString(PASSWORD_KEY);
+        else if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.EMAIL)) {
+            editTextVisible(View.GONE);
+            String email = getIntent().getExtras().getString(Constants.EMAIL);
+            String password = getIntent().getExtras().getString(Constants.PASSWORD);
             myRegistrationFirebase.createEmail(email, password);
         }
+    }
+
+    private void editTextVisible(int visible){
+        binding.Num1.setVisibility(visible);
+        binding.Num2.setVisibility(visible);
+        binding.Num3.setVisibility(visible);
+        binding.Num4.setVisibility(visible);
+        binding.Num5.setVisibility(visible);
+        binding.Num6.setVisibility(visible);
+        if(visible == View.VISIBLE)
+            binding.verifyCodeText.setText(getString(R.string.enterCode));
+        else if(visible == View.GONE)
+            binding.verifyCodeText.setText(getString(R.string.enterCode1));
+
     }
 
     private void handlingEditText(){
@@ -185,14 +195,6 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         });
     }
 
-    public void verify(View view) {
-        if(getVERIFY_KEY.equals(PHONE_KEY)) {
-            verifyPhone();
-        }
-        else if(getVERIFY_KEY.equals(EMAIL_KEY)) {
-            verifyEmail();
-        }
-    }
 
     private void verifyPhone(){
         String total = binding.Num1.getText().toString() + binding.Num2.getText().toString() +
@@ -214,11 +216,6 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         VerificationActivity.super.onBackPressed();
     }
 
-
-    public void resend(View view) {
-        myRegistrationFirebase.startPhoneNumberVerification(phoneNumber,this, this);
-        Toast.makeText(this,getString(R.string.resend),Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public void successVerify() {

@@ -158,6 +158,8 @@
     <string name="verifyPhone">Enter the phone number, then click the Verify button</string>
     <string name="phoneError">Please enter your phone</string>
     <string name="successSignUp">Sign up successfully</string>
+    <string name="resendQuestion">Didn\'t receive the OTP?</string>
+    <string name="verificationOTP">OTP Verification</string>
 
 
 </resources>

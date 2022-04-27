@@ -1,195 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activity.registration.VerificationActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/teal_700"
-            app:title="@string/verification"
-            app:titleTextColor="@color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Start Background for Page -->
-    <View
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_130sdp"
-        android:layout_below="@id/appBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/design6" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_115sdp"
-        android:layout_below="@id/appBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/design5" />
-
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/appBar"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:src="@drawable/home"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/image"
-        android:layout_centerInParent="true"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_15ssp"
-        android:fontFamily="@font/arabic" />
-    <!-- End Background for Page-->
+        android:src="@drawable/background_image"
+        android:contentDescription="@string/background"/>
+
 
     <TextView
         android:id="@+id/verifyCodeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/background"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:text="@string/enterCode"
         android:textAlignment="center"
         android:textSize="@dimen/_20ssp"
         android:textColor="@color/teal_700" />
 
-    <EditText
-        android:id="@+id/Num1"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:background="@drawable/circle"
-        android:inputType="number"
-        android:maxLength="1"
-        android:gravity="center"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+    <LinearLayout
+        android:id="@+id/layoutEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/Num1"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
-    <EditText
-        android:id="@+id/Num2"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:layout_toEndOf="@id/Num1"
-        android:background="@drawable/circle"
-        android:inputType="number"
-        android:maxLength="1"
-        android:gravity="center"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/Num2"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
-    <EditText
-        android:id="@+id/Num3"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:layout_toEndOf="@id/Num2"
-        android:background="@drawable/circle"
-        android:inputType="number"
-        android:maxLength="1"
-        android:gravity="center"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
-    <EditText
-        android:id="@+id/Num4"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:layout_toEndOf="@id/Num3"
-        android:background="@drawable/circle"
-        android:inputType="number"
-        android:maxLength="1"
-        android:gravity="center"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/Num3"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
-    <EditText
-        android:id="@+id/Num5"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:layout_toEndOf="@id/Num4"
-        android:background="@drawable/circle"
-        android:inputType="number"
-        android:maxLength="1"
-        android:gravity="center"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/Num4"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
-    <EditText
-        android:id="@+id/Num6"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_below="@id/verifyCodeText"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:layout_toEndOf="@id/Num5"
-        android:background="@drawable/circle"
+        <EditText
+            android:id="@+id/Num5"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/Num6"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:inputType="number"
+            android:maxLength="1"
+            tools:text="9"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/teal_700"
+            android:textStyle="bold"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold" />
+        android:layout_marginTop="@dimen/_10sdp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resendQuestion"
+            android:textColor="@color/hint"
+            android:textSize="@dimen/_15sdp"/>
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resend"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/verify"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_below="@id/Num6"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_25sdp"
-        android:onClick="verify"
         android:text="@string/verify"
         android:textSize="@dimen/_20ssp" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:gravity="center">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="?actionBarSize"
-            android:background="?selectableItemBackground"
-            android:onClick="resend"
-            android:text="@string/resend"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/teal_700"/>
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
