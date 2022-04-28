@@ -31,7 +31,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
         <activity
             android:name=".activity.registration.VerificationActivity"
             android:exported="false"

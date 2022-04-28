@@ -109,7 +109,7 @@ public class MyRegistrationFirebase {
         dialog.show();
         hospital.setId(getUser().getUid());
 
-        firebaseStorage.getReference(Constants.HOSPITALS).child(hospital.getId()).child(hospital.getId() + ".png")
+        firebaseStorage.getReference(Constants.REQUEST_HOSPITALS).child(hospital.getId()).child(hospital.getId() + ".png")
                 .putFile(Uri.parse(hospital.getProfile()))
                 .addOnSuccessListener(taskSnapshot -> {
                     hospital.setProfile(Objects.requireNonNull(taskSnapshot.getUploadSessionUri()).toString());
@@ -124,14 +124,14 @@ public class MyRegistrationFirebase {
     }
 
     private void saveHospitalFirestore(Dialog dialog, Hospital hospital, SaveDataListener saveDataListener, Uri uri){
-        firebaseFirestore.collection(Constants.HOSPITALS).add(hospital)
+        firebaseFirestore.collection(Constants.REQUEST_HOSPITALS).add(hospital)
                 .addOnSuccessListener(
                         documentReference -> {
                             saveDataListener.successSaveHospital();
                             updateUser(dialog, hospital.getName(), uri);
                         })
                 .addOnFailureListener(e -> {
-                    deleteImageLevel(Constants.HOSPITALS,hospital.getId());
+                    deleteImageLevel(Constants.REQUEST_HOSPITALS,hospital.getId());
                     saveDataListener.failSaveHospital();
                     dialog.dismiss();
                 });

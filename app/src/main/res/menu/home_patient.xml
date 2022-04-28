@@ -5,8 +5,8 @@
     <item
         android:id="@+id/searchPatient"
         android:icon="@drawable/search"
-        android:title="@string/hospital"
-        app:showAsAction="always"/>
+        android:title="@string/search_hint"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/signOutPatient"

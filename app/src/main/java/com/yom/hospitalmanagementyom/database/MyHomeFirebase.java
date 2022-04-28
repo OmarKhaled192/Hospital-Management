@@ -1,7 +1,7 @@
 package com.yom.hospitalmanagementyom.database;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.view.View;
@@ -12,12 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
-import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -27,9 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyHomeFirebase {
-    @SuppressLint("StaticFieldLeak")
-    private static MyHomeFirebase myDatabase;
     private final Context context;
+    private final FirebaseAuth firebaseAuth;
     private final FirebaseFirestore firebaseFirestore;
     private final FirebaseStorage firebaseStorage;
     private Post post;
@@ -37,18 +37,22 @@ public class MyHomeFirebase {
     private Hospital hospital;
     private List<Hospital> hospitals;
 
-    private MyHomeFirebase(Context context) {
+    public MyHomeFirebase(Context context) {
         this.context = context;
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
     }
 
-    public static MyHomeFirebase newInstance(Context context) {
-        if (myDatabase == null) {
-            myDatabase = new MyHomeFirebase(context);
-        }
-        return myDatabase;
+    private FirebaseUser getUser(){
+        return firebaseAuth.getCurrentUser();
     }
+
+    public void signOut(ProgressDialog progressDialog){
+        firebaseAuth.signOut();
+        progressDialog.dismiss();
+    }
+
 
     public List<Post> getPosts(PostsListener postsListener){
         post=new Post();

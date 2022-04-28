@@ -23,4 +23,5 @@ public class Constants {
     public static final String PATIENTS = "Patients";
     public static final String POSTS="Posts";
     public static final String HOSPITALS = "Hospitals";
+    public static final String REQUEST_HOSPITALS = "Request Hospitals";
 }
