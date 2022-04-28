@@ -5,6 +5,7 @@ import android.content.Context;
 import com.yom.hospitalmanagementyom.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class CommonFunction {
@@ -24,5 +25,13 @@ public class CommonFunction {
         Dialog dialog=new Dialog(context);
         dialog.setContentView(R.layout.loading);
         return dialog;
+    }
+
+    public boolean checkExistId(List<String> list, String id){
+        for (int i=0; i<list.size(); i++){
+            if(list.get(i).equals(id))
+                return true;
+        }
+        return false;
     }
 }

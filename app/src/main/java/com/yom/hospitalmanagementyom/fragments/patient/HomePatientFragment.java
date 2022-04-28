@@ -1,5 +1,6 @@
 package com.yom.hospitalmanagementyom.fragments.patient;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +10,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.registration.MainActivity;
 import com.yom.hospitalmanagementyom.adapter.HospitalViewAdapter;
 import com.yom.hospitalmanagementyom.adapter.PostAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.FragmentHomePatientBinding;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.model.Constants;
+import com.yom.hospitalmanagementyom.model.Doctor;
+import com.yom.hospitalmanagementyom.model.Hospital;
+import com.yom.hospitalmanagementyom.model.Post;
+import java.util.List;
+
 public class HomePatientFragment extends Fragment implements PostsListener {
 
     private FragmentHomePatientBinding binding;
     private Repository repository;
+    private List<Hospital> hospitals;
+    private List<Post> posts;
+    private List<Doctor> doctors;
 
     public HomePatientFragment(){
 
@@ -25,7 +36,11 @@ public class HomePatientFragment extends Fragment implements PostsListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setHasOptionsMenu(true);
+
+        repository=new Repository(requireContext());
+        hospitals = repository.getHospitals();
+        posts = repository.getPosts();
+        doctors = repository.getDoctors(posts,this);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,21 +51,23 @@ public class HomePatientFragment extends Fragment implements PostsListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        repository=new Repository(requireContext());
 
-        HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), repository.getHospitals(), this);
+
+        HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), hospitals, this);
         LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
         binding.recyclerViewHospitalView.setAdapter(hospitalViewAdapter);
 
-        PostAdapter postAdapter = new PostAdapter(requireContext(), repository.getPosts(this));
+        PostAdapter postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerViewHomePosts.setLayoutManager( linearLayoutManager );
         binding.recyclerViewHomePosts.setAdapter(postAdapter);
 
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
             showDesign(View.VISIBLE, View.GONE, View.GONE, true);
-            repository.getPosts(this);
+            hospitals = repository.getHospitals();
+            posts = repository.getPosts();
+            doctors =repository.getDoctors(posts, this);
         });
     }
 
@@ -78,11 +95,38 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
     @Override
     public void onClickHospitalItem(int Position) {
-
+        Intent intent =new Intent(getActivity(), MainActivity.class);
+        intent.putExtra(Constants.HOSPITAL, hospitals.get(Position).getId());
+        startActivity(intent);
     }
 
     @Override
     public void onClickLikePost(int Position) {
+
+    }
+
+    @Override
+    public void onCancelLikePost(int Position) {
+
+    }
+
+    @Override
+    public void onClickDisLikePost(int Position) {
+
+    }
+
+    @Override
+    public void onCancelDisLikePost(int Position) {
+
+    }
+
+    @Override
+    public void onClickStarPost(int Position) {
+
+    }
+
+    @Override
+    public void onCancelStarPost(int Position) {
 
     }
 

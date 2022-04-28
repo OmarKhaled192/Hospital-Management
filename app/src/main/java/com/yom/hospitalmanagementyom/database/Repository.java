@@ -3,13 +3,22 @@ package com.yom.hospitalmanagementyom.database;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
+import com.yom.hospitalmanagementyom.model.Constants;
+import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
@@ -19,11 +28,13 @@ public class Repository {
     private final MySharedPreference mySharedPreference;
     private final MyRegistrationFirebase myRegistrationFirebase;
     private final MyHomeFirebase myHomeFirebase;
+    private final CommonFunction commonFunction;
 
     public Repository(Context context){
         mySharedPreference=new MySharedPreference(context);
         myRegistrationFirebase = new MyRegistrationFirebase(context);
         myHomeFirebase = new MyHomeFirebase(context);
+        commonFunction = new CommonFunction();
     }
 
     //MyRegistrationFirebase
@@ -84,11 +95,23 @@ public class Repository {
     public void signOut(ProgressDialog progressDialog){
         myHomeFirebase.signOut(progressDialog);
     }
-    public List<Post> getPosts(PostsListener postsListener){
-        return myHomeFirebase.getPosts(postsListener);
-    }
+
     public List<Hospital> getHospitals() {
         return myHomeFirebase.getHospitals();
+    }
+
+    public List<Post> getPosts(){
+        return myHomeFirebase.getPosts();
+    }
+
+    public List<Doctor> getDoctors(List<Post> posts, PostsListener postsListener){
+        return myHomeFirebase.getDoctors(posts, postsListener);
+    }
+
+
+    //CommonFunction
+    public boolean checkExistId(List<String> list, String id){
+        return commonFunction.checkExistId(list, id);
     }
 
 

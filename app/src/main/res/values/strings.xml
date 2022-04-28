@@ -161,6 +161,9 @@
     <string name="resendQuestion">Didn\'t receive the OTP?</string>
     <string name="verificationOTP">OTP Verification</string>
     <string name="signOutQuestion">Do you want to sign out?</string>
+    <string name="like">Like</string>
+    <string name="disLike">Dislike</string>
+    <string name="star">Star</string>
 
 
 </resources>

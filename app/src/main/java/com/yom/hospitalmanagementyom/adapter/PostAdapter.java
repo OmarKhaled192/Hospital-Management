@@ -1,6 +1,5 @@
 package com.yom.hospitalmanagementyom.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -11,48 +10,31 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.database.Repository;
+import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Post;
-
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 //Yousef Shaaban
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   private final List<Post> posts;
+  private final List<Doctor> doctors;
   private final Context context;
-  private final FirebaseStorage storage;
-  private final StorageReference storageRef;
-  private long like;
-  private long dislike;
-  private long star;
-  private final int red,black,likeOn,likeOff,dislikeOn,dislikeOff,starOn,starOff;
+  private final Repository repository;
+  private final PostsListener postsListener;
 
-  public PostAdapter( Context context, List<Post> posts) {
+  public PostAdapter(Context context, List<Post> posts, List<Doctor> doctors, PostsListener postsListener) {
+    this.context = context;
     this.posts = posts;
-    this.context=context;
-    storage = FirebaseStorage.getInstance();
-    storageRef = storage.getReference();
-    like=0;
-    dislike=0;
-    star=0;
-    red=context.getResources().getColor(R.color.teal_700);
-    black=context.getResources().getColor(R.color.black);
-    likeOn=R.drawable.like;
-    likeOff=R.drawable.like_off;
-    dislikeOn=R.drawable.dis_like;
-    dislikeOff=R.drawable.dis_like_off;
-    starOn=R.drawable.star;
-    starOff=R.drawable.star_off;
+    this.doctors = doctors;
+    this.postsListener = postsListener;
+    repository = new Repository(context);
   }
 
   @Override
@@ -64,20 +46,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   @Override
   public PostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from( parent.getContext() ).inflate( R.layout.item_post_for_home_patient, parent, false );
-    return new PostHolder( view );
+    return new PostHolder(view);
   }
 
-  @SuppressLint("RecyclerView")
   @Override
   public void onBindViewHolder(@NonNull PostHolder holder, int position) {
     Post post = posts.get(position);
-    like = Long.parseLong(post.getPost());
-    dislike = Long.parseLong(post.getPost());
-    star = Long.parseLong(post.getPost());;
+    Doctor doctor = doctors.get(position);
 
-    holder.profilePostForHomePatient.setImageResource(R.drawable.doctor);
-    //holder.namePostForHomePatient.setText(post.getName());
+    Picasso.with(context).load(doctor.getProfile()).error(R.color.teal_700)
+            .into(holder.profilePostForHomePatient);
+    holder.namePostForHomePatient.setText(doctor.getName());
     holder.timePostForHomePatient.setText(post.getTime());
+
     if (!post.getPost().equals("")) {
       holder.postForHomePatient.setText(post.getPost());
       holder.postForHomePatient.setVisibility(View.VISIBLE);
@@ -85,119 +66,75 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
       holder.postForHomePatient.setVisibility(View.GONE);
     }
     if (!post.getImage().equals("")) {
-      holder.progressBar.setVisibility(View.VISIBLE);
-      storage.getReference(post.getImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-        @Override
-        public void onSuccess(Uri uri) {
-          holder.progressBar.setVisibility(View.GONE);
-          Picasso.with(context).load(uri).into(holder.imagePostForHomePatient);
-          holder.imagePostForHomePatient.setVisibility(View.VISIBLE);
-        }
-      });
+      holder.progressBarPost.setVisibility(View.VISIBLE);
+      Picasso.with(context).load(post.getImage()).error(R.color.teal_700)
+              .into(holder.imagePostForHomePatient);
     } else {
       holder.imagePostForHomePatient.setVisibility(View.GONE);
     }
     if (!post.getVideo().equals("")) {
-      storageRef.child(post.getId() + "/" + post.getId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-        @Override
-        public void onSuccess(Uri uri) {
-          holder.videoPostForHomePatient.setVideoURI(uri);
-          holder.videoPostForHomePatient.setVisibility(View.VISIBLE);
-        }
-      });
+      holder.progressBarPost.setVisibility(View.VISIBLE);
+      holder.videoPostForHomePatient.setVideoURI(Uri.parse(post.getVideo()));
     } else {
       holder.imagePostForHomePatient.setVisibility(View.GONE);
     }
-    holder.numLikePostDoctor.setText(like + " Like");
-    holder.numDisLikePostDoctor.setText(dislike + " Dislike");
-    holder.numStarPostForHomePatient.setText(star + " Star");
-    holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(likeOff, 0, 0, 0);
-    holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(dislikeOff, 0, 0, 0);
-    holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(starOff, 0, 0, 0);
 
-    holder.likePostForHomePatient.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (holder.likePostForHomePatient.getCurrentTextColor() == black && holder.disLikePostForHomePatient.getCurrentTextColor() == red) {
-          holder.disLikePostForHomePatient.setTextColor(black);
-          holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(dislikeOff, 0, 0, 0);
-          holder.likePostForHomePatient.setTextColor(red);
-          holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(likeOn, 0, 0, 0);
-          like=Integer.parseInt(holder.numLikePostDoctor.getText().toString());
-          dislike=Integer.parseInt(holder.numDisLikePostDoctor.getText().toString());
-          like++;
-          dislike--;
-          holder.numLikePostDoctor.setText(like+ " Like");
-          holder.numDisLikePostDoctor.setText(dislike+ " Dislike");
-        } else if (holder.likePostForHomePatient.getCurrentTextColor() == black) {
-          like++;
-          holder.likePostForHomePatient.setTextColor(red);
-          holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(likeOn, 0, 0, 0);
-          holder.numLikePostDoctor.setText(like + " Like");
-        } else if (holder.likePostForHomePatient.getCurrentTextColor() == red) {
-          like--;
-          holder.likePostForHomePatient.setTextColor(black);
-          holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(likeOff, 0, 0, 0);
-          holder.numLikePostDoctor.setText(like + " Like");
-        }
-      }
+    String Like = post.getLikes().size() + context.getString(R.string.like);
+    holder.numLikePostDoctor.setText(Like);
+    String DisLike = post.getLikes().size() + context.getString(R.string.disLike);
+    holder.numDisLikePostDoctor.setText(DisLike);
+    String Star = post.getLikes().size() + context.getString(R.string.star);
+    holder.numStarPostForHomePatient.setText(Star);
+
+    boolean likeExist = repository.checkExistId(post.getLikes(),repository.getUser().getUid());
+    if(likeExist)
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
+    else
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like_off, 0, 0, 0);
+
+    boolean disLikeExist = repository.checkExistId(post.getDisLikes(),repository.getUser().getUid());
+    if(disLikeExist)
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like, 0, 0, 0);
+    else
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like_off, 0, 0, 0);
+
+    boolean starExist = repository.checkExistId(post.getStars(),repository.getUser().getUid());
+    if(starExist)
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
+    else
+      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star_off, 0, 0, 0);
+
+    holder.likePostForHomePatient.setOnClickListener(v -> {
+      if(likeExist)
+        postsListener.onCancelLikePost(position);
+      else
+        postsListener.onClickLikePost(position);
     });
 
 
-    holder.disLikePostForHomePatient.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (holder.disLikePostForHomePatient.getCurrentTextColor() == black && holder.likePostForHomePatient.getCurrentTextColor() == red) {
-          holder.likePostForHomePatient.setTextColor(black);
-          holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(likeOff, 0, 0, 0);
-          holder.disLikePostForHomePatient.setTextColor(red);
-          holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(dislikeOn, 0, 0, 0);
-          like--;
-          dislike++;
-          holder.numLikePostDoctor.setText(like + " Like");
-          holder.numDisLikePostDoctor.setText(dislike + " Dislike");
-        }
-        else if (holder.disLikePostForHomePatient.getCurrentTextColor() == black) {
-          dislike++;
-          holder.disLikePostForHomePatient.setTextColor(red);
-          holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(dislikeOn, 0, 0, 0);
-          holder.numDisLikePostDoctor.setText(dislike + " Dislike");
-        }
-        else if (holder.disLikePostForHomePatient.getCurrentTextColor() == red) {
-          dislike--;
-          holder.disLikePostForHomePatient.setTextColor(black);
-          holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(dislikeOff, 0, 0, 0);
-          holder.numDisLikePostDoctor.setText(dislike + " Dislike");
-        }
-      }
+    holder.disLikePostForHomePatient.setOnClickListener(v -> {
+      if(disLikeExist)
+        postsListener.onCancelDisLikePost(position);
+      else
+        postsListener.onClickDisLikePost(position);
     });
 
 
-    holder.starPostForHomePatient.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (holder.starPostForHomePatient.getCurrentTextColor() == black) {
-          star++;
-          holder.starPostForHomePatient.setTextColor(red);
-          holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(starOn, 0, 0, 0);
-          holder.numStarPostForHomePatient.setText(star + " Star");
-        } else if (holder.starPostForHomePatient.getCurrentTextColor() == red) {
-          star--;
-          holder.starPostForHomePatient.setTextColor(black);
-          holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(starOff, 0, 0, 0);
-          holder.numStarPostForHomePatient.setText(star + " Star");
-        }
-      }
+    holder.starPostForHomePatient.setOnClickListener(v -> {
+      if(starExist)
+        postsListener.onCancelStarPost(position);
+      else
+        postsListener.onClickStarPost(position);
     });
   }
 
-  protected class PostHolder extends RecyclerView.ViewHolder {
-    CircleImageView profilePostForHomePatient;
-    TextView namePostForHomePatient, timePostForHomePatient,postForHomePatient,numLikePostDoctor,numDisLikePostDoctor,numStarPostForHomePatient;
-    ImageView imagePostForHomePatient;
-    VideoView videoPostForHomePatient;
-    Button likePostForHomePatient,disLikePostForHomePatient,starPostForHomePatient;
-    private ProgressBar progressBar;
+  protected static class PostHolder extends RecyclerView.ViewHolder {
+    private final CircleImageView profilePostForHomePatient;
+    private final TextView namePostForHomePatient, timePostForHomePatient,postForHomePatient,numLikePostDoctor,numDisLikePostDoctor,numStarPostForHomePatient;
+    private final ImageView imagePostForHomePatient;
+    private final VideoView videoPostForHomePatient;
+    private final Button likePostForHomePatient,disLikePostForHomePatient,starPostForHomePatient;
+    private final ProgressBar progressBarPost;
 
     PostHolder(View itemView) {
       super( itemView );
@@ -206,7 +143,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
       timePostForHomePatient = itemView.findViewById( R.id.timePostForHomePatient );
       postForHomePatient = itemView.findViewById( R.id.postForHomePatient );
       imagePostForHomePatient = itemView.findViewById( R.id.imagePostForHomePatient );
-      progressBar = itemView.findViewById(R.id.progressBar);
+      progressBarPost = itemView.findViewById(R.id.progressBarPost);
       videoPostForHomePatient = itemView.findViewById( R.id.videoPostForHomePatient );
       numLikePostDoctor = itemView.findViewById( R.id.numLikePostForHomePatient );
       numDisLikePostDoctor=itemView.findViewById( R.id.numDisLikePostForHomePatient );

@@ -1,5 +1,7 @@
 package com.yom.hospitalmanagementyom.model;
 
+import java.util.Map;
+
 public class Constants {
     public static final String NAME="Name";
     public static final String PHONE = "Phone";
@@ -24,4 +26,7 @@ public class Constants {
     public static final String POSTS="Posts";
     public static final String HOSPITALS = "Hospitals";
     public static final String REQUEST_HOSPITALS = "Request Hospitals";
+    public static final String DOCTORS = "Doctors";
+    public static final String ID = "Id";
+    public static final String LIKES = "Likes";
 }

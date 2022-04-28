@@ -75,12 +75,15 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat_patient.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_edit_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_hospital_view.xml" value="0.17074275362318841" />
-        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.2" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/job_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/loading.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/nav_header_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/post_shimer.xml" value="0.1675213675213675" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/shimmer_layout.xml" value="0.18" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/slide_item.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/success_item.xml" value="0.25" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/view_shimmer.xml" value="0.1675213675213675" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/home_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />

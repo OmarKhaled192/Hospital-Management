@@ -19,8 +19,6 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:background="?selectableItemBackground"
-            android:clickable="true"
-            android:onClick="goToFriendProfile"
             android:padding="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -38,7 +36,6 @@
                 android:layout_alignTop="@+id/profilePostForHomePatient"
                 android:layout_marginStart="5dp"
                 android:layout_toEndOf="@+id/profilePostForHomePatient"
-                android:maxWidth="200dp"
                 android:maxLines="1"
                 tools:text="Yousef Shaaban"
                 android:textColor="@color/black"
@@ -50,7 +47,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/namePostForHomePatient"
                 android:layout_alignStart="@+id/namePostForHomePatient"
-                android:maxWidth="200dp"
                 tools:text="today at 10:00 AM"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_7ssp" />
@@ -75,11 +71,11 @@
             android:layout_below="@+id/postForHomePatient"
             android:layout_centerInParent="true">
             <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:visibility="visible"
-                android:progressBackgroundTint="@color/teal_700"
+                android:id="@+id/progressBarPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:progressTint="@color/teal_700"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -94,7 +90,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/photo" />
 
             <VideoView
                 android:id="@+id/videoPostForHomePatient"
@@ -117,11 +114,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/constraintLayoutImage"
             android:layout_alignParentStart="true"
-            android:paddingStart="15dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             tools:text="0 Like"
             android:textColor="@color/hint"
-            android:textSize="12sp"
+            android:textSize="@dimen/_12ssp"
             android:maxLines="1"/>
 
         <TextView
@@ -132,7 +129,7 @@
             android:layout_centerInParent="true"
             tools:text="0 Dislike"
             android:textColor="@color/hint"
-            android:textSize="12sp"
+            android:textSize="@dimen/_12ssp"
             android:maxLines="1"/>
 
         <TextView
@@ -141,16 +138,16 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/numLikePostForHomePatient"
             android:layout_alignParentEnd="true"
-            android:paddingEnd="15dp"
+            android:layout_marginEnd="@dimen/_15sdp"
             tools:text="0 Star"
             android:textColor="@color/hint"
-            android:textSize="12sp"
+            android:textSize="@dimen/_12ssp"
             android:maxLines="1"/>
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/_1sdp"
             android:layout_below="@+id/numLikePostForHomePatient"
             android:background="@color/black" />
 
@@ -160,7 +157,6 @@
             android:layout_height="40dp"
             android:layout_below="@+id/view"
             android:layout_alignParentStart="true"
-            android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/like_off"
             tools:text="Like"
@@ -174,7 +170,6 @@
             android:layout_height="40dp"
             android:layout_below="@+id/view"
             android:layout_centerInParent="true"
-            android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/dis_like_off"
             tools:text="Dislike"
@@ -188,7 +183,6 @@
             android:layout_height="40dp"
             android:layout_below="@+id/view"
             android:layout_alignParentEnd="true"
-            android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:drawableStart="@drawable/star_off"
             tools:text="Star"
