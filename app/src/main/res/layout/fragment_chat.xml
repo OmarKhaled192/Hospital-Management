@@ -8,9 +8,9 @@
     tools:context=".fragments.patient.ChatFragment" >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatPatient"
+        android:id="@+id/recyclerviewChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_chat_patient"/>
+        tools:listitem="@layout/item_chat"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

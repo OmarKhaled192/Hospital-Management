@@ -28,7 +28,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Hospital;
@@ -100,7 +102,7 @@ public class MyHomeFirebase {
 
     private Doctor doctor;
     private List<Doctor> doctors;
-    public List<Doctor> getDoctors(List<Post> posts, PostsListener postsListener){
+    public List<Doctor> getDoctorPosts(List<Post> posts, PostsListener postsListener){
         doctor = new Doctor();
         doctors = new ArrayList<>();
         for (int i=0; i<posts.size();i++) {
@@ -153,6 +155,44 @@ public class MyHomeFirebase {
         return posts;
     }
 
+    private Chat chat;
+    private List<Chat> chats;
+    public List<Chat> getLastMessage(ChatListener chatListener){
+        chat = new Chat();
+        chats = new ArrayList<>();
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    chat = d.getValue(Chat.class);
+                    chats.add(chat);
+                }
+                chatListener.getLastMessageFinish();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return chats;
+    }
+
+    public List<Doctor> getDoctorChats(List<Chat> chats){
+        doctor = new Doctor();
+        doctors = new ArrayList<>();
+        for (int i=0; i<chats.size();i++) {
+            firebaseFirestore.collection(Constants.DOCTORS).whereEqualTo( Constants.ID, chats.get(i).getIdReceiver())
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        doctor = (Doctor) task.getResult().toObjects(Doctor.class);
+                        doctors.add(doctor);
+                    }
+                }
+            });
+        }
+        return doctors;
+    }
 
 //    public void publishPost(Activity activity,Post post, Uri uri){
 //        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post)

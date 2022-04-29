@@ -89,7 +89,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
     @Override
     public void finishGetPosts() {
-        doctors = repository.getDoctors(posts,this);
+        doctors = repository.getDoctorPosts(posts,this);
     }
 
     @Override

@@ -13,13 +13,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
+import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
+import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Hospital;
@@ -109,8 +112,8 @@ public class Repository {
         return myHomeFirebase.getPosts(postsListener);
     }
 
-    public List<Doctor> getDoctors(List<Post> posts, PostsListener postsListener){
-        return myHomeFirebase.getDoctors(posts, postsListener);
+    public List<Doctor> getDoctorPosts(List<Post> posts, PostsListener postsListener){
+        return myHomeFirebase.getDoctorPosts(posts, postsListener);
     }
 
     public void setInteractWithPost(String postId, String nameField, String userId) {
@@ -125,6 +128,13 @@ public class Repository {
         return myHomeFirebase.getPostsStarted(postsListener);
     }
 
+    public List<Chat> getLastMessage(ChatListener chatListener){
+       return myHomeFirebase.getLastMessage(chatListener);
+    }
+
+    public List<Doctor> getDoctorChats(List<Chat> chats){
+        return myHomeFirebase.getDoctorChats(chats);
+    }
 
     //CommonFunction
     public boolean checkExistId(List<String> list, String id){
