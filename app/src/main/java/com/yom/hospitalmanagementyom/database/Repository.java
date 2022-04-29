@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
@@ -22,6 +25,8 @@ import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
@@ -114,6 +119,10 @@ public class Repository {
 
     public void deleteInteractWithPost(String postId, String deleteField, String userId) {
         myHomeFirebase.deleteInteractWithPost(postId, deleteField, userId);
+    }
+
+    public List<Post> getPostsStarted(PostsListener postsListener){
+        return myHomeFirebase.getPostsStarted(postsListener);
     }
 
 

@@ -78,20 +78,6 @@ public class MyHomeFirebase {
 
     private Post post;
     private List<Post>posts;
-    public List<Post> getPosts1(){
-        post=new Post();
-        posts=new ArrayList<>();
-        firebaseFirestore.collection(Constants.POSTS).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                for (QueryDocumentSnapshot document : task.getResult()) {
-                    post = document.toObject(Post.class);
-                    posts.add(post);
-                }
-            }
-        });
-        return posts;
-    }
-
     public List<Post> getPosts(PostsListener postsListener){
         post=new Post();
         posts=new ArrayList<>();
@@ -142,6 +128,30 @@ public class MyHomeFirebase {
         firebaseDatabase.getReference(Constants.POSTS).child(postId).child(deleteField).child(userId).removeValue();
     }
 
+
+    public List<Post> getPostsStarted(PostsListener postsListener){
+        post=new Post();
+        posts=new ArrayList<>();
+        firebaseDatabase.getReference(Constants.POSTS).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    post = d.getValue(Post.class);
+                    for (int i=0; i<post.getLikes().size(); i++) {
+                        if (post.getLikes().get(i).equals(getUser().getUid())) {
+                            posts.add(post);
+                            return;
+                        }
+                    }
+                }
+                postsListener.finishGetPosts();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return posts;
+    }
 
 
 //    public void publishPost(Activity activity,Post post, Uri uri){

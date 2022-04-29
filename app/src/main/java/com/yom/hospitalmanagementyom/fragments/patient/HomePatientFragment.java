@@ -142,7 +142,6 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         postAdapter.notifyItemChanged(Position);
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
