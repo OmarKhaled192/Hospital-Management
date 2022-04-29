@@ -100,12 +100,20 @@ public class Repository {
         return myHomeFirebase.getHospitals();
     }
 
-    public List<Post> getPosts(){
-        return myHomeFirebase.getPosts();
+    public List<Post> getPosts(PostsListener postsListener){
+        return myHomeFirebase.getPosts(postsListener);
     }
 
     public List<Doctor> getDoctors(List<Post> posts, PostsListener postsListener){
         return myHomeFirebase.getDoctors(posts, postsListener);
+    }
+
+    public void setInteractWithPost(String postId, String nameField, String userId) {
+        myHomeFirebase.setInteractWithPost(postId, nameField, userId);
+    }
+
+    public void deleteInteractWithPost(String postId, String deleteField, String userId) {
+        myHomeFirebase.deleteInteractWithPost(postId, deleteField, userId);
     }
 
 

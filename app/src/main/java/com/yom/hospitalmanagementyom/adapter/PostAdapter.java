@@ -67,17 +67,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     }
     if (!post.getImage().equals("")) {
       holder.progressBarPost.setVisibility(View.VISIBLE);
-      Picasso.with(context).load(post.getImage()).error(R.color.teal_700)
+      holder.imagePostForHomePatient.setVisibility(View.VISIBLE);
+      Picasso.with(context).load(post.getImage()).error(R.color.hint)
               .into(holder.imagePostForHomePatient);
     } else {
       holder.imagePostForHomePatient.setVisibility(View.GONE);
     }
     if (!post.getVideo().equals("")) {
       holder.progressBarPost.setVisibility(View.VISIBLE);
+      holder.videoPostForHomePatient.setVisibility(View.VISIBLE);
       holder.videoPostForHomePatient.setVideoURI(Uri.parse(post.getVideo()));
     } else {
-      holder.imagePostForHomePatient.setVisibility(View.GONE);
+      holder.videoPostForHomePatient.setVisibility(View.GONE);
     }
+    holder.progressBarPost.setVisibility(View.GONE);
 
     String Like = post.getLikes().size() + context.getString(R.string.like);
     holder.numLikePostDoctor.setText(Like);
@@ -106,25 +109,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     holder.likePostForHomePatient.setOnClickListener(v -> {
       if(likeExist)
-        postsListener.onCancelLikePost(position);
+        postsListener.onCancelLikePost(position, post.getId());
       else
-        postsListener.onClickLikePost(position);
+        postsListener.onClickLikePost(position, post.getId());
     });
 
 
     holder.disLikePostForHomePatient.setOnClickListener(v -> {
       if(disLikeExist)
-        postsListener.onCancelDisLikePost(position);
+        postsListener.onCancelDisLikePost(position, post.getId());
       else
-        postsListener.onClickDisLikePost(position);
+        postsListener.onClickDisLikePost(position, post.getId());
     });
 
 
     holder.starPostForHomePatient.setOnClickListener(v -> {
       if(starExist)
-        postsListener.onCancelStarPost(position);
+        postsListener.onCancelStarPost(position, post.getId());
       else
-        postsListener.onClickStarPost(position);
+        postsListener.onClickStarPost(position, post.getId());
     });
   }
 

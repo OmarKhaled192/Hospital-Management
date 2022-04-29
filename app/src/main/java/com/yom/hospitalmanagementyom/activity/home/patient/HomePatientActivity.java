@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +52,8 @@ public class HomePatientActivity extends AppCompatActivity {
 
         View v = binding.navView.getHeaderView(0);
         CircleImageView circleImageView=v.findViewById(R.id.myProfile);
+        TextView name = v.findViewById(R.id.name);
+        TextView email = v.findViewById(R.id.email);
         circleImageView.setOnClickListener(v1 -> {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             intent.putExtra(Constants.ACTIVITY, Constants.PATIENT);
@@ -57,6 +61,11 @@ public class HomePatientActivity extends AppCompatActivity {
         });
 
         repository = new Repository(getApplicationContext());
+
+        circleImageView.setImageURI(repository.getUser().getPhotoUrl());
+        name.setText(repository.getUser().getDisplayName());
+        email.setText(repository.getUser().getEmail());
+
     }
 
     @Override

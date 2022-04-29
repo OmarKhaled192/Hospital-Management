@@ -29,4 +29,6 @@ public class Constants {
     public static final String DOCTORS = "Doctors";
     public static final String ID = "Id";
     public static final String LIKES = "Likes";
+    public static final String DISLIKES = "DisLikes";
+    public static final String STARS = "Stars";
 }

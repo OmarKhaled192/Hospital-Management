@@ -29,6 +29,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
     private List<Hospital> hospitals;
     private List<Post> posts;
     private List<Doctor> doctors;
+    private PostAdapter postAdapter;
 
     public HomePatientFragment(){
 
@@ -39,8 +40,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
         repository=new Repository(requireContext());
         hospitals = repository.getHospitals();
-        posts = repository.getPosts();
-        doctors = repository.getDoctors(posts,this);
+        posts = repository.getPosts(this);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
         binding.recyclerViewHospitalView.setAdapter(hospitalViewAdapter);
 
-        PostAdapter postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
+        postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerViewHomePosts.setLayoutManager( linearLayoutManager );
         binding.recyclerViewHomePosts.setAdapter(postAdapter);
@@ -66,8 +66,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
             showDesign(View.VISIBLE, View.GONE, View.GONE, true);
             hospitals = repository.getHospitals();
-            posts = repository.getPosts();
-            doctors =repository.getDoctors(posts, this);
+            posts = repository.getPosts(this);
         });
     }
 
@@ -90,6 +89,11 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
     @Override
     public void finishGetPosts() {
+        doctors = repository.getDoctors(posts,this);
+    }
+
+    @Override
+    public void finishGetDoctors() {
         showDesign(View.GONE, View.VISIBLE, View.VISIBLE, false);
     }
 
@@ -101,34 +105,43 @@ public class HomePatientFragment extends Fragment implements PostsListener {
     }
 
     @Override
-    public void onClickLikePost(int Position) {
-
+    public void onClickLikePost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
+        repository.deleteInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onCancelLikePost(int Position) {
-
+    public void onCancelLikePost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onClickDisLikePost(int Position) {
-
+    public void onClickDisLikePost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
+        repository.deleteInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onCancelDisLikePost(int Position) {
-
+    public void onCancelDisLikePost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onClickStarPost(int Position) {
-
+    public void onClickStarPost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.STARS,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onCancelStarPost(int Position) {
-
+    public void onCancelStarPost(int Position, String postId) {
+        repository.setInteractWithPost(postId,Constants.STARS,repository.getUser().getUid());
+        postAdapter.notifyItemChanged(Position);
     }
+
 
     @Override
     public void onDestroyView() {

@@ -109,7 +109,7 @@ public class MyRegistrationFirebase {
         dialog.show();
         hospital.setId(getUser().getUid());
 
-        firebaseStorage.getReference(Constants.REQUEST_HOSPITALS).child(hospital.getId()).child(hospital.getId() + ".png")
+        firebaseStorage.getReference(Constants.REQUEST_HOSPITALS).child(hospital.getId()).child(hospital.getId() + ".jpg")
                 .putFile(Uri.parse(hospital.getProfile()))
                 .addOnSuccessListener(taskSnapshot -> {
                     hospital.setProfile(Objects.requireNonNull(taskSnapshot.getUploadSessionUri()).toString());

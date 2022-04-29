@@ -17,9 +17,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,6 +40,7 @@ public class MyHomeFirebase {
     private final Context context;
     private final FirebaseAuth firebaseAuth;
     private final FirebaseFirestore firebaseFirestore;
+    private final FirebaseDatabase firebaseDatabase;
     private final FirebaseStorage firebaseStorage;
 
     public MyHomeFirebase(Context context) {
@@ -45,6 +48,7 @@ public class MyHomeFirebase {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     private FirebaseUser getUser(){
@@ -74,7 +78,7 @@ public class MyHomeFirebase {
 
     private Post post;
     private List<Post>posts;
-    public List<Post> getPosts(){
+    public List<Post> getPosts1(){
         post=new Post();
         posts=new ArrayList<>();
         firebaseFirestore.collection(Constants.POSTS).get().addOnCompleteListener(task -> {
@@ -87,6 +91,26 @@ public class MyHomeFirebase {
         });
         return posts;
     }
+
+    public List<Post> getPosts(PostsListener postsListener){
+        post=new Post();
+        posts=new ArrayList<>();
+        firebaseDatabase.getReference(Constants.POSTS).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    post = d.getValue(Post.class);
+                    posts.add(post);
+                }
+                postsListener.finishGetPosts();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return posts;
+    }
+
 
     private Doctor doctor;
     private List<Doctor> doctors;
@@ -105,23 +129,26 @@ public class MyHomeFirebase {
                 }
             });
             if(i == posts.size()-1)
-                postsListener.finishGetPosts();
+                postsListener.finishGetDoctors();
         }
         return doctors;
     }
 
-    public void setInteractWithPost(String postId, String nameField, String deleteField, String userId){
-        firebaseFirestore.collection(Constants.POSTS).document(postId).update(nameField, userId);
-        firebaseFirestore.collection(Constants.POSTS).document(postId);
+    public void setInteractWithPost(String postId, String nameField, String userId) {
+        firebaseDatabase.getReference(Constants.POSTS).child(postId).child(nameField).setValue(userId);
+    }
+
+    public void deleteInteractWithPost(String postId, String deleteField, String userId) {
+        firebaseDatabase.getReference(Constants.POSTS).child(postId).child(deleteField).child(userId).removeValue();
     }
 
 
 
 //    public void publishPost(Activity activity,Post post, Uri uri){
-//        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post).
+//        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post)
 //                .addOnSuccessListener(documentReference ->{
 //                        post.setId(documentReference.getId());
-//                        publishPostUri(activity, post, uri)
+//                        publishPostUri(activity, post, uri);
 //                        TastyToast.makeText(context, context.getString(R.string.publishSuccess),
 //                                TastyToast.LENGTH_LONG,TastyToast.SUCCESS ).show())
 //                }
