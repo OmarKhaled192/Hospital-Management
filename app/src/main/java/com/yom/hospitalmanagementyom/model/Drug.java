@@ -1,7 +1,7 @@
 package com.yom.hospitalmanagementyom.model;
 
 public class Drug {
-    private String Id, namedrug;
+    private String Id, nameDrug;
     public String getId() {
         return Id;
     }
@@ -10,12 +10,12 @@ public class Drug {
         Id = id;
     }
 
-    public String getNamedrug() {
-        return namedrug;
+    public String getNameDrug() {
+        return nameDrug;
     }
 
-    public void setNamedrug(String namedrugs) {
-        namedrug = namedrugs;
+    public void setNameDrug(String nameDrug) {
+        this.nameDrug = nameDrug;
     }
 
 }

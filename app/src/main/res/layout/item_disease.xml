@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/rci1"
+        android:id="@+id/diseaseName"
         android:layout_width="182dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="51dp" />
 
     <TextView
-        android:id="@+id/rci2"
+        android:id="@+id/diseasesId"
         android:layout_width="182dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

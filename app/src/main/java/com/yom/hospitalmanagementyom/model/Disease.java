@@ -1,9 +1,9 @@
 package com.yom.hospitalmanagementyom.model;
 
-public class Recicl {
+public class Disease {
     String Name;
     String Id;
-    public Recicl(){
+    public Disease(){
 
 
     }
