@@ -292,7 +292,7 @@ public class MyHomeFirebase {
     }
 
     public void getDisease(String Name, SearchListener searchListener) {
-        FirebaseFirestore.getInstance().collection(Constants.DISLIKES).whereEqualTo(Constants.NAME,Name)
+        FirebaseFirestore.getInstance().collection(Constants.DISEASES).whereEqualTo(Constants.NAME,Name)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

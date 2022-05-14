@@ -14,7 +14,7 @@ public class CommonFunction {
 
     public CommonFunction(){
         calendar=Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy at KK:mm:ss aaa", Locale.ENGLISH);
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy & KK:mm:ss aaa", Locale.ENGLISH);
     }
 
     public String getTimeNow() {
