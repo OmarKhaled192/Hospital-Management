@@ -1,6 +1,8 @@
 package com.yom.hospitalmanagementyom.model;
 
-public class Drug {
+import java.io.Serializable;
+
+public class Drug implements Serializable {
     private String Id, nameDrug;
     public String getId() {
         return Id;
