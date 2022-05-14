@@ -164,6 +164,9 @@
     <string name="like">Like</string>
     <string name="disLike">Dislike</string>
     <string name="star">Star</string>
+    <string name="send">Send</string>
+    <string name="delete">Delete</string>
+    <string name="writeMessage">Write Message</string>
 
 
 </resources>

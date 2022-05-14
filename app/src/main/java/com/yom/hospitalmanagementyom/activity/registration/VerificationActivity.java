@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Telephony;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
@@ -33,12 +34,11 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         binding= ActivityVerificationBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
+        repository = new Repository(this);
         checkPhoneOrEmail();
         handlingEditText();
 
-        repository = new Repository(this);
         intent = new Intent();
-
         binding.verify.setOnClickListener(view -> {
             if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.PHONE))
                 verifyPhone();
@@ -58,7 +58,6 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
             editTextVisible(View.VISIBLE);
             String phoneNumber = getIntent().getExtras().getString(Constants.PHONE);
             repository.startPhoneNumberVerification(phoneNumber,this, this);
-
             launcher=registerForActivityResult(
                     new ActivityResultContracts.RequestPermission(),
                     o -> {
