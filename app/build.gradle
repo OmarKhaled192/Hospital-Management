@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
     implementation "com.google.android.material:material:$rootProject.material_version"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraint_layout_version"
@@ -86,4 +87,9 @@ dependencies {
 
     //Bottom navigation
     implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
+
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+
 }

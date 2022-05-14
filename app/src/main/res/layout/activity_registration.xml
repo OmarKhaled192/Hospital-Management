@@ -67,11 +67,10 @@
       app:errorEnabled="true"
       app:errorIconDrawable="@drawable/error"
       app:startIconDrawable="@drawable/time">
-    <com.google.android.material.textfield.TextInputEditText
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/Date"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="date"
         android:textColor="?attr/colorControlNormal" />
   </com.google.android.material.textfield.TextInputLayout>
 

@@ -97,9 +97,9 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     else {
       phone = Objects.requireNonNull(binding.editText.getText()).toString();
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setTitle(R.string.phone).setMessage(getString(R.string.questionChangePhone) + binding.editText.getText().toString() + getString(R.string.questionTag))
+      builder.setTitle(R.string.phone).setMessage(getString(R.string.questionChangePhone) + " " + phone + getString(R.string.questionTag))
               .setNegativeButton(R.string.yes, (dialog, which) -> {
-                Intent intent = new Intent(getBaseContext(), VerificationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VerificationActivity.class);
                 intent.putExtra(Constants.PHONE, phone);
                 intent.putExtra(Constants.VERIFY,Constants.PHONE);
                 activityResultLauncherPhone.launch(intent);
@@ -118,7 +118,7 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     else {
       email = Objects.requireNonNull(binding.editText.getText()).toString();
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setTitle(R.string.Email).setMessage(getString(R.string.questionChangeEmail) + binding.editText.getText().toString() + getString(R.string.questionTag))
+      builder.setTitle(R.string.Email).setMessage(getString(R.string.questionChangeEmail) + " " + email + getString(R.string.questionTag))
               .setNegativeButton(R.string.yes, (dialog, which) -> {
                 Intent intent = new Intent(getBaseContext(), VerificationActivity.class);
                 intent.putExtra(Constants.EMAIL, email);

@@ -34,11 +34,12 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView( binding.getRoot() );
 
         initDatePicker();
+        profile="";
 
         activityResultLauncher=registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
                 result -> {
-                    profile=result.getPath();
+                    profile=result.toString();
                     binding.pickOfProfile.setImageURI(result);
                     check=true;
                 }
@@ -89,9 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String confirmPassword = Objects.requireNonNull(binding.confirmPassword.getText()).toString();
         String gender = binding.Gender.getText().toString();
 
-        if(!check)
-            TastyToast.makeText(getBaseContext(), getString(R.string.profile), TastyToast.LENGTH_LONG, TastyToast.ERROR).show();
-        else if (name.length() == 0)
+        if (name.length() == 0)
             binding.box1.setError(getString(R.string.nameError));
         else if (data.length() == 0)
             binding.box2.setError(getString(R.string.telephoneError));

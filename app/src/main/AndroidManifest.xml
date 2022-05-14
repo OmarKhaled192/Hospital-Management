@@ -4,7 +4,8 @@
     package="com.yom.hospitalmanagementyom">
 
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
     <application
@@ -15,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".activity.home.Recicleview"
+            android:exported="false" />
+        <activity
             android:name=".activity.home.patient.SearchPatientActivity"
             android:exported="false" />
         <activity
@@ -22,7 +26,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.home.patient.MessageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
         <activity
             android:name=".activity.home.patient.PaymentActivity"
             android:exported="false" />
@@ -32,41 +37,41 @@
         <activity
             android:name=".activity.home.patient.HomePatientActivity"
             android:exported="false"
-            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar" />
         <activity
             android:name=".activity.registration.VerificationActivity"
             android:exported="false"
             android:label="@string/verification"
-            android:parentActivityName=".activity.registration.CommonRegistrationActivity"/>
+            android:parentActivityName=".activity.registration.CommonRegistrationActivity" />
         <activity
             android:name=".activity.registration.CommonRegistrationActivity"
             android:exported="false"
             android:label="@string/signUp"
-            android:parentActivityName=".activity.registration.RegistrationActivityForHospital"/>
+            android:parentActivityName=".activity.registration.RegistrationActivityForHospital" />
         <activity
             android:name=".activity.registration.RegistrationActivityForHospital"
             android:exported="false"
             android:label="@string/signUp"
-            android:parentActivityName=".activity.registration.RegistrationActivity"/>
+            android:parentActivityName=".activity.registration.RegistrationActivity" />
         <activity
             android:name=".activity.registration.RegistrationActivity"
             android:exported="false"
             android:label="@string/signUp"
-            android:parentActivityName=".activity.registration.ChooseActivity"/>
+            android:parentActivityName=".activity.registration.ChooseActivity" />
         <activity
             android:name=".activity.registration.ChooseActivity"
             android:exported="false"
             android:label="@string/signUp"
-            android:parentActivityName=".activity.registration.LoginActivity"/>
+            android:parentActivityName=".activity.registration.LoginActivity" />
         <activity
             android:name=".activity.registration.LoginActivity"
             android:exported="false"
             android:label="@string/login"
-            android:parentActivityName=".activity.registration.SlideActivity"/>
+            android:parentActivityName=".activity.registration.SlideActivity" />
         <activity
             android:name=".activity.registration.SlideActivity"
             android:exported="false"
-            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar" />
         <activity
             android:name=".activity.registration.MainActivity"
             android:exported="true"

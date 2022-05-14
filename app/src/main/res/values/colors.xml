@@ -9,4 +9,5 @@
     <color name="signUp">#737575</color>
     <color name="green">#00FF00</color>
     <color name="bgHomePatient">#80B3B1B1</color>
+    <color name="notSelect">#0000FF00</color>
 </resources>
