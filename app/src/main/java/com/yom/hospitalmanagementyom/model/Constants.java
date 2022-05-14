@@ -38,4 +38,5 @@ public class Constants {
     public static final String DOCTORS = "Doctors";
     public static final String CHATS = "Chats";
     public static final String LAST_MESSAGES = "Last Messages";
+    public static final String DRUGS = "Drugs";
 }

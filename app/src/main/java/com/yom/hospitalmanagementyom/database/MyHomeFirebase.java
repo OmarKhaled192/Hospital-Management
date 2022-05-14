@@ -3,6 +3,7 @@ package com.yom.hospitalmanagementyom.database;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -28,13 +29,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.patient.Recicleview;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.listeners.SearchListener;
 import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
+import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Post;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,6 +200,23 @@ public class MyHomeFirebase {
         return doctors;
     }
 
+
+    public void getDrugs(String Name, SearchListener searchListener) {
+        List<Drug> drugs=new ArrayList<>();
+        FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.NAME,Name)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Drug drug = document.toObject(Drug.class);
+                        drugs.add(drug);
+                    }
+                    searchListener.finishDetDrugs(drugs);
+                }
+            }
+        });
+    }
 //    public void publishPost(Activity activity,Post post, Uri uri){
 //        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post)
 //                .addOnSuccessListener(documentReference ->{

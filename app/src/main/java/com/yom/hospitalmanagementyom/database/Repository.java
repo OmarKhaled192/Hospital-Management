@@ -13,6 +13,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
@@ -22,9 +24,11 @@ import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
+import com.yom.hospitalmanagementyom.listeners.SearchListener;
 import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
+import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
@@ -136,10 +140,16 @@ public class Repository {
         return myHomeFirebase.getDoctorChats(chats);
     }
 
+    public void getDrugs(String Name, SearchListener searchListener) {
+        myHomeFirebase.getDrugs(Name, searchListener);
+    }
+
     //CommonFunction
     public boolean checkExistId(List<String> list, String id){
         return commonFunction.checkExistId(list, id);
     }
+
+
 
 
 }
