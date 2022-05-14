@@ -25,12 +25,12 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivitySearchPatientBinding;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
+import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchPatientActivity extends AppCompatActivity implements SearchListener {
@@ -47,6 +47,7 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         e1=findViewById(R.id.editText8);
         b1=findViewById(R.id.sename);
         s=e1.toString();
+
         repository = new Repository(this);
     }
 
@@ -63,7 +64,7 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         if (s.equals("")) {
             TastyToast.makeText(getApplicationContext(),"Please Enter The Word",TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
         } else {
-            Query query = FirebaseDatabase.getInstance().getReference("Dieses").orderByChild("Name").equalTo(s);
+            repository.getDisease(s, this);
         }
     }
 
@@ -72,5 +73,10 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         Intent intent= new Intent(getApplicationContext(), Recicleview.class);
         intent.putExtra("Drugs", (Serializable) drugs);
         startActivity(intent);
+    }
+
+    @Override
+    public void finishGetDiseases(Disease disease) {
+        repository.getDrugsById(disease, this);
     }
 }

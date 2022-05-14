@@ -1,12 +1,12 @@
 package com.yom.hospitalmanagementyom.model;
 
+import java.util.List;
+
 public class Disease {
     String Name;
     String Id;
-    public Disease(){
+    List<String> drugs;
 
-
-    }
     public String getId() {
         return Id;
     }
@@ -23,4 +23,11 @@ public class Disease {
         Name = name;
     }
 
+    public void setDrugs(List<String> drugs) {
+        this.drugs = drugs;
+    }
+
+    public List<String> getDrugs() {
+        return drugs;
+    }
 }

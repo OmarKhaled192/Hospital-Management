@@ -35,6 +35,7 @@ import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
 import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
+import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
@@ -216,6 +217,36 @@ public class MyHomeFirebase {
                 }
             }
         });
+    }
+    public void getDisease(String Name, SearchListener searchListener) {
+        FirebaseFirestore.getInstance().collection(Constants.DISLIKES).whereEqualTo(Constants.NAME,Name)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    Disease disease = (Disease) task.getResult().toObjects(Disease.class);
+                    searchListener.finishGetDiseases(disease);
+                }
+            }
+        });
+    }
+
+    public void getDrugsById(Disease disease, SearchListener searchListener) {
+        List<Drug> drugs=new ArrayList<>();
+        for(int i=0; i<disease.getDrugs().size();i++){
+            FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.ID,disease.getDrugs().get(i))
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Drug drug = (Drug) task.getResult().toObjects(Drug.class);
+                        drugs.add(drug);
+                    }
+                }
+            });
+        }
+        searchListener.finishDetDrugs(drugs);
+
     }
 //    public void publishPost(Activity activity,Post post, Uri uri){
 //        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post)

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.MessageActivity;
+import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, MessageActivity.class);
+            intent.setClass(this, SearchPatientActivity.class);
 
         startActivity(intent);
         finish();
