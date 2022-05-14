@@ -7,5 +7,5 @@ import com.yom.hospitalmanagementyom.model.Drug;
 import java.util.List;
 
 public interface SearchListener {
-    void finishDetDrugs(List<Drug> drugs);
+    void finishGetDrugs(List<Drug> drugs);
 }

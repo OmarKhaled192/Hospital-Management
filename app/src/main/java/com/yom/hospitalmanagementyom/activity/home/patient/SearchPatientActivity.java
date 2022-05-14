@@ -69,7 +69,7 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
     }
 
     @Override
-    public void finishDetDrugs(List<Drug> drugs) {
+    public void finishGetDrugs(List<Drug> drugs) {
         Intent intent= new Intent(getApplicationContext(), Recicleview.class);
         intent.putExtra("Drugs", (Serializable) drugs);
         startActivity(intent);

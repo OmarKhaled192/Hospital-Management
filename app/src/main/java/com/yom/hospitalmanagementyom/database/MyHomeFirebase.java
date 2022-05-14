@@ -213,7 +213,7 @@ public class MyHomeFirebase {
                         Drug drug = document.toObject(Drug.class);
                         drugs.add(drug);
                     }
-                    searchListener.finishDetDrugs(drugs);
+                    searchListener.finishGetDrugs(drugs);
                 }
             }
         });
@@ -238,7 +238,7 @@ public class MyHomeFirebase {
                             }
                         });
                     }
-                    searchListener.finishDetDrugs(drugs);
+                    searchListener.finishGetDrugs(drugs);
                 }
             }
         });
