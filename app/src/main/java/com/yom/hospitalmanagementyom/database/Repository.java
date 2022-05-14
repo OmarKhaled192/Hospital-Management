@@ -153,11 +153,4 @@ public class Repository {
     public void getDisease(String Name, SearchListener searchListener) {
         myHomeFirebase.getDisease(Name, searchListener);
     }
-    public void getDrugsById(Disease disease, SearchListener searchListener) {
-        myHomeFirebase.getDrugsById(disease, searchListener);
-    }
-
-
-
-
 }

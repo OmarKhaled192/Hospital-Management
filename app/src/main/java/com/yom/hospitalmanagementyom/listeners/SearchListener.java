@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface SearchListener {
     void finishDetDrugs(List<Drug> drugs);
-    void finishGetDiseases(Disease disease);
 }

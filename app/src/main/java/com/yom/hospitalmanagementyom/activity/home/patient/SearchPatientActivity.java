@@ -74,9 +74,4 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         intent.putExtra("Drugs", (Serializable) drugs);
         startActivity(intent);
     }
-
-    @Override
-    public void finishGetDiseases(Disease disease) {
-        repository.getDrugsById(disease, this);
-    }
 }
