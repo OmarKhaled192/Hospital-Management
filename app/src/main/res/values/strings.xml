@@ -167,6 +167,9 @@
     <string name="send">Send</string>
     <string name="delete">Delete</string>
     <string name="writeMessage">Write Message</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="timeNow">Write Now</string>
 
 
 </resources>

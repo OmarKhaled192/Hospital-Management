@@ -39,4 +39,7 @@ public class Constants {
     public static final String CHATS = "Chats";
     public static final String LAST_MESSAGES = "Last Messages";
     public static final String DRUGS = "Drugs";
+    public static final String TIME = "time";
+    public static final String NO = "No";
+    public static final String STATUS = "status";
 }

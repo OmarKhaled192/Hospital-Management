@@ -48,6 +48,12 @@ public class ChatFragment extends Fragment implements ChatListener {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         binding.recyclerviewChat.setLayoutManager(linearLayoutManager);
         binding.recyclerviewChat.setAdapter(chatAdapter);
+
+        for(int i =0; i<chats.size(); i++){
+            if(chats.get(i).getSeen().equals(Constants.NOT_OPEN)){
+                repository.setLastSeenByChatId(doctors.get(i).getId(), Constants.NOT_SEEN);
+            }
+        }
     }
 
     @Override
@@ -56,9 +62,11 @@ public class ChatFragment extends Fragment implements ChatListener {
     }
 
     @Override
-    public void onClickItem(String idChat) {
+    public void onClickItem(String idChat, Doctor doctor) {
         Intent intent = new Intent(requireActivity(), MessageActivity.class);
         intent.putExtra(Constants.ID_CHAT,idChat);
+        intent.putExtra(Constants.DOCTOR,doctor);
+
         startActivity(intent);
     }
 
@@ -66,5 +74,6 @@ public class ChatFragment extends Fragment implements ChatListener {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+
     }
 }

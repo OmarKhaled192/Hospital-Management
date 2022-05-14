@@ -66,6 +66,7 @@ public class HomePatientActivity extends AppCompatActivity {
         name.setText(repository.getUser().getDisplayName());
         email.setText(repository.getUser().getEmail());
 
+        repository.setStatus(Constants.PATIENT, Constants.ONLINE);
     }
 
     @Override
@@ -114,5 +115,11 @@ public class HomePatientActivity extends AppCompatActivity {
                 dialogInterface.dismiss()).create();
 
         builder.show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        repository.setStatus(Constants.PATIENT, Constants.OFFLINE);
     }
 }

@@ -83,7 +83,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder>{
                 holder.numberOfMessageNotSeen.setVisibility(View.GONE);
         }
 
-        holder.itemView.setOnClickListener(view -> chatListener.onClickItem(chat.getId()));
+        holder.itemView.setOnClickListener(view -> chatListener.onClickItem(chat.getId(), doctor));
     }
 
     @Override

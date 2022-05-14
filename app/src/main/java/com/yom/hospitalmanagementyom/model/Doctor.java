@@ -1,7 +1,9 @@
 package com.yom.hospitalmanagementyom.model;
 
 
-public class Doctor {
+import java.io.Serializable;
+
+public class Doctor implements Serializable {
   private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender, Type, Status, Specialization;
 
   public String getId() {

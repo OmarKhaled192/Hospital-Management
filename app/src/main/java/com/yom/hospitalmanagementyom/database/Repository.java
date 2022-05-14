@@ -150,7 +150,32 @@ public class Repository {
         return commonFunction.checkExistId(list, id);
     }
 
+    public String getTimeNow() {
+        return commonFunction.getTimeNow();
+    }
+
+
     public void getDisease(String Name, SearchListener searchListener) {
         myHomeFirebase.getDisease(Name, searchListener);
+    }
+
+    public List<Chat> getMessages(String id){
+        return myHomeFirebase.getMessages(id);
+    }
+
+    public void setWriteNow(String Status, String id, String idChat){
+       myHomeFirebase.setWriteNow(Status, id, idChat);
+    }
+
+    public void SendMessage(Chat chat){
+        myHomeFirebase.SendMessage(chat);
+    }
+
+    public void setLastSeenByChatId(String id, String status) {
+        myHomeFirebase.setLastSeenByChatId(id, status);
+    }
+
+    public void setStatus(String Root,String status){
+        myHomeFirebase.setStatus(Root, status);
     }
 }

@@ -3,7 +3,6 @@ package com.yom.hospitalmanagementyom.database;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -29,7 +28,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.patient.Recicleview;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
@@ -41,7 +39,6 @@ import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Post;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +48,7 @@ public class MyHomeFirebase {
     private final FirebaseFirestore firebaseFirestore;
     private final FirebaseDatabase firebaseDatabase;
     private final FirebaseStorage firebaseStorage;
+    private Doctor doctor;
 
     public MyHomeFirebase(Context context) {
         this.context = context;
@@ -107,22 +105,13 @@ public class MyHomeFirebase {
     }
 
 
-    private Doctor doctor;
     private List<Doctor> doctors;
     public List<Doctor> getDoctorPosts(List<Post> posts, PostsListener postsListener){
         doctor = new Doctor();
         doctors = new ArrayList<>();
         for (int i=0; i<posts.size();i++) {
-            firebaseFirestore.collection(Constants.DOCTORS).whereEqualTo( Constants.ID, posts.get(i).getIdDoctor())
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        doctor = (Doctor) task.getResult().toObjects(Doctor.class);
-                        doctors.add(doctor);
-                    }
-                }
-            });
+            doctor = getDoctor(posts.get(i).getIdDoctor());
+            doctors.add(doctor);
             if(i == posts.size()-1)
                 postsListener.finishGetDoctors();
         }
@@ -162,17 +151,27 @@ public class MyHomeFirebase {
         return posts;
     }
 
-    private Chat chat;
     private List<Chat> chats;
     public List<Chat> getLastMessage(ChatListener chatListener){
-        chat = new Chat();
         chats = new ArrayList<>();
         firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    chat = d.getValue(Chat.class);
-                    chats.add(chat);
+                for(DataSnapshot d : dataSnapshot.getChildren()){
+                    firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).child(d.getKey())
+                            .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Chat chat = snapshot.getValue(Chat.class);
+                            chats.add(chat);
+                            assert chat != null;
+                            if(!chat.getSeen().equals(Constants.SEEN))
+                                setSeenByChatId(d.getKey(), chat.getId(),Constants.NOT_SEEN);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
                 }
                 chatListener.getLastMessageFinish();
             }
@@ -187,20 +186,93 @@ public class MyHomeFirebase {
         doctor = new Doctor();
         doctors = new ArrayList<>();
         for (int i=0; i<chats.size();i++) {
-            firebaseFirestore.collection(Constants.DOCTORS).whereEqualTo( Constants.ID, chats.get(i).getIdReceiver())
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        doctor = (Doctor) task.getResult().toObjects(Doctor.class);
-                        doctors.add(doctor);
-                    }
-                }
-            });
+            doctor = getDoctor(chats.get(i).getIdReceiver());
+            doctors.add(doctor);
         }
         return doctors;
     }
 
+    public List<Chat> getMessages(String id){
+        chats = new ArrayList<>();
+        firebaseDatabase.getReference(Constants.CHATS).child(getUser().getUid()).child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot d : dataSnapshot.getChildren()){
+                    Chat chat = d.getValue(Chat.class);
+                    chats.add(chat);
+                    assert chat != null;
+                    if(!chat.getSeen().equals(Constants.SEEN))
+                        setSeenByChatId(id, chat.getId(),Constants.SEEN);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return chats;
+    }
+
+    private void setSeenByChatId(String id, String idMessage, String status) {
+        firebaseDatabase.getReference(Constants.CHATS).child(getUser().getUid())
+                .child(id).child(idMessage).child(Constants.SEEN).setValue(status);
+
+        firebaseDatabase.getReference(Constants.CHATS).child(id).child(idMessage)
+                .child(getUser().getUid()).child(Constants.SEEN).setValue(status);
+    }
+
+    public void setLastSeenByChatId(String id, String status) {
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid())
+                .child(id).child(Constants.SEEN).setValue(status);
+
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(id)
+                .child(getUser().getUid()).child(Constants.SEEN).setValue(status);
+    }
+
+    private Doctor getDoctor(String id){
+        doctor = new Doctor();
+        firebaseFirestore.collection(Constants.DOCTORS).whereEqualTo( Constants.ID, id)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    doctor = (Doctor) task.getResult().toObjects(Doctor.class);
+                }
+            }
+        });
+        return doctor;
+    }
+
+    public void setWriteNow(String Status, String id, String idChat){
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES)
+                .child(id).child(getUser().getUid()).child(Constants.TIME).setValue(Status);
+
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES)
+                .child(getUser().getUid()).child(id).child(Constants.TIME).setValue(Status);
+
+        firebaseDatabase.getReference(Constants.CHATS)
+                .child(id).child(getUser().getUid()).child(idChat).child(Constants.TIME).setValue(Status);
+
+        firebaseDatabase.getReference(Constants.CHATS)
+                .child(getUser().getUid()).child(id).child(idChat).child(Constants.TIME).setValue(Status);
+    }
+
+    public void SendMessage(Chat chat){
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES)
+                .child(chat.getIdSender()).child(chat.getIdReceiver()).setValue(chat);
+
+        firebaseDatabase.getReference(Constants.LAST_MESSAGES)
+                .child(chat.getIdReceiver()).child(chat.getIdSender()).setValue(chat);
+
+        firebaseDatabase.getReference(Constants.CHATS)
+                .child(chat.getIdSender()).child(chat.getIdReceiver()).child(chat.getId()).setValue(chat);
+
+        firebaseDatabase.getReference(Constants.CHATS)
+                .child(chat.getIdReceiver()).child(chat.getIdSender()).child(chat.getId()).setValue(chat);
+    }
+
+    public void setStatus(String Root,String status){
+        firebaseFirestore.collection(Root).document(getUser().getUid()).update(Constants.STATUS, status);
+    }
 
     public void getDrugs(String Name, SearchListener searchListener) {
         List<Drug> drugs=new ArrayList<>();
@@ -218,6 +290,7 @@ public class MyHomeFirebase {
             }
         });
     }
+
     public void getDisease(String Name, SearchListener searchListener) {
         FirebaseFirestore.getInstance().collection(Constants.DISLIKES).whereEqualTo(Constants.NAME,Name)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -243,6 +316,8 @@ public class MyHomeFirebase {
             }
         });
     }
+
+
 
 //    public void publishPost(Activity activity,Post post, Uri uri){
 //        firebaseFirestore.collection(Constants.POSTS).document(post.getTime()).add(post)
