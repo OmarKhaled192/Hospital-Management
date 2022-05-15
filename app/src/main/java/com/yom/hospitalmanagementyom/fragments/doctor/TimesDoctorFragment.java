@@ -1,60 +1,50 @@
 package com.yom.hospitalmanagementyom.fragments.doctor;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.adapter.TimeAdapter;
+import com.yom.hospitalmanagementyom.database.Repository;
+import com.yom.hospitalmanagementyom.model.Patient;
+import com.yom.hospitalmanagementyom.model.Time;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TimesDoctorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
+
 public class TimesDoctorFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private List<Time> times;
+    private List<Patient> patients;
+    private Repository repository;
+    private RecyclerView recyclerViewTimes;
+    private TimeAdapter timeAdapter;
     public TimesDoctorFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TimesDoctorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TimesDoctorFragment newInstance(String param1, String param2) {
-        TimesDoctorFragment fragment = new TimesDoctorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        times=new ArrayList<>();
+        patients=new ArrayList<>();
+        repository =new Repository(requireContext());
     }
 
     @Override
@@ -63,4 +53,75 @@ public class TimesDoctorFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_times_doctor, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Time time=new Time();
+        time.setTime("10:22 PM");
+        times.add(time);
+        times.add(time);
+        times.add(time);
+        times.add(time);
+        times.add(time);
+
+        Patient patient=new Patient();
+        patient.setName("JOO");
+        patient.setProfile("f");
+        patients.add(patient);
+        patients.add(patient);
+        patients.add(patient);
+        patients.add(patient);
+        patients.add(patient);
+
+        timeAdapter = new TimeAdapter(requireContext(), times, patients);
+        recyclerViewTimes =view.findViewById(R.id.recyclerViewTimes);
+        recyclerViewTimes.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerViewTimes.setAdapter(timeAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper( simpleCallback );
+        itemTouchHelper.attachToRecyclerView( recyclerViewTimes );
+
+    }
+
+    Time finishTime = new Time();
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback( 0, ItemTouchHelper.LEFT ) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+
+            final int position = viewHolder.getAdapterPosition();
+            if (direction == ItemTouchHelper.LEFT) {
+                finishTime = times.get(position);
+                times.remove(position);
+                timeAdapter.notifyItemRemoved(position);
+                Snackbar.make(recyclerViewTimes, "Time Finished.", Snackbar.LENGTH_LONG)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                times.add(position, finishTime);
+                                timeAdapter.notifyItemInserted(position);
+                            }
+                        }).show();
+            }
+        }
+
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            new RecyclerViewSwipeDecorator.Builder( requireContext(), c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive )
+                    .addSwipeLeftBackgroundColor( ContextCompat.getColor( requireContext(), R.color.teal_700 ) )
+                    .addSwipeLeftActionIcon( R.drawable.done )
+                    .setActionIconTint( ContextCompat.getColor( recyclerView.getContext(), R.color.white ) )
+                    .addSwipeLeftLabel(getString(R.string.finish))
+                    .create()
+                    .decorate();
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
+
 }

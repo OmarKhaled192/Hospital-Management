@@ -25,9 +25,20 @@ public class SlideActivity extends AppCompatActivity {
         binding=ActivitySlideBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        int[] slide_images = new int[]{R.drawable.doctor, R.drawable.drugs, R.drawable.health_care, R.drawable.community};
-        String[] slide_headings = getResources().getStringArray(R.array.Heads);
-        String[] slide_decs = getResources().getStringArray(R.array.Descriptions);
+        int[] slide_images = {};
+        String[] slide_headings = {};
+        String[] slide_decs = {};
+        if(getIntent().getExtras().getInt("Health care")==1){
+            slide_images = new int[]{R.drawable.doctor, R.drawable.drugs, R.drawable.health_care, R.drawable.community};
+            slide_headings = getResources().getStringArray(R.array.Heads);
+            slide_decs = getResources().getStringArray(R.array.Descriptions);
+        }
+        else  if(getIntent().getExtras().getInt("Health care")==1){
+            slide_images = new int[]{R.drawable.doctor, R.drawable.drugs, R.drawable.health_care, R.drawable.community};
+            slide_headings = getResources().getStringArray(R.array.Heads);
+            slide_decs = getResources().getStringArray(R.array.Descriptions);
+        }
+
         SlideAdapter slideAdapter = new SlideAdapter(slide_images, slide_headings, slide_decs);
         binding.slideViewId.setAdapter(slideAdapter);
         addDotsIndicators(0);

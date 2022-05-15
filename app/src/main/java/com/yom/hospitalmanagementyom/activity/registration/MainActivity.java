@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, SearchPatientActivity.class);
+            intent.setClass(this, HomeDoctorActivity.class);
 
         startActivity(intent);
         finish();

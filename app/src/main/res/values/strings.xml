@@ -170,6 +170,8 @@
     <string name="online">Online</string>
     <string name="offline">Offline</string>
     <string name="timeNow">Write Now</string>
+    <string name="finish">Finish</string>
+    <string name="times">Times</string>
 
 
 </resources>
