@@ -27,6 +27,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private boolean check=false;
     private String profile;
     private DatePickerDialog datePickerDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

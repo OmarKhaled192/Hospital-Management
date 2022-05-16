@@ -19,7 +19,10 @@
     <string-array name="Descriptions">
         <item>You can book a doctor and know his appointments at any time</item>
         <item>You can order a drug or show availability of drug in hospital pharmacy</item>
-        <item>Elderly people and people with chronic diseases can participate in a private medical care service</item>
+        <item>Elderly people and people with chronic diseases can participate in a private medical care service
+
+
+        </item>
         <item>You can benefit from many tips here</item>
     </string-array>
     <string name="services">Services</string>
@@ -104,6 +107,8 @@
     </string-array>
     <string name="hospital_name">Hospital name</string>
     <string name="Manager_Name">Manager name</string>
+    <string name="finish">Finish</string>
+
 
     <!--Common Registration-->
     <string name="phone">Phone</string>
@@ -170,8 +175,13 @@
     <string name="online">Online</string>
     <string name="offline">Offline</string>
     <string name="timeNow">Write Now</string>
-    <string name="finish">Finish</string>
     <string name="times">Times</string>
-
-
+    <string name="healthChatting_question">"please determine number of notification you need : "</string>
+    <string name="notifyNumber">enter number of from 5 to 10</string>
+    <string name="setTime">Set Time 1</string>
+    <string name="health_question">which type of health you need ?</string>
+    <string name="create">Create</string>
+    <string name="Edit">Edit</string>
+    <string name="FriendNumber">Enter the number of your friend</string>
+    <string name="Healthnotify">this is time of your healthcare : </string>
 </resources>

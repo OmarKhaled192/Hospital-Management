@@ -1,5 +1,7 @@
 package com.yom.hospitalmanagementyom.activity.home.patient;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +24,9 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
+import com.yom.hospitalmanagementyom.model.MyReceiver;
+
+import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,7 +51,8 @@ public class HomePatientActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_chat, R.id.nav_favorite_tips)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home_patient);
+        NavController navController = Navigation.findNavController(this,
+                R.id.nav_host_fragment_content_home_patient);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -67,6 +73,7 @@ public class HomePatientActivity extends AppCompatActivity {
         email.setText(repository.getUser().getEmail());
 
         repository.setStatus(Constants.PATIENT, Constants.ONLINE);
+
     }
 
     @Override
@@ -116,7 +123,6 @@ public class HomePatientActivity extends AppCompatActivity {
 
         builder.show();
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

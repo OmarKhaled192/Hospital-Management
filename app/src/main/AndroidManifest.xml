@@ -16,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".activity.home.healthcare.Questions"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.healthcare.chatbot.ByChatting"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.healthcare.HealthCare"
+            android:exported="false" />
+        <activity
             android:name=".activity.home.patient.Recicleview"
             android:exported="false" />
         <activity
@@ -24,11 +33,11 @@
         <activity
             android:name=".activity.home.doctor.HomeDoctorActivity"
             android:exported="false"
-            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar" />
         <activity
             android:name=".activity.home.patient.MessageActivity"
             android:exported="false"
-            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar"/>
+            android:theme="@style/Theme.HospitalManagementYOM.NoActionBar" />
         <activity
             android:name=".activity.home.patient.PaymentActivity"
             android:exported="false" />
@@ -83,6 +92,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".model.MyReceiver" android:exported="true" android:enabled="true"/>
+
+
+
     </application>
 
 </manifest>
