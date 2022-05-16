@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activity.home.healthcare.HealthCare">
+
+
+<include layout="@layout/slide_item"
+    android:id="@+id/Description_health"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_height="@dimen/_300sdp"
+    android:layout_width="match_parent"
+
+    />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/box3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:hint="@string/FriendNumber"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/ic_baseline_group_24">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/friendPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Chat_bot_service"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="Chat bot service"
+        android:onClick="chat_bot"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp" />
+</LinearLayout>

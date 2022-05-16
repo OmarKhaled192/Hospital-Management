@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.home.healthcare.chatbot.ByChatting">
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/background"
+        android:src="@drawable/background_image"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:text="@string/healthChatting_question"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="@dimen/_15ssp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/notify_chat_box"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:hint="@string/notifyNumber"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        android:orientation="horizontal"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/chat">
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/notify_chat_no"
+            android:layout_width="match_parent"
+            android:inputType="number"
+
+            android:layout_height="match_parent"
+            android:textColor="?attr/colorControlNormal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:context=".activity.home.healthcare.chatbot.ByChatting">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/_50sdp"
+        android:text="@string/Edit"
+        android:onClick="editFn"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:textSize="@dimen/_15ssp"/>
+     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/create"
+
+        android:onClick="createFn"
+        android:textSize="@dimen/_15ssp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        android:id="@+id/setTimeButton"
+        android:text="@string/setTime"
+        android:onClick="TimeMake"
+        android:enabled="false"
+
+        android:textSize="@dimen/_15ssp"/>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/timeBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:hint="00:00"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/error"
+        app:startIconDrawable="@drawable/time">
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/Time"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:textColor="?attr/colorControlNormal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:text="@string/next"
+        android:enabled="false"
+        android:id="@+id/nextBtn"
+        android:onClick="next"
+        android:textSize="@dimen/_15ssp"/>
+
+    <TextView
+        android:id="@+id/s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="@dimen/_15ssp" />
+</LinearLayout>
