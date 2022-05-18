@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Admain" />
-        <item
-            android:id="@+id/nav_chat"
             android:title="Doctor" />
         <item
-            android:id="@+id/nav_favorite_tips"
+            android:id="@+id/nav_chat"
             android:title="@string/patient" />
+        <item
+            android:id="@+id/nav_favorite_tips2"
+            android:title="Drugs" />
+        <item
+            android:id="@+id/nav_favorite_tips"
+            android:title="Admin" />
     </group>
 
 </menu>

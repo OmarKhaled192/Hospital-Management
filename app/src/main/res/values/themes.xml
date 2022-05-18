@@ -14,11 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.HospitalManagementYOM.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.HospitalManagementYOM.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.HospitalManagementYOM.PopupOverlay"
-        parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.HospitalManagementYOM.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.HospitalManagementYOM.NoActionBar">
         <item name="windowActionBar">false</item>
