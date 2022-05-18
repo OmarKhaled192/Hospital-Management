@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".AdmainBoard"
+            android:exported="false" />
+        <activity
             android:name=".Parcode"
             android:exported="false" />
         <activity
