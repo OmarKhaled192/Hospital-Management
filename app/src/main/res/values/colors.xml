@@ -10,4 +10,8 @@
     <color name="green">#00FF00</color>
     <color name="bgHomePatient">#80B3B1B1</color>
     <color name="notSelect">#0000FF00</color>
+    <color name="red">#EE4B2B</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="aqua">#00FFFF</color>
 </resources>

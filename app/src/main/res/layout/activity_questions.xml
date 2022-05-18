@@ -3,15 +3,91 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_10ssp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
     android:layout_height="match_parent"
-    tools:context=".activity.home.healthcare.Questions">
+    tools:context=".activity.home.healthcare.Questions"
+    android:orientation="vertical">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+
+
+        android:background="@color/green"
+        android:contentDescription="@string/background"
+        android:src="@drawable/health_care"
+
+      />
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/box_without_border"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:backgroundTint="@color/aqua"
+        android:paddingEnd="15dp"
+        android:textColor="#1F6888"
+
+        android:text="1/4" />
+    <TextView
+        android:id="@+id/Q"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_gravity="center"
+        android:minHeight="100dp"
+
+        android:textSize="@dimen/_12sdp"
+        android:gravity="center"
+
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/box"
+        android:backgroundTint="@color/fuchsia"
+        android:text="@string/Q1" />
+
+
+    <Button
+        android:id="@+id/btn_ans_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/background"
-        android:src="@drawable/background_image"
-        tools:ignore="ImageContrastCheck" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/ans1Q1"
+        android:textColor="@color/black"
 
+        android:layout_marginStart="@dimen/_20sdp"
+
+        android:backgroundTint="@color/yellow"
+        />
+        <Button
+            android:id="@+id/btn_ans_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_gravity="left"
+            android:text="@string/ans2Q1"
+
+            android:layout_marginStart="@dimen/_20sdp"
+
+            android:textColor="@color/black"
+            android:backgroundTint="@color/red"
+            />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="center"
+        android:text="@string/next"
+        android:backgroundTint="@color/aqua"
+        android:onClick="next"
+        android:id="@+id/nextBtn"
+        android:textColor="@color/black"
+        />
 
 </LinearLayout>

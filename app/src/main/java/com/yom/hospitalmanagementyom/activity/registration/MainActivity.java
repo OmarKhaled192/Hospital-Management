@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.healthcare.HealthCare;
+import com.yom.hospitalmanagementyom.activity.home.healthcare.Questions;
 import com.yom.hospitalmanagementyom.activity.home.healthcare.chatbot.ByChatting;
+import com.yom.hospitalmanagementyom.activity.home.hospital.Covid19Fragment;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.MessageActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, HealthCare.class);
+            intent.setClass(this, Questions.class);
 
         startActivity(intent);
 
