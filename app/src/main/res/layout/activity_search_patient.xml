@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".activity.home.patient.SearchPatientActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/box8"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/_100ssp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:hint="@string/search_hint"
@@ -31,7 +28,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText8"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
             android:textColor="?attr/colorControlNormal" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -41,8 +37,10 @@
         android:onClick="searchbyname"
         android:layout_width="270dp"
         android:layout_height="60dp"
-         android:text="@string/next"
-        android:textSize="@dimen/_20ssp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginStart="80dp"
+        android:text="@string/serbyname"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="494dp" />
@@ -51,18 +49,23 @@
         android:id="@+id/sephoto"
         android:layout_width="270dp"
         android:layout_height="60dp"
-        android:text="@string/next"
-        android:textSize="@dimen/_20ssp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginStart="80dp"
+        android:text="@string/searphoto"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="411dp" />
 
     <Button
         android:id="@+id/separ"
+        android:onClick="searchbyparcode"
         android:layout_width="270dp"
         android:layout_height="60dp"
-        android:text="@string/next"
-        android:textSize="@dimen/_20ssp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginStart="80dp"
+        android:text="@string/serparcod"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="317dp" />
@@ -72,9 +75,11 @@
         android:onClick="searchdiese"
         android:layout_width="270dp"
         android:layout_height="60dp"
-        android:text="@string/next"
-        android:textSize="@dimen/_20ssp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_marginStart="80dp"
+        android:text="@string/seardiese"
+        android:textSize="@dimen/_15ssp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="231dp" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

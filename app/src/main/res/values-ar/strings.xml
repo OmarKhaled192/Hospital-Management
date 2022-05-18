@@ -95,7 +95,7 @@
     </string-array>
     <string name="hospital_name">آسم المستفى</string>
     <string name="Manager_Name">اسم المسئول</string>
-
+<string name="Scanne">مسح</string>
     <!--Common Registration-->
     <string name="phone">رقم الهاتف</string>
     <string name="code">+2</string>
@@ -123,10 +123,11 @@
     <string name="favorite">النصائح المفضلة</string>
     <string name="settings">الإعدادات</string>
     <string name="signOut">تسجيل الخروج</string>
-
-
-
-
+    <string name="scann">ماسح</string>
+    <string name="seardiese">البحث باسم المرض</string>
+    <string name="serbyname">البحث باسم الدواء</string>
+    <string name="serparcod">البحث بالباركود</string>
+    <string name="searphoto">البحث بالصوره</string>
 
 
 </resources>

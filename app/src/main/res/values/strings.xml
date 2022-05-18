@@ -185,19 +185,24 @@
     <string name="FriendNumber">Enter the number of your friend</string>
     <string name="Healthnotify">this is time of your healthcare : </string>
 
-    <string name = "Q1">are you take medicine in its time today ? </string>
-        <string name="ans1Q1">yes,i take it in the exact time</string>
-        <string name="ans2Q1">no , i take it but in latter time</string>
+    <string name="Q1">are you take medicine in its time today ? </string>
+    <string name="ans1Q1">yes,i take it in the exact time</string>
+    <string name="ans2Q1">no , i take it but in latter time</string>
 
-    <string name = "Q2">Do you feel dizzy today?</string>
-        <string name="ans1Q2">I really feel dizzy</string>
-        <string name="ans2Q2">No I\'m fine</string>
+    <string name="Q2">Do you feel dizzy today?</string>
+    <string name="ans1Q2">I really feel dizzy</string>
+    <string name="ans2Q2">No I\'m fine</string>
 
-    <string name = "Q3">Did you run out a specific drug you want to buy?</string>
-        <string name="ans1Q3">indeed, I have a drug that has already run out</string>
-        <string name="ans2Q3">no medication has been taken</string>
+    <string name="Q3">Did you run out a specific drug you want to buy?</string>
+    <string name="ans1Q3">indeed, I have a drug that has already run out</string>
+    <string name="ans2Q3">no medication has been taken</string>
 
-    <string name = "Q4">Do you have the result of the corona virus analysis and would like to check the result?</string>
-        <string name="ans1Q4">Yes, I already have a new x-ray</string>
-        <string name="ans2Q4">No, I did not have any new x-rays</string>
+    <string name="Q4">Do you have the result of the corona virus analysis and would like to check the result?</string>
+    <string name="ans1Q4">Yes, I already have a new x-ray</string>
+    <string name="ans2Q4">No, I did not have any new x-rays</string>
+    <string name="scann">Scann</string>
+    <string name="serbyname">Search By Name</string>
+    <string name="seardiese">Search By Disease</string>
+    <string name="serparcod">Search By Barcode</string>
+    <string name="searphoto">Search By Photo</string>
 </resources>

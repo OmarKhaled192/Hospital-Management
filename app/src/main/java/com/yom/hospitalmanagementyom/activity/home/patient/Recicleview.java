@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.yom.hospitalmanagementyom.R;
 
 import com.yom.hospitalmanagementyom.adapter.DrugsAdapter;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Drug;
 
@@ -26,7 +27,7 @@ private ArrayList<Drug> recicls;
         recicleview= findViewById(R.id.rc);
         recicls=new ArrayList<>();
         Intent intent=getIntent();
-        //recicls=(Drug)intent.getExtras().getParcelableArrayList("Drugs");
+        recicls=(ArrayList<Drug>)intent.getSerializableExtra(Constants.DRUGS);
         recicladapter=new DrugsAdapter(this,recicls);
         recicleview.setLayoutManager(new LinearLayoutManager(this));
         recicleview.setAdapter(recicladapter);

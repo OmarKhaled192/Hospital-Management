@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".Parcode"
+            android:exported="false" />
+        <activity
             android:name=".activity.home.healthcare.Questions"
             android:exported="false" />
         <activity
@@ -93,10 +96,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".model.MyReceiver" android:exported="true" android:enabled="true"/>
-
-
-
+        <receiver
+            android:name=".model.MyReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
