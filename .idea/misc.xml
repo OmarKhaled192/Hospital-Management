@@ -202,7 +202,8 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/drugs_bar.xml" value="0.1075" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_choose.xml" value="0.153125" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_health_care.xml" value="0.153125" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_health_care.xml" value="0.14" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_home_doctor.xml" value="0.153125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_parcode.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_recicleview.xml" value="0.15648148148148147" />
@@ -210,6 +211,7 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration_common.xml" value="0.11736111111111111" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_view.xml" value="0.15" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_admin.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_doctor.xml" value="0.11319444444444444" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_drugs.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/item_chat.xml" value="0.20416666666666666" />

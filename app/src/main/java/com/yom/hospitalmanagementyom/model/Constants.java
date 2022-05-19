@@ -43,4 +43,5 @@ public class Constants {
     public static final String NO = "No";
     public static final String STATUS = "status";
     public static final String DISEASES = "Diseases";
+    public static final String ADMINS = "Admins";
 }

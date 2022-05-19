@@ -7,3 +7,4 @@ import java.util.List;
 public interface SearchListener {
     void finishGetDrugs(List<Drug> drugs);
 }
+

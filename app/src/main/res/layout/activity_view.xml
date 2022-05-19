@@ -174,8 +174,6 @@
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:background="@color/teal_700"/>
 
-
-
                 <TextView
                     android:id="@+id/Datedoctor"
                     android:layout_width="match_parent"
