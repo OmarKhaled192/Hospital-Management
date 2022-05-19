@@ -2,6 +2,7 @@ package com.yom.hospitalmanagementyom.database;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,6 +20,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sdsmdg.tastytoast.TastyToast;
+import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
@@ -184,5 +187,9 @@ public class Repository {
 
     public void setStatus(String Root,String status){
         myHomeFirebase.setStatus(Root, status);
+    }
+
+    public void addDoctor(Doctor doctor ,SaveDataListener saveDataListener) {
+        myHomeFirebase.addDoctor(doctor, saveDataListener);
     }
 }

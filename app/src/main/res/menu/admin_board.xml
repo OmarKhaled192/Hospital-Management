@@ -6,16 +6,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Doctor" />
+            android:title="@string/Doctor" />
         <item
             android:id="@+id/nav_chat"
             android:title="@string/patient" />
         <item
             android:id="@+id/nav_favorite_tips2"
-            android:title="Drugs" />
+            android:title="@string/Drugs" />
         <item
             android:id="@+id/nav_favorite_tips"
-            android:title="Admin" />
+            android:title="@string/Admin" />
     </group>
 
 </menu>

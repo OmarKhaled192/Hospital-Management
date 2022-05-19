@@ -21,6 +21,7 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         i =0;
+
         counter = findViewById(R.id.count);
         questionText = findViewById(R.id.Q);
         ans1 = findViewById(R.id.btn_ans_1);

@@ -1,9 +1,11 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,8 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.Log;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,9 +32,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
+import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
 import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -37,10 +44,12 @@ import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
+import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MyHomeFirebase {
     private final Context context;
@@ -104,9 +113,11 @@ public class MyHomeFirebase {
         return posts;
     }
 
-
     private List<Doctor> doctors;
+
+
     public List<Doctor> getDoctorPosts(List<Post> posts, PostsListener postsListener){
+
         doctor = new Doctor();
         doctors = new ArrayList<>();
         for (int i=0; i<posts.size();i++) {
@@ -369,6 +380,81 @@ public class MyHomeFirebase {
                 progressBarLoading.setProgress((int)progress);
             }
         });
+    }
+    public void addDoctor(Doctor doctor ,SaveDataListener saveDataListener) {
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.loading);
+        dialog.show();
+
+        firebaseAuth.createUserWithEmailAndPassword(doctor.getEmail(), doctor.getPassword())
+                .addOnSuccessListener(authResult ->
+                        addDoctorFireStorage(doctor, saveDataListener, dialog))
+                .addOnFailureListener(e ->
+                        TastyToast.makeText(context, context.getString(R.string.emailErrorVerification), TastyToast.LENGTH_LONG, TastyToast.ERROR));
+    }
+
+    private void addDoctorFireStorage(Doctor doctor, SaveDataListener saveDataListener,Dialog dialog) {
+        TextView nowLoading = dialog.findViewById(R.id.nowLoading);
+        ProgressBar progressBarLoading = dialog.findViewById(R.id.progressBarLoading);
+        doctor.setId(getUser().getUid());
+        firebaseStorage.getReference(Constants.DOCTORS).child(doctor.getId())
+                .child(doctor.getId() + ".png")
+                .putFile(Uri.parse(doctor.getProfile()))
+                .addOnSuccessListener(taskSnapshot -> {
+                    doctor.setProfile(Objects.requireNonNull(taskSnapshot.getUploadSessionUri()).toString());
+                    saveDoctorFirestore(dialog, doctor, saveDataListener, taskSnapshot.getUploadSessionUri());
+                }).addOnFailureListener(e ->
+                saveDataListener.failSavePatient()
+        ).addOnProgressListener(snapshot -> {
+            double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+            String progress1 = progress+"%";
+            nowLoading.setText( progress1 );
+            progressBarLoading.setProgress((int)progress);
+        });
+    }
+    private void deleteImageLevel(String child, String child2){
+        firebaseStorage.getReference(child).child(child2).delete();
+    }
+
+    private void saveDoctorFirestore(Dialog dialog, Doctor doctor, SaveDataListener saveDataListener, Uri uri){
+        firebaseFirestore.collection(Constants.DOCTORS).add(doctor)
+                .addOnSuccessListener(
+                        documentReference -> {
+                            saveDataListener.successSavePatient();
+                            updateUser(dialog, doctor.getName(), uri);
+                        })
+                .addOnFailureListener(e -> {
+                    deleteImageLevel(Constants.DOCTORS,doctor.getId());
+                    saveDataListener.failSavePatient();
+                    dialog.dismiss();
+                });
+    }
+
+    private void updateUser(Dialog dialog,String name, Uri uri){
+        UserProfileChangeRequest userProfileChangeRequest=new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .setPhotoUri(uri).build();
+        getUser().updateProfile(userProfileChangeRequest)
+                .addOnSuccessListener(unused -> dialog.dismiss())
+                .addOnFailureListener(e -> dialog.dismiss());
+    }
+
+    public void updateFirestore(String root, String id, String key,String value){
+        firebaseFirestore.collection(root).document(id).update(key, value);
+    }
+    public void deleteFirestore(String root, String id){
+        firebaseFirestore.collection(root).document(id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
     }
 
 }

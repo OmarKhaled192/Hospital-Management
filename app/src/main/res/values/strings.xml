@@ -216,4 +216,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="Doctor">Doctor</string>
+    <string name="Drugs">Drugs</string>
+    <string name="Admin">Admin</string>
 </resources>
