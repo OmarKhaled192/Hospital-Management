@@ -15,7 +15,7 @@
         android:layout_height="@dimen/_150sdp"
 
 
-        android:background="@color/green"
+        android:background="@color/teal_700"
         android:contentDescription="@string/background"
         android:src="@drawable/health_care"
 
@@ -26,14 +26,13 @@
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="@drawable/box_without_border"
+        android:background="@drawable/box"
         android:elevation="1dp"
         android:gravity="center"
         android:paddingStart="15dp"
-        android:backgroundTint="@color/aqua"
+        android:backgroundTint="@color/teal_700"
         android:paddingEnd="15dp"
-        android:textColor="#1F6888"
-
+        android:textColor="@color/white"
         android:text="1/4" />
     <TextView
         android:id="@+id/Q"
@@ -49,13 +48,16 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/box"
-        android:backgroundTint="@color/fuchsia"
         android:text="@string/Q1" />
 
 
-    <Button
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RadioButton
         android:id="@+id/btn_ans_1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/ans1Q1"
@@ -65,29 +67,30 @@
 
         android:backgroundTint="@color/yellow"
         />
-        <Button
-            android:id="@+id/btn_ans_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_gravity="left"
-            android:text="@string/ans2Q1"
-
-            android:layout_marginStart="@dimen/_20sdp"
-
-            android:textColor="@color/black"
-            android:backgroundTint="@color/red"
-            />
-    <Button
-        android:layout_width="wrap_content"
+    <RadioButton
+        android:id="@+id/btn_ans_2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/ans2Q1"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:backgroundTint="@color/yellow"
+       />
+
+</RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_gravity="center"
         android:text="@string/next"
-        android:backgroundTint="@color/aqua"
+        android:backgroundTint="@color/teal_700"
         android:onClick="next"
         android:id="@+id/nextBtn"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         />
+
 
 </LinearLayout>

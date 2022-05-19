@@ -166,7 +166,7 @@
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/time.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_admin_board.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_book_appointment.xml" value="0.16576086956521738" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_by_chatting.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_by_chatting.xml" value="0.264" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_by_voise.xml" value="0.16576086956521738" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_chatbot_service.xml" value="0.16576086956521738" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_choose.xml" value="0.25226449275362317" />
@@ -176,7 +176,7 @@
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_home_patient.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_questions.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_questions.xml" value="0.264" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration2.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_registration_for_hosbital2.xml" value="0.21920289855072464" />

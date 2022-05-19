@@ -38,6 +38,7 @@ import com.yom.hospitalmanagementyom.listeners.ChatListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
+import com.yom.hospitalmanagementyom.model.Admin;
 import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Disease;
@@ -163,6 +164,7 @@ public class MyHomeFirebase {
     }
 
     private List<Chat> chats;
+
     public List<Chat> getLastMessage(ChatListener chatListener){
         chats = new ArrayList<>();
         firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).addValueEventListener(new ValueEventListener() {
@@ -284,6 +286,65 @@ public class MyHomeFirebase {
     public void setStatus(String Root,String status){
         firebaseFirestore.collection(Root).document(getUser().getUid()).update(Constants.STATUS, status);
     }
+
+
+
+    public ArrayList<Doctor> getAllDoctor() {
+        ArrayList<Doctor> doctors=new ArrayList<>();
+        firebaseFirestore.collection(Constants.DOCTORS)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                    Doctor doctor =    document.toObject(Doctor.class);
+                        doctors.add(doctor);
+                    }
+                }
+            }
+        });
+
+               return doctors;
+    }
+
+    public ArrayList<Drug> getAllDrugs() {
+        ArrayList<Drug> drugs=new ArrayList<>();
+        firebaseFirestore.collection(Constants.DRUGS)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Drug drug= document.toObject(Drug.class);
+                        drugs.add(drug);
+                    }
+                }
+            }
+        });
+
+        return drugs;
+    }
+
+    public ArrayList<Admin> getAllAdmins() {
+        ArrayList<Admin> admins=new ArrayList<>();
+        firebaseFirestore.collection(Constants.DRUGS)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Admin admin= document.toObject(Admin.class);
+                        admins.add(admin);
+                    }
+                }
+            }
+        });
+
+        return admins;
+    }
+
+
+
 
     public void getDrugs(String Name, SearchListener searchListener) {
         List<Drug> drugs=new ArrayList<>();

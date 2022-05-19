@@ -7,6 +7,8 @@ import com.yom.hospitalmanagementyom.R;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class Questions extends AppCompatActivity {
@@ -14,7 +16,8 @@ public class Questions extends AppCompatActivity {
     private TextView counter , questionText;
     private int i;
     private String count_list[];
-    private Button ans1, ans2,nextBtn;
+    private RadioButton ans1, ans2;
+    private   Button nextBtn;
     private String questions[],firstAnswers[],SecondAnswers[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {

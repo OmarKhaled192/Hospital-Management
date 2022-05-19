@@ -40,10 +40,11 @@ public class Covid19Fragment extends Fragment {
     }
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        bitmap=null;
         activityResultLauncher=registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
                 new ActivityResultCallback<Uri>() {
@@ -98,37 +99,38 @@ public class Covid19Fragment extends Fragment {
         detect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (bitmap != null) {
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 64, 64, true);
 
-                bitmap=Bitmap.createScaledBitmap(bitmap,64,64,true);
 
-                try {
-                    Covid model = Covid.newInstance(requireContext());
-                    // Creates inputs for reference.
-                    TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 64, 64, 3}, DataType.FLOAT32);
-                    TensorImage tensorImage=new TensorImage(DataType.FLOAT32);
-                    tensorImage.load(bitmap);
-                    ByteBuffer byteBuffer=tensorImage.getBuffer();
-                    inputFeature0.loadBuffer(byteBuffer);
-                    // Runs model inference and gets result.
-                    Covid.Outputs outputs = model.process(inputFeature0);
-                    TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
-                    // Releases model resources if no longer used.
-                    model.close();
+                    try {
+                        Covid model = Covid.newInstance(requireContext());
+                        // Creates inputs for reference.
+                        TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 64, 64, 3}, DataType.FLOAT32);
+                        TensorImage tensorImage = new TensorImage(DataType.FLOAT32);
+                        tensorImage.load(bitmap);
+                        ByteBuffer byteBuffer = tensorImage.getBuffer();
+                        inputFeature0.loadBuffer(byteBuffer);
+                        // Runs model inference and gets result.
+                        Covid.Outputs outputs = model.process(inputFeature0);
+                        TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+                        // Releases model resources if no longer used.
+                        model.close();
 
-                    String s="";
-                    if(outputFeature0.getFloatArray()[0]==1)
-                        s+=getString(R.string.positive);
-                     if(outputFeature0.getFloatArray()[1]==1)
-                         s+=getString(R.string.negative);
-                     if(outputFeature0.getFloatArray()[2]==1)
-                         s+=getString(R.string.viralPhenomena);
+                        String s = "";
+                        if (outputFeature0.getFloatArray()[0] == 1)
+                            s += getString(R.string.positive);
+                        if (outputFeature0.getFloatArray()[1] == 1)
+                            s += getString(R.string.negative);
+                        if (outputFeature0.getFloatArray()[2] == 1)
+                            s += getString(R.string.viralPhenomena);
 
-                     covidResult.setText(s);
+                        covidResult.setText(s);
 
-                } catch (IOException e) {
-                    // TODO Handle the exception
+                    } catch (IOException e) {
+                        // TODO Handle the exception
+                    }
                 }
-
             }
         });
     }

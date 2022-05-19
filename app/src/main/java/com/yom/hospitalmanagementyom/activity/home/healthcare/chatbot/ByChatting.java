@@ -24,10 +24,11 @@ public class ByChatting extends AppCompatActivity {
     TextInputLayout notifyChatBox, notifyTimeBox;
     AppCompatAutoCompleteTextView notifyChat, notifyTime;
     private String String_No;
-     Button TimeButton,nextBtn;
+     Button TimeButton,nextBtn,create_OR_edit;
 
     String [] times;
     String [] temps;
+    int tag;
     String amPm;
     int time;
     private TimePickerDialog timePickerDialog;
@@ -39,8 +40,10 @@ public class ByChatting extends AppCompatActivity {
         setContentView(R.layout.activity_by_chatting);
         notifyChat =findViewById(R.id.notify_chat_no);
         notifyTime =findViewById(R.id.Time);
+        create_OR_edit = findViewById(R.id.create_OR_edit);
          initTimePicker();
         time = 0;
+        tag =0;
         nextBtn = findViewById(R.id.nextBtn);
         notifyChatBox =findViewById(R.id.notify_chat_box);
         notifyTimeBox =findViewById(R.id.timeBox);
@@ -78,13 +81,28 @@ public class ByChatting extends AppCompatActivity {
 
     }
     public void createFn(View view) {
+        TimeButton.setText("Set Time 1");
+        if(tag ==0)
+        {
+            time = 0;
 
-        String_No = notifyChat.getText().toString();
-        No = Integer.parseInt(String_No);
-        notifyChat.setEnabled(false);
-        TimeButton.setEnabled(true);
-        nextBtn.setEnabled(true);
+            String_No = notifyChat.getText().toString();
+            No = Integer.parseInt(String_No);
+            notifyChat.setEnabled(false);
+            TimeButton.setEnabled(true);
+            nextBtn.setEnabled(true);
+            create_OR_edit.setText("Edit");
+            tag =1;
+        }
+    else {
+            time = 0;
+            notifyChat.setEnabled(true);
+            TimeButton.setEnabled(false);
+            nextBtn.setEnabled(false);
+            create_OR_edit.setText("Create");
+            tag =0;
 
+        }
     }
 
     private String makeTimeString(int hours, int minutes,String amPm)
@@ -106,6 +124,7 @@ public class ByChatting extends AppCompatActivity {
     {
         timePickerDialog.show();
     }
+
     public void next(View v)
     {
 
@@ -131,11 +150,5 @@ public class ByChatting extends AppCompatActivity {
 
     }
 
-    public void editFn(View v)
-    {
-        time = 0;
-        notifyChat.setEnabled(true);
-        TimeButton.setEnabled(false);
-        nextBtn.setEnabled(false);
-    }
+
 }
