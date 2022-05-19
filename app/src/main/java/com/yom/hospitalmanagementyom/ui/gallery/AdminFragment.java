@@ -10,23 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.yom.hospitalmanagementyom.databinding.FragmentGalleryBinding;
+import com.yom.hospitalmanagementyom.databinding.FragmentAdminBinding;
 
-public class GalleryFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+public class AdminFragment extends Fragment {
+
+    private FragmentAdminBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        binding = FragmentAdminBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override

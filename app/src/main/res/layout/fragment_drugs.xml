@@ -4,14 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.home.patient.Recicleview">
+    android:orientation="vertical"
+    tools:context=".ui.slideshow.DrugsFragment">
 
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Doctoradded"
+        android:textAlignment="center"
+        android:background="@drawable/drugs_bar"
+        android:layout_margin="@dimen/_20sdp"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_manger"
         tools:itemCount="3"/>
-
 
 </LinearLayout>

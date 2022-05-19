@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.yom.hospitalmanagementyom.databinding.ActivityAdminBoardBinding;
 
-public class AdminBoard extends AppCompatActivity {
+public class AdminBoardActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityAdminBoardBinding binding;

@@ -10,23 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.yom.hospitalmanagementyom.databinding.FragmentSlideshowBinding;
+import com.yom.hospitalmanagementyom.databinding.FragmentDrugsBinding;
 
-public class SlideshowFragment extends Fragment {
+public class DrugsFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentDrugsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        binding = FragmentDrugsBinding.inflate(inflater, container, false);
+       return  binding.getRoot();
+
+
+
     }
 
     @Override

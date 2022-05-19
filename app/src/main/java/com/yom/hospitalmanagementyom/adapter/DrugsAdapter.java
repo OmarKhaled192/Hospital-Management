@@ -9,20 +9,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Drug;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView drugName,drugId;
+        TextView drugName;
+        CircleImageView circleImageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            drugName=itemView.findViewById(R.id.diseaseName);
-            drugId=itemView.findViewById(R.id.diseasesId);
+            drugName=itemView.findViewById(R.id.nameDoctorForHospital);
+            circleImageView=itemView.findViewById(R.id.profileDoctorForHospital);
+
         }
     }
     private Context context;
@@ -33,7 +38,7 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
 
     }
     public DrugsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(context).inflate(R.layout.item_disease,parent,false);
+        View v= LayoutInflater.from(context).inflate(R.layout.item_manger,parent,false);
         return new DrugsAdapter.ViewHolder(v);
     }
 
@@ -41,7 +46,7 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Drug drug=drugs.get(position);
         holder.drugName.setText(drug.getNameDrug());
-        holder.drugId.setText(drug.getId());
+        //Picasso.with(context).load(drug.getProfile()).error(R.color.teal_700).into(holder.circleImageView);
     }
 
     @Override
