@@ -10,7 +10,6 @@ import com.yom.hospitalmanagementyom.activity.home.healthcare.chatbot.ByChatting
 import com.yom.hospitalmanagementyom.activity.home.hospital.Covid19Fragment;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.MessageActivity;
-import com.yom.hospitalmanagementyom.activity.home.patient.Recicleview;
 import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, Recicleview.class);
+            intent.setClass(this, Questions.class);
 
         startActivity(intent);
 

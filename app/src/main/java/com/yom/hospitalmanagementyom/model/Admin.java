@@ -1,7 +1,9 @@
 package com.yom.hospitalmanagementyom.model;
+
 import java.io.Serializable;
 public class Admin implements Serializable{
-    private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender, Specialization;
+    private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender,Type, Status, Specialization;
+
     public String getId() {
         return Id;
     }
@@ -9,6 +11,7 @@ public class Admin implements Serializable{
     public void setId(String id) {
         Id = id;
     }
+
 
     public String getHospitalId() {
         return HospitalId;
@@ -75,6 +78,22 @@ public class Admin implements Serializable{
     }
 
 
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
     public String getSpecialization() {
         return Specialization;
     }
@@ -83,4 +102,3 @@ public class Admin implements Serializable{
         Specialization = specialization;
     }
 }
-

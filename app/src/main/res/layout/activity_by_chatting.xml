@@ -50,32 +50,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:context=".activity.home.healthcare.chatbot.ByChatting">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="@dimen/_50sdp"
-        android:text="@string/Edit"
-        android:onClick="editFn"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:textSize="@dimen/_15ssp"/>
-     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        <Button
+         android:id="@+id/create_OR_edit"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
         android:text="@string/create"
-
+        android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
         android:onClick="createFn"
         android:textSize="@dimen/_15ssp"/>
-    </LinearLayout>
+
 
     <Button
         android:layout_width="match_parent"
@@ -117,21 +102,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+
         android:text="@string/next"
         android:enabled="false"
         android:id="@+id/nextBtn"
         android:onClick="next"
         android:textSize="@dimen/_15ssp"/>
 
-    <TextView
-        android:id="@+id/s"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_15sdp"
-        android:text=""
-        android:textAlignment="center"
-        android:textColor="@color/teal_700"
-        android:textSize="@dimen/_15ssp" />
+
 </LinearLayout>
