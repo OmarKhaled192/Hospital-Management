@@ -3,16 +3,11 @@ package com.yom.hospitalmanagementyom.activity.home.patient;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -22,7 +17,8 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import com.sdsmdg.tastytoast.TastyToast;
-import com.yom.hospitalmanagementyom.model.Parcode;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivitySearchPatientBinding;
@@ -31,13 +27,11 @@ import com.yom.hospitalmanagementyom.model.Drug;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 public class SearchPatientActivity extends AppCompatActivity implements SearchListener {
-    EditText e1;
-    Button b1,b2,b3,b4;
-    String s;
-    private static final String tag="my tag";
-    InputImage inputImage;
+
+    private String status;
     TextRecognizer textRecognizer;
     String t;
     private ActivitySearchPatientBinding binding;
@@ -47,92 +41,64 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         super.onCreate(savedInstanceState);
         binding = ActivitySearchPatientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        textRecognizer= TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
-        e1=findViewById(R.id.editText8);
-        b1=findViewById(R.id.sename);
-        b2=findViewById(R.id.sedies);
-        b3=findViewById(R.id.sephoto);
-        b4=findViewById(R.id.separ);
-        s=e1.toString();
+
         repository = new Repository(this);
-        b3.setOnClickListener(new View.OnClickListener() {
+        binding.searchByName.setOnClickListener(view -> {
+            if(Objects.requireNonNull(binding.searchText.getText()).length()==0)
+                binding.searchText.setError(getString(R.string.nameOfDrug));
+            else
+                searchByName(binding.searchText.getText().toString());
+        });
+
+        binding.searchByDisease.setOnClickListener(view -> {
+            if(Objects.requireNonNull(binding.searchText.getText()).length()==0)
+                binding.searchText.setError(getString(R.string.nameOfDisease));
+            else
+                searchByDisease(binding.searchText.getText().toString());
+        });
+
+        binding.searchByPhoto.setOnClickListener(view -> {
+            CropImage.activity()
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .start(SearchPatientActivity.this);
+            status = "Photo";
+        });
+
+        binding.searchByBarcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(b3.getId()==view.getId()){
-
-                    Intent camera= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if(camera.resolveActivity(getPackageManager())!=null){
-                        startActivityForResult(camera,10);
-
-                    }
-
-                }
-
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(SearchPatientActivity.this);
+                status = "Barcode";
             }
         });
     }
 
+    private void searchByDisease(String disease) {
+        repository.getDisease(disease, this);
+    }
 
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    private void searchByName(String name) {
+        repository.getDrugs(name, this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==10&resultCode==RESULT_OK){
-            Uri imageuri=data.getData();
-            convertimagetext(imageuri);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri uri = result.getUri();
+                if (status.equals("Photo"))
+                    searchByName( repository.getTextFromImage(getApplicationContext(),uri) );
+                else  if (status.equals("Barcode"))
+                    searchByName( repository.getTextFromBarcode(getApplicationContext(),uri) );
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
         }
     }
-
-    private void convertimagetext(Uri imageuri) {
-        try{
-            inputImage=InputImage.fromFilePath(getApplicationContext(),imageuri);
-            Task<Text> result=textRecognizer.process(inputImage)
-                    .addOnSuccessListener(new OnSuccessListener<Text>() {
-                        @Override
-                        public void onSuccess(Text text) {
-                            t=text.getText();
-                            repository.getDrugs(s, SearchPatientActivity.this);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(tag," error"+e.getMessage());
-                        }
-                    });
-        }catch (Exception e){
-            Log.d(tag,"convert image to text: error"+e.getMessage());
-        }
-
-    }
-
-
-
-
-
-
-
-    public void searchbyname(View view) {
-        if (s.equals("")) {
-            TastyToast.makeText(getApplicationContext(),"Please Enter The Word",TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
-        } else {
-            repository.getDrugs(s, this);
-        }
-    }
-
-
-
-
-
-
-    public void searchdiese(View view) {
-        if (s.equals("")) {
-            TastyToast.makeText(getApplicationContext(),"Please Enter The Word",TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
-        } else {
-            repository.getDisease(s, this);
-        }
-    }
-
-
-
-
 
     @Override
     public void finishGetDrugs(List<Drug> drugs) {
@@ -141,10 +107,4 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
         startActivity(intent);
     }
 
-    public void searchbyparcode(View view) {
-if(R.id.separ==view.getId()){
-    Intent intent=new Intent(this, Parcode.class);
-    startActivity(intent);
-}
-    }
 }

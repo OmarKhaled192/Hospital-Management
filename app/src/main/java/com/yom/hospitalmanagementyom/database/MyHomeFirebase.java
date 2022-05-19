@@ -30,6 +30,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
+import com.google.mlkit.vision.barcode.BarcodeScanning;
+import com.google.mlkit.vision.barcode.common.Barcode;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
@@ -649,4 +655,54 @@ public class MyHomeFirebase {
         });
     }
 
+    //public List<Doctor>
+
+
+    private String name;
+    public String getTextFromImage(Context context,Uri uri) {
+        name="";
+        try{
+            InputImage inputImage=InputImage.fromFilePath(context,uri);
+            BarcodeScanning.getClient().process(inputImage).addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                @Override
+                public void onSuccess(List<Barcode> barcodes) {
+                    for(Barcode barcode:barcodes)
+                    {
+                        int valueType=barcode.getValueType();
+                        switch (valueType){
+                            case Barcode.TYPE_WIFI:
+                                String ssid=barcode.getWifi().getSsid();
+                                String password=barcode.getWifi().getPassword();
+                                int type=barcode.getWifi().getEncryptionType();
+                                break;
+                            case Barcode.TYPE_URL:
+                                name = barcode.getUrl().getTitle();
+                                String url=barcode.getUrl().getUrl();
+                                break;
+                            default:
+                                String data=barcode.getDisplayValue();
+                                break;
+
+                        }
+                    }
+                }
+            });
+
+        }catch (Exception ignored){
+
+        }
+        return name;
+    }
+
+    public String getTextFromBarcode(Context context,Uri uri) {
+        name="";
+        try{
+            InputImage inputImage=InputImage.fromFilePath(context,uri);
+            TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS).process(inputImage)
+                    .addOnSuccessListener(text -> name = text.getText());
+        }catch (Exception ignored){
+
+        }
+        return name;
+    }
 }

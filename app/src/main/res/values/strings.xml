@@ -219,4 +219,6 @@
     <string name="Doctor">Doctor</string>
     <string name="Drugs">Drugs</string>
     <string name="Admin">Admin</string>
+    <string name="nameOfDrug">Enter name of drug</string>
+    <string name="nameOfDisease">Enter name of disease</string>
 </resources>
