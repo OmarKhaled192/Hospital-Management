@@ -28,6 +28,8 @@ public class ByChatting extends AppCompatActivity {
 
     String [] times;
     String [] temps;
+
+    int[] totalHours, totalMinutes;
     int tag;
     String amPm;
     int time;
@@ -44,6 +46,8 @@ public class ByChatting extends AppCompatActivity {
          initTimePicker();
         time = 0;
         tag =0;
+        totalHours = new int[]{};
+        totalMinutes= new int[]{};
         nextBtn = findViewById(R.id.nextBtn);
         notifyChatBox =findViewById(R.id.notify_chat_box);
         notifyTimeBox =findViewById(R.id.timeBox);
@@ -62,12 +66,6 @@ public class ByChatting extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 String timeFormat;
-                if (hour >= 12) {
-                     amPm = " PM";
-                     hour -= 12;
-                 }
-                 else
-                     amPm =" AM";
 
                 timeFormat = makeTimeString(hour, minute,amPm);
                 notifyTime.setText(timeFormat);
@@ -104,19 +102,39 @@ public class ByChatting extends AppCompatActivity {
 
         }
     }
-
     private String makeTimeString(int hours, int minutes,String amPm)
     {
-        String x,y;
-       if(hours < 10)
-           x ="0" + hours ;
-       else
-           x = hours+"";
 
+        String x,y;
+
+        //saving original time
+        totalHours[time] =  hours;
+        totalMinutes[time] = minutes;
+
+
+        //reformatting time
+            //1.minutes:
         if(minutes < 10)
             y ="0" + minutes ;
+
         else
             y = minutes+"";
+
+            //2.hours:
+        if (hour >= 12) {
+            amPm = " PM";
+            hour -= 12;
+        }
+
+        else
+            amPm =" AM";
+
+
+        if(hours < 10)
+            x ="0" + hours ;
+
+        else
+            x = hours+"";
 
         return x + " : " + y + amPm ;
     }
@@ -137,10 +155,17 @@ public class ByChatting extends AppCompatActivity {
         {
             TastyToast.makeText(this,"submitted All times",TastyToast.LENGTH_LONG,TastyToast.SUCCESS).show();
 
+
            Repository repository = new Repository(getApplicationContext());
-                repository.setReceiver(this,0,50);
+           for(int i=0;i<No;i++)
+           {
+               repository.saveInt("Minute"+i,totalMinutes[i]);
+               repository.saveInt("Hour"+i,totalHours[i]);
+           }
 
-
+           repository.setReceiver(getApplicationContext(),totalHours[0],totalMinutes[0]);
+            repository.saveInt("TotalTime",No);
+            repository.saveInt("TimeNow",0);
             Intent intent=new Intent(getBaseContext(), HomePatientActivity.class);
             startActivity( intent );
         }
@@ -149,6 +174,11 @@ public class ByChatting extends AppCompatActivity {
             nextBtn.setText(getString(R.string.finish));
 
     }
+private void nextTime(int i){
+    Repository repository = new Repository(getApplicationContext());
+    repository.setReceiver(getApplicationContext(),totalHours[i+1],totalMinutes[i+1]);
 
+
+}
 
 }

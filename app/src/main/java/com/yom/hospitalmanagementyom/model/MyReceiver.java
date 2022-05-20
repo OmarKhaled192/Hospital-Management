@@ -26,10 +26,9 @@ public class MyReceiver extends BroadcastReceiver {
         this.context = context;
         repository = new Repository(context);
         showNotification();
-       // repository.setReceiver(context);
-        Toast.makeText(context,"2",Toast.LENGTH_LONG).show();
+        getTime();
     }
-    public void showNotification(){
+    private void showNotification(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel("healthcareChannel id", "health care CHANNEL", NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.setDescription("");
@@ -50,5 +49,24 @@ public class MyReceiver extends BroadcastReceiver {
         mBuilder.setAutoCancel( true );
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(1, mBuilder.build());
+    }
+    private void getTime(){
+        int number = repository.returnInt("TotalTime",0);
+        int now = repository.returnInt("TimeNow",0);
+        int[] hours=new int[]{};
+        int[] minutes=new int[]{};
+        for(int i=0; i<number; i++){
+            hours[i]= repository.returnInt("Hour"+i,0);
+            minutes[i]=repository.returnInt("Minute"+i,0);
+        }
+        if(now==number){
+            repository.saveInt("TimeNow",0);
+            now = 0;
+        }
+        if(now<number){
+            repository.setReceiver(context, hours[now+1],minutes[now+1]);
+            repository.saveInt("TimeNow",now+1);
+        }
+
     }
 }

@@ -52,6 +52,7 @@
 
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -64,6 +65,7 @@
         android:textColor="@color/black"
 
         android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
 
         android:backgroundTint="@color/yellow"
         />
@@ -75,6 +77,8 @@
         android:text="@string/ans2Q1"
         android:textColor="@color/black"
         android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+
         android:backgroundTint="@color/yellow"
        />
 

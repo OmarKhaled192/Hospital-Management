@@ -7,12 +7,10 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +20,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.mlkit.vision.barcode.BarcodeScanning;
-import com.google.mlkit.vision.barcode.common.Barcode;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.text.TextRecognition;
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
@@ -198,13 +191,5 @@ public class Repository {
 
     public void addDoctor(Doctor doctor ,SaveDataListener saveDataListener) {
         myHomeFirebase.addDoctor(doctor, saveDataListener);
-    }
-
-    public String getTextFromImage(Context context, Uri uri) {
-        return myHomeFirebase.getTextFromImage(context, uri);
-    }
-
-    public String getTextFromBarcode(Context context,Uri uri) {
-        return myHomeFirebase.getTextFromBarcode(context, uri);
     }
 }

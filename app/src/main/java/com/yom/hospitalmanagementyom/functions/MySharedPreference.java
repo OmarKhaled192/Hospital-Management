@@ -23,4 +23,17 @@ public class MySharedPreference {
         }
         return defValue;
     }
+
+    public void saveInt(String key,int value) {
+        SharedPreferences.Editor prefsEditor= sharedPreferences.edit();
+        prefsEditor.putInt(key, value);
+        prefsEditor.apply();
+    }
+
+    public int returnInt(String key,int defValue) {
+        if (sharedPreferences!= null) {
+            return sharedPreferences.getInt(key, defValue);
+        }
+        return defValue;
+    }
 }

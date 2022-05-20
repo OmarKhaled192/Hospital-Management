@@ -19,6 +19,7 @@ public class Questions extends AppCompatActivity {
     private RadioButton ans1, ans2;
     private   Button nextBtn;
     private String questions[],firstAnswers[],SecondAnswers[];
+    private RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +30,28 @@ public class Questions extends AppCompatActivity {
         questionText = findViewById(R.id.Q);
         ans1 = findViewById(R.id.btn_ans_1);
         ans2 = findViewById(R.id.btn_ans_2);
+        radioGroup = findViewById(R.id.radioGroup);
         nextBtn = findViewById(R.id.nextBtn);
         count_list = new String[]{"2/4","3/4","4/4"};
         questions = new String[]{getString(R.string.Q2),getString(R.string.Q3),getString(R.string.Q4)};
         firstAnswers = new String[]{getString(R.string.ans1Q2),getString(R.string.ans1Q3),getString(R.string.ans1Q4)};
         SecondAnswers = new String[]{getString(R.string.ans2Q2),getString(R.string.ans2Q3),getString(R.string.ans2Q4)};
-
     }
 
     public void next(View view) {
+        if(i==0){
+            if(radioGroup.getCheckedRadioButtonId()==R.id.btn_ans_1)
+                //Toast;
+            {}
+            else if(radioGroup.getCheckedRadioButtonId()==R.id.btn_ans_2)
+                //Toast;
+                {}
+        }
         counter.setText(count_list[i]);
         questionText.setText(questions[i]);
         ans1.setText(firstAnswers[i]);
         ans2.setText(SecondAnswers[i]);
+        i++;
 
         if(i < 2)
             i++;
