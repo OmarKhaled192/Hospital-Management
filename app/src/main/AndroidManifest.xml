@@ -36,7 +36,7 @@
             android:name=".activity.home.patient.healthcare.HealthCare"
             android:exported="false" />
         <activity
-            android:name=".activity.home.patient.Recicleview"
+            android:name=".activity.home.patient.SearchViewActivity"
             android:exported="false" />
         <activity
             android:name=".activity.home.patient.SearchPatientActivity"

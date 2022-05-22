@@ -13,6 +13,7 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Drug;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
@@ -26,14 +27,13 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
         }
     }
     private Context context;
-    private String type;
-    private List<Object> objects;
-    public DrugsAdapter(Context context, List<Object> objects,String type){
+    private List<Drug> drugs;
+    public DrugsAdapter(Context context, List<Drug> drugs){
         this.context=context;
-        this.type=type;
-        this.objects=objects;
-
+        this.drugs=drugs;
     }
+
+    @NonNull
     public DrugsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(context).inflate(R.layout.item_disease,parent,false);
         return new DrugsAdapter.ViewHolder(v);
@@ -41,17 +41,13 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(type=="D"){
-            Drug drug= (Drug) objects.get(position);
-            holder.drugName.setText(drug.getNameDrug());
-            holder.drugId.setText(drug.getId());
-
-        }
-
+        Drug drug= drugs.get(position);
+        holder.drugName.setText(drug.getNameDrug());
+        holder.drugId.setText(drug.getId());
     }
 
     @Override
     public int getItemCount() {
-        return objects.size();
+        return drugs.size();
     }
 }

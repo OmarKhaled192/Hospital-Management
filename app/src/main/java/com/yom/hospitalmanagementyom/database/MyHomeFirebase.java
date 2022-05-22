@@ -659,7 +659,7 @@ public class MyHomeFirebase {
 
 
     private String name;
-    public String getTextFromImage(Context context,Uri uri) {
+    public String getTextFromBarcode(Context context,Uri uri) {
         name="";
         try{
             InputImage inputImage=InputImage.fromFilePath(context,uri);
@@ -671,30 +671,28 @@ public class MyHomeFirebase {
                         int valueType=barcode.getValueType();
                         switch (valueType){
                             case Barcode.TYPE_WIFI:
-                                String ssid=barcode.getWifi().getSsid();
+                                String ssid= Objects.requireNonNull(barcode.getWifi()).getSsid();
                                 String password=barcode.getWifi().getPassword();
                                 int type=barcode.getWifi().getEncryptionType();
                                 break;
                             case Barcode.TYPE_URL:
-                                name = barcode.getUrl().getTitle();
+                                name = Objects.requireNonNull(barcode.getUrl()).getTitle();
                                 String url=barcode.getUrl().getUrl();
                                 break;
                             default:
                                 String data=barcode.getDisplayValue();
                                 break;
-
                         }
                     }
                 }
             });
 
         }catch (Exception ignored){
-
         }
         return name;
     }
 
-    public String getTextFromBarcode(Context context,Uri uri) {
+    public String getTextFromImage(Context context,Uri uri) {
         name="";
         try{
             InputImage inputImage=InputImage.fromFilePath(context,uri);
