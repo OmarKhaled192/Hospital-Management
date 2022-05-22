@@ -633,7 +633,7 @@ public class MyHomeFirebase {
                 });
     }
 
-    private void updatedrug(Dialog dialog,String name, Uri uri){
+    private void updateDrug(Dialog dialog,String name, Uri uri){
         UserProfileChangeRequest userProfileChangeRequest=new UserProfileChangeRequest.Builder()
                 .setDisplayName(name)
                 .setPhotoUri(uri).build();

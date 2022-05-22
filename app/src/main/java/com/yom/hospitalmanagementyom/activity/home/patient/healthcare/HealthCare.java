@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
+import com.yom.hospitalmanagementyom.model.Constants;
 
 public class HealthCare extends AppCompatActivity {
 
@@ -47,6 +48,9 @@ public class HealthCare extends AppCompatActivity {
             TastyToast.makeText(this,"No number entered",TastyToast.LENGTH_LONG,TastyToast.ERROR).show();
         else
             {
+                Repository rep = new Repository(this);
+                rep.saveString(Constants.PHONE,friendPhone.getText().toString());
+
                 Intent intent=new Intent(getBaseContext(), ByChatting.class);
                 startActivity( intent );
             }

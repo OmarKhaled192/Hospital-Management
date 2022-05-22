@@ -22,4 +22,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="bottomTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomStyle</item>
+    </style>
+
+    <style name="bottomStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
 </resources>

@@ -221,4 +221,7 @@
     <string name="Admin">Admin</string>
     <string name="nameOfDrug">Enter name of drug</string>
     <string name="nameOfDisease">Enter name of disease</string>
+    <string name="noPermissionCall">"Deny Call Permession "</string>
+    <string name="more">more</string>
+    <string name="callFriend">call friend</string>
 </resources>

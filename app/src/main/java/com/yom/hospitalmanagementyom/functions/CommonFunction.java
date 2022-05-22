@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
 
 import com.yom.hospitalmanagementyom.R;
@@ -32,7 +33,12 @@ public class CommonFunction {
         dialog.setContentView(R.layout.loading);
         return dialog;
     }
-
+    public void callPhone(Context context, String ph) {
+        String phone="tel:"+ph;
+        Intent intent=new Intent(Intent.ACTION_CALL);
+        intent.setData( Uri.parse( phone ) );
+        context.startActivity( intent );
+    }
     public void setReceiver(Context context,int hour,int minute){
 
          Calendar calendar =Calendar.getInstance();

@@ -13,12 +13,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
-
-
         android:background="@color/teal_700"
         android:contentDescription="@string/background"
         android:src="@drawable/health_care"
-
       />
     <TextView
         android:id="@+id/count"

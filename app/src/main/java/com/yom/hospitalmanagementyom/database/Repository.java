@@ -186,4 +186,7 @@ public class Repository {
     public int returnInt(String key,int defValue) {
         return mySharedPreference.returnInt(key, defValue);
     }
+    public void callPhone(Context context,String ph) {
+        commonFunction.callPhone(context, ph);
+    }
 }
