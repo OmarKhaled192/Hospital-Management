@@ -390,6 +390,7 @@ public class MyHomeFirebase {
                             });
                         }
                         searchListener.finishGetDrugs(drugs);
+                        return;
                     }
                 }
             }
