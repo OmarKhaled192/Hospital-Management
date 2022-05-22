@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.hospital;
+package com.yom.hospitalmanagementyom.fragments.hospital;
 
 import android.Manifest;
 import android.graphics.Bitmap;
@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.ml.Covid;
-
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.image.TensorImage;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;

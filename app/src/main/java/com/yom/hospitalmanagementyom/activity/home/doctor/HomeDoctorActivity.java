@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.hospital.Covid19Fragment;
+import com.yom.hospitalmanagementyom.fragments.hospital.Covid19Fragment;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomeDoctorBinding;
 import com.yom.hospitalmanagementyom.fragments.doctor.CreatePostFragment;
 import com.yom.hospitalmanagementyom.fragments.doctor.HomeDoctorFragment;
