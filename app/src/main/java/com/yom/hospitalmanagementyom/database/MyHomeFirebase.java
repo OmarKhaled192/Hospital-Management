@@ -372,21 +372,25 @@ public class MyHomeFirebase {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Disease disease = (Disease) task.getResult().toObjects(Disease.class);
-                    List<Drug> drugs=new ArrayList<>();
-                    for(String id : disease.getDrugs()){
-                        FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.ID,id)
-                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    Drug drug = (Drug) task.getResult().toObjects(Drug.class);
-                                    drugs.add(drug);
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Disease disease = document.toObject(Disease.class);
+                        List<Drug> drugs = new ArrayList<>();
+                        for (String id : disease.getDrugs()) {
+                            FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.ID, id)
+                                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                                    if (task1.isSuccessful()) {
+                                        for (QueryDocumentSnapshot document : task1.getResult()) {
+                                            Drug drug = document.toObject(Drug.class);
+                                            drugs.add(drug);
+                                        }
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
+                        searchListener.finishGetDrugs(drugs);
                     }
-                    searchListener.finishGetDrugs(drugs);
                 }
             }
         });

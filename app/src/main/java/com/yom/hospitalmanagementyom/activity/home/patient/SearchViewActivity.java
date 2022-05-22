@@ -23,11 +23,11 @@ private List<Drug> drugs;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_search);
         recyclerviewAdmin= findViewById(R.id.recyclerviewAdmin);
-        drugs=new ArrayList<>();
         //Intent intent=getIntent();
         //recicls=(ArrayList<Drug>)intent.getSerializableExtra(Constants.DRUGS);
         Drug drug=new Drug();
-        drug.setNameDrug("omer");
+        drug.setNameDrug("Drug");
+        drugs=new ArrayList<>();
         for (int i=0;i<5;i++)
             drugs.add(drug);
 
