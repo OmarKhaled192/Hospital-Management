@@ -26,10 +26,12 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
         }
     }
     private Context context;
-    private List<Drug> drugs;
-    public DrugsAdapter(Context context, List<Drug> diseases){
+    private String type;
+    private List<Object> objects;
+    public DrugsAdapter(Context context, List<Object> objects,String type){
         this.context=context;
-        this.drugs=drugs;
+        this.type=type;
+        this.objects=objects;
 
     }
     public DrugsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,13 +41,17 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Drug drug=drugs.get(position);
-        holder.drugName.setText(drug.getNameDrug());
-        holder.drugId.setText(drug.getId());
+        if(type=="D"){
+            Drug drug= (Drug) objects.get(position);
+            holder.drugName.setText(drug.getNameDrug());
+            holder.drugId.setText(drug.getId());
+
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return drugs.size();
+        return objects.size();
     }
 }
