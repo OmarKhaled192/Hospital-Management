@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.healthcare;
+package com.yom.hospitalmanagementyom.activity.home.patient.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.healthcare.chatbot.ByChatting;
 import com.yom.hospitalmanagementyom.database.Repository;
 
 public class HealthCare extends AppCompatActivity {

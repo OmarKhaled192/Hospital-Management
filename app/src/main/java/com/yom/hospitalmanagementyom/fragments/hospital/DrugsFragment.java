@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.ui.home;
+package com.yom.hospitalmanagementyom.fragments.hospital;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,19 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import com.yom.hospitalmanagementyom.databinding.FragmentDrugsBinding;
 
-import com.yom.hospitalmanagementyom.databinding.FragmentHomeBinding;
+public class DrugsFragment extends Fragment {
 
-public class DoctorFragment extends Fragment {
-
-    private FragmentHomeBinding binding;
+    private FragmentDrugsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        binding = FragmentDrugsBinding.inflate(inflater, container, false);
+       return  binding.getRoot();
+
+
+
     }
 
     @Override

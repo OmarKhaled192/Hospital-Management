@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.ui.gallery;
+package com.yom.hospitalmanagementyom.fragments.hospital;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.model.MyReceiver;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

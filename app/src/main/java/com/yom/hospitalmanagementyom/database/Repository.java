@@ -1,35 +1,11 @@
 package com.yom.hospitalmanagementyom.database;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.mlkit.vision.barcode.BarcodeScanning;
-import com.google.mlkit.vision.barcode.common.Barcode;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.text.TextRecognition;
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
-import com.sdsmdg.tastytoast.TastyToast;
-import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
@@ -40,17 +16,11 @@ import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
 import com.yom.hospitalmanagementyom.model.Chat;
-import com.yom.hospitalmanagementyom.model.Constants;
-import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Doctor;
-import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
-import com.yom.hospitalmanagementyom.model.MyReceiver;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Repository {

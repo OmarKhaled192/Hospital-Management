@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.healthcare;
+package com.yom.hospitalmanagementyom.activity.home.patient.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 

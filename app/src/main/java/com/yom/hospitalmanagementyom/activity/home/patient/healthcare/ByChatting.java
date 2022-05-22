@@ -1,4 +1,4 @@
-package com.yom.hospitalmanagementyom.activity.home.healthcare.chatbot;
+package com.yom.hospitalmanagementyom.activity.home.patient.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
@@ -14,11 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
-
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 
 public class ByChatting extends AppCompatActivity {
     TextInputLayout notifyChatBox, notifyTimeBox;

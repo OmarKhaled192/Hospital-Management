@@ -1,6 +1,5 @@
-package com.yom.hospitalmanagementyom.model;
+package com.yom.hospitalmanagementyom.functions;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,13 +7,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.widget.Toast;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
 import com.yom.hospitalmanagementyom.R;
-import com.yom.hospitalmanagementyom.activity.home.healthcare.Questions;
+import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.Questions;
 import com.yom.hospitalmanagementyom.database.Repository;
 
 public class MyReceiver extends BroadcastReceiver {
@@ -31,7 +27,7 @@ public class MyReceiver extends BroadcastReceiver {
     private void showNotification(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel("healthcareChannel id", "health care CHANNEL", NotificationManager.IMPORTANCE_DEFAULT);
-            notificationChannel.setDescription("");
+            notificationChannel.setDescription("Health care");
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -53,8 +49,8 @@ public class MyReceiver extends BroadcastReceiver {
     private void getTime(){
         int number = repository.returnInt("TotalTime",0);
         int now = repository.returnInt("TimeNow",0);
-        int[] hours=new int[]{};
-        int[] minutes=new int[]{};
+        int[] hours=new int[number];
+        int[] minutes=new int[number];
         for(int i=0; i<number; i++){
             hours[i]= repository.returnInt("Hour"+i,0);
             minutes[i]=repository.returnInt("Minute"+i,0);

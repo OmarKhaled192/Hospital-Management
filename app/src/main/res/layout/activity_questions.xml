@@ -7,7 +7,7 @@
     android:layout_marginStart="@dimen/_10sdp"
     android:layout_marginEnd="@dimen/_10sdp"
     android:layout_height="match_parent"
-    tools:context=".activity.home.healthcare.Questions"
+    tools:context=".activity.home.patient.healthcare.Questions"
     android:orientation="vertical">
 
     <ImageView

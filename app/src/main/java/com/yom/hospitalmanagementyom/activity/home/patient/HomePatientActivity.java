@@ -1,7 +1,5 @@
 package com.yom.hospitalmanagementyom.activity.home.patient;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,9 +22,6 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
-import com.yom.hospitalmanagementyom.model.MyReceiver;
-
-import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
