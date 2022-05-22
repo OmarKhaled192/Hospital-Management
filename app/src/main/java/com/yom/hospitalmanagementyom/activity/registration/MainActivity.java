@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
+import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.SearchViewActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, SearchViewActivity.class);
+            intent.setClass(this, SearchPatientActivity.class);
 
         startActivity(intent);
 

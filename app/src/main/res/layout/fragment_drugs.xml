@@ -19,7 +19,7 @@
         android:textSize="@dimen/_20ssp"
         android:textColor="@color/white" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewAdmin"
+        android:id="@+id/recyclerviewdrug"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_manger"
