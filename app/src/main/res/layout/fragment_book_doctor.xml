@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgHomePatient"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.patient.BookDoctorFragment">
+      <TextView
+          android:id="@+id/text_home"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/doctorBooked"
+          android:textAlignment="textStart"
+          android:layout_margin="@dimen/_10sdp"
+          android:padding="@dimen/_5sdp"
+          android:textSize="@dimen/_20ssp"
+          android:textColor="@color/teal_700" />
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerviewDoctorBooked"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:listitem="@layout/item_manger"
+          tools:itemCount="3"/>
+
+      <TextView
+          android:id="@+id/text_home2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/bookDoctor"
+          android:layout_margin="@dimen/_10sdp"
+          android:padding="@dimen/_5sdp"
+          android:textAlignment="textStart"
+          android:textSize="@dimen/_20ssp"
+          android:textColor="@color/teal_700"/>
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerviewDoctor"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          tools:listitem="@layout/item_manger"
+          tools:itemCount="3"/>
+</LinearLayout>

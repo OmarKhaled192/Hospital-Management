@@ -224,4 +224,6 @@
     <string name="noPermissionCall">"Deny Call Permession "</string>
     <string name="more">more</string>
     <string name="callFriend">call friend</string>
+    <string name="bookDoctor">Book Doctor</string>
+    <string name="doctorBooked">Doctor booked</string>
 </resources>

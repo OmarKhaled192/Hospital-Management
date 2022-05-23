@@ -214,4 +214,8 @@ public class Repository {
     public List<Drug> getAllDrugs(String idHospital) {
         return myHomeFirebase.getAllDrugs(idHospital);
     }
+
+    public List<Doctor> getAllDoctors() {
+        return myHomeFirebase.getAllDoctors();
+    }
 }

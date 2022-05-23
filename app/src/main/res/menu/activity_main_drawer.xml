@@ -13,6 +13,10 @@
         <item
             android:id="@+id/nav_favorite_tips"
             android:title="@string/favorite" />
+
+        <item
+            android:id="@+id/nav_book_doctor"
+            android:title="@string/bookDoctor" />
     </group>
 
 </menu>

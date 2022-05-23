@@ -791,4 +791,20 @@ public class MyHomeFirebase {
             }});
         return drugs;
     }
+
+    public List<Doctor> getAllDoctors() {
+        doctors = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection(Constants.DOCTORS)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Doctor doctor = document.toObject(Doctor.class);
+                        doctors.add(doctor);
+                    }
+                }
+            }});
+        return doctors;
+    }
 }

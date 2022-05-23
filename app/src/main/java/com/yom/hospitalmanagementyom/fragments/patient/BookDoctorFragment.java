@@ -1,43 +1,46 @@
-package com.yom.hospitalmanagementyom.fragments.hospital;
+package com.yom.hospitalmanagementyom.fragments.patient;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.DoctorAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
-import com.yom.hospitalmanagementyom.databinding.FragmentBookDoctorBinding;
+import com.yom.hospitalmanagementyom.databinding.FragmentDoctorBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorFragment extends Fragment {
+public class BookDoctorFragment extends Fragment {
 
-    private FragmentBookDoctorBinding binding;
-
-    public DoctorFragment(){
+    public BookDoctorFragment() {
         // Required empty public constructor
     }
+
+
+
+    private FragmentDoctorBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentBookDoctorBinding.inflate(inflater, container, false);
+        binding = FragmentDoctorBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Repository repository = new Repository(requireContext());
-        List<Doctor> doctors = repository.getAllDoctors();
+        List<Doctor> doctors = repository.getAllDoctors(repository.getUser().getUid());
         List<Doctor> doctors1=new ArrayList<>(), doctors2=new ArrayList<>();
         for (int i=0; i<doctors.size();i++){
             if(doctors.get(i).getWorker().equals(Constants.WORKER))
@@ -51,7 +54,7 @@ public class DoctorFragment extends Fragment {
         binding.recyclerviewDoctor.setAdapter(doctorAdapter);
 
         DoctorAdapter doctorAdapter1 = new DoctorAdapter(requireContext(), doctors2);
-        binding.recyclerviewDoctorBooked.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.recyclerviewDoctorBooked.setAdapter(doctorAdapter1);
+        binding.recyclerviewDoctor2.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerviewDoctor2.setAdapter(doctorAdapter1);
     }
 }
