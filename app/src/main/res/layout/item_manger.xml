@@ -18,7 +18,7 @@
             android:id="@+id/profileDoctorForHospital"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:background="@drawable/drugs"
+            android:background="@drawable/person"
             android:backgroundTint="@color/teal_700"
             android:clickable="true"
             android:focusable="true"
@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profileDoctorForHospital"
             app:layout_constraintTop_toBottomOf="@+id/nameDoctorForHospital"
-            tools:text="Price" />
+            tools:text="Specialization" />
 
 
 

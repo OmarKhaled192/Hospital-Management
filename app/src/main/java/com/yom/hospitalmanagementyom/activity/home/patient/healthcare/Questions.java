@@ -183,11 +183,13 @@ public class Questions extends AppCompatActivity {
         }
 
 
+
         counter.setText(count_list[i]);
+        i++;
         questionText.setText(questions[i]);
         ans1.setText(firstAnswers[i]);
         ans2.setText(SecondAnswers[i]);
-        i++;
+
 
     }
 

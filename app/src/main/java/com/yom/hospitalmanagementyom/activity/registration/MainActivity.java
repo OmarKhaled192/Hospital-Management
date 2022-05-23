@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, SlideActivity.class);
+            intent.setClass(this, PaymentActivity.class);
 
         startActivity(intent);
 
