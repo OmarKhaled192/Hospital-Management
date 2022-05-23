@@ -66,6 +66,7 @@ dependencies {
     implementation "de.hdodenhof:circleimageview:$rootProject.circleImageview_version"
 
     //for captcha
+    implementation "com.google.android.gms:play-services-safetynet:$rootProject.safetynet_version"
 
     //view of photo
     implementation "com.squareup.picasso:picasso:$rootProject.picasso_version"
