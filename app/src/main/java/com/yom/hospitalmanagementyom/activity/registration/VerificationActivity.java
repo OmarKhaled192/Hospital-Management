@@ -35,6 +35,31 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
         setContentView( binding.getRoot() );
 
         repository = new Repository(this);
+        launcher=registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                o -> {
+                    if(o) {
+                        Cursor cursor = getContentResolver().query(Telephony.Sms.CONTENT_URI,
+                                null, null, null, null);
+                        cursor.moveToFirst();
+                        String Numbers = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                        Log.d("Joo",Numbers);
+                        cursor.close();
+                        String num1=Numbers.charAt(0)+"";
+                        String num2=Numbers.charAt(1)+"";
+                        String num3=Numbers.charAt(2)+"";
+                        String num4=Numbers.charAt(3)+"";
+                        String num5=Numbers.charAt(4)+"";
+                        String num6=Numbers.charAt(5)+"";
+//                        binding.Num1.setText(num1);
+//                        binding.Num2.setText(num2);
+//                        binding.Num3.setText(num3);
+//                        binding.Num4.setText(num4);
+//                        binding.Num5.setText(num5);
+//                        binding.Num6.setText(num6);
+                    }
+                }
+        );
         checkPhoneOrEmail();
         handlingEditText();
 
@@ -58,31 +83,6 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
             editTextVisible(View.VISIBLE);
             String phoneNumber = getIntent().getExtras().getString(Constants.PHONE);
             repository.startPhoneNumberVerification(phoneNumber,this, this);
-            launcher=registerForActivityResult(
-                    new ActivityResultContracts.RequestPermission(),
-                    o -> {
-                        if(o) {
-                            Cursor cursor = getContentResolver().query(Telephony.Sms.CONTENT_URI,
-                                    null, null, null, null);
-                            cursor.moveToFirst();
-                            String Numbers = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                            Log.d("Joo",Numbers);
-                            cursor.close();
-                            String num1=Numbers.charAt(0)+"";
-                            String num2=Numbers.charAt(1)+"";
-                            String num3=Numbers.charAt(2)+"";
-                            String num4=Numbers.charAt(3)+"";
-                            String num5=Numbers.charAt(4)+"";
-                            String num6=Numbers.charAt(5)+"";
-                            binding.Num1.setText(num1);
-                            binding.Num2.setText(num2);
-                            binding.Num3.setText(num3);
-                            binding.Num4.setText(num4);
-                            binding.Num5.setText(num5);
-                            binding.Num6.setText(num6);
-                        }
-                    }
-            );
         }
         else if(getIntent().getExtras().getString(Constants.VERIFY).equals(Constants.EMAIL)) {
             editTextVisible(View.GONE);

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, CommonRegistrationActivity.class);
+            intent.setClass(this, SlideActivity.class);
 
         startActivity(intent);
 
