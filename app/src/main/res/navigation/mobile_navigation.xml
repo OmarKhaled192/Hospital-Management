@@ -21,11 +21,23 @@
         android:id="@+id/nav_favorite_tips"
         android:name="com.yom.hospitalmanagementyom.fragments.patient.FavoriteTipsFragment"
         android:label="@string/favorite"
-        tools:layout="@layout/fragment_covid19" />
+        tools:layout="@layout/fragment_favorite_tips" />
 
     <fragment
         android:id="@+id/nav_book_doctor"
         android:name="com.yom.hospitalmanagementyom.fragments.patient.BookDoctorFragment"
         android:label="@string/bookDoctor"
         tools:layout="@layout/fragment_book_doctor" />
+    <fragment
+        android:id="@+id/nav_detect_covid19"
+        android:name="com.yom.hospitalmanagementyom.fragments.hospital.Covid19Fragment"
+        android:label="@string/covidDetect"
+        tools:layout="@layout/fragment_covid19" />
+
+    <fragment
+        android:id="@+id/nav_History"
+        android:name="com.yom.hospitalmanagementyom.fragments.doctor.HistoryPatientFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history_patient" />
+
 </navigation>

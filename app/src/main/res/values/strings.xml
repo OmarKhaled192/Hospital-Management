@@ -226,4 +226,6 @@
     <string name="callFriend">call friend</string>
     <string name="bookDoctor">Book Doctor</string>
     <string name="doctorBooked">Doctor booked</string>
+    <string name="covidDetect">Covid19 Detection</string>
+    <string name="history">History Of Patient</string>
 </resources>

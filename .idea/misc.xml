@@ -37,6 +37,8 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/check.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/circle2.xml" value="0.1945" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/close.xml" value="0.1615" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/design5.xml" value="0.1545" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/design6.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/dis_like.xml" value="0.1" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/drop_down.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/drugs_bar.xml" value="0.1545" />
@@ -57,7 +59,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/star.xml" value="0.1" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_choose.xml" value="0.20416666666666666" />
-        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_doctor.xml" value="0.18" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_doctor.xml" value="0.2" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_patient.xml" value="0.21" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_hospital_viewing_for_patient.xml" value="0.1" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_login.xml" value="0.25" />

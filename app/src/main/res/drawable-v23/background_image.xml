@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:width="@dimen/_320sdp"
-        android:height="@dimen/_130sdp"
+        android:width="@dimen/_300sdp"
+        android:height="@dimen/_120sdp"
         android:drawable="@drawable/design5"/>
 
     <item
-        android:width="@dimen/_320sdp"
-        android:height="@dimen/_155sdp"
+        android:width="@dimen/_300sdp"
+        android:height="@dimen/_140sdp"
         android:drawable="@drawable/design6"/>
 
     <item
