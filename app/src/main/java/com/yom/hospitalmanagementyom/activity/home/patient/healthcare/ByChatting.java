@@ -42,8 +42,8 @@ public class ByChatting extends AppCompatActivity {
          initTimePicker();
         time = 0;
         tag =0;
-        totalHours = new int[]{};
-        totalMinutes= new int[]{};
+        totalHours = new int[10];
+        totalMinutes= new int[10];
         nextBtn = findViewById(R.id.nextBtn);
         notifyChatBox =findViewById(R.id.notify_chat_box);
         notifyTimeBox =findViewById(R.id.timeBox);

@@ -8,24 +8,14 @@
     android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/background"
-        android:src="@drawable/background_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-1dp" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/box8"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_25sdp"
-        android:hint="@string/search_hint"
+        android:hint="search of drugs..."
+        android:layout_marginTop="@dimen/_100sdp"
         app:boxStrokeWidth="@dimen/_1sdp"
         app:counterEnabled="true"
         app:endIconMode="clear_text"

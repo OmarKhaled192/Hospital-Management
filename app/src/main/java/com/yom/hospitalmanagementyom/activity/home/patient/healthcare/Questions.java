@@ -59,44 +59,44 @@ public class Questions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        i =0;
-        repository=new Repository(this);
+        i = 0;
+        repository = new Repository(this);
 
 
-        activityResultLauncher=registerForActivityResult(
+        activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 result -> {
                     if (result)
-                        repository.callPhone(getApplicationContext(),repository.returnStringSharedPreference(Constants.PHONE,""));
+                        repository.callPhone(getApplicationContext(), repository.returnStringSharedPreference(Constants.PHONE, ""));
                     else
-                        TastyToast.makeText(this, getString( R.string.noPermissionCall ), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
+                        TastyToast.makeText(this, getString(R.string.noPermissionCall), TastyToast.LENGTH_SHORT, TastyToast.WARNING).show();
                 }
         );
 
-    // for covid 19 detection :
-        bitmap=null;
+        // for covid 19 detection :
+        bitmap = null;
 
-        activityResultLauncher2=registerForActivityResult(
+        activityResultLauncher2 = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 new ActivityResultCallback<Boolean>() {
                     @Override
                     public void onActivityResult(Boolean result) {
-                        if(result)
+                        if (result)
                             activityResultLauncher.launch("image/*");
                         else
-                            Toast.makeText(getApplicationContext(),"NO", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "NO", Toast.LENGTH_LONG).show();
                     }
                 }
         );
 
-        activityResultLauncher3=registerForActivityResult(
+        activityResultLauncher3 = registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
                 new ActivityResultCallback<Uri>() {
                     @Override
                     public void onActivityResult(Uri result) {
                         covidImage.setImageURI(result);
                         try {
-                            bitmap= MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),result);
+                            bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), result);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -105,16 +105,10 @@ public class Questions extends AppCompatActivity {
         );
 
 
-
-        questions = new String[]{getString(R.string.Q1),getString(R.string.Q2),getString(R.string.Q3),getString(R.string.Q4)};
-        firstAnswers = new String[]{getString(R.string.ans1Q1),getString(R.string.ans1Q2),getString(R.string.ans1Q3),getString(R.string.ans1Q4)};
-        SecondAnswers = new String[]{getString(R.string.ans2Q1),getString(R.string.ans2Q2),getString(R.string.ans2Q3),getString(R.string.ans2Q4)};
-
-        //set first Question:
-        counter.setText(count_list[i]);
-        questionText.setText(questions[i]);
-        ans1.setText(firstAnswers[i]);
-        ans2.setText(SecondAnswers[i]);
+        count_list = new String[]{"2/4", "3/4", "4/4"};
+        questions = new String[]{getString(R.string.Q1), getString(R.string.Q2), getString(R.string.Q3), getString(R.string.Q4)};
+        firstAnswers = new String[]{getString(R.string.ans1Q1), getString(R.string.ans1Q2), getString(R.string.ans1Q3), getString(R.string.ans1Q4)};
+        SecondAnswers = new String[]{getString(R.string.ans2Q1), getString(R.string.ans2Q2), getString(R.string.ans2Q3), getString(R.string.ans2Q4)};
 
         counter = findViewById(R.id.count);
         questionText = findViewById(R.id.Q);
@@ -122,8 +116,7 @@ public class Questions extends AppCompatActivity {
         ans2 = findViewById(R.id.btn_ans_2);
         radioGroup = findViewById(R.id.radioGroup);
         nextBtn = findViewById(R.id.nextBtn);
-        count_list = new String[]{"2/4","3/4","4/4"};
-            }
+    }
 
     public void next(View view) {
         if(i==0){

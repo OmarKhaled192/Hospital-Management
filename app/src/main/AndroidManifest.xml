@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HospitalManagementYOM">
         <activity
+            android:name=".activity.home.patient.BookActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.home.hospital.ViewActivity"
             android:exported="false" />
         <activity

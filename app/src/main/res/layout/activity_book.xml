@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700"
+    tools:context=".activity.home.patient.BookActivity"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_100sdp"
+        android:layout_marginVertical="@dimen/_20sdp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/myImageProfileActivity"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/person" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_360sdp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/myNameProfileActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textSize="@dimen/_15ssp"
+                        android:background="?selectableItemBackground"
+                        app:drawableStartCompat="@drawable/person"
+                        app:drawableTint="?attr/colorControlNormal"
+                        android:drawablePadding="@dimen/_20sdp"
+                        tools:text="محمد على سيد"
+                        android:gravity="center_vertical"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:background="@color/teal_700"/>
+
+                    <TextView
+                        android:id="@+id/mySpecialization"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textSize="@dimen/_15ssp"
+                        android:background="?selectableItemBackground"
+                        app:drawableStartCompat="@drawable/person"
+                        tools:text="دكتور باطنه"
+                        android:drawablePadding="@dimen/_20sdp"
+                        android:gravity="center_vertical"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:background="@color/teal_700"/>
+
+                    <Button
+                        android:id="@+id/logout"
+                        android:layout_width="320dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/bookDoctor"
+                        android:textSize="@dimen/_20sdp"
+                        android:visibility="visible"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+</LinearLayout>

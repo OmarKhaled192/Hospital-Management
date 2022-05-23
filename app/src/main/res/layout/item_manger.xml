@@ -18,8 +18,8 @@
             android:id="@+id/profileDoctorForHospital"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:src="@color/teal_700"
-            android:background="?actionBarItemBackground"
+            android:background="@drawable/drugs"
+            android:backgroundTint="@color/teal_700"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toEndOf="@+id/profileDoctorForHospital"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/specializationDoctorForHospital"
-            tools:text="@string/appName" />
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/specializationDoctorForHospital"
@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profileDoctorForHospital"
             app:layout_constraintTop_toBottomOf="@+id/nameDoctorForHospital"
-            tools:text="@string/appName" />
+            tools:text="Price" />
 
 
 

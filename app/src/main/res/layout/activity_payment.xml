@@ -9,19 +9,17 @@
     <com.braintreepayments.cardform.view.CardForm
         android:id="@+id/cardForm"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@color/teal_700"
         android:text="@string/pay"
         app:layout_constraintBottom_toBottomOf="parent"

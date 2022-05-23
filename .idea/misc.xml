@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_book.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_payment.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_questions.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_search_patient.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_book_doctor.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_drugs.xml" value="0.25" />
+        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/item_manger.xml" value="0.20416666666666666" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/drawable/background_input.xml" value="0.13914473684210527" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/drawable/design6.xml" value="0.2203125" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout-v23/nav_header_main.xml" value="0.20416666666666666" />
