@@ -4,7 +4,7 @@ package com.yom.hospitalmanagementyom.model;
 import java.io.Serializable;
 
 public class Doctor implements Serializable {
-  private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender, Type, Status, Specialization;
+  private String Id, HospitalId,Profile, Name, Phone, Email, Password, DOB, Gender, Type, Status, Worker, Specialization;
 
   public String getId() {
     return Id;
@@ -92,6 +92,14 @@ public class Doctor implements Serializable {
 
   public void setStatus(String status) {
     Status = status;
+  }
+
+  public void setWorker(String worker) {
+    Worker = worker;
+  }
+
+  public String getWorker() {
+    return Worker;
   }
 
   public String getSpecialization() {

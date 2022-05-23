@@ -643,7 +643,7 @@ public class MyHomeFirebase {
     }
 
 
-    public void getdoctor(String Name, SearchListener searchListener) {
+    public void getdoctor(String Name) {
         List<Doctor> doctor=new ArrayList<>();
         FirebaseFirestore.getInstance().collection(Constants.DOCTORS).whereEqualTo(Constants.NAME,Name)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -654,7 +654,6 @@ public class MyHomeFirebase {
                         Doctor doctor = document.toObject(Doctor.class);
                         doctors.add(doctor);
                     }
-                 //   searchListener.finishGetDrugs(doctors);
                 }
             }
         });
@@ -707,5 +706,89 @@ public class MyHomeFirebase {
 
         }
         return name;
+    }
+
+    private List<Admin> admins;
+    public List<Admin> getAllAdmin(String idHospital) {
+        admins = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection(Constants.ADMIN_OF_HOSPITALS).whereEqualTo(Constants.ID,idHospital)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String idAdmin = document.toObject(String.class);
+                        FirebaseFirestore.getInstance().collection(Constants.ADMINS).whereEqualTo(Constants.ID,idAdmin)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                                if (task1.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task1.getResult()){
+                                        Admin admin = document.toObject(Admin.class);
+                                        admins.add(admin);
+                                    }
+                                }
+                        }
+                    });
+                }
+            }
+        }});
+        return admins;
+    }
+
+    public List<Doctor> getAllDoctors(String idHospital) {
+        doctors = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection(Constants.DOCTORS_OF_HOSPITALS).whereEqualTo(Constants.ID,idHospital)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String idDoctor = document.toObject(String.class);
+                        FirebaseFirestore.getInstance().collection(Constants.DOCTORS).whereEqualTo(Constants.ID,idDoctor)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                                if (task1.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task1.getResult()){
+                                        Doctor doctor = document.toObject(Doctor.class);
+                                        doctors.add(doctor);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }});
+        return doctors;
+    }
+
+
+    private List<Drug> drugs;
+    public List<Drug> getAllDrugs(String idHospital) {
+        drugs = new ArrayList<>();
+        FirebaseFirestore.getInstance().collection(Constants.DRUGS_OF_HOSPITALS).whereEqualTo(Constants.ID,idHospital)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String idDrud = document.toObject(String.class);
+                        FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.ID,idDrud)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                                if (task1.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task1.getResult()){
+                                        Drug drug = document.toObject(Drug.class);
+                                        drugs.add(drug);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }});
+        return drugs;
     }
 }

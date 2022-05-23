@@ -5,7 +5,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.functions.CommonFunction;
 import com.yom.hospitalmanagementyom.functions.MySharedPreference;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
@@ -15,12 +22,16 @@ import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.ReadMessage;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
+import com.yom.hospitalmanagementyom.model.Admin;
 import com.yom.hospitalmanagementyom.model.Chat;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
+import com.yom.hospitalmanagementyom.model.Drug;
 import com.yom.hospitalmanagementyom.model.Hospital;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
@@ -188,5 +199,19 @@ public class Repository {
     }
     public void callPhone(Context context,String ph) {
         commonFunction.callPhone(context, ph);
+    }
+
+
+    public List<Admin> getAllAdmin(String idHospital) {
+        return myHomeFirebase.getAllAdmin(idHospital);
+    }
+
+    public List<Doctor> getAllDoctors(String idHospital) {
+        return myHomeFirebase.getAllDoctors(idHospital);
+    }
+
+
+    public List<Drug> getAllDrugs(String idHospital) {
+        return myHomeFirebase.getAllDrugs(idHospital);
     }
 }
