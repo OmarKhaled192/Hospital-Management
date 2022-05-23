@@ -66,6 +66,7 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
                                     null, null, null, null);
                             cursor.moveToFirst();
                             String Numbers = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY));
+                            Log.d("Joo",Numbers);
                             cursor.close();
                             String num1=Numbers.charAt(0)+"";
                             String num2=Numbers.charAt(1)+"";

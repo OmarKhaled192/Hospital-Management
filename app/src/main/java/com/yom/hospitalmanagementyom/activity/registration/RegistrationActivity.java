@@ -58,7 +58,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         binding.Date.setOnClickListener(view -> datePickerDialog.show());
 
-        ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Gender));
+        ArrayAdapter<String> adapterItems = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.Gender));
         binding.Gender.setAdapter(adapterItems);
 
 

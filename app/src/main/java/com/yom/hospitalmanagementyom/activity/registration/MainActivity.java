@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, SearchViewActivity.class);
+            intent.setClass(this, CommonRegistrationActivity.class);
 
         startActivity(intent);
 
