@@ -30,45 +30,20 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.myImageProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
-                intent.putExtra(Constants.PROFILE_STATE, Constants.ME);
-                startActivity(intent);
-            }
+        binding.myImageProfileActivity.setOnClickListener(view -> {
+            Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.putExtra(Constants.PROFILE_STATE, Constants.ME);
+            startActivity(intent);
         });
-        binding.myNameProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(binding.myNameProfileActivity, Constants.NAME);
-            }
-        });
+        binding.myNameProfileActivity.setOnClickListener(view -> showDialog(binding.myNameProfileActivity, Constants.NAME));
 
-        binding.myPhoneProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(binding.myPhoneProfileActivity, Constants.PHONE);
-            }
-        });
-        binding.myTelephoneProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(binding.myTelephoneProfileActivity, Constants.TELEPHONE);
-            }
-        });
-        binding.myEmailProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(binding.myEmailProfileActivity, Constants.EMAIL);
-            }
-        });
-        binding.myPasswordProfileActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(binding.myPasswordProfileActivity, Constants.PASSWORD);
-            }
-        });
+        binding.myPhoneProfileActivity.setOnClickListener(view -> showDialog(binding.myPhoneProfileActivity, Constants.PHONE));
+
+        binding.myTelephoneProfileActivity.setOnClickListener(view -> showDialog(binding.myTelephoneProfileActivity, Constants.TELEPHONE));
+
+        binding.myEmailProfileActivity.setOnClickListener(view -> showDialog(binding.myEmailProfileActivity, Constants.EMAIL));
+
+        binding.myPasswordProfileActivity.setOnClickListener(view -> showDialog(binding.myPasswordProfileActivity, Constants.PASSWORD));
     }
 
     private void showDialog(TextView textView, String Title){
