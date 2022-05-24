@@ -26,6 +26,7 @@ public class HomeDoctorFragment extends Fragment implements PostsListener {
     private List<Doctor> doctors;
     private Repository repository;
     private PostAdapter postAdapter;
+
     public HomeDoctorFragment() {
         // Required empty public constructor
     }
@@ -50,7 +51,7 @@ public class HomeDoctorFragment extends Fragment implements PostsListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
+        postAdapter = new PostAdapter(requireContext(), posts, this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerviewMyPosts.setLayoutManager( linearLayoutManager );
         binding.recyclerviewMyPosts.setAdapter(postAdapter);
@@ -71,7 +72,7 @@ public class HomeDoctorFragment extends Fragment implements PostsListener {
             binding.shimmerFrameLayout.stopShimmer();
             binding.shimmerFrameLayout.hideShimmer();
             binding.swipeRefreshLayout.setRefreshing( false );
-            binding.swipeRefreshLayout.setColorSchemeColors( getResources().getColor(R.color.teal_700) );
+            binding.swipeRefreshLayout.setColorScheme( R.color.teal_700 );
         }
         binding.shimmerFrameLayout.setVisibility(shimmer);
         binding.recyclerviewMyPosts.setVisibility(post);
@@ -80,17 +81,12 @@ public class HomeDoctorFragment extends Fragment implements PostsListener {
 
     @Override
     public void finishGetPosts() {
-        List<Post>posts1=new ArrayList<>();
-        for (int i=0; i<posts.size();i++){
-            if(posts.get(i).getIdDoctor().equals(repository.getUser().getUid()))
-                posts1.add(posts.get(i));
-        }
-        doctors = repository.getDoctorPosts(posts1,this);
+        showDesign(View.GONE, View.VISIBLE, false);
+        postAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void finishGetDoctors() {
-        showDesign(View.GONE, View.VISIBLE, false);
     }
 
     @Override

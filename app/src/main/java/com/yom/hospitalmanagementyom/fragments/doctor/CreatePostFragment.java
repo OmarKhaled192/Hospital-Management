@@ -1,6 +1,7 @@
 package com.yom.hospitalmanagementyom.fragments.doctor;
 
 import android.Manifest;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -24,16 +25,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
+import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.FragmentCreatePostBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Post;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -43,7 +49,7 @@ public class CreatePostFragment extends Fragment {
     private boolean isCheck, isTime;
     private Uri image, video;
     private ActivityResultLauncher<String> activityResultLauncher, activityResultLauncher2;
-
+    private Post post=new Post();
 
 
     public CreatePostFragment() {
@@ -72,7 +78,6 @@ public class CreatePostFragment extends Fragment {
                     }
                 }
         );
-
         activityResultLauncher2=registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 new ActivityResultCallback<Boolean>() {
@@ -105,6 +110,23 @@ public class CreatePostFragment extends Fragment {
                 hide();
         });
 
+        Repository repository=new Repository(requireContext());
+
+        List<String> strings=new ArrayList<>();
+        strings.add(repository.getUser().getUid());
+        post= new Post();
+        post.setId("");
+        post.setPost("");
+        post.setImage("");
+        post.setStars(strings);
+        post.setLikes(strings);
+        post.setDisLikes(strings);
+        post.setTime("");
+        post.setNameDoctor(repository.getUser().getDisplayName());
+        post.setProfileDoctor("htt");
+        post.setIdDoctor(repository.getUser().getUid());
+        post.setVideo("");
+
         binding.caption.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -123,15 +145,7 @@ public class CreatePostFragment extends Fragment {
         });
 
         binding.publish.setOnClickListener(view1 -> {
-           //if(TextUtils.isEmpty(binding.caption.getText().toString()) && uri == null)
-            Post post=new Post();
-            post.setId("o");
-//            post.setProfile(Constants.POSTS+"/"+post.getName()+"/"+post.getId()+"");
-//            post.setName(binding.namePostForDoctor.getText().toString());
-//            post.setTime(binding.timePostForDoctor.getText().toString());
-//            post.setDisLike(0);
-//            post.setLike(0);
-//            post.setStar(0);
+            post.setTime(binding.timePostForDoctor.getText().toString());
             if(TextUtils.isEmpty(binding.caption.getText().toString()))
                 post.setPost("");
             else
@@ -140,14 +154,14 @@ public class CreatePostFragment extends Fragment {
             if(image == null)
                 post.setImage("");
             else
-                post.setImage(binding.caption.getText().toString());
+                post.setImage(image.toString());
 
             if(video == null)
                 post.setVideo("");
             else
-                post.setImage(binding.caption.getText().toString());
+                post.setImage(video.toString());
 
-            publishPostUri(image);
+            publishPostUri();
         });
 
         binding.camera.setOnClickListener(new View.OnClickListener() {
@@ -156,9 +170,6 @@ public class CreatePostFragment extends Fragment {
                 activityResultLauncher2.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             }
         });
-       // binding.timePostForDoctor.setText("ii");
-
-        ///getTime();
     }
 
     private void getTime(){
@@ -178,7 +189,6 @@ public class CreatePostFragment extends Fragment {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("KK:mm:ss a", Locale.ENGLISH);
         Calendar calendar=Calendar.getInstance();
         binding.timePostForDoctor.setText(simpleDateFormat.format(calendar.getTime()));
-
         getTime();
     }
 
@@ -211,17 +221,24 @@ public class CreatePostFragment extends Fragment {
         binding.video.setAnimation(AnimationUtils.loadAnimation(requireContext(),R.anim.to_bottom));
     }
 
-    private void showDialog(){
-        AlertDialog.Builder builder=new AlertDialog.Builder(requireContext());
-        View view=getLayoutInflater().inflate(R.layout.loading,null);
-        TextView nowLoading = view.findViewById(R.id.nowLoading);
-        TextView totalLoading = view.findViewById(R.id.totalLoading);
-        TextView progressBarLoading = view.findViewById(R.id.progressBarLoading);
-        builder.setView(view);
-        builder.show();
+
+    public void publishPostUri(){
+
+        post.setId( FirebaseDatabase.getInstance().getReference(Constants.POSTS).push().getKey() );
+
+        if(image!=null){
+            pushImage();
+        } else if(video !=null){
+            pushVideo();
+        }else {
+            pushText();
+        }
+
+
     }
 
-    public void publishPostUri(Uri uri){
+    void pushImage() {
+
         AlertDialog.Builder builder=new AlertDialog.Builder(requireContext());
         View view=getLayoutInflater().inflate(R.layout.loading,null);
         TextView nowLoading = view.findViewById(R.id.nowLoading);
@@ -230,11 +247,12 @@ public class CreatePostFragment extends Fragment {
         builder.setView(view);
         builder.show();
 
-        String id = FirebaseFirestore.getInstance().collection(Constants.POSTS).getId();
-        FirebaseStorage.getInstance().getReference(Constants.POSTS).putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        FirebaseStorage.getInstance().getReference(Constants.POSTS).child(post.getId()).putFile(video).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(requireContext(),"Yes",Toast.LENGTH_LONG).show();
+                post.setImage(taskSnapshot.toString());
+                pushText();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -246,10 +264,61 @@ public class CreatePostFragment extends Fragment {
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 double progress = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
                 nowLoading.setText( progress+"%" );
-               // totalLoading.setText( snapshot.getTotalByteCount()+"" );
-//                while(progress>100)
-//                    progress/=100;
+                 totalLoading.setText( snapshot.getTotalByteCount()+"" );
+                  while(progress>100)
+                      progress/=100;
                 progressBarLoading.setProgress((int)progress);
+            }
+        });
+    }
+    void pushVideo(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(requireContext());
+        View view=getLayoutInflater().inflate(R.layout.loading,null);
+        TextView nowLoading = view.findViewById(R.id.nowLoading);
+        TextView totalLoading = view.findViewById(R.id.totalLoading);
+        ProgressBar progressBarLoading = view.findViewById(R.id.progressBarLoading);
+        builder.setView(view);
+        builder.show();
+
+        FirebaseStorage.getInstance().getReference(Constants.POSTS).child(post.getId()).putFile(video).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(requireContext(),"Yes",Toast.LENGTH_LONG).show();
+                post.setVideo(taskSnapshot.toString());
+                pushText();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(requireContext(),"Yes",Toast.LENGTH_LONG).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                nowLoading.setText( progress+"%" );
+                 totalLoading.setText( snapshot.getTotalByteCount()+"" );
+                while(progress>100)
+                    progress/=100;
+                progressBarLoading.setProgress((int)progress);
+            }
+        });
+    }
+
+    void pushText(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(requireContext());
+        View view=getLayoutInflater().inflate(R.layout.loading,null);
+        TextView nowLoading = view.findViewById(R.id.nowLoading);
+        TextView totalLoading = view.findViewById(R.id.totalLoading);
+        ProgressBar progressBarLoading = view.findViewById(R.id.progressBarLoading);
+        builder.setView(view);
+        builder.show();
+        FirebaseDatabase.getInstance().getReference(Constants.POSTS).child(post.getId()).setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                progressBarLoading.setProgress(100);
+                progressBarLoading.setVisibility(View.GONE);
+                startActivity(new Intent(requireActivity(), HomeDoctorActivity.class));
             }
         });
     }

@@ -112,7 +112,7 @@ public class Repository {
         return myHomeFirebase.getHospitals();
     }
 
-    public List<Post> getPosts(PostsListener postsListener){
+    public List<Post> getPosts(PostsListener postsListener) {
         return myHomeFirebase.getPosts(postsListener);
     }
 

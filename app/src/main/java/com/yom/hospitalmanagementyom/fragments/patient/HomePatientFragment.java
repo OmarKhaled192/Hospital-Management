@@ -58,7 +58,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
         binding.recyclerViewHospitalView.setAdapter(hospitalViewAdapter);
 
-        postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
+        postAdapter = new PostAdapter(requireContext(), posts, this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerViewHomePosts.setLayoutManager( linearLayoutManager );
         binding.recyclerViewHomePosts.setAdapter(postAdapter);
@@ -90,11 +90,12 @@ public class HomePatientFragment extends Fragment implements PostsListener {
     @Override
     public void finishGetPosts() {
         doctors = repository.getDoctorPosts(posts,this);
+        showDesign(View.GONE, View.VISIBLE, View.VISIBLE, false);
     }
 
     @Override
     public void finishGetDoctors() {
-        showDesign(View.GONE, View.VISIBLE, View.VISIBLE, false);
+
     }
 
     @Override

@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
         ActivityMainBinding binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        repository.loginIn("Yousef@gmail.com", "123456", this);
+        repository=new Repository(getApplicationContext());
+        repository.loginIn("yousef@gmail.com", "123456", this);
 //        repository=new Repository(getApplicationContext());
 //        new Thread(){
 //            @Override
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
     @Override
     public void nextToHome() {
         Intent intent=new Intent();
-        intent.setClass(this, HomePatientActivity.class);
+        intent.setClass(this, HomeDoctorActivity.class);
         startActivity(intent);
     }
 }

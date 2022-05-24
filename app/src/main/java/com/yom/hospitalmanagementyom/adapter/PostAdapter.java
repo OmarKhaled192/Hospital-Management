@@ -24,15 +24,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 //Yousef Shaaban
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   private final List<Post> posts;
-  private final List<Doctor> doctors;
   private final Context context;
   private final Repository repository;
   private final PostsListener postsListener;
 
-  public PostAdapter(Context context, List<Post> posts, List<Doctor> doctors, PostsListener postsListener) {
+  public PostAdapter(Context context, List<Post> posts, PostsListener postsListener) {
     this.context = context;
     this.posts = posts;
-    this.doctors = doctors;
     this.postsListener = postsListener;
     repository = new Repository(context);
   }
@@ -52,11 +50,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   @Override
   public void onBindViewHolder(@NonNull PostHolder holder, int position) {
     Post post = posts.get(position);
-    Doctor doctor = doctors.get(position);
 
-    Picasso.with(context).load(doctor.getProfile()).error(R.color.teal_700)
-            .into(holder.profilePostForHomePatient);
-    holder.namePostForHomePatient.setText(doctor.getName());
+    Picasso.with(context).load(post.getProfileDoctor()).error(R.color.teal_700).into(holder.profilePostForHomePatient);
+    holder.namePostForHomePatient.setText(post.getNameDoctor());
     holder.timePostForHomePatient.setText(post.getTime());
 
     if (!post.getPost().equals("")) {

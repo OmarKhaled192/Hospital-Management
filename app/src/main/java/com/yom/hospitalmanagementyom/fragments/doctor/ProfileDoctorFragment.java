@@ -1,5 +1,6 @@
 package com.yom.hospitalmanagementyom.fragments.doctor;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.registration.LoginActivity;
+import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.FragmentProfileDoctorBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
 
@@ -59,6 +61,12 @@ public class ProfileDoctorFragment extends Fragment {
         binding.myEmailProfileActivity.setOnClickListener(view15 -> showDialog(binding.myEmailProfileActivity, Constants.EMAIL));
 
         binding.myPasswordProfileActivity.setOnClickListener(view16 -> showDialog(binding.myPasswordProfileActivity, Constants.PASSWORD));
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exitDialog();
+            }
+        });
     }
 
     private void showDialog(TextView textView, String Title){
@@ -93,6 +101,24 @@ public class ProfileDoctorFragment extends Fragment {
         });
         builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> dialogInterface.dismiss());
         builder.create();
+        builder.show();
+    }
+
+    private void exitDialog() {
+        Repository repository = new Repository(requireContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle(getString(R.string.signOut))
+                .setMessage(getString(R.string.signOutQuestion));
+        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> {
+            dialogInterface.dismiss();
+            ProgressDialog progressDialog = new ProgressDialog(requireContext());
+            progressDialog.setTitle(getString(R.string.signOut));
+            progressDialog.create();
+            progressDialog.show();
+            repository.signOut(progressDialog);
+        }).setNegativeButton(getString(R.string.no), (dialogInterface, i) ->
+                dialogInterface.dismiss()).create();
+
         builder.show();
     }
 }

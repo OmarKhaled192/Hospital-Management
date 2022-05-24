@@ -3,7 +3,7 @@ package com.yom.hospitalmanagementyom.model;
 import java.util.List;
 
 public class Post {
-  private String Id, IdDoctor,Time,Post,Image,Video;
+  private String Id, IdDoctor, nameDoctor, ProfileDoctor,Time,Post,Image,Video;
   private List<String> Likes,DisLikes,Stars;
 
   public String getId() {
@@ -20,6 +20,22 @@ public class Post {
 
   public void setIdDoctor(String idDoctor) {
     IdDoctor = idDoctor;
+  }
+
+  public String getNameDoctor() {
+    return nameDoctor;
+  }
+
+  public void setNameDoctor(String nameDoctor) {
+    this.nameDoctor = nameDoctor;
+  }
+
+  public String getProfileDoctor() {
+    return ProfileDoctor;
+  }
+
+  public void setProfileDoctor(String profileDoctor) {
+    ProfileDoctor = profileDoctor;
   }
 
   public String getTime() {

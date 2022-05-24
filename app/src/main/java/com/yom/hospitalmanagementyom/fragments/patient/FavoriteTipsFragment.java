@@ -22,7 +22,6 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
     private FragmentFavoriteTipsBinding binding;
     private Repository repository;
     private List<Post> posts;
-    private List<Doctor> doctors;
     private PostAdapter postAdapter;
 
     @Override
@@ -42,7 +41,7 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        postAdapter = new PostAdapter(requireContext(), posts, doctors, this);
+        postAdapter = new PostAdapter(requireContext(), posts, this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerviewFavoriteTips.setLayoutManager( linearLayoutManager );
         binding.recyclerviewFavoriteTips.setAdapter(postAdapter);
@@ -52,7 +51,7 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
 
     @Override
     public void finishGetPosts() {
-        doctors = repository.getDoctorPosts(posts,this);
+
     }
 
     @Override

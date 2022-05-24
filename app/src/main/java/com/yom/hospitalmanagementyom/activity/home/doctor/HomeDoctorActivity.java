@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.fragments.hospital.Covid19Fragment;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomeDoctorBinding;
 import com.yom.hospitalmanagementyom.fragments.doctor.CreatePostFragment;
@@ -12,6 +13,7 @@ import com.yom.hospitalmanagementyom.fragments.doctor.HomeDoctorFragment;
 import com.yom.hospitalmanagementyom.fragments.doctor.ProfileDoctorFragment;
 import com.yom.hospitalmanagementyom.fragments.doctor.TimesDoctorFragment;
 import com.yom.hospitalmanagementyom.fragments.patient.ChatFragment;
+import com.yom.hospitalmanagementyom.model.Constants;
 
 public class HomeDoctorActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class HomeDoctorActivity extends AppCompatActivity {
                     fragment=new CreatePostFragment();
                     break;
                 case 3:
-                    fragment=new Covid19Fragment();
+                    fragment=new HomeDoctorFragment();
                     break;
                 case 4:
                     fragment=new TimesDoctorFragment();
@@ -56,5 +58,8 @@ public class HomeDoctorActivity extends AppCompatActivity {
 
         binding.bottomNavigation.setOnClickMenuListener(item ->
                 binding.bottomNavigation.show(item.getId(),true));
+
+        Repository repository= new Repository(this);
+        repository.setStatus(Constants.DOCTORS, Constants.ONLINE);
     }
 }
