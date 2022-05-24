@@ -130,8 +130,8 @@ public class MyHomeFirebase {
         return doctors;
     }
 
-    public void setInteractWithPost(String postId, String nameField, String userId) {
-        firebaseDatabase.getReference(Constants.POSTS).child(postId).child(nameField).setValue(userId);
+    public void setInteractWithPost(Post post) {
+        firebaseDatabase.getReference(Constants.POSTS).child(post.getId()).setValue(post);
     }
 
     public void deleteInteractWithPost(String postId, String deleteField, String userId) {

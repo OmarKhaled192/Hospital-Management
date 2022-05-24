@@ -120,8 +120,8 @@ public class Repository {
         return myHomeFirebase.getDoctorPosts(posts, postsListener);
     }
 
-    public void setInteractWithPost(String postId, String nameField, String userId) {
-        myHomeFirebase.setInteractWithPost(postId, nameField, userId);
+    public void setInteractWithPost(Post post) {
+        myHomeFirebase.setInteractWithPost(post);
     }
 
     public void deleteInteractWithPost(String postId, String deleteField, String userId) {

@@ -61,43 +61,91 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
     @Override
     public void onClickHospitalItem(int Position) {
     }
-
     @Override
-    public void onClickLikePost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
-        repository.deleteInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onClickLikePost(Post post, int Position) {
+        List<String> strings=post.getLikes();
+        strings.add(repository.getUser().getUid());
+        post.setLikes(strings);
+
+        List<String> strings2=post.getDisLikes();
+
+        for(int i=0; i<strings2.size(); i++){
+            if(strings2.get(i).equals(repository.getUser().getUid())) {
+                strings2.remove(i);
+                return;
+            }
+        }
+        post.setDisLikes(strings2);
+        repository.setInteractWithPost(post);
+        //postAdapter.notifyItemChanged(Position);
     }
 
     @Override
-    public void onCancelLikePost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onCancelLikePost(Post post, int Position) {
+        List<String> strings2=post.getDisLikes();
+        for(int i=0; i<strings2.size(); i++){
+            if(strings2.get(i).equals(repository.getUser().getUid())) {
+                strings2.remove(i);
+                return;
+            }
+        }
+        post.setDisLikes(strings2);
+        repository.setInteractWithPost(post);
     }
 
     @Override
-    public void onClickDisLikePost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
-        repository.deleteInteractWithPost(postId,Constants.LIKES,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onClickDisLikePost(Post post, int Position) {
+        List<String> strings=post.getDisLikes();
+        strings.add(repository.getUser().getUid());
+        post.setDisLikes(strings);
+
+        List<String> strings2=post.getLikes();
+
+        for(int i=0; i<strings2.size(); i++){
+            if(strings2.get(i).equals(repository.getUser().getUid())) {
+                strings2.remove(i);
+                return;
+            }
+        }
+        post.setLikes(strings2);
+        repository.setInteractWithPost(post);
     }
 
     @Override
-    public void onCancelDisLikePost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.DISLIKES,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onCancelDisLikePost(Post post, int Position) {
+        List<String> strings2=post.getDisLikes();
+
+        for(int i=0; i<strings2.size(); i++){
+            if(strings2.get(i).equals(repository.getUser().getUid())) {
+                strings2.remove(i);
+                return;
+            }
+        }
+        post.setDisLikes(strings2);
+        repository.setInteractWithPost(post);
     }
 
     @Override
-    public void onClickStarPost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.STARS,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onClickStarPost(Post post, int Position) {
+        List<String> strings=post.getStars();
+        strings.add(repository.getUser().getUid());
+        post.setStars(strings);
+        post.setStars(strings);
+        repository.setInteractWithPost(post);
     }
 
     @Override
-    public void onCancelStarPost(int Position, String postId) {
-        repository.setInteractWithPost(postId,Constants.STARS,repository.getUser().getUid());
-        postAdapter.notifyItemChanged(Position);
+    public void onCancelStarPost(Post post, int Position) {
+        List<String> strings2=post.getStars();
+
+        for(int i=0; i<strings2.size(); i++){
+            if(strings2.get(i).equals(repository.getUser().getUid())) {
+                strings2.remove(i);
+                return;
+            }
+        }
+        post.setStars(strings2);
+        repository.setInteractWithPost(post);
     }
 
     @Override

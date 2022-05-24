@@ -114,15 +114,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     starrList.add(starExist);
 
     holder.likePostForHomePatient.setOnClickListener(v -> {
-      if(likesList.get(position)) {
-        postsListener.onCancelLikePost(position, post.getId());
+      if(likeExist) {
+        postsListener.onCancelLikePost(post, position);
 //        holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like_off, 0, 0, 0);
 //        String Like1 = post.getLikes().size()-1 + context.getString(R.string.like);
 //        holder.numLikePostDoctor.setText(Like1);
 //        likesList.add(position,false);
       }
       else {
-        postsListener.onClickLikePost(position, post.getId());
+        postsListener.onClickLikePost(post, position);
 //        holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
 //        String Like1 = post.getLikes().size()+1 + context.getString(R.string.like);
 //        holder.numLikePostDoctor.setText(Like1);
@@ -132,15 +132,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
 
     holder.disLikePostForHomePatient.setOnClickListener(v -> {
-      if(dislikesList.get(position)) {
-        postsListener.onCancelDisLikePost(position, post.getId());
+      if(disLikeExist) {
+        postsListener.onCancelDisLikePost(post, position);
 //        holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like_off, 0, 0, 0);
 //        String Like1 = post.getDisLikes().size() - 1 + context.getString(R.string.disLike);
 //        holder.numDisLikePostDoctor.setText(Like1);
 //        dislikesList.add(position,false);
       }
       else{
-        postsListener.onClickDisLikePost(position, post.getId());
+        postsListener.onClickDisLikePost(post, position);
 //        holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like, 0, 0, 0);
 //        String Like1 = post.getDisLikes().size() + 1 + context.getString(R.string.disLike);
 //        holder.numDisLikePostDoctor.setText(Like1);
@@ -150,15 +150,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
 
     holder.starPostForHomePatient.setOnClickListener(v -> {
-      if(starrList.get(position)){
-        postsListener.onCancelStarPost(position, post.getId());
+      if(starExist){
+        postsListener.onCancelStarPost(post, position);
 //        holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star_off, 0, 0, 0);
 //        String Like1 = post.getStars().size() - 1 + context.getString(R.string.star);
 //        holder.numStarPostForHomePatient.setText(Like1);
 //        starrList.add(position,false);
       }
       else {
-        postsListener.onClickStarPost(position, post.getId());
+        postsListener.onClickStarPost(post, position);
 //        holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
 //        String Like1 = post.getStars().size() + 1 + context.getString(R.string.disLike);
 //        holder.numStarPostForHomePatient.setText(Like1);

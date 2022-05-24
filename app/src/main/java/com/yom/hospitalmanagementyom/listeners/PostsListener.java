@@ -1,13 +1,15 @@
 package com.yom.hospitalmanagementyom.listeners;
 
+import com.yom.hospitalmanagementyom.model.Post;
+
 public interface PostsListener {
     void finishGetPosts();
     void finishGetDoctors();
     void onClickHospitalItem(int Position);
-    void onClickLikePost(int Position, String postId);
-    void onCancelLikePost(int Position, String postId);
-    void onClickDisLikePost(int Position, String postId);
-    void onCancelDisLikePost(int Position, String postId);
-    void onClickStarPost(int Position, String postId);
-    void onCancelStarPost(int Position, String postId);
+    void onClickLikePost(Post post, int Position);
+    void onCancelLikePost(Post post, int Position);
+    void onClickDisLikePost(Post post, int Position);
+    void onCancelDisLikePost(Post post, int Position);
+    void onClickStarPost(Post post, int Position);
+    void onCancelStarPost(Post post, int Position);
 }
