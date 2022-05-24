@@ -84,7 +84,8 @@
         android:hint="@string/advice"
         android:minHeight="@dimen/_40sdp"
         android:textSize="@dimen/_15ssp"
-        android:textColor="@color/teal_700"/>
+        android:textColor="@color/teal_700"
+        android:importantForAutofill="no" />
 
     <ImageView
         android:id="@+id/photoPost"

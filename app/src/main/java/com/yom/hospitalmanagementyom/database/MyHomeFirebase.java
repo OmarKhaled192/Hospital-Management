@@ -95,16 +95,14 @@ public class MyHomeFirebase {
         return hospitals;
     }
 
-    private Post post;
     private List<Post>posts;
     public List<Post> getPosts(PostsListener postsListener){
-        post=new Post();
         posts=new ArrayList<>();
         firebaseDatabase.getReference(Constants.POSTS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    post = d.getValue(Post.class);
+                    Post post = d.getValue(Post.class);
                     posts.add(post);
                 }
                 postsListener.finishGetPosts();
@@ -142,13 +140,12 @@ public class MyHomeFirebase {
 
 
     public List<Post> getPostsStarted(PostsListener postsListener){
-        post=new Post();
         posts=new ArrayList<>();
         firebaseDatabase.getReference(Constants.POSTS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    post = d.getValue(Post.class);
+                    Post post = d.getValue(Post.class);
                     for (int i=0; i<post.getLikes().size(); i++) {
                         if (post.getLikes().get(i).equals(getUser().getUid())) {
                             posts.add(post);

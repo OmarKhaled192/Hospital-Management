@@ -82,7 +82,6 @@ public class HomeDoctorFragment extends Fragment implements PostsListener {
     @Override
     public void finishGetPosts() {
         showDesign(View.GONE, View.VISIBLE, false);
-        postAdapter.notifyDataSetChanged();
     }
 
     @Override

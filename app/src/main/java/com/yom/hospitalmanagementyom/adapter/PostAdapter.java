@@ -85,23 +85,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     String Star = post.getStars().size() + context.getString(R.string.star);
     holder.numStarPostForHomePatient.setText(Star);
 
+    holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like_off, 0, 0, 0);
+
+    holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like_off, 0, 0, 0);
+    holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star_off, 0, 0, 0);
+
+
     boolean likeExist = repository.checkExistId(post.getLikes(),repository.getUser().getUid());
     if(likeExist)
       holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
-    else
-      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like_off, 0, 0, 0);
 
     boolean disLikeExist = repository.checkExistId(post.getDisLikes(),repository.getUser().getUid());
     if(disLikeExist)
       holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like, 0, 0, 0);
-    else
-      holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like_off, 0, 0, 0);
 
     boolean starExist = repository.checkExistId(post.getStars(),repository.getUser().getUid());
     if(starExist)
-      holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
-    else
-      holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star_off, 0, 0, 0);
+      holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
+
 
     holder.starPostForHomePatient.setOnClickListener(v -> {
       if(likeExist)
