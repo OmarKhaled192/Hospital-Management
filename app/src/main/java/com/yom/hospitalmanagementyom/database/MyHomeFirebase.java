@@ -166,29 +166,15 @@ public class MyHomeFirebase {
     }
 
     private List<Chat> chats;
-
     public List<Chat> getLastMessage(ChatListener chatListener){
         chats = new ArrayList<>();
         firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){
-                    firebaseDatabase.getReference(Constants.LAST_MESSAGES).child(getUser().getUid()).child(d.getKey())
-                            .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Chat chat = snapshot.getValue(Chat.class);
-                            chats.add(chat);
-                            assert chat != null;
-                            if(!chat.getSeen().equals(Constants.SEEN))
-                                setSeenByChatId(d.getKey(), chat.getId(),Constants.NOT_SEEN);
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
+                    Chat chat = d.getValue(Chat.class);
+                    chats.add(chat);
                 }
-                chatListener.getLastMessageFinish();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -209,7 +195,7 @@ public class MyHomeFirebase {
 
     public List<Chat> getMessages(String id){
         chats = new ArrayList<>();
-        firebaseDatabase.getReference(Constants.CHATS).child(getUser().getUid()).child(id).addValueEventListener(new ValueEventListener() {
+        firebaseDatabase.getReference(Constants.CHATS).child(getUser().getUid()+"-"+id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){
@@ -279,10 +265,10 @@ public class MyHomeFirebase {
                 .child(chat.getIdReceiver()).child(chat.getIdSender()).setValue(chat);
 
         firebaseDatabase.getReference(Constants.CHATS)
-                .child(chat.getIdSender()).child(chat.getIdReceiver()).child(chat.getId()).setValue(chat);
+                .child(chat.getIdSender()+"-"+chat.getIdReceiver()).child(chat.getId()).setValue(chat);
 
         firebaseDatabase.getReference(Constants.CHATS)
-                .child(chat.getIdReceiver()).child(chat.getIdSender()).child(chat.getId()).setValue(chat);
+                .child(chat.getIdReceiver()+"-"+chat.getIdSender()).child(chat.getId()).setValue(chat);
     }
 
     public void setStatus(String Root,String status){

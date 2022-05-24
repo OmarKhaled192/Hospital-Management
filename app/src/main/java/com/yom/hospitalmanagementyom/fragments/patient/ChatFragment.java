@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.yom.hospitalmanagementyom.activity.home.patient.MessageActivity;
 import com.yom.hospitalmanagementyom.adapter.ChatAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
@@ -46,27 +49,35 @@ public class ChatFragment extends Fragment implements ChatListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Chat chat = new Chat();
-        chat.setMessage("Hi");
-        chat.setSeen("Seen");
-        chat.setTime("10:00 PM");
-        chat.setIdSender(repository.getUser().getUid());
-        Chat chat2 = new Chat();
-        chat2.setMessage("كيف الحال");
-        chat2.setSeen("Not Open");
-        chat2.setTime("10:00 PM");
-        chat2.setIdSender("1223");
-        chats.add(chat);
-        chats.add(chat2);
-        Doctor doctor=new Doctor();
-        doctor.setName("Mohamed Ahmed");
-        doctor.setProfile("hy");
-        doctors.add(doctor);
-        Doctor doctor2=new Doctor();
-        doctor2.setName("Ahmed");
-        doctor2.setProfile("hy");
+//        Chat chat = new Chat();
+//        chat.setId(FirebaseDatabase.getInstance().getReference("Chats").push().getKey());
+//        chat.setMessage("nn");
+//        chat.setMessage("Hi");
+//        chat.setSeen("Seen");
+//        chat.setTime("10:00 PM");
+//        chat.setIdSender("1");
+//        chat.setDelete("");
+//        chat.setNameChat("Mohamed Ahmed");
+//        chat.setProfileChat("ff");
+//        chat.setIdReceiver(repository.getUser().getUid());
+//        repository.SendMessage(chat);
 
-        doctors.add(doctor2);
+//        Chat chat2 = new Chat();
+//        chat2.setMessage("كيف الحال");
+//        chat2.setSeen("Not Open");
+//        chat2.setTime("10:00 PM");
+//        chat2.setIdSender("1223");
+//        chats.add(chat);
+//        chats.add(chat2);
+//        Doctor doctor=new Doctor();
+//        doctor.setName("Mohamed Ahmed");
+//        doctor.setProfile("hy");
+//        doctors.add(doctor);
+//        Doctor doctor2=new Doctor();
+//        doctor2.setName("Ahmed");
+//        doctor2.setProfile("hy");
+
+//        doctors.add(doctor2);
         chatAdapter = new ChatAdapter(requireContext(), chats,doctors, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         binding.recyclerviewChat.setLayoutManager(linearLayoutManager);
@@ -82,13 +93,16 @@ public class ChatFragment extends Fragment implements ChatListener {
     @Override
     public void getLastMessageFinish() {
         //doctors =repository.getDoctorChats(chats);
+        //Toast.makeText(getContext(),"Hi",Toast.LENGTH_LONG).show();
+        for (int i=0; i<chats.size();i++)
+            chatAdapter.notifyItemChanged(i);
     }
 
     @Override
-    public void onClickItem(String idChat, Doctor doctor) {
+    public void onClickItem(String idChat, String idReceiver) {
         Intent intent = new Intent(requireActivity(), MessageActivity.class);
         intent.putExtra(Constants.ID_CHAT,idChat);
-        intent.putExtra(Constants.DOCTOR,doctor);
+        intent.putExtra(Constants.DOCTOR,idReceiver);
 
         startActivity(intent);
     }

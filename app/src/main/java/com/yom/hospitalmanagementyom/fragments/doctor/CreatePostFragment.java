@@ -238,7 +238,6 @@ public class CreatePostFragment extends Fragment {
     }
 
     void pushImage() {
-
         AlertDialog.Builder builder=new AlertDialog.Builder(requireContext());
         View view=getLayoutInflater().inflate(R.layout.loading,null);
         TextView nowLoading = view.findViewById(R.id.nowLoading);
@@ -247,11 +246,11 @@ public class CreatePostFragment extends Fragment {
         builder.setView(view);
         builder.show();
 
-        FirebaseStorage.getInstance().getReference(Constants.POSTS).child(post.getId()).putFile(video).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        FirebaseStorage.getInstance().getReference(Constants.POSTS).child(post.getId()).putFile(image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(requireContext(),"Yes",Toast.LENGTH_LONG).show();
-                post.setImage(taskSnapshot.toString());
+                post.setImage(taskSnapshot.getUploadSessionUri().getPath());
                 pushText();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -262,11 +261,9 @@ public class CreatePostFragment extends Fragment {
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                double progress = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-                nowLoading.setText( progress+"%" );
-                 totalLoading.setText( snapshot.getTotalByteCount()+"" );
-                  while(progress>100)
-                      progress/=100;
+                double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                String progress1 = progress+"%";
+                nowLoading.setText( progress1 );
                 progressBarLoading.setProgress((int)progress);
             }
         });
@@ -295,11 +292,9 @@ public class CreatePostFragment extends Fragment {
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                double progress = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-                nowLoading.setText( progress+"%" );
-                 totalLoading.setText( snapshot.getTotalByteCount()+"" );
-                while(progress>100)
-                    progress/=100;
+                double progress = (float)(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                String progress1 = progress+"%";
+                nowLoading.setText( progress1 );
                 progressBarLoading.setProgress((int)progress);
             }
         });

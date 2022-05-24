@@ -44,12 +44,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder>{
     @Override
     public void onBindViewHolder(@NonNull ChatHolder holder, int position) {
         Chat chat = chats.get( position );
-        Doctor doctor = doctors.get(position);
-
-        Picasso.with( context ).load( doctor.getProfile() )
-                .placeholder( R.color.teal_700 ).into( holder.profileOfChat );
-
-        holder.nameChat.setText(doctor.getName());
+//        Doctor doctor = doctors.get(position);
+//
+//        Picasso.with( context ).load( doctor.getProfile() )
+//                .placeholder( R.color.teal_700 ).into( holder.profileOfChat );
+//
+//        holder.nameChat.setText(doctor.getName());
         holder.lastTime.setText(chat.getTime());
         holder.lastMessage.setText(chat.getMessage());
 
@@ -83,7 +83,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder>{
                 holder.numberOfMessageNotSeen.setVisibility(View.GONE);
         }
 
-        holder.itemView.setOnClickListener(view -> chatListener.onClickItem(chat.getId(), doctor));
+        holder.itemView.setOnClickListener(view -> chatListener.onClickItem(chat.getId(), chat.getIdReceiver()));
     }
 
     @Override

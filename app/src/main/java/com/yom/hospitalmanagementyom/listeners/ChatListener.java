@@ -4,5 +4,5 @@ import com.yom.hospitalmanagementyom.model.Doctor;
 
 public interface ChatListener {
     void getLastMessageFinish();
-    void onClickItem(String idChat, Doctor doctor);
+    void onClickItem(String idChat, String idReceiver);
 }
