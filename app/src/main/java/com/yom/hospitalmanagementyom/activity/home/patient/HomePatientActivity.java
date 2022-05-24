@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
@@ -63,7 +64,7 @@ public class HomePatientActivity extends AppCompatActivity {
 
         repository = new Repository(getApplicationContext());
 
-        circleImageView.setImageURI(repository.getUser().getPhotoUrl());
+        Picasso.with(this).load(repository.getUser().getPhotoUrl()).error(R.color.teal_700).into(circleImageView);
         name.setText(repository.getUser().getDisplayName());
         email.setText(repository.getUser().getEmail());
 

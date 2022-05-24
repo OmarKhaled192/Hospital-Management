@@ -12,9 +12,10 @@ import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.HealthCare
 import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.Questions;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
+import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.model.Constants;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginListener {
 
     private Repository repository;
 
@@ -24,19 +25,20 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView( binding.getRoot() );
 
-        repository=new Repository(getApplicationContext());
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                try {
-                    sleep(1000);
-                    checkUser();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        repository.loginIn("Yousef@gmail.com", "123456", this);
+//        repository=new Repository(getApplicationContext());
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                super.run();
+//                try {
+//                    sleep(1000);
+//                    checkUser();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }.start();
     }
 
     void checkUser(){
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else
-            intent.setClass(this, PaymentActivity.class);
+            intent.setClass(this, SlideActivity.class);
 
         startActivity(intent);
 
@@ -70,4 +72,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void nextToHome() {
+        Intent intent=new Intent();
+        intent.setClass(this, HomePatientActivity.class);
+        startActivity(intent);
+    }
 }
