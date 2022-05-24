@@ -19,6 +19,7 @@ import com.yom.hospitalmanagementyom.model.Chat;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatFragment extends Fragment implements ChatListener {
@@ -33,6 +34,7 @@ public class ChatFragment extends Fragment implements ChatListener {
         super.onCreate(savedInstanceState);
         repository = new Repository(requireContext());
         chats = repository.getLastMessage( this);
+        doctors = new ArrayList<>();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,27 @@ public class ChatFragment extends Fragment implements ChatListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Chat chat = new Chat();
+        chat.setMessage("Hi");
+        chat.setSeen("Seen");
+        chat.setTime("10:00 PM");
+        chat.setIdSender(repository.getUser().getUid());
+        Chat chat2 = new Chat();
+        chat2.setMessage("كيف الحال");
+        chat2.setSeen("Not Open");
+        chat2.setTime("10:00 PM");
+        chat2.setIdSender("1223");
+        chats.add(chat);
+        chats.add(chat2);
+        Doctor doctor=new Doctor();
+        doctor.setName("Mohamed Ahmed");
+        doctor.setProfile("hy");
+        doctors.add(doctor);
+        Doctor doctor2=new Doctor();
+        doctor2.setName("Ahmed");
+        doctor2.setProfile("hy");
+
+        doctors.add(doctor2);
         chatAdapter = new ChatAdapter(requireContext(), chats,doctors, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         binding.recyclerviewChat.setLayoutManager(linearLayoutManager);
@@ -58,7 +81,7 @@ public class ChatFragment extends Fragment implements ChatListener {
 
     @Override
     public void getLastMessageFinish() {
-        doctors =repository.getDoctorChats(chats);
+        //doctors =repository.getDoctorChats(chats);
     }
 
     @Override

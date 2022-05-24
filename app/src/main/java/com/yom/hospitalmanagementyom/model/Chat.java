@@ -1,7 +1,7 @@
 package com.yom.hospitalmanagementyom.model;
 
 public class Chat {
-    String id, idSender, idReceiver, message, time, seen, delete;
+    String id,  idSender, idReceiver, message, time, seen, delete;
     int numberOfMessageNotSeen;
 
     public String getId() {
