@@ -16,13 +16,14 @@
         android:src="@color/white"
         android:background="?actionBarItemBackground"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:layout_marginTop="@dimen/_20sdp"/>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/appName"
+        android:text="@string/appName"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
         android:maxLines="1"
@@ -32,7 +33,7 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Admin"
+        android:text="@string/Admin"
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"
         android:maxLines="1" />

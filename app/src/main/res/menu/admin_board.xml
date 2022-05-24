@@ -9,12 +9,12 @@
             android:title="@string/Doctor" />
         <item
             android:id="@+id/nav_chat"
-            android:title="@string/patient" />
+            android:title="@string/chats" />
         <item
-            android:id="@+id/nav_favorite_tips2"
+            android:id="@+id/nav_drugs"
             android:title="@string/Drugs" />
         <item
-            android:id="@+id/nav_favorite_tips"
+            android:id="@+id/nav_admin"
             android:title="@string/Admin" />
     </group>
 
