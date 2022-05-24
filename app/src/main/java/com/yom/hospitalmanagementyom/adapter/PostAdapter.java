@@ -18,6 +18,8 @@ import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Post;
+
+import java.util.ArrayList;
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,12 +29,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
   private final Context context;
   private final Repository repository;
   private final PostsListener postsListener;
+  private List<Boolean> likesList, dislikesList, starrList;
 
   public PostAdapter(Context context, List<Post> posts, PostsListener postsListener) {
     this.context = context;
     this.posts = posts;
     this.postsListener = postsListener;
     repository = new Repository(context);
+    likesList = new ArrayList<>();
+    dislikesList = new ArrayList<>();
+    starrList = new ArrayList<>();
   }
 
   @Override
@@ -103,28 +109,61 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     if(starExist)
       holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
 
+    likesList.add(likeExist);
+    dislikesList.add(disLikeExist);
+    starrList.add(starExist);
 
-    holder.starPostForHomePatient.setOnClickListener(v -> {
-      if(likeExist)
-        postsListener.onCancelLikePost(position, post.getId());
-      else
-        postsListener.onClickLikePost(position, post.getId());
+    holder.likePostForHomePatient.setOnClickListener(v -> {
+      if(likesList.get(position)) {
+        //postsListener.onCancelLikePost(position, post.getId());
+        holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like_off, 0, 0, 0);
+        String Like1 = post.getLikes().size()-1 + context.getString(R.string.like);
+        holder.numLikePostDoctor.setText(Like1);
+        likesList.add(position,false);
+      }
+      else {
+        //postsListener.onClickLikePost(position, post.getId());
+        holder.likePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
+        String Like1 = post.getLikes().size()+1 + context.getString(R.string.like);
+        holder.numLikePostDoctor.setText(Like1);
+        likesList.add(position,true);
+      }
     });
 
 
     holder.disLikePostForHomePatient.setOnClickListener(v -> {
-      if(disLikeExist)
-        postsListener.onCancelDisLikePost(position, post.getId());
-      else
-        postsListener.onClickDisLikePost(position, post.getId());
+      if(dislikesList.get(position)) {
+        //postsListener.onCancelDisLikePost(position, post.getId());
+        holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like_off, 0, 0, 0);
+        String Like1 = post.getDisLikes().size() - 1 + context.getString(R.string.disLike);
+        holder.numDisLikePostDoctor.setText(Like1);
+        dislikesList.add(position,false);
+      }
+      else{
+        //postsListener.onClickDisLikePost(position, post.getId());
+        holder.disLikePostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.dis_like, 0, 0, 0);
+        String Like1 = post.getDisLikes().size() + 1 + context.getString(R.string.disLike);
+        holder.numDisLikePostDoctor.setText(Like1);
+        dislikesList.add(position,true);
+      }
     });
 
 
     holder.starPostForHomePatient.setOnClickListener(v -> {
-      if(starExist)
-        postsListener.onCancelStarPost(position, post.getId());
-      else
-        postsListener.onClickStarPost(position, post.getId());
+      if(starrList.get(position)){
+        //postsListener.onCancelStarPost(position, post.getId());
+        holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star_off, 0, 0, 0);
+        String Like1 = post.getStars().size() - 1 + context.getString(R.string.star);
+        holder.numStarPostForHomePatient.setText(Like1);
+        starrList.add(position,false);
+      }
+      else {
+        //postsListener.onClickStarPost(position, post.getId());
+        holder.starPostForHomePatient.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.star, 0, 0, 0);
+        String Like1 = post.getStars().size() + 1 + context.getString(R.string.disLike);
+        holder.numStarPostForHomePatient.setText(Like1);
+        starrList.add(position,true);
+      }
     });
   }
 
