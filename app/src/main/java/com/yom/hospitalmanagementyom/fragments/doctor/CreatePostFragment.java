@@ -113,7 +113,7 @@ public class CreatePostFragment extends Fragment {
         Repository repository=new Repository(requireContext());
 
         List<String> strings=new ArrayList<>();
-        strings.add(repository.getUser().getUid());
+        strings.add("0");
         post= new Post();
         post.setId("");
         post.setPost("");
