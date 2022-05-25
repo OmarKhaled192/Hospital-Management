@@ -29,6 +29,7 @@ public class Constants {
     public static final String ID_CHAT = "idChat";
     public static final String ID_SENDER = "idSender";
     public static final String ID_RECEIVER = "idReceiver";
+    public static final String OBJECT = "Object";
 
     //Firebase Tables name
     public static final String PATIENTS = "Patients";

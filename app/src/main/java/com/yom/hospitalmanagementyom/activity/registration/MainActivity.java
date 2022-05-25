@@ -12,10 +12,9 @@ import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.HealthCare
 import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.Questions;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
-import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.model.Constants;
 
-public class MainActivity extends AppCompatActivity implements LoginListener {
+public class MainActivity extends AppCompatActivity {
 
     private Repository repository;
 
@@ -26,20 +25,18 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
         setContentView( binding.getRoot() );
 
         repository=new Repository(getApplicationContext());
-        repository.loginIn("yousef@gmail.com", "123456", this);
-//        repository=new Repository(getApplicationContext());
-//        new Thread(){
-//            @Override
-//            public void run() {
-//                super.run();
-//                try {
-//                    sleep(1000);
-//                    checkUser();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }.start();
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    sleep(1000);
+                    checkUser();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     void checkUser(){
@@ -73,10 +70,4 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
     }
 
 
-    @Override
-    public void nextToHome() {
-        Intent intent=new Intent();
-        intent.setClass(this, HomeDoctorActivity.class);
-        startActivity(intent);
-    }
 }

@@ -3,33 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_book.xml" value="0.33" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_message.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_payment.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_questions.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_search_patient.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/activity_view.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/app_bar_admin_board.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/app_bar_home_patient.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/content_home_patient.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_admin.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_book_doctor.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_chat.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_covid19.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_create_post.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_doctor.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_drugs.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_home_doctor.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_home_patient.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_profile_doctor.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/fragment_times_doctor.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/item_manger.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/item_time.xml" value="0.5519765739385066" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/layout/nav_header_admin_board.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/menu/admin_board.xml" value="0.2" />
-        <entry key="..\:/AndroidProject/Kotlin/Hospital-Management/app/src/main/res/menu/home_patient.xml" value="0.2" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/drawable/background_input.xml" value="0.13914473684210527" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/drawable/design6.xml" value="0.2203125" />
         <entry key="..\:/HospitalManagement2/app/src/main/res/layout-v23/nav_header_main.xml" value="0.20416666666666666" />
@@ -67,11 +48,15 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/design5.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/design6.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/dis_like.xml" value="0.1" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/drop_down.xml" value="0.1545" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/drugs_bar.xml" value="0.1545" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/error.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/home.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/hospital_logo.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1945" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/like.xml" value="0.1" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/lock.xml" value="0.1545" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/message_bg.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/message_other_bg.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/no_open.xml" value="0.1615" />
@@ -80,6 +65,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/skip.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/splash_screen.xml" value="0.1615" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/drawable/star.xml" value="0.1" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_choose.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_doctor.xml" value="0.2" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_home_patient.xml" value="0.21" />
@@ -96,24 +82,29 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_search_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_slide.xml" value="0.22" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_verification.xml" value="0.25" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_view.xml" value="0.33" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/activity_view_search.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/app_bar_admin_board.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/app_bar_home_patient.xml" value="0.1675213675213675" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/content_home_patient.xml" value="0.1675213675213675" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_book_doctor.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_chat.xml" value="0.33" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_covid19.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_create_post.xml" value="0.22" />
-        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_doctor.xml" value="0.20416666666666666" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_doctor.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_favorite_tips.xml" value="0.21" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_home_doctor.xml" value="0.1" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_home_patient.xml" value="0.22658959537572254" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_profile_doctor.xml" value="0.1" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/fragment_times_doctor.xml" value="0.1" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat_me.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat_other.xml" value="0.22" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_chat_patient.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_disease.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_edit_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_hospital_view.xml" value="0.17074275362318841" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_manger.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/job_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/loading.xml" value="0.33" />
@@ -124,6 +115,7 @@
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/success_item.xml" value="0.25" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/layout/view_shimmer.xml" value="0.1675213675213675" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/admin_board.xml" value="0.20416666666666666" />
         <entry key="..\:/Study 4/Project/Hospital-Management/app/src/main/res/menu/home_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v23/background_image.xml" value="0.2703125" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13645833333333332" />
@@ -195,7 +187,6 @@
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/star_off.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/telephone.xml" value="0.2703125" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/drawable/time.xml" value="0.24895833333333334" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_admin_board.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_book_appointment.xml" value="0.16576086956521738" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_by_chatting.xml" value="0.264" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_by_voise.xml" value="0.16576086956521738" />
@@ -218,12 +209,10 @@
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/activity_verification.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/fragment_covid19.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/item_post_for_home_patient.xml" value="0.12708333333333333" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/loading.xml" value="0.264" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/nav_header_main.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/slide_item.xml" value="0.24094202898550723" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/layout/slide_layout_2.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/activity_main_drawer.xml" value="0.1703125" />
-        <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/admin_board.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/cities_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/popup_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/menu/setting_menu_of_patient.xml" value="0.1703125" />
@@ -231,9 +220,7 @@
         <entry key="..\:/Users/L-340/AndroidStudioProjects/HospitalManagementYOM/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/box_without_border.xml" value="0.1075" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/drugs_bar.xml" value="0.1075" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/drawable/telephone.xml" value="0.1" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.25" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_by_chatting.xml" value="0.14140625" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_admin_board.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_choose.xml" value="0.153125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_health_care.xml" value="0.14" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_home_doctor.xml" value="0.153125" />
@@ -242,26 +229,15 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_recicleview.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration.xml" value="0.11736111111111111" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration_common.xml" value="0.11736111111111111" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_registration_for_hospital.xml" value="0.13194444444444445" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_search_patient.xml" value="0.21" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_view.xml" value="0.15" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/activity_view_search.xml" value="0.14140625" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/app_bar_admin_board.xml" value="0.120703125" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/content_admin_board.xml" value="0.13194444444444445" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/content_home_patient.xml" value="0.153125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_admin.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_doctor.xml" value="0.11319444444444444" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_drugs.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/fragment_home_patient.xml" value="0.153125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/item_chat.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/item_chat_me.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/item_chat_other.xml" value="0.19444444444444445" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/item_manger.xml" value="0.18" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/layout/nav_header_admin_board.xml" value="0.25" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/menu/activity_main_drawer.xml" value="0.15135135135135136" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/menu/admin_board.xml" value="0.15135135135135136" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Hospital-Management/app/src/main/res/menu/home_patient.xml" value="0.13194444444444445" />
       </map>
     </option>
   </component>
