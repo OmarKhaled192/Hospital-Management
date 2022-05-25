@@ -15,6 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
+import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityVerificationBinding;
 import com.yom.hospitalmanagementyom.listeners.PhoneVerificationListener;
@@ -217,8 +219,10 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
 
     @Override
     public void successVerify() {
-        repository.deleteUserPhone();
-        setResult(RESULT_OK,intent);
+//        repository.deleteUserPhone();
+//        setResult(RESULT_OK,intent);
+        Intent i= new Intent(getApplicationContext(), HomePatientActivity.class);
+        startActivity(i);
         super.onBackPressed();
     }
 

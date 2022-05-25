@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:hint="@string/Email"
+        android:hint="@string/phone"
         app:boxStrokeWidth="@dimen/_1sdp"
         app:prefixText="@string/code"
         app:endIconMode="clear_text"
@@ -29,12 +29,12 @@
         app:counterMaxLength="11"
         app:errorEnabled="true"
         app:errorIconDrawable="@drawable/error"
-        app:startIconDrawable="@drawable/email">
+        app:startIconDrawable="@drawable/phone">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:textColor="?attr/colorControlNormal" />
     </com.google.android.material.textfield.TextInputLayout>
     <Button
