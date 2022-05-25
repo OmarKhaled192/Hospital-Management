@@ -61,6 +61,7 @@ public class ChatFragment extends Fragment implements ChatListener {
 
         Chat chat2 = new Chat();
         chat2.setMessage("كيف الحال");
+        chat.setNameChat("Ahmed");
         chat2.setSeen("Not Open");
         chat2.setTime("10:00 PM");
         chat2.setIdSender("1223");
