@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         if(repository.getUser()!=null){
             switch (typeUser) {
                 case Constants.PATIENT:
-                    intent.setClass(this, HomePatientActivity.class);
+                    intent.setClass(this, AdminBoardActivity.class);
                     break;
                 case Constants.HOSPITAL:
                     intent.setClass(this, VerificationActivity.class);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(this, RegistrationActivityForHospital.class);
                     break;
                 default:
-                    intent.setClass(this, AdminBoardActivity.class);
+                    intent.setClass(this, HomePatientActivity.class);
                     break;
             }
         }
