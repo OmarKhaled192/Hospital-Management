@@ -49,4 +49,5 @@ public class Constants {
     public static final String DRUGS_OF_HOSPITALS = "Drugs of hospitals";
     public static final String WORKER = "worker";
     public static final String REQUEST = "request";
+    public static final String OBJECT = "Object";
 }

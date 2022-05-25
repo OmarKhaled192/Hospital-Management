@@ -1,6 +1,7 @@
 package com.yom.hospitalmanagementyom.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.hospital.ViewActivity;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Disease;
 import com.yom.hospitalmanagementyom.model.Drug;
 
@@ -44,6 +47,15 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
         Drug drug= drugs.get(position);
         holder.drugName.setText(drug.getNameDrug());
         holder.drugId.setText(drug.getId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, ViewActivity.class);
+                intent.putExtra(Constants.ACTIVITY,Constants.DRUGS);
+                intent.putExtra(Constants.OBJECT,drug);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
