@@ -58,6 +58,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         super.onViewCreated(view, savedInstanceState);
 
 
+        posts = repository.getPosts(this);
         HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), hospitals, this);
         LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
