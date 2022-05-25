@@ -1,6 +1,7 @@
 package com.yom.hospitalmanagementyom.activity.home.patient;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -112,15 +113,22 @@ public class HomePatientActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
         builder.setTitle(getString(R.string.signOut))
                 .setMessage(getString(R.string.signOutQuestion));
-        builder.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> {
-            dialogInterface.dismiss();
-            ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
-            progressDialog.setTitle(getString(R.string.signOut));
-            progressDialog.create();
-            progressDialog.show();
-            repository.signOut(progressDialog);
-        }).setNegativeButton(getString(R.string.no), (dialogInterface, i) ->
-                dialogInterface.dismiss()).create();
+        builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+                progressDialog.setTitle(getString(R.string.signOut));
+                progressDialog.create();
+                progressDialog.show();
+                repository.signOut(progressDialog);
+            }
+        }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.create();
 
         builder.show();
     }
