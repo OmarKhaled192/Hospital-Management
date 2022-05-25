@@ -50,6 +50,10 @@ public class Repository {
         commonFunction = new CommonFunction();
     }
 
+    public void saveDrugFirestore(Dialog dialog, Drug drug, SaveDataListener saveDataListener, Uri uri){
+     myHomeFirebase.saveDrugFirestore(dialog, drug, saveDataListener, uri);
+
+    }
     //MyRegistrationFirebase
     public void loginIn(String email, String password, LoginListener loginListener){
         myRegistrationFirebase.loginIn(email, password, loginListener);

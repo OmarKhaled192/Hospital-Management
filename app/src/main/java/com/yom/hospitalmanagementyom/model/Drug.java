@@ -3,9 +3,25 @@ package com.yom.hospitalmanagementyom.model;
 import java.io.Serializable;
 
 public class Drug implements Serializable {
-    private String Id, nameDrug,Profile;
+    private String Id, nameDrug,Profile,price, details;
     public String getId() {
         return Id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public void setId(String id) {
