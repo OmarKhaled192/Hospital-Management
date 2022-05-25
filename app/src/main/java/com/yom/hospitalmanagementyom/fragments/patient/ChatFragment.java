@@ -38,6 +38,7 @@ public class ChatFragment extends Fragment implements ChatListener {
         repository = new Repository(requireContext());
         //chats = repository.getLastMessage( this);
         doctors = new ArrayList<>();
+        chats =new ArrayList<>();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,16 +78,17 @@ public class ChatFragment extends Fragment implements ChatListener {
         doctor2.setProfile("hy");
 
         doctors.add(doctor2);
+
         chatAdapter = new ChatAdapter(requireContext(), chats,doctors, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         binding.recyclerviewChat.setLayoutManager(linearLayoutManager);
         binding.recyclerviewChat.setAdapter(chatAdapter);
 
-        for(int i =0; i<chats.size(); i++){
-            if(chats.get(i).getSeen().equals(Constants.NOT_OPEN)){
-                repository.setLastSeenByChatId(doctors.get(i).getId(), Constants.NOT_SEEN);
-            }
-        }
+//        for(int i =0; i<chats.size(); i++){
+//            if(chats.get(i).getSeen().equals(Constants.NOT_OPEN)){
+//                repository.setLastSeenByChatId(doctors.get(i).getId(), Constants.NOT_SEEN);
+//            }
+//        }
     }
 
     @Override
