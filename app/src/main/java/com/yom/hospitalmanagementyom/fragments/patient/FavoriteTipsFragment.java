@@ -29,7 +29,8 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
         super.onCreate(savedInstanceState);
 
         repository=new Repository(requireContext());
-        posts = repository.getPostsStarted(this);
+        //posts = repository.getPostsStarted(this);
+        posts = repository.getPosts(this);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

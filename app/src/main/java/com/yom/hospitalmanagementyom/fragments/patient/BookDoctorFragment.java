@@ -40,6 +40,7 @@ public class BookDoctorFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         repository=new Repository(requireContext());
+        doctors =new ArrayList<>();
     }
 
     public BookDoctorFragment() {
