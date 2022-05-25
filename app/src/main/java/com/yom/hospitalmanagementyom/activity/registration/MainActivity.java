@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
-import com.yom.hospitalmanagementyom.activity.home.hospital.AdminBoardActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.BookActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.PaymentActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.SearchViewActivity;
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
     @Override
     public void nextToHome() {
         Intent intent=new Intent();
-        intent.setClass(this, AdminBoardActivity.class);
+        intent.setClass(this, HomeDoctorActivity.class);
         startActivity(intent);
     }
 }
