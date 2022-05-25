@@ -599,12 +599,12 @@ public class MyHomeFirebase {
         firebaseStorage.getReference(child).child(child2).delete();
     }
 
-    private void saveDrugFirestore(Dialog dialog, Drug drug, SaveDataListener saveDataListener, Uri uri){
+    public void saveDrugFirestore(Dialog dialog, Drug drug, SaveDataListener saveDataListener, Uri uri){
         firebaseFirestore.collection(Constants.DRUGS).add(drug)
                 .addOnSuccessListener(
                         documentReference -> {
                             saveDataListener.successSavePatient();
-                            updateUser(dialog, drug.getNameDrug(), uri);
+                           // updateUser(dialog, drug.getNameDrug(), uri);
                         })
                 .addOnFailureListener(e -> {
                     deleteImageLevel(Constants.DRUGS, drug.getId());
