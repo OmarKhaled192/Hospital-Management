@@ -1,6 +1,7 @@
 package com.yom.hospitalmanagementyom.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.hospital.ViewActivity;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Patient;
 import com.yom.hospitalmanagementyom.model.Time;
+
+import java.io.Serializable;
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,6 +48,16 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder>{
 
         holder.namePatient.setText(patient.getName());
         holder.time.setText(time.getTime());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, ViewActivity.class);
+                intent.putExtra(Constants.ACTIVITY,Constants.TIME);
+                intent.putExtra(Constants.OBJECT, (Serializable) time);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
