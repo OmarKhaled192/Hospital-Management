@@ -229,8 +229,11 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
 
     @Override
     public void failVerify() {
-        setResult(RESULT_CANCELED,intent);
-        super.onBackPressed();
+//        setResult(RESULT_CANCELED,intent);
+//        super.onBackPressed();
+        Intent i= new Intent(getApplicationContext(), HomePatientActivity.class);
+        startActivity(i);
+        fileList();
     }
 
     @Override
