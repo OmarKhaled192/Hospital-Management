@@ -76,12 +76,11 @@
         android:textSize="@dimen/_15ssp"/>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/timeBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_marginHorizontal="@dimen/_25sdp"
         android:hint="00:00"
         app:boxStrokeWidth="@dimen/_1sdp"
@@ -90,11 +89,12 @@
         app:errorEnabled="true"
         app:errorIconDrawable="@drawable/error"
         app:startIconDrawable="@drawable/time">
+
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/Time"
-            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
 
             android:textColor="?attr/colorControlNormal" />
     </com.google.android.material.textfield.TextInputLayout>

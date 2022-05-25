@@ -1,6 +1,7 @@
 package com.yom.hospitalmanagementyom.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.hospital.ViewActivity;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Drug;
 
@@ -48,6 +51,18 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         holder. doctorName.setText(doctor.getName());
         Picasso.with(context).load(doctor.getProfile()).error(R.color.teal_700)
                 .into(holder.profileDoctorForHospital);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewActivity.class);
+                intent.putExtra(Constants.ACTIVITY,Constants.DOCTOR);
+                intent.putExtra(Constants.OBJECT , doctor);
+                context.startActivity(intent);
+            }
+        });
+
+
+
     }
 
     @Override
