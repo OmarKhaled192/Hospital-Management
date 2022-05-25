@@ -35,7 +35,7 @@ public class CommonRegistrationActivity extends AppCompatActivity implements Sav
     binding= ActivityRegistrationCommonBinding.inflate(getLayoutInflater());
     setContentView( binding.getRoot() );
 
-    //checkPatientOrHospital();
+    checkPatientOrHospital();
 
     activityResultLauncherPhone=registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
