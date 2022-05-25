@@ -7,7 +7,6 @@
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -36,8 +35,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/profileDoctorForHospital"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/specializationDoctorForHospital"
-            tools:text="Name" />
+            app:layout_constraintBottom_toTopOf="@+id/specializationDoctorForHospital" />
 
         <TextView
             android:id="@+id/specializationDoctorForHospital"
@@ -49,10 +47,19 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profileDoctorForHospital"
-            app:layout_constraintTop_toBottomOf="@+id/nameDoctorForHospital"
-            tools:text="Specialization" />
+            app:layout_constraintTop_toBottomOf="@+id/nameDoctorForHospital" />
 
-
+        <TextView
+            android:id="@+id/workerDoctorForHospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

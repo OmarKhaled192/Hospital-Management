@@ -57,7 +57,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.ViewHolder>{
             public void onClick(View view) {
                 Intent intent = new Intent(context, ViewActivity.class);
                 intent.putExtra(Constants.ACTIVITY,Constants.ADMIN);
-                intent.putExtra(Constants.OBJECT , admin);
+                intent.putExtra(Constants.OBJECTS , admin);
                 context.startActivity(intent);
             }
         });

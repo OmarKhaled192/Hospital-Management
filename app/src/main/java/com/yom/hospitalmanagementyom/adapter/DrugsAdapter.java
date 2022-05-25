@@ -52,7 +52,7 @@ public class DrugsAdapter extends RecyclerView.Adapter<DrugsAdapter.ViewHolder>{
             public void onClick(View v) {
                 Intent intent=new Intent(context, ViewActivity.class);
                 intent.putExtra(Constants.ACTIVITY,Constants.DRUGS);
-                intent.putExtra(Constants.OBJECT,drug);
+                intent.putExtra(Constants.OBJECTS,drug);
                 context.startActivity(intent);
             }
         });

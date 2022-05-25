@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.DoctorAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
+import com.yom.hospitalmanagementyom.databinding.FragmentBookDoctorBinding;
 import com.yom.hospitalmanagementyom.databinding.FragmentDoctorBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
@@ -29,10 +30,10 @@ public class BookDoctorFragment extends Fragment {
 
 
 
-    private FragmentDoctorBinding binding;
+    private FragmentBookDoctorBinding binding;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentDoctorBinding.inflate(inflater, container, false);
+        binding = FragmentBookDoctorBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,7 +55,7 @@ public class BookDoctorFragment extends Fragment {
         binding.recyclerviewDoctor.setAdapter(doctorAdapter);
 
         DoctorAdapter doctorAdapter1 = new DoctorAdapter(requireContext(), doctors2);
-        binding.recyclerviewDoctor2.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.recyclerviewDoctor2.setAdapter(doctorAdapter1);
+        binding.recyclerviewDoctorBooked.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerviewDoctorBooked.setAdapter(doctorAdapter1);
     }
 }

@@ -53,7 +53,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder>{
             public void onClick(View v) {
                 Intent intent=new Intent(context, ViewActivity.class);
                 intent.putExtra(Constants.ACTIVITY,Constants.TIME);
-                intent.putExtra(Constants.OBJECT, (Serializable) time);
+                intent.putExtra(Constants.OBJECTS, (Serializable) time);
                 context.startActivity(intent);
             }
         });

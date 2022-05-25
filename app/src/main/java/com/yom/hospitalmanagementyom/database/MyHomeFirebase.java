@@ -38,6 +38,7 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.listeners.ChatListener;
+import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.listeners.SaveDataListener;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
@@ -771,9 +772,9 @@ public class MyHomeFirebase {
         return drugs;
     }
 
-    public List<Doctor> getAllDoctors() {
-        doctors = new ArrayList<>();
-        FirebaseFirestore.getInstance().collection(Constants.DOCTORS)
+    public List<Doctor> getAllDoctors(LoginListener loginListener) {
+        List<Doctor> doctors = new ArrayList<>();
+        firebaseFirestore.collection(Constants.DOCTORS)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -781,7 +782,9 @@ public class MyHomeFirebase {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Doctor doctor = document.toObject(Doctor.class);
                         doctors.add(doctor);
+                        Toast.makeText(context, doctor.getName(), Toast.LENGTH_LONG).show();
                     }
+                    loginListener.nextToHome();
                 }
             }});
         return doctors;

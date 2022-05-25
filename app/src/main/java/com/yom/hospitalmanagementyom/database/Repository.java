@@ -222,7 +222,7 @@ public class Repository {
         return myHomeFirebase.getAllDrugs(idHospital);
     }
 
-    public List<Doctor> getAllDoctors() {
-        return myHomeFirebase.getAllDoctors();
+    public List<Doctor> getAllDoctors(LoginListener loginListener) {
+        return myHomeFirebase.getAllDoctors(loginListener);
     }
 }

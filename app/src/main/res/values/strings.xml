@@ -228,4 +228,5 @@
     <string name="doctorBooked">Doctor booked</string>
     <string name="covidDetect">Covid19 Detection</string>
     <string name="history">History Of Patient</string>
+    <string name="accept">Accept</string>
 </resources>

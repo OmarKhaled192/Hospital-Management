@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
-import com.yom.hospitalmanagementyom.activity.home.patient.BookActivity;
-import com.yom.hospitalmanagementyom.activity.home.patient.PaymentActivity;
-import com.yom.hospitalmanagementyom.activity.home.patient.SearchViewActivity;
+import com.yom.hospitalmanagementyom.activity.home.hospital.AdminBoardActivity;
+import com.yom.hospitalmanagementyom.activity.home.hospital.ViewActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
-import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.HealthCare;
-import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.Questions;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -57,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(this, RegistrationActivityForHospital.class);
                     break;
                 default:
-                    intent.setClass(this, SlideActivity.class);
+                    intent.setClass(this, AdminBoardActivity.class);
                     break;
             }
         }
         else
-            intent.setClass(this, SlideActivity.class);
+            intent.setClass(this, ViewActivity.class);
 
         startActivity(intent);
 
