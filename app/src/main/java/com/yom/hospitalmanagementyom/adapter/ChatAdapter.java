@@ -49,7 +49,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder>{
 //        Picasso.with( context ).load( doctor.getProfile() )
 //                .placeholder( R.color.teal_700 ).into( holder.profileOfChat );
 //
-//        holder.nameChat.setText(doctor.getName());
+        holder.nameChat.setText(chat.getNameChat());
         holder.lastTime.setText(chat.getTime());
         holder.lastMessage.setText(chat.getMessage());
 
