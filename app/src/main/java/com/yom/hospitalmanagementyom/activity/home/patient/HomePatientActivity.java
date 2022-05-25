@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.HealthCare;
+import com.yom.hospitalmanagementyom.activity.registration.LoginActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -110,27 +111,33 @@ public class HomePatientActivity extends AppCompatActivity {
 
 
     private void exitDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        builder.setTitle(getString(R.string.signOut))
-                .setMessage(getString(R.string.signOutQuestion));
-        builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
-                progressDialog.setTitle(getString(R.string.signOut));
-                progressDialog.create();
-                progressDialog.show();
-                repository.signOut(progressDialog);
-            }
-        }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.create();
-
-        builder.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//        builder.setTitle(getString(R.string.signOut))
+//                .setMessage(getString(R.string.signOutQuestion));
+//        builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+//                progressDialog.setTitle(getString(R.string.signOut));
+//                progressDialog.create();
+//                progressDialog.show();
+//                repository.signOut(progressDialog);
+//            }
+//        }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                dialogInterface.dismiss();
+//            }
+//        });
+//        builder.create();
+//
+//        builder.show();
+        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog.setTitle(getString(R.string.signOut));
+        progressDialog.create();
+        progressDialog.show();
+        repository.signOut(progressDialog);
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
     @Override
     protected void onDestroy() {
