@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.patient.PaymentActivity;
 import com.yom.hospitalmanagementyom.adapter.DoctorAdapter;
 import com.yom.hospitalmanagementyom.databinding.ActivityViewBinding;
 import com.yom.hospitalmanagementyom.model.Admin;
@@ -61,6 +63,13 @@ public class ViewActivity extends AppCompatActivity {
                 setTime(time);
                 break;
         }
+
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+            }
+        });
     }
 
     private void setDoctor(Doctor doctor){
