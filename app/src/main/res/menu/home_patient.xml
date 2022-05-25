@@ -8,6 +8,16 @@
         android:title="@string/search_hint"
         app:showAsAction="ifRoom"/>
 
+   <item
+        android:id="@+id/healthCare"
+        android:title="Payment for health care"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/healthCareService"
+        android:title="Health Service"
+        app:showAsAction="never"/>
+
     <item
         android:id="@+id/signOutPatient"
         android:title="@string/signOut"

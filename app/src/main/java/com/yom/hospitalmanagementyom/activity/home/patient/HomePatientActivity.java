@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 import com.yom.hospitalmanagementyom.R;
+import com.yom.hospitalmanagementyom.activity.home.patient.healthcare.HealthCare;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityHomePatientBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -84,6 +85,10 @@ public class HomePatientActivity extends AppCompatActivity {
             startActivity(new Intent(this, SearchPatientActivity.class));
         else if (item.getItemId() == R.id.signOutPatient)
             exitDialog();
+        else if (item.getItemId() == R.id.healthCare)
+            startActivity(new Intent(this, PaymentActivity.class));
+        else if (item.getItemId() == R.id.healthCareService)
+            startActivity(new Intent(this, HealthCare.class));
         return super.onOptionsItemSelected(item);
     }
 
