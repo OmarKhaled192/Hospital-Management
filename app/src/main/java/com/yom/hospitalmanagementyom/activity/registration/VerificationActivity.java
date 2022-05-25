@@ -223,7 +223,8 @@ public class VerificationActivity extends AppCompatActivity implements PhoneVeri
 //        setResult(RESULT_OK,intent);
         Intent i= new Intent(getApplicationContext(), HomePatientActivity.class);
         startActivity(i);
-        super.onBackPressed();
+        fileList();
+//        super.onBackPressed();
     }
 
     @Override
