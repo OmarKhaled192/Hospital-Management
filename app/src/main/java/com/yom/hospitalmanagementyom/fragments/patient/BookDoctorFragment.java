@@ -11,8 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.adapter.DoctorAdapter;
+import com.yom.hospitalmanagementyom.adapter.DoctorAdapter2;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.FragmentBookDoctorBinding;
 import com.yom.hospitalmanagementyom.databinding.FragmentDoctorBinding;
@@ -23,6 +29,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDoctorFragment extends Fragment {
+
+    private  Repository repository ;
+    private List<Doctor> doctors ;
+    private DoctorAdapter2 doctorAdapter;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        repository=new Repository(requireContext());
+    }
 
     public BookDoctorFragment() {
         // Required empty public constructor
@@ -40,22 +58,21 @@ public class BookDoctorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Repository repository = new Repository(requireContext());
-        List<Doctor> doctors = repository.getAllDoctors(repository.getUser().getUid());
-        List<Doctor> doctors1=new ArrayList<>(), doctors2=new ArrayList<>();
-        for (int i=0; i<doctors.size();i++){
-            if(doctors.get(i).getWorker().equals(Constants.WORKER))
-                doctors1.add(doctors.get(i));
-            else if(doctors.get(i).getWorker().equals(Constants.REQUEST))
-                doctors2.add(doctors.get(i));
-        }
 
-        DoctorAdapter doctorAdapter = new DoctorAdapter(requireContext(), doctors1);
-        binding.recyclerviewDoctor.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.recyclerviewDoctor.setAdapter(doctorAdapter);
+        FirebaseFirestore.getInstance().collection(Constants.DOCTORS)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Doctor doctor = document.toObject(Doctor.class);
+                        doctors.add(doctor);
+                    }
+                    doctorAdapter = new DoctorAdapter2(requireContext(), doctors);
+                    binding.recyclerviewDoctor.setLayoutManager(new LinearLayoutManager(requireContext()));
+                    binding.recyclerviewDoctor.setAdapter(doctorAdapter);
+                }
+            }});
 
-        DoctorAdapter doctorAdapter1 = new DoctorAdapter(requireContext(), doctors2);
-        binding.recyclerviewDoctorBooked.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.recyclerviewDoctorBooked.setAdapter(doctorAdapter1);
     }
 }

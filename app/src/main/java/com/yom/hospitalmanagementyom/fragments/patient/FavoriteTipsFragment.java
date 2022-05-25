@@ -45,7 +45,6 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager( requireContext() );
         binding.recyclerviewFavoriteTips.setLayoutManager( linearLayoutManager );
         binding.recyclerviewFavoriteTips.setAdapter(postAdapter);
-
     }
 
 

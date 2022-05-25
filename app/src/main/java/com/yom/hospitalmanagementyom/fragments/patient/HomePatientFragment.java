@@ -40,7 +40,6 @@ public class HomePatientFragment extends Fragment implements PostsListener {
 
         repository=new Repository(requireContext());
         hospitals = repository.getHospitals();
-        posts = repository.getPosts(this);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +52,7 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         super.onViewCreated(view, savedInstanceState);
 
 
+        posts = repository.getPosts(this);
         HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), hospitals, this);
         LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
@@ -86,10 +86,9 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         binding.recyclerViewHomePosts.setVisibility(post);
     }
 
-
     @Override
     public void finishGetPosts() {
-        doctors = repository.getDoctorPosts(posts,this);
+        //doctors = repository.getDoctorPosts(posts,this);
         showDesign(View.GONE, View.VISIBLE, View.VISIBLE, false);
     }
 
