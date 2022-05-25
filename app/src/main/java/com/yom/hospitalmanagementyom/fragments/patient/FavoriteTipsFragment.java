@@ -30,6 +30,11 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
 
         repository=new Repository(requireContext());
         //posts = repository.getPostsStarted(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         posts = repository.getPosts(this);
     }
 
