@@ -13,6 +13,7 @@ import com.yom.hospitalmanagementyom.R;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivitySearchPatientBinding;
 import com.yom.hospitalmanagementyom.listeners.SearchListener;
+import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Drug;
 
 import java.io.Serializable;
@@ -93,7 +94,7 @@ public class SearchPatientActivity extends AppCompatActivity implements SearchLi
     @Override
     public void finishGetDrugs(List<Drug> drugs) {
         Intent intent= new Intent(getApplicationContext(), SearchViewActivity.class);
-        intent.putExtra("Drugs", (Serializable) drugs);
+        intent.putExtra(Constants.DRUGS, (Serializable) drugs);
         startActivity(intent);
     }
 

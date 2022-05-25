@@ -24,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -334,14 +335,15 @@ public class MyHomeFirebase {
 
     public void getDrugs(String Name, SearchListener searchListener) {
         List<Drug> drugs=new ArrayList<>();
-        FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.NAME,Name)
+        FirebaseFirestore.getInstance().collection(Constants.DRUGS)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Drug drug = document.toObject(Drug.class);
-                        drugs.add(drug);
+                        if(drug.getNameDrug().equals(Name))
+                            drugs.add(drug);
                     }
                     searchListener.finishGetDrugs(drugs);
                 }
@@ -350,30 +352,30 @@ public class MyHomeFirebase {
     }
 
     public void getDisease(String Name, SearchListener searchListener) {
-        FirebaseFirestore.getInstance().collection(Constants.DISEASES).whereEqualTo(Constants.NAME,Name)
+        FirebaseFirestore.getInstance().collection(Constants.DISEASES)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Disease disease = document.toObject(Disease.class);
-                        List<Drug> drugs = new ArrayList<>();
-                        for (String id : disease.getDrugs()) {
-                            FirebaseFirestore.getInstance().collection(Constants.DRUGS).whereEqualTo(Constants.ID, id)
-                                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task1) {
-                                    if (task1.isSuccessful()) {
-                                        for (QueryDocumentSnapshot document : task1.getResult()) {
-                                            Drug drug = document.toObject(Drug.class);
-                                            drugs.add(drug);
+                        if(disease.getName().equals(Name)){
+                            List<Drug> drugs = new ArrayList<>();
+                            for (String id : disease.getDrugs()) {
+                                FirebaseFirestore.getInstance().collection(Constants.DRUGS).document(id).get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if(task.isSuccessful()){
+                                                Drug drug = document.toObject(Drug.class);
+                                                drugs.add(drug);
+                                            }
                                         }
-                                    }
-                                }
-                            });
+                                    });
+                            }
+                            searchListener.finishGetDrugs(drugs);
+                            return;
                         }
-                        searchListener.finishGetDrugs(drugs);
-                        return;
                     }
                 }
             }

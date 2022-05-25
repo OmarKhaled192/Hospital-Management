@@ -7,6 +7,7 @@ import com.yom.hospitalmanagementyom.activity.home.doctor.HomeDoctorActivity;
 import com.yom.hospitalmanagementyom.activity.home.hospital.AdminBoardActivity;
 import com.yom.hospitalmanagementyom.activity.home.hospital.ViewActivity;
 import com.yom.hospitalmanagementyom.activity.home.patient.HomePatientActivity;
+import com.yom.hospitalmanagementyom.activity.home.patient.SearchPatientActivity;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.ActivityMainBinding;
 import com.yom.hospitalmanagementyom.model.Constants;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(this, RegistrationActivityForHospital.class);
                     break;
                 default:
-                    intent.setClass(this, AdminBoardActivity.class);
+                    intent.setClass(this, SearchPatientActivity.class);
                     break;
             }
         }
