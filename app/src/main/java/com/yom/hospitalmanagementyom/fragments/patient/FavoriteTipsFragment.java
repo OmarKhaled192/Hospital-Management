@@ -20,6 +20,8 @@ import com.yom.hospitalmanagementyom.listeners.PostsListener;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import com.yom.hospitalmanagementyom.model.Post;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteTipsFragment extends Fragment implements PostsListener {
@@ -35,6 +37,7 @@ public class FavoriteTipsFragment extends Fragment implements PostsListener {
 
         repository=new Repository(requireContext());
         //posts = repository.getPostsStarted(this);
+        posts = new ArrayList<>();
     }
 
 
