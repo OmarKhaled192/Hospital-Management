@@ -36,7 +36,7 @@ public class ChatFragment extends Fragment implements ChatListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         repository = new Repository(requireContext());
-        chats = repository.getLastMessage( this);
+        //chats = repository.getLastMessage( this);
         doctors = new ArrayList<>();
     }
 
@@ -49,35 +49,34 @@ public class ChatFragment extends Fragment implements ChatListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        Chat chat = new Chat();
-//        chat.setId(FirebaseDatabase.getInstance().getReference("Chats").push().getKey());
-//        chat.setMessage("nn");
-//        chat.setMessage("Hi");
-//        chat.setSeen("Seen");
-//        chat.setTime("10:00 PM");
-//        chat.setIdSender("1");
-//        chat.setDelete("");
-//        chat.setNameChat("Mohamed Ahmed");
-//        chat.setProfileChat("ff");
-//        chat.setIdReceiver(repository.getUser().getUid());
-//        repository.SendMessage(chat);
+        Chat chat = new Chat();
+        chat.setId(FirebaseDatabase.getInstance().getReference("Chats").push().getKey());
+        chat.setMessage("Hi");
+        chat.setSeen("Seen");
+        chat.setTime("10:00 PM");
+        chat.setIdSender("1");
+        chat.setDelete("");
+        chat.setNameChat("Mohamed Ahmed");
+        chat.setProfileChat("ff");
+        chat.setIdReceiver(repository.getUser().getUid());
+        //repository.SendMessage(chat);
 
-//        Chat chat2 = new Chat();
-//        chat2.setMessage("كيف الحال");
-//        chat2.setSeen("Not Open");
-//        chat2.setTime("10:00 PM");
-//        chat2.setIdSender("1223");
-//        chats.add(chat);
-//        chats.add(chat2);
-//        Doctor doctor=new Doctor();
-//        doctor.setName("Mohamed Ahmed");
-//        doctor.setProfile("hy");
-//        doctors.add(doctor);
-//        Doctor doctor2=new Doctor();
-//        doctor2.setName("Ahmed");
-//        doctor2.setProfile("hy");
+        Chat chat2 = new Chat();
+        chat2.setMessage("كيف الحال");
+        chat2.setSeen("Not Open");
+        chat2.setTime("10:00 PM");
+        chat2.setIdSender("1223");
+        chats.add(chat);
+        chats.add(chat2);
+        Doctor doctor=new Doctor();
+        doctor.setName("Mohamed Ahmed");
+        doctor.setProfile("hy");
+        doctors.add(doctor);
+        Doctor doctor2=new Doctor();
+        doctor2.setName("Ahmed");
+        doctor2.setProfile("hy");
 
-//        doctors.add(doctor2);
+        doctors.add(doctor2);
         chatAdapter = new ChatAdapter(requireContext(), chats,doctors, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         binding.recyclerviewChat.setLayoutManager(linearLayoutManager);
