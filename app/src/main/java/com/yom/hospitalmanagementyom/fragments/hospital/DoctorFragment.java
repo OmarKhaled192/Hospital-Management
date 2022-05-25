@@ -19,7 +19,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.yom.hospitalmanagementyom.adapter.DoctorAdapter;
 import com.yom.hospitalmanagementyom.database.Repository;
 import com.yom.hospitalmanagementyom.databinding.FragmentDoctorBinding;
-import com.yom.hospitalmanagementyom.listeners.LoginListener;
 import com.yom.hospitalmanagementyom.model.Constants;
 import com.yom.hospitalmanagementyom.model.Doctor;
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ public class DoctorFragment extends Fragment {
     private  Repository repository ;
     private List<Doctor> doctors ;
     private DoctorAdapter doctorAdapter;
-    private DoctorAdapter doctorAdapter1;
 
     public DoctorFragment(){
         // Required empty public constructor
