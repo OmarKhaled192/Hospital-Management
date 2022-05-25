@@ -42,6 +42,12 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         hospitals = repository.getHospitals();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        posts = repository.getPosts(this);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomePatientBinding.inflate(inflater, container, false);
         return  binding.getRoot();
@@ -52,7 +58,6 @@ public class HomePatientFragment extends Fragment implements PostsListener {
         super.onViewCreated(view, savedInstanceState);
 
 
-        posts = repository.getPosts(this);
         HospitalViewAdapter hospitalViewAdapter = new HospitalViewAdapter(requireContext(), hospitals, this);
         LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false);
         binding.recyclerViewHospitalView.setLayoutManager(linearLayoutManager2);
