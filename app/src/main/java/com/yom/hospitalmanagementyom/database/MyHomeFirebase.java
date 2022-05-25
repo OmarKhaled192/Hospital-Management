@@ -572,9 +572,6 @@ public class MyHomeFirebase {
 
 
 
-
-
-
     private void addDrugFireStorage(Drug drug, SaveDataListener saveDataListener) {
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.loading);
