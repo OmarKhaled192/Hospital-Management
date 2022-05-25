@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setClass(this, RegistrationActivityForHospital.class);
                     break;
                 default:
-                    intent.setClass(this, HomePatientActivity.class);
+                    intent.setClass(this, HomeDoctorActivity.class);
                     break;
             }
         }
